@@ -42,29 +42,37 @@ int ft_strleng(char *str)
 	return (i);
 }
 
-struct s_stock_str *ft_strs_to_tab(/*int ac,*/ char **av)
+struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
 	char *strcopy;
-	int i;
 	int j;
-	int size;
+    int size;
+	int acsize;
 	
-	i = 1;
-	j = 0;
-	size = ft_strleng(av[1]);
-	strcopy = ft_strdup(size, av[1]);
-	printf("%d", size);
-	printf("%s", strcopy);
-	return (0);
-	while(str[i][j])
-	{
-		
-	}
+	j = 1;
+    acsize = 0;
+    while (acsize < ac)
+    {
+        size = ft_strleng(av[j]);
+        strcopy = ft_strdup(size, av[j]);
+        printf("%d\n", size );
+        printf("%s\n", strcopy);
+       /* while(av[i][j])
+        {
+            t_stock_str.size = size;
+            t_stock_str.str = av;
+            t_stock_str.strcopy = strcopy;
+        }*/
+        j++;
+        acsize++;
+    }
+    return (0);
 }
 
 int main(/*int ac, char **av*/)
 {
-	char *av[] = {"Hello", "World", "test"};
-	ft_strs_to_tab(av);
+	char *av[] = {"nomfichier", "Hello", "World", "test"};
+    int ac = 3;
+	ft_strs_to_tab(ac, av);
 	return (0);
 }
