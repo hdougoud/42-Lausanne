@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:20:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/07/08 17:43:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:54:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
-#define FT_ABS_H
+# define FT_ABS_H
 
-#define ABS(value) ((value) < (0) ? (-value))
+# define ABS(Value) (Value < 0 ? (-Value) : (Value))
 
 #endif

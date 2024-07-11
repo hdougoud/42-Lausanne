@@ -6,12 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/07/08 16:44:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:53:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
-#define FT_H
+# define FT_H
 
 void	ft_putchar(char c);
 void	ft_swap(int *a, int *b);
