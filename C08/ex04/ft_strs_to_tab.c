@@ -60,6 +60,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		stock[i].str = av[j];
 		stock[i].copy = ft_strdup(strsize, av[j]);
 		j++;
+		i++;  //erreur ici (maintenant corrigée)
 	}
 	stock[i].str = 0;
 	return (stock);
