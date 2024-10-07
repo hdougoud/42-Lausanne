@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 11:17:15 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/04 13:29:31 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/07 16:47:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strdup(const char *s1)
+char	*ft_itoa(int n)
 {
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	ptr = malloc(sizeof(char) * ft_strlen(s1)); //count and alocate s1
-	if (ptr == 0)
-		return (NULL);
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	
 }
 
-//int main(void)
-//{
-//	const char s[] = "Hello World";
-//	printf("%s\n", ft_strdup(s));
-//}
+int main(void)
+{
+	int nb = 123456;
+	printf("%s\n", ft_itoa(nb));
+}

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:54:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 14:17:53 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/10/04 11:17:15 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/07 16:19:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_memory(char const *str, int n)
-{
-	(str = malloc(sizof(char) * n + 1));
-	if (str == 0)
-		return (0)
-	return (str);
-}
+#include "libft.h"
 
-char	**ft_split(char const *s, char c)
+char	*ft_strdup(const char *s1)
 {
-	char	**tab;
-	int		leng;
 	int		i;
-	int		j;
-	
-	while (s[i] == ' ' || s[i] == '\0');
-	
-	return (tab);
+	char	*ptr;
+
+	i = 0;
+	ptr = malloc(sizeof(char) * ft_strlen(s1));
+	if (ptr == 0)
+		return (NULL);
+	while (s1[i])
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 
-int main(void)
-{
-	char s[] = "Hello world this is a test";
-	ft_split(s, ' ');
-}
+//int main(void)
+//{
+//	const char s[] = "Hello World";
+//	printf("%s\n", ft_strdup(s));
+//}
