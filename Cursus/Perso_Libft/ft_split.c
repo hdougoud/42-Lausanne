@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 16:37:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:59:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	tab[j] = NULL; //null a a fin du tableau
+	tab[j] = NULL;
 	return (tab);
 }
 
