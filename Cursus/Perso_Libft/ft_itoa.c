@@ -6,69 +6,78 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 11:43:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:24:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*ft_min_int(int n)
+{
+	char	*str;
 
-int it_is_negative(int n)
+	str = malloc(12 * sizeof(char));
+	if (str == 0)
+		return (NULL);
+	str = "-2147483648"; // faire un = correcte
+	return (str);
+}
+
+int	ft_is_negative(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
+char	*ft_convert(int n, int len, char *str, int negative)
+{
+	int	div;
+
+	div = 1;
+	str[len] = '\0';
+	len--;
+	while (len >= 0)
+	{
+		str[len] = (n % 10) + '0';
+		len --;
+		n /= 10;
+	}
+	if (negative == 1)
+		str[0] = '-';
+	return (str);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		i;
-	int		result;
-	
-	i = 0;
-	result = 0;
-	if (it_is_negative(n))
-		n = -n;
-	while (!(n >= 1 && n <= 9))
+	int		len;
+	int		div;
+	int		negative;
+
+	div = 1;
+	len = 1;
+	negative = 0;
+	if (n == -2147483647)
+		return (ft_min_int(n));
+	if (ft_is_negative(n))
 	{
-		n = n / 10;
-		result++;
-		printf("%d\n", result);
+		n = -n;
+		negative = 1;
 	}
-	str = malloc(sizeof(char) * (i + it_is_negative(n) + 2));
+	while (n / div >= 9)
+	{
+		len++;
+		div *= 10;
+	}
+	str = malloc((len + 1 + negative) * sizeof(char));
 	if (str == 0)
 		return (NULL);
-	while (result >= 0)
-	{
-		str[i] = (n * 10) + '0';
-		i++;
-		result--;
-	}
-	str[i] = '\0';
-	return (str);
-//	i = 0;
-//	if (it_is_negative(n) == 1)
-//	{
-//		str[i] = '-';
-//		i++;
-//	}
-//	while (div > 0)
-//	{
-//		str[i] = ((result % 10) + '0');
-//		result = 
-//		i++;
-//		div = div / 10;
-//	}
-//	str[i] = (n % 10) + '0';
-//	i++;
-//	str[i] = '\0';
-//	return (str);
+	return (ft_convert(n, len + negative, str, negative));
 }
 
-int main(void)
-{
-	int nb = 12345;
-	printf("Final %s\n", ft_itoa(nb));
-	 //2147483647;
-}
+//int main(void)
+//{
+//	int nb = -214748364;  
+//	printf("Final %s\n", ft_itoa(nb));
+//}
