@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 23:30:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:47:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 //int main(void)
 //{
-//	char s[] = "CAB123ABDA";
+//	char s[] = "CAB12ABC3ABA";
 //	char c[] = "ABC";
 //	printf("%s\n", ft_strtrim(s, c));
 //}
