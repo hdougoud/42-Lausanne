@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 15:24:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/08 20:45:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_min_int(int n)
 	str = malloc(12 * sizeof(char));
 	if (str == 0)
 		return (NULL);
-	str = "-2147483648"; // faire un = correcte
+	ft_strlcpy(str, "-2147483648", 12);
 	return (str);
 }
 
