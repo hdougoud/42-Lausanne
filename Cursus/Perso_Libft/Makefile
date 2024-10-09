@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 09:56:37 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/09 11:21:57 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/09 11:40:46 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,3 +22,6 @@ SOURCES = 	ft_isascii.c    ft_memcpy.c     ft_putstr_fd.c  ft_strlcat.c    ft_st
 			ft_isalpha.c    ft_memcmp.c     ft_putnbr_fd.c  ft_strjoin.c
 OBJECTS = $(SOURCES: .c = .o)
 all : $(NAME)
+
+clean:
+	rm $(OBJECTS)

@@ -6,17 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 21:45:42 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 11:19:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:23:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void ft_test(unsigned int n, char *c)
-{
-	if (*c >= 97 && *c <= 122 && n < 8)
-		*c -=32;
-}
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:18:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 10:52:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:23:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*str;
 	unsigned int	i;
-	
+
 	i = ft_strlen(s);
 	str = malloc(sizeof(char) * i + 1);
 	if (str == 0)
