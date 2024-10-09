@@ -6,13 +6,19 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 09:56:37 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/08 09:56:43 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/09 11:21:57 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-SOURCES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmpr.c ft_memcpy ft_memmove.c ft_memset.c ft_split.c ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
+SOURCES = 	ft_isascii.c    ft_memcpy.c     ft_putstr_fd.c  ft_strlcat.c    ft_strrchr.c
+			ft_atoi.c       ft_isdigit.c    ft_memmove.c    ft_split.c      ft_strlcpy.c    
+			ft_strtrim.c	ft_substr.c		ft_tolower.c 	ft_toupper.c	ft_strnstr.c
+			ft_bzero.c      ft_isprint.c    ft_memset.c     ft_strchr.c     ft_strlen.c     
+			ft_calloc.c     ft_itoa.c       ft_putchar_fd.c ft_strdup.c     ft_strmapi.c    
+			ft_isalnum.c    ft_memchr.c     ft_putendl_fd.c ft_striteri.c   ft_strncmp.c    
+			ft_isalpha.c    ft_memcmp.c     ft_putnbr_fd.c  ft_strjoin.c
 OBJECTS = $(SOURCES: .c = .o)
-all : $(NNAME)
+all : $(NAME)
