@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 20:45:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:21:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_min_int(int n)
+char	*ft_min_int(void)
 {
 	char	*str;
 
@@ -58,8 +58,8 @@ char	*ft_itoa(int n)
 	div = 1;
 	len = 1;
 	negative = 0;
-	if (n == -2147483647)
-		return (ft_min_int(n));
+	if (n == -2147483648)
+		return (ft_min_int());
 	if (ft_is_negative(n))
 	{
 		n = -n;
@@ -78,6 +78,6 @@ char	*ft_itoa(int n)
 
 //int main(void)
 //{
-//	int nb = -214748364;  
+//	int nb = -2147483648;  
 //	printf("Final %s\n", ft_itoa(nb));
 //}

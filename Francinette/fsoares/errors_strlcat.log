@@ -1,0 +1,64 @@
+[1;31mError[0m in test 9: [0;36mft_strlcat("pqrstuvwxyz", "abcd", 20)[0m: expected: 15, yours: 24
+[1;31mError[0m in test 9: [0;36mft_strlcat("pqrstuvwxyz", "abcd", 20)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 7475 7677 7879 7a61 6263 6400 ->  pqrstuvwxyzabcd.
+[0;33myours[0m:
+0000: 7071 7273 7475 7677 7879 7a00 1111 1111 ->  pqrstuvwxyz.....
+
+[1;31mError[0m in test 10: [0;36mft_strlcat("pqrs", "abcdefghi", 10)[0m: expected: 13, yours: 19
+[1;31mError[0m in test 10: [0;36mft_strlcat("pqrs", "abcdefghi", 10)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6500 1111 1111 1111 ->  pqrsabcde.......
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 11: [0;36mft_strlcat("pqrs", "abcdefghi", 11)[0m: expected: 13, yours: 20
+[1;31mError[0m in test 11: [0;36mft_strlcat("pqrs", "abcdefghi", 11)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 0011 1111 1111 ->  pqrsabcdef......
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 12: [0;36mft_strlcat("pqrs", "abcdefghi", 12)[0m: expected: 13, yours: 21
+[1;31mError[0m in test 12: [0;36mft_strlcat("pqrs", "abcdefghi", 12)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6700 1111 1111 ->  pqrsabcdefg.....
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 13: [0;36mft_strlcat("pqrs", "abcdefghi", 13)[0m: expected: 13, yours: 22
+[1;31mError[0m in test 13: [0;36mft_strlcat("pqrs", "abcdefghi", 13)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 0011 1111 ->  pqrsabcdefgh....
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 14: [0;36mft_strlcat("pqrs", "abcdefghi", 14)[0m: expected: 13, yours: 23
+[1;31mError[0m in test 14: [0;36mft_strlcat("pqrs", "abcdefghi", 14)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 15: [0;36mft_strlcat("pqrs", "abcdefghi", 15)[0m: expected: 13, yours: 24
+[1;31mError[0m in test 15: [0;36mft_strlcat("pqrs", "abcdefghi", 15)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 16: [0;36mft_strlcat("pqrs", "abcdefghi", 16)[0m: expected: 13, yours: 25
+[1;31mError[0m in test 16: [0;36mft_strlcat("pqrs", "abcdefghi", 16)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 17: [0;36mft_strlcat("pqrs", "abcdefghi", 17)[0m: expected: 13, yours: 26
+[1;31mError[0m in test 17: [0;36mft_strlcat("pqrs", "abcdefghi", 17)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+

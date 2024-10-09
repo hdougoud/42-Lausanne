@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 16:59:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:23:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,15 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
-int main(void)
-{
-	int i = 0;
-	char s[] = "Cette phrase est un test";
-	char **tab = ft_split(s, ' ');
-	while (i < 6)
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-	
-}
+//int main(void)
+//{
+//	int i = 0;
+//	char s[] = "Cette phrase est un test";
+//	char **tab = ft_split(s, ' ');
+//	while (i < 6)
+//	{
+//		printf("%s\n", tab[i]);
+//		i++;
+//	}
+//	
+//}

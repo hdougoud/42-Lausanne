@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:59:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/04 10:47:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:55:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int				i;
+	unsigned int	i;
 	unsigned char	*ptr;
 
 	i = 0;

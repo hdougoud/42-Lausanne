@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 09:47:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:03:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (end >= 0 && ft_strchr(set, s1[end]))
 		end--;
 	str = malloc(sizeof(char) * (end + 1));
+	if (str == 0)
+		return (NULL);
 	while (i <= end)
 	{
 		str[i] = s1[i];

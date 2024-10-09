@@ -1,0 +1,508 @@
+[1;31mErrors[0m in [0;34mmemmove[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_memmove[0m
+[0;34mTest 1[0m:
+    if (dest != ft_memmove(dest, "consectetur", 5))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, dest, 22);
+[0;33mExpected[0m (cat -e test01.output):
+conseipsum dolor sit a
+[0;31mYour result[0m (cat -e user_output_test01):
+ornsecpsum dolor sit a
+[0;34mTest 2[0m:
+    if (dest != ft_memmove(dest, "con\0sec\0\0te\0tur", 10))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, dest, 22);
+[0;33mExpected[0m (cat -e test02.output):
+con^@sec^@^@t dolor sit a
+[0;31mYour result[0m (cat -e user_output_test02):
+orn^@sec^@^@tedolor sit a
+[0;34mTest 3[0m:
+    if (dest != ft_memmove(dest, src, 8))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, dest, 22);
+[0;33mExpected[0m (cat -e test03.output):
+lorem ipum dolor sit a
+[0;31mYour result[0m (cat -e user_output_test03):
+orrem ipsm dolor sit a
+[0;34mTest 4[0m:
+    if (src != ft_memmove(src, dest, 8))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, dest, 22);
+[0;33mExpected[0m (cat -e test04.output):
+rem ipssum dolor sit a
+[0;31mYour result[0m (cat -e user_output_test04):
+orem ipsum dolor sit a
+[1;31mErrors[0m in [0;34mstrlcpy[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strlcpy[0m
+[0;34mTest 5[0m:
+    ft_print_result(ft_strlcpy(dest, "lorem ipsum dolor sit amet", 0));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test05.output):
+26$
+rrrrrr^@^@^@^@^@^@^@^@^@
+[0;31mYour result[0m (cat -e user_output_test05):
+26$
+lorem ipsum dol
+[1;31mErrors[0m in [0;34mstrlcat[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strlcat[0m
+[0;34mTest 1[0m:
+    dest[11] = 'a';
+    ft_print_result(ft_strlcat(dest, "lorem", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test01.output):
+11$
+rrrrrrlorem^@^@^@^@
+[0;31mYour result[0m (cat -e user_output_test01):
+20$
+rrrrrr^@^@^@^@^@a^@^@^@
+[0;34mTest 2[0m:
+    ft_print_result(ft_strlcat(dest, "", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test02.output):
+6$
+rrrrrr^@^@^@^@^@^@^@^@^@
+[0;31mYour result[0m (cat -e user_output_test02):
+15$
+rrrrrr^@^@^@^@^@^@^@^@^@
+[0;34mTest 3[0m:
+    dest[0] = '\0';
+    dest[11] = 'a';
+    ft_print_result(ft_strlcat(dest, "lorem ipsum", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test03.output):
+11$
+lorem ipsum^@^@^@^@
+[0;31mYour result[0m (cat -e user_output_test03):
+26$
+^@rrrrr^@^@^@^@^@a^@^@^@
+[0;34mTest 4[0m:
+    dest[14] = 'a';
+    ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test04.output):
+32$
+rrrrrrlorem ip^@
+[0;31mYour result[0m (cat -e user_output_test04):
+41$
+rrrrrr^@^@^@^@^@^@^@^@a
+[0;34mTest 9[0m:
+    memset(dest, 'r', 14);
+    ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 15));
+    write(1, "\n", 1);
+    write(1, dest, 15);
+[0;33mExpected[0m (cat -e test09.output):
+40$
+rrrrrrrrrrrrrr^@
+[0;31mYour result[0m (cat -e user_output_test09):
+41$
+rrrrrrrrrrrrrr^@
+[1;31mErrors[0m in [0;34mstrncmp[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strncmp[0m
+[0;34mTest 2[0m:
+    ft_print_result(ft_strncmp("test", "testss", 7));
+[0;33mExpected[0m (cat -e test02.output):
+-1
+[0;31mYour result[0m (cat -e user_output_test02):
+0
+[0;34mTest 5[0m:
+    ft_print_result(ft_strncmp("", "test", 4));
+[0;33mExpected[0m (cat -e test05.output):
+-1
+[0;31mYour result[0m (cat -e user_output_test05):
+0
+[0;34mTest 11[0m:
+    ft_print_result(ft_strncmp("test\200", "test\0", 6));
+[0;33mExpected[0m (cat -e test11.output):
+1
+[0;31mYour result[0m (cat -e user_output_test11):
+-1
+[1;31mErrors[0m in [0;34mmemcmp[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_memcmp[0m
+[0;34mTest 2[0m:
+    ft_print_result(ft_memcmp("t\200", "t\0", 2));
+[0;33mExpected[0m (cat -e test02.output):
+1
+[0;31mYour result[0m (cat -e user_output_test02):
+0
+[0;34mTest 3[0m:
+    ft_print_result(ft_memcmp("testss", "test", 5));
+[0;33mExpected[0m (cat -e test03.output):
+1
+[0;31mYour result[0m (cat -e user_output_test03):
+0
+[1;31mErrors[0m in [0;34mstrnstr[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strnstr[0m
+[0;34mTest 4[0m:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "", 10)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+[0;33mExpected[0m (cat -e test04.output):
+lorem ipsum dolor sit amet
+[0;31mYour result[0m (cat -e user_output_test04):
+orem ipsum dolor sit amet
+[0;34mTest 5[0m:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "ipsumm", 30)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+[0;33mExpected[0m (cat -e test05.output):
+NULL
+[0;31mYour result[0m (cat -e user_output_test05):
+sit amet
+[1;31mErrors[0m in [0;34msubstr[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_substr[0m
+[0;34mTest 5[0m:
+    char *bullshit;
+    if (!(strsub = ft_substr(str, 400, 20)))
+        ft_print_result("NULL");
+    else
+    {
+        bullshit = (char *)&strsub[30];
+        bullshit = "FULL BULLSHIT";
+        if (strsub)
+            ft_print_result(strsub);
+        else
+            ft_print_result("rip");
+    }
+    if (str == strsub)
+        ft_print_result("\nA new string was not returned");
+    (void)bullshit;
+[0;33mExpected[0m (cat -e test05.output):
+
+[0;31mYour result[0m (cat -e user_output_test05):
+OZ5\xe8\xfe^?
+[1;31mErrors[0m in [0;34mstrjoin[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_strjoin[0m
+[0;34mTest 1[0m:
+    if (!(strjoin = ft_strjoin(s1, s2)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strjoin);
+    if (strjoin == s1 || strjoin == s2)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test01.output):
+lorem ipsumdolor sit amet
+[0;31mYour result[0m (cat -e user_output_test01):
+
+[0;34mTest 2[0m:
+    s1[0] = '\0';
+    if (!(strjoin = ft_strjoin(s1, s2)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strjoin);
+    if (strjoin == s1 || strjoin == s2)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test02.output):
+dolor sit amet
+[0;31mYour result[0m (cat -e user_output_test02):
+
+[0;34mTest 3[0m:
+    s2[0] = '\0';
+    if (!(strjoin = ft_strjoin(s1, s2)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strjoin);
+    if (strjoin == s1 || strjoin == s2)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test03.output):
+lorem ipsum
+[0;31mYour result[0m (cat -e user_output_test03):
+
+[1;31mErrors[0m in [0;34mstrtrim[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_strtrim[0m
+[0;34mTest 1[0m:
+    char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+    if (!(strtrim = ft_strtrim(s1, " ")))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strtrim);
+    if (strtrim == s1)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test01.output):
+lorem $
+ ipsum 	 dolor $
+ sit 	 amet
+[0;31mYour result[0m (cat -e user_output_test01):
+
+[0;34mTest 2[0m:
+    char s1[] = "lorem ipsum dolor sit amet";
+    if (!(strtrim = ft_strtrim(s1, "te")))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strtrim);
+    if (strtrim == s1)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test02.output):
+lorem ipsum dolor sit am
+[0;31mYour result[0m (cat -e user_output_test02):
+
+[0;34mTest 3[0m:
+    char s1[] = " lorem ipsum dolor sit amet";
+    if (!(strtrim = ft_strtrim(s1, "l ")))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strtrim);
+    if (strtrim == s1)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test03.output):
+orem ipsum dolor sit amet
+[0;31mYour result[0m (cat -e user_output_test03):
+
+[0;34mTest 4[0m:
+    char s1[] = "lorem ipsum dolor sit amet";
+    if (!(strtrim = ft_strtrim(s1, "tel")))
+        ft_print_result("NULL");
+    else
+        ft_print_result(strtrim);
+    if (strtrim == s1)
+        ft_print_result("\nA new string was not returned");
+[0;33mExpected[0m (cat -e test04.output):
+orem ipsum dolor sit am
+[0;31mYour result[0m (cat -e user_output_test04):
+
+[1;31mErrors[0m in [0;34msplit[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_split[0m
+[0;34mTest 1[0m:
+    if (!(tabstr = ft_split("          ", ' ')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+[0;33mExpected[0m (cat -e test01.output):
+
+[0;31mYour result[0m (cat -e user_output_test01):
+$
+ $
+ $
+ $
+ $
+ $
+$
+$
+$
+$
+$
+
+[0;34mTest 2[0m:
+    if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+[0;33mExpected[0m (cat -e test02.output):
+lorem$
+ipsum$
+dolor$
+sit$
+amet,$
+consectetur$
+adipiscing$
+elit.$
+Sed$
+non$
+risus.$
+Suspendisse$
+
+[0;31mYour result[0m (cat -e user_output_test02):
+lorem$
+ipsum$
+dolor$
+sit$
+amet,$
+consectetur$
+adipiscing$
+elit.$
+Sed$
+non$
+risus.$
+Suspendisse$
+
+[0;34mTest 3[0m:
+    if (!(tabstr = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+[0;33mExpected[0m (cat -e test03.output):
+lorem$
+ipsum$
+dolor$
+sit$
+amet,$
+consectetur$
+adipiscing$
+elit.$
+Sed$
+non$
+risus.$
+Suspendisse$
+
+[0;31mYour result[0m (cat -e user_output_test03):
+$
+ $
+lorem$
+ $
+ipsum$
+dolor$
+ $
+ $
+sit$
+amet,$
+consectetur$
+ $
+adipiscing$
+elit.$
+Sed$
+non$
+risus.$
+Suspendisse$
+ $
+$
+$
+$
+$
+$
+$
+$
+
+[0;34mTest 4[0m:
+    if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+[0;33mExpected[0m (cat -e test04.output):
+lorem $
+psum dolor s$
+t amet, consectetur ad$
+p$
+sc$
+ng el$
+t. Sed non r$
+sus. Suspend$
+sse lectus tortor, d$
+gn$
+ss$
+m s$
+t amet, ad$
+p$
+sc$
+ng nec, ultr$
+c$
+es sed, dolor. Cras elementum ultr$
+c$
+es d$
+am. Maecenas l$
+gula massa, var$
+us a, semper congue, eu$
+smod non, m$
+.$
+
+[0;31mYour result[0m (cat -e user_output_test04):
+lorem $
+psum dolor s$
+t amet, consectetur ad$
+p$
+sc$
+ng el$
+t. Sed non r$
+sus. Suspend$
+sse lectus tortor, d$
+gn$
+ss$
+m s$
+t amet, ad$
+p$
+sc$
+ng nec, ultr$
+c$
+es sed, dolor. Cras elementum ultr$
+c$
+es d$
+am. Maecenas l$
+gula massa, var$
+us a, semper congue, eu$
+smod non, m$
+.$
+
+[0;34mTest 5[0m:
+    if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'z')))
+        ft_print_result("NULL");
+    else
+    {
+        while (tabstr[i] != NULL)
+        {
+            ft_print_result(tabstr[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
+[0;33mExpected[0m (cat -e test05.output):
+lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.$
+
+[0;31mYour result[0m (cat -e user_output_test05):
+lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.$
+
+[0;34mTest 6[0m:
+    if (!(tabstr = ft_split("", 'z')))
+        ft_print_result("NULL");
+    else
+        if (!tabstr[0])
+            ft_print_result("ok\n");
+[0;33mExpected[0m (cat -e test06.output):
+ok$
+
+[0;31mYour result[0m (cat -e user_output_test06):
+
+[1;31mErrors[0m in [0;34mitoa[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_itoa[0m
+[0;34mTest 2[0m:
+    char *res = ft_itoa(9);
+    ft_print_result(res);
+    free(res);
+[0;33mExpected[0m (cat -e test02.output):
+9
+[0;31mYour result[0m (cat -e user_output_test02):
+09
+[0;34mTest 3[0m:
+    char *res = ft_itoa(-9);
+    ft_print_result(res);
+    free(res);
+[0;33mExpected[0m (cat -e test03.output):
+-9
+[0;31mYour result[0m (cat -e user_output_test03):
+-09
+[0;34mTest 7[0m:
+    char *res = ft_itoa(-9874);
+    ft_print_result(res);
+    free(res);
+[0;33mExpected[0m (cat -e test07.output):
+-9874
+[0;31mYour result[0m (cat -e user_output_test07):
+-09874
+[1;31mErrors[0m in [0;34mputnbr_fd[0m: [1;37m/Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_putnbr_fd[0m
+[0;34mTest 7[0m:
+    ft_putnbr_fd(-987441, 2);
+[0;33mExpected[0m (cat -e test07.output):
+-987441
+[0;31mYour result[0m (cat -e user_output_test07):
+-0987441

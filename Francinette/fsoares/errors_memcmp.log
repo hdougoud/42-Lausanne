@@ -1,0 +1,4 @@
+[1;31mError[0m in test 5: [0;36mft_memcmp("teste", "testex", 6)[0m: 
+expected sign: -1 (value: -120), yours sign: 0 (value: 0)
+
+

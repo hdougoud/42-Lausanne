@@ -1,0 +1,47 @@
+[1;31mError[0m in test 1: [0;36mft_strjoin("", "")[0m: not enough memory allocated, needed: 1, reserved: 0
+0   test_strjoin.out                    0x000000010463d775 _add_malloc + 757
+1   test_strjoin.out                    0x000000010463d473 malloc + 307
+2   test_strjoin.out                    0x000000010464306a ft_strjoin + 74
+3   test_strjoin.out                    0x000000010463cfe7 test_single_strjoin + 71
+4   test_strjoin.out                    0x000000010463d0a9 test_strjoin + 41
+5   test_strjoin.out                    0x000000010463d24e main + 158
+6   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 2: [0;36mft_strjoin("abc", "")[0m: [1;31mMemory problems![0m
+0   test_strjoin.out                    0x000000010463ffa3 show_signal_msg + 419
+1   test_strjoin.out                    0x0000000104640071 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   test_strjoin.out                    0x0000000104643371 ft_strjoin + 849
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c56cb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c566a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3d7c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3d09e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3de0b __asan_report_store1 + 43
+10  test_strjoin.out                    0x0000000104643371 ft_strjoin + 849
+11  test_strjoin.out                    0x000000010463cfe7 test_single_strjoin + 71
+12  test_strjoin.out                    0x000000010463d0f3 test_strjoin + 115
+13  test_strjoin.out                    0x000000010463d24e main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+=================================================================
+[1m[31m==67672==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000113 at pc 0x000104643371 bp 0x7ffeeb5c6570 sp 0x7ffeeb5c6568
+[1m[0m[1m[34mWRITE of size 1 at 0x602000000113 thread T0[1m[0m
+    #0 0x104643370 in ft_strjoin ft_strjoin.c:37
+    #1 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
+    #2 0x10463d0f2 in test_strjoin test_strjoin.c:14
+    #3 0x10463d24d in main test_strjoin.c:24
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x602000000113 is located 0 bytes to the right of 3-byte region [0x602000000110,0x602000000113)
+[1m[0m[1m[35mallocated by thread T0 here:[1m[0m
+    #0 0x107c3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10463d36c in malloc malloc_mock.c:65
+    #2 0x104643069 in ft_strjoin ft_strjoin.c:23
+    #3 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
+    #4 0x10463d0f2 in test_strjoin test_strjoin.c:14
+    #5 0x10463d24d in main test_strjoin.c:24
+    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ft_strjoin.c:37 in ft_strjoin
+

@@ -1,0 +1,39 @@
+[1;31mError[0m in test 1: [0;36mft_split("hello!", 32:' ')[0m: [1;31mMemory problems![0m
+0   test_split.out                      0x00000001070d0b43 show_signal_msg + 419
+1   test_split.out                      0x00000001070d0c11 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   libclang_rt.asan_osx_dynamic.dylib  0x000000010a715000 _ZN11__sanitizerL14kDefaultFormatE + 17136
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6edcb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6ed6a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d47c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d409e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d504b __asan_report_store8 + 43
+10  test_split.out                      0x00000001070d4070 ft_split + 1088
+11  test_split.out                      0x00000001070cd92a test_single_split + 106
+12  test_split.out                      0x00000001070cdb2d test_split + 61
+13  test_split.out                      0x00000001070cddee main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+15  ???                                 0x0000000000000001 0x0 + 1
+
+=================================================================
+[1m[31m==67680==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000118 at pc 0x0001070d4070 bp 0x7ffee8b35550 sp 0x7ffee8b35548
+[1m[0m[1m[34mWRITE of size 8 at 0x602000000118 thread T0[1m[0m
+    #0 0x1070d406f in ft_split ft_split.c:67
+    #1 0x1070cd929 in test_single_split test_split.c:59
+    #2 0x1070cdb2c in test_split test_split.c:79
+    #3 0x1070cdded in main test_split.c:101
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x602000000119 is located 0 bytes to the right of 9-byte region [0x602000000110,0x602000000119)
+[1m[0m[1m[35mallocated by thread T0 here:[1m[0m
+    #0 0x10a6ce17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1070cdf0c in malloc malloc_mock.c:65
+    #2 0x1070d3c80 in ft_split ft_split.c:43
+    #3 0x1070cd929 in test_single_split test_split.c:59
+    #4 0x1070cdb2c in test_split test_split.c:79
+    #5 0x1070cdded in main test_split.c:101
+    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ft_split.c:67 in ft_split
+

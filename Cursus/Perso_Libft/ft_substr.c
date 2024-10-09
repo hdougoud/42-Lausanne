@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:36:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 11:12:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:28:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	str = malloc((len + 1) * sizeof(char));
+	if (str == 0)
+		return (NULL);
 	while (len > 0)
 	{
 		str[i] = s[start];

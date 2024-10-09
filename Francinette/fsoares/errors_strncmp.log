@@ -1,0 +1,16 @@
+[1;31mError[0m in test 8: [0;36mft_strncmp("", "test", 1)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 9: [0;36mft_strncmp("", "test", 2)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 16: [0;36mft_strncmp("teste", "testex", 6)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 18: [0;36mft_strncmp("test", "teste", 10)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 19: [0;36mft_strncmp("abcdef", "abc\375xx", 5)[0m: 
+expected sign: -1 (value: -1), yours sign: 1 (value: 1)
+
+

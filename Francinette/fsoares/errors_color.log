@@ -1,0 +1,393 @@
+##==##==##&&##==##==##test_memmove.out
+For [0;36mft_memmove[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_memmove.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_memmove(0x7ffee0acc380, 0x7ffee0acc382: "123456", 4)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 3132 3334 3334 3536 0011 1111 1111 1111 ->  12343456........
+[0;33myours[0m:
+0000: 1111 3132 3334 3536 0011 1111 1111 1111 ->  ..123456........
+
+[1;31mError[0m in test 2: [0;36mft_memmove(0x7ffee0acc382, 0x7ffee0acc380: "123456", 4)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 3132 3334 0011 1111 1111 1111 1111 1111 ->  1234............
+[0;33myours[0m:
+0000: 3334 3334 3511 1111 1111 1111 1111 1111 ->  34345...........
+
+
+##==##==##&&##==##==##test_strlcpy.out
+For [0;36mft_strlcpy[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strlcpy.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_strlcpy(dest, "aaa", 0)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 1111 1111 1111 1111 1111 1111 1111 1111 ->  ................
+[0;33myours[0m:
+0000: 6161 6100 1111 1111 1111 1111 1111 1111 ->  aaa.............
+
+
+##==##==##&&##==##==##test_strlcat.out
+For [0;36mft_strlcat[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strlcat.c[0m:
+
+[1;31mError[0m in test 9: [0;36mft_strlcat("pqrstuvwxyz", "abcd", 20)[0m: expected: 15, yours: 24
+[1;31mError[0m in test 9: [0;36mft_strlcat("pqrstuvwxyz", "abcd", 20)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 7475 7677 7879 7a61 6263 6400 ->  pqrstuvwxyzabcd.
+[0;33myours[0m:
+0000: 7071 7273 7475 7677 7879 7a00 1111 1111 ->  pqrstuvwxyz.....
+
+[1;31mError[0m in test 10: [0;36mft_strlcat("pqrs", "abcdefghi", 10)[0m: expected: 13, yours: 19
+[1;31mError[0m in test 10: [0;36mft_strlcat("pqrs", "abcdefghi", 10)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6500 1111 1111 1111 ->  pqrsabcde.......
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 11: [0;36mft_strlcat("pqrs", "abcdefghi", 11)[0m: expected: 13, yours: 20
+[1;31mError[0m in test 11: [0;36mft_strlcat("pqrs", "abcdefghi", 11)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 0011 1111 1111 ->  pqrsabcdef......
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 12: [0;36mft_strlcat("pqrs", "abcdefghi", 12)[0m: expected: 13, yours: 21
+[1;31mError[0m in test 12: [0;36mft_strlcat("pqrs", "abcdefghi", 12)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6700 1111 1111 ->  pqrsabcdefg.....
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 13: [0;36mft_strlcat("pqrs", "abcdefghi", 13)[0m: expected: 13, yours: 22
+[1;31mError[0m in test 13: [0;36mft_strlcat("pqrs", "abcdefghi", 13)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 0011 1111 ->  pqrsabcdefgh....
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 14: [0;36mft_strlcat("pqrs", "abcdefghi", 14)[0m: expected: 13, yours: 23
+[1;31mError[0m in test 14: [0;36mft_strlcat("pqrs", "abcdefghi", 14)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 15: [0;36mft_strlcat("pqrs", "abcdefghi", 15)[0m: expected: 13, yours: 24
+[1;31mError[0m in test 15: [0;36mft_strlcat("pqrs", "abcdefghi", 15)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 16: [0;36mft_strlcat("pqrs", "abcdefghi", 16)[0m: expected: 13, yours: 25
+[1;31mError[0m in test 16: [0;36mft_strlcat("pqrs", "abcdefghi", 16)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+[1;31mError[0m in test 17: [0;36mft_strlcat("pqrs", "abcdefghi", 17)[0m: expected: 13, yours: 26
+[1;31mError[0m in test 17: [0;36mft_strlcat("pqrs", "abcdefghi", 17)[0m: different memory[0m
+[0;33mexpected[0m:
+0000: 7071 7273 6162 6364 6566 6768 6900 1111 ->  pqrsabcdefghi...
+[0;33myours[0m:
+0000: 7071 7273 0011 1111 1111 1111 1111 1111 ->  pqrs............
+
+
+##==##==##&&##==##==##test_strchr.out
+For [0;36mft_strchr[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strchr.c[0m:
+
+[1;31mError[0m in test 6: [0;36mft_strchr(0x105067a40: "teste", 1024: '\0')[0m: expected: 0x105067a45, yours: 0x0
+
+##==##==##&&##==##==##test_strncmp.out
+For [0;36mft_strncmp[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strncmp.c[0m:
+
+[1;31mError[0m in test 8: [0;36mft_strncmp("", "test", 1)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 9: [0;36mft_strncmp("", "test", 2)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 16: [0;36mft_strncmp("teste", "testex", 6)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 18: [0;36mft_strncmp("test", "teste", 10)[0m: 
+expected sign: -1 (value: -1), yours sign: 0 (value: 0)
+
+[1;31mError[0m in test 19: [0;36mft_strncmp("abcdef", "abc\375xx", 5)[0m: 
+expected sign: -1 (value: -1), yours sign: 1 (value: 1)
+
+
+##==##==##&&##==##==##test_memchr.out
+For [0;36mft_memchr[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_memchr.c[0m:
+
+[1;31mError[0m in test 17: [0;36mft_memchr(0x7ffeef289500, 658(92): '\222', 37)[0m: expected: 0x7ffeef28951e, yours: 0x0
+[0;33mMemory content:
+[0mat 0x0x7ffeef289500: 81dc c0d6 b459 daee 83cc d155 e508 8724 ->  .....Y.....U...$
+at 0x0x7ffeef289510: fcee edf3 ec5e 293c d922 7db1 cd40 9273 ->  .....^)<."}..@.s
+at 0x0x7ffeef289520: 62fc 5837 3f46 f0fa aa8a 4199 16ee d81f ->  b.X7?F....A.....
+
+
+##==##==##&&##==##==##test_memcmp.out
+For [0;36mft_memcmp[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_memcmp.c[0m:
+
+[1;31mError[0m in test 5: [0;36mft_memcmp("teste", "testex", 6)[0m: 
+expected sign: -1 (value: -120), yours sign: 0 (value: 0)
+
+
+##==##==##&&##==##==##test_strnstr.out
+For [0;36mft_strnstr[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strnstr.c[0m:
+
+[1;31mError[0m in test 3: [0;36mft_strnstr(0x10f5ecda0: "", "", 0)[0m: expected: 0x10f5ecda0, yours: 0x0
+[1;31mError[0m in test 4: [0;36mft_strnstr(0x10f5ecda0: "", "", 1)[0m: expected: 0x10f5ecda0, yours: 0x0
+[1;31mError[0m in test 5: [0;36mft_strnstr(0x10f5ecda0: "", "", 2)[0m: expected: 0x10f5ecda0, yours: 0x0
+[1;31mError[0m in test 9: [0;36mft_strnstr(0x10f5eb820: "teste", "", 0)[0m: expected: 0x10f5eb820, yours: 0x0
+[1;31mError[0m in test 10: [0;36mft_strnstr(0x10f5eb820: "teste", "", 1)[0m: expected: 0x10f5eb820, yours: 0x0
+[1;31mError[0m in test 11: [0;36mft_strnstr(0x10f5eb820: "teste", "", 2)[0m: 
+expected: 0x10f5eb820 (offset 0), yours: 0x10f5eb821 (offset 1)
+
+[1;31mError[0m in test 13: [0;36mft_strnstr(0x10f5eb860: "abcdefgh", "abc", 3)[0m: expected: 0x10f5eb860, yours: 0x0
+[1;31mError[0m in test 22: [0;36mft_strnstr(0x10f5eb8e0: "aaxx", "xx", 4)[0m: expected: 0x10f5eb8e2, yours: 0x0
+
+##==##==##&&##==##==##test_substr.out
+For [0;36mft_substr[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_substr.c[0m:
+
+[1;31mError[0m in test 3: [0;36mft_substr("", 1, 1)[0m: [1;31mMemory problems![0m
+0   test_substr.out                     0x000000010401f193 show_signal_msg + 419
+1   test_substr.out                     0x000000010401f261 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   ???                                 0x0000000116cdbb8d 0x0 + 4677548941
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x0000000107637cb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x00000001076376a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x000000010761e7c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x000000010761e09e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x000000010761eae8 __asan_report_load1 + 40
+10  test_substr.out                     0x0000000104022226 ft_substr + 182
+11  test_substr.out                     0x000000010401bcc0 test_single_substr + 80
+12  test_substr.out                     0x000000010401be1c test_substr + 188
+13  test_substr.out                     0x000000010401c43e main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+=================================================================
+[1m[31m==67669==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000104023e21 at pc 0x000104022226 bp 0x7ffeebbe7580 sp 0x7ffeebbe7578
+[1m[0m[1m[34mREAD of size 1 at 0x000104023e21 thread T0[1m[0m
+    #0 0x104022225 in ft_substr ft_substr.c:26
+    #1 0x10401bcbf in test_single_substr test_substr.c:7
+    #2 0x10401be1b in test_substr test_substr.c:15
+    #3 0x10401c43d in main test_substr.c:43
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x000104023e21 is located 0 bytes to the right of global variable '<string literal>' defined in 'test_substr.c:13:30' (0x104023e20) of size 1
+[1m[0m  '<string literal>' is ascii string ''
+SUMMARY: AddressSanitizer: global-buffer-overflow ft_substr.c:26 in ft_substr
+
+##==##==##&&##==##==##test_strjoin.out
+For [0;36mft_strjoin[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strjoin.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_strjoin("", "")[0m: not enough memory allocated, needed: 1, reserved: 0
+0   test_strjoin.out                    0x000000010463d775 _add_malloc + 757
+1   test_strjoin.out                    0x000000010463d473 malloc + 307
+2   test_strjoin.out                    0x000000010464306a ft_strjoin + 74
+3   test_strjoin.out                    0x000000010463cfe7 test_single_strjoin + 71
+4   test_strjoin.out                    0x000000010463d0a9 test_strjoin + 41
+5   test_strjoin.out                    0x000000010463d24e main + 158
+6   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 2: [0;36mft_strjoin("abc", "")[0m: [1;31mMemory problems![0m
+0   test_strjoin.out                    0x000000010463ffa3 show_signal_msg + 419
+1   test_strjoin.out                    0x0000000104640071 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   test_strjoin.out                    0x0000000104643371 ft_strjoin + 849
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c56cb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c566a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3d7c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3d09e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x0000000107c3de0b __asan_report_store1 + 43
+10  test_strjoin.out                    0x0000000104643371 ft_strjoin + 849
+11  test_strjoin.out                    0x000000010463cfe7 test_single_strjoin + 71
+12  test_strjoin.out                    0x000000010463d0f3 test_strjoin + 115
+13  test_strjoin.out                    0x000000010463d24e main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+=================================================================
+[1m[31m==67672==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000113 at pc 0x000104643371 bp 0x7ffeeb5c6570 sp 0x7ffeeb5c6568
+[1m[0m[1m[34mWRITE of size 1 at 0x602000000113 thread T0[1m[0m
+    #0 0x104643370 in ft_strjoin ft_strjoin.c:37
+    #1 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
+    #2 0x10463d0f2 in test_strjoin test_strjoin.c:14
+    #3 0x10463d24d in main test_strjoin.c:24
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x602000000113 is located 0 bytes to the right of 3-byte region [0x602000000110,0x602000000113)
+[1m[0m[1m[35mallocated by thread T0 here:[1m[0m
+    #0 0x107c3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10463d36c in malloc malloc_mock.c:65
+    #2 0x104643069 in ft_strjoin ft_strjoin.c:23
+    #3 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
+    #4 0x10463d0f2 in test_strjoin test_strjoin.c:14
+    #5 0x10463d24d in main test_strjoin.c:24
+    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ft_strjoin.c:37 in ft_strjoin
+
+##==##==##&&##==##==##test_strtrim.out
+For [0;36mft_strtrim[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_strtrim.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_strtrim("", "")[0m: not enough memory allocated, needed: 1, reserved: 0
+0   test_strtrim.out                    0x00000001033ee365 _add_malloc + 757
+1   test_strtrim.out                    0x00000001033ee063 malloc + 307
+2   test_strtrim.out                    0x00000001033f3d4f ft_strtrim + 479
+3   test_strtrim.out                    0x00000001033edaf7 single_test_strtrim + 71
+4   test_strtrim.out                    0x00000001033edbb2 test_strtrim + 34
+5   test_strtrim.out                    0x00000001033ede3e main + 158
+6   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 2: [0;36mft_strtrim("abcd", "")[0m: [1;31mMemory problems![0m
+0   test_strtrim.out                    0x00000001033f0b93 show_signal_msg + 419
+1   test_strtrim.out                    0x00000001033f0c61 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   ???                                 0x000000010c05cb8d 0x0 + 4496673677
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x0000000106a06cb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x0000000106a066a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x00000001069ed7c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x00000001069ed09e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x00000001069ede0b __asan_report_store1 + 43
+10  test_strtrim.out                    0x00000001033f3ebe ft_strtrim + 846
+11  test_strtrim.out                    0x00000001033edaf7 single_test_strtrim + 71
+12  test_strtrim.out                    0x00000001033edbd0 test_strtrim + 64
+13  test_strtrim.out                    0x00000001033ede3e main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+=================================================================
+[1m[31m==67675==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000114 at pc 0x0001033f3ebe bp 0x7ffeec815580 sp 0x7ffeec815578
+[1m[0m[1m[34mWRITE of size 1 at 0x602000000114 thread T0[1m[0m
+    #0 0x1033f3ebd in ft_strtrim ft_strtrim.c:36
+    #1 0x1033edaf6 in single_test_strtrim test_strtrim.c:7
+    #2 0x1033edbcf in test_strtrim test_strtrim.c:13
+    #3 0x1033ede3d in main test_strtrim.c:26
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x602000000114 is located 0 bytes to the right of 4-byte region [0x602000000110,0x602000000114)
+[1m[0m[1m[35mallocated by thread T0 here:[1m[0m
+    #0 0x1069e717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1033edf5c in malloc malloc_mock.c:65
+    #2 0x1033f3d4e in ft_strtrim ft_strtrim.c:28
+    #3 0x1033edaf6 in single_test_strtrim test_strtrim.c:7
+    #4 0x1033edbcf in test_strtrim test_strtrim.c:13
+    #5 0x1033ede3d in main test_strtrim.c:26
+    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ft_strtrim.c:36 in ft_strtrim
+
+##==##==##&&##==##==##test_split.out
+For [0;36mft_split[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_split.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_split("hello!", 32:' ')[0m: [1;31mMemory problems![0m
+0   test_split.out                      0x00000001070d0b43 show_signal_msg + 419
+1   test_split.out                      0x00000001070d0c11 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   libclang_rt.asan_osx_dynamic.dylib  0x000000010a715000 _ZN11__sanitizerL14kDefaultFormatE + 17136
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6edcb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6ed6a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d47c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d409e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x000000010a6d504b __asan_report_store8 + 43
+10  test_split.out                      0x00000001070d4070 ft_split + 1088
+11  test_split.out                      0x00000001070cd92a test_single_split + 106
+12  test_split.out                      0x00000001070cdb2d test_split + 61
+13  test_split.out                      0x00000001070cddee main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+15  ???                                 0x0000000000000001 0x0 + 1
+
+=================================================================
+[1m[31m==67680==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000118 at pc 0x0001070d4070 bp 0x7ffee8b35550 sp 0x7ffee8b35548
+[1m[0m[1m[34mWRITE of size 8 at 0x602000000118 thread T0[1m[0m
+    #0 0x1070d406f in ft_split ft_split.c:67
+    #1 0x1070cd929 in test_single_split test_split.c:59
+    #2 0x1070cdb2c in test_split test_split.c:79
+    #3 0x1070cdded in main test_split.c:101
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x602000000119 is located 0 bytes to the right of 9-byte region [0x602000000110,0x602000000119)
+[1m[0m[1m[35mallocated by thread T0 here:[1m[0m
+    #0 0x10a6ce17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1070cdf0c in malloc malloc_mock.c:65
+    #2 0x1070d3c80 in ft_split ft_split.c:43
+    #3 0x1070cd929 in test_single_split test_split.c:59
+    #4 0x1070cdb2c in test_split test_split.c:79
+    #5 0x1070cdded in main test_split.c:101
+    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ft_split.c:67 in ft_split
+
+##==##==##&&##==##==##test_itoa.out
+For [0;36mft_itoa[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_itoa.c[0m:
+
+[1;31mError[0m in test 18: [0;36mft_itoa(-924181598)[0m: expected: "-924181598", got: "-0924181598"
+
+##==##==##&&##==##==##test_putnbr_fd.out
+For [0;36mft_putnbr_fd[0m, in [1;37m/Users/hdougoud/francinette/tests/libft/fsoares/test_putnbr_fd.c[0m:
+
+[1;31mError[0m in test 1: [0;36mft_putnbr_fd(0, fd: 4)[0m: 
+Memory leak: 0x6020000000f0 - 2 bytes
+You failed to free the memory allocated at:
+0   test_putnbr_fd.out                  0x0000000109f8e155 _add_malloc + 757
+1   test_putnbr_fd.out                  0x0000000109f8de53 malloc + 307
+2   test_putnbr_fd.out                  0x0000000109f93fb7 ft_itoa + 167
+3   test_putnbr_fd.out                  0x0000000109f94246 ft_putnbr_fd + 22
+4   test_putnbr_fd.out                  0x0000000109f8d716 single_test_putnbr + 54
+5   test_putnbr_fd.out                  0x0000000109f8d8b1 test_putnbr_fd + 369
+6   test_putnbr_fd.out                  0x0000000109f8dc2e main + 158
+7   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 2: [0;36mft_putnbr_fd(10000043, fd: 4)[0m: 
+Memory leak: 0x602000000110 - 9 bytes
+You failed to free the memory allocated at:
+0   test_putnbr_fd.out                  0x0000000109f8e155 _add_malloc + 757
+1   test_putnbr_fd.out                  0x0000000109f8de53 malloc + 307
+2   test_putnbr_fd.out                  0x0000000109f93fb7 ft_itoa + 167
+3   test_putnbr_fd.out                  0x0000000109f94246 ft_putnbr_fd + 22
+4   test_putnbr_fd.out                  0x0000000109f8d716 single_test_putnbr + 54
+5   test_putnbr_fd.out                  0x0000000109f8d8cc test_putnbr_fd + 396
+6   test_putnbr_fd.out                  0x0000000109f8dc2e main + 158
+7   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 3: [0;36mft_putnbr_fd(-10000043, fd: 4)[0m: 
+Memory leak: 0x602000000130 - 10 bytes
+You failed to free the memory allocated at:
+0   test_putnbr_fd.out                  0x0000000109f8e155 _add_malloc + 757
+1   test_putnbr_fd.out                  0x0000000109f8de53 malloc + 307
+2   test_putnbr_fd.out                  0x0000000109f93fb7 ft_itoa + 167
+3   test_putnbr_fd.out                  0x0000000109f94246 ft_putnbr_fd + 22
+4   test_putnbr_fd.out                  0x0000000109f8d716 single_test_putnbr + 54
+5   test_putnbr_fd.out                  0x0000000109f8d90a test_putnbr_fd + 458
+6   test_putnbr_fd.out                  0x0000000109f8dc2e main + 158
+7   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 4: [0;36mft_putnbr_fd(2147483647, fd: 4)[0m: 
+Memory leak: 0x602000000150 - 11 bytes
+You failed to free the memory allocated at:
+0   test_putnbr_fd.out                  0x0000000109f8e155 _add_malloc + 757
+1   test_putnbr_fd.out                  0x0000000109f8de53 malloc + 307
+2   test_putnbr_fd.out                  0x0000000109f93fb7 ft_itoa + 167
+3   test_putnbr_fd.out                  0x0000000109f94246 ft_putnbr_fd + 22
+4   test_putnbr_fd.out                  0x0000000109f8d716 single_test_putnbr + 54
+5   test_putnbr_fd.out                  0x0000000109f8d948 test_putnbr_fd + 520
+6   test_putnbr_fd.out                  0x0000000109f8dc2e main + 158
+7   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+[1;31mError[0m in test 5: [0;36mft_putnbr_fd(-2147483648, fd: 4)[0m: 
+Memory leak: 0x602000000170 - 12 bytes
+You failed to free the memory allocated at:
+0   test_putnbr_fd.out                  0x0000000109f8e155 _add_malloc + 757
+1   test_putnbr_fd.out                  0x0000000109f8de53 malloc + 307
+2   test_putnbr_fd.out                  0x0000000109f93d02 ft_min_int + 18
+3   test_putnbr_fd.out                  0x0000000109f93f45 ft_itoa + 53
+4   test_putnbr_fd.out                  0x0000000109f94246 ft_putnbr_fd + 22
+5   test_putnbr_fd.out                  0x0000000109f8d716 single_test_putnbr + 54
+6   test_putnbr_fd.out                  0x0000000109f8d986 test_putnbr_fd + 582
+7   test_putnbr_fd.out                  0x0000000109f8dc2e main + 158
+8   libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+

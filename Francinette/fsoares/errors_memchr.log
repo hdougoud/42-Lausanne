@@ -1,0 +1,7 @@
+[1;31mError[0m in test 17: [0;36mft_memchr(0x7ffeef289500, 658(92): '\222', 37)[0m: expected: 0x7ffeef28951e, yours: 0x0
+[0;33mMemory content:
+[0mat 0x0x7ffeef289500: 81dc c0d6 b459 daee 83cc d155 e508 8724 ->  .....Y.....U...$
+at 0x0x7ffeef289510: fcee edf3 ec5e 293c d922 7db1 cd40 9273 ->  .....^)<."}..@.s
+at 0x0x7ffeef289520: 62fc 5837 3f46 f0fa aa8a 4199 16ee d81f ->  b.X7?F....A.....
+
+

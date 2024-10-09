@@ -1,0 +1,30 @@
+[1;31mError[0m in test 3: [0;36mft_substr("", 1, 1)[0m: [1;31mMemory problems![0m
+0   test_substr.out                     0x000000010401f193 show_signal_msg + 419
+1   test_substr.out                     0x000000010401f261 sigabort + 33
+2   libsystem_platform.dylib            0x00007fff684135fd _sigtramp + 29
+3   ???                                 0x0000000116cdbb8d 0x0 + 4677548941
+4   libsystem_c.dylib                   0x00007fff682e9808 abort + 120
+5   libclang_rt.asan_osx_dynamic.dylib  0x0000000107637cb6 _ZN11__sanitizer5AbortEv + 70
+6   libclang_rt.asan_osx_dynamic.dylib  0x00000001076376a4 _ZN11__sanitizer3DieEv + 196
+7   libclang_rt.asan_osx_dynamic.dylib  0x000000010761e7c6 _ZN6__asan19ScopedInErrorReportD2Ev + 422
+8   libclang_rt.asan_osx_dynamic.dylib  0x000000010761e09e _ZN6__asan18ReportGenericErrorEmmmmbmjb + 1198
+9   libclang_rt.asan_osx_dynamic.dylib  0x000000010761eae8 __asan_report_load1 + 40
+10  test_substr.out                     0x0000000104022226 ft_substr + 182
+11  test_substr.out                     0x000000010401bcc0 test_single_substr + 80
+12  test_substr.out                     0x000000010401be1c test_substr + 188
+13  test_substr.out                     0x000000010401c43e main + 158
+14  libdyld.dylib                       0x00007fff6821acc9 start + 1
+
+=================================================================
+[1m[31m==67669==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000104023e21 at pc 0x000104022226 bp 0x7ffeebbe7580 sp 0x7ffeebbe7578
+[1m[0m[1m[34mREAD of size 1 at 0x000104023e21 thread T0[1m[0m
+    #0 0x104022225 in ft_substr ft_substr.c:26
+    #1 0x10401bcbf in test_single_substr test_substr.c:7
+    #2 0x10401be1b in test_substr test_substr.c:15
+    #3 0x10401c43d in main test_substr.c:43
+    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+[1m[32m0x000104023e21 is located 0 bytes to the right of global variable '<string literal>' defined in 'test_substr.c:13:30' (0x104023e20) of size 1
+[1m[0m  '<string literal>' is ascii string ''
+SUMMARY: AddressSanitizer: global-buffer-overflow ft_substr.c:26 in ft_substr
+

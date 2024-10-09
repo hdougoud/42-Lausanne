@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:11:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/04 15:53:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:42:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ char	*ft_strchr(const char *s, int c)
 	if (c == '\0')
 		return ((char *) s);
 	return (0);
+
+	//memchr + 1 pour le nul
 }
+
+
 
 //#include <stdio.h>
 //

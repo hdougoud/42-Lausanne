@@ -1,0 +1,40 @@
+(lldb) target create "test_strjoin.out"
+Current executable set to '/Users/hdougoud/francinette/temp/libft/fsoares/test_strjoin.out' (x86_64).
+(lldb) command source -s 0 'test_strjoin_out_lldb_commands'
+Executing commands in '/Users/hdougoud/francinette/temp/libft/fsoares/test_strjoin_out_lldb_commands'.
+(lldb) image lookup --address _add_malloc+757
+      Address: test_strjoin.out[0x0000000100004775] (test_strjoin.out.__TEXT.__text + 3093)
+      Summary: test_strjoin.out`_add_malloc + 757 at malloc_mock.c:29:8
+(lldb) image lookup --address malloc+307
+      Address: test_strjoin.out[0x0000000100004473] (test_strjoin.out.__TEXT.__text + 2323)
+      Summary: test_strjoin.out`malloc + 307 at malloc_mock.c:75:10
+(lldb) image lookup --address ft_strjoin+74
+      Address: test_strjoin.out[0x000000010000a06a] (test_strjoin.out.__TEXT.__text + 25866)
+      Summary: test_strjoin.out`ft_strjoin + 74 at ft_strjoin.c:23:6
+(lldb) image lookup --address test_single_strjoin+71
+      Address: test_strjoin.out[0x0000000100003fe7] (test_strjoin.out.__TEXT.__text + 1159)
+      Summary: test_strjoin.out`test_single_strjoin + 71 at test_strjoin.c:7:2
+(lldb) image lookup --address test_strjoin+41
+      Address: test_strjoin.out[0x00000001000040a9] (test_strjoin.out.__TEXT.__text + 1353)
+      Summary: test_strjoin.out`test_strjoin + 41 at test_strjoin.c:13:8
+(lldb) image lookup --address main+158
+      Address: test_strjoin.out[0x000000010000424e] (test_strjoin.out.__TEXT.__text + 1774)
+      Summary: test_strjoin.out`main + 158 at test_strjoin.c:24:2
+(lldb) image lookup --address sigabort+33
+      Address: test_strjoin.out[0x0000000100007071] (test_strjoin.out.__TEXT.__text + 13585)
+      Summary: test_strjoin.out`sigabort + 33 at utils.c:58:1
+(lldb) image lookup --address ft_strjoin+849
+      Address: test_strjoin.out[0x000000010000a371] (test_strjoin.out.__TEXT.__text + 26641)
+      Summary: test_strjoin.out`ft_strjoin + 849 at ft_strjoin.c:37:9
+(lldb) image lookup --address ft_strjoin+849
+      Address: test_strjoin.out[0x000000010000a371] (test_strjoin.out.__TEXT.__text + 26641)
+      Summary: test_strjoin.out`ft_strjoin + 849 at ft_strjoin.c:37:9
+(lldb) image lookup --address test_single_strjoin+71
+      Address: test_strjoin.out[0x0000000100003fe7] (test_strjoin.out.__TEXT.__text + 1159)
+      Summary: test_strjoin.out`test_single_strjoin + 71 at test_strjoin.c:7:2
+(lldb) image lookup --address test_strjoin+115
+      Address: test_strjoin.out[0x00000001000040f3] (test_strjoin.out.__TEXT.__text + 1427)
+      Summary: test_strjoin.out`test_strjoin + 115 at test_strjoin.c:14:8
+(lldb) image lookup --address main+158
+      Address: test_strjoin.out[0x000000010000424e] (test_strjoin.out.__TEXT.__text + 1774)
+      Summary: test_strjoin.out`main + 158 at test_strjoin.c:24:2

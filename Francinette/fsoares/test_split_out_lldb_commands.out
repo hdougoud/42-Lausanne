@@ -1,0 +1,19 @@
+(lldb) target create "test_split.out"
+Current executable set to '/Users/hdougoud/francinette/temp/libft/fsoares/test_split.out' (x86_64).
+(lldb) command source -s 0 'test_split_out_lldb_commands'
+Executing commands in '/Users/hdougoud/francinette/temp/libft/fsoares/test_split_out_lldb_commands'.
+(lldb) image lookup --address sigabort+33
+      Address: test_split.out[0x0000000100006c11] (test_split.out.__TEXT.__text + 16721)
+      Summary: test_split.out`sigabort + 33 at utils.c:58:1
+(lldb) image lookup --address ft_split+1088
+      Address: test_split.out[0x000000010000a070] (test_split.out.__TEXT.__text + 30128)
+      Summary: test_split.out`ft_split + 1088 at ft_split.c:67:9
+(lldb) image lookup --address test_single_split+106
+      Address: test_split.out[0x000000010000392a] (test_split.out.__TEXT.__text + 3690)
+      Summary: test_split.out`test_single_split + 106 at test_split.c:59:9
+(lldb) image lookup --address test_split+61
+      Address: test_split.out[0x0000000100003b2d] (test_split.out.__TEXT.__text + 4205)
+      Summary: test_split.out`test_split + 61 at test_split.c:79:6
+(lldb) image lookup --address main+158
+      Address: test_split.out[0x0000000100003dee] (test_split.out.__TEXT.__text + 4910)
+      Summary: test_split.out`main + 158 at test_split.c:101:2

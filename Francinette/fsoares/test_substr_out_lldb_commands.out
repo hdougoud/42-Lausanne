@@ -1,0 +1,19 @@
+(lldb) target create "test_substr.out"
+Current executable set to '/Users/hdougoud/francinette/temp/libft/fsoares/test_substr.out' (x86_64).
+(lldb) command source -s 0 'test_substr_out_lldb_commands'
+Executing commands in '/Users/hdougoud/francinette/temp/libft/fsoares/test_substr_out_lldb_commands'.
+(lldb) image lookup --address sigabort+33
+      Address: test_substr.out[0x0000000100007261] (test_substr.out.__TEXT.__text + 14897)
+      Summary: test_substr.out`sigabort + 33 at utils.c:58:1
+(lldb) image lookup --address ft_substr+182
+      Address: test_substr.out[0x000000010000a226] (test_substr.out.__TEXT.__text + 27126)
+      Summary: test_substr.out`ft_substr + 182 at ft_substr.c:26:12
+(lldb) image lookup --address test_single_substr+80
+      Address: test_substr.out[0x0000000100003cc0] (test_substr.out.__TEXT.__text + 1168)
+      Summary: test_substr.out`test_single_substr + 80 at test_substr.c:7:2
+(lldb) image lookup --address test_substr+188
+      Address: test_substr.out[0x0000000100003e1c] (test_substr.out.__TEXT.__text + 1516)
+      Summary: test_substr.out`test_substr + 188 at test_substr.c:15:8
+(lldb) image lookup --address main+158
+      Address: test_substr.out[0x000000010000443e] (test_substr.out.__TEXT.__text + 3086)
+      Summary: test_substr.out`main + 158 at test_substr.c:43:2

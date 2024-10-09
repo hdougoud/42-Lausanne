@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:21:28 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/04 13:31:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:57:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			udst[len] = usrc[len];
 			len--;
 		}
-		return (dst);
 	}
-	// while (len > i)
-	// {
-		// udst[i] = usrc[i];         Possiblement inutile
-		// i++;
-	// }
-	// return (dst);
+	return (dst);
 }
 
 //int main(void)
@@ -46,3 +40,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 //	ft_memmove(se, s , 5);
 //	printf("%s\n", se);
 //}
+
+	// while (len > i)
+	// {
+		// udst[i] = usrc[i];         Possiblement inutile
+		// i++;
+	// }

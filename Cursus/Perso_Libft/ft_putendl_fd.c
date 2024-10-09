@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:49:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 15:54:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:24:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void ft_putendl_fd(char *s, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-int main(void)
-{
-	char s[] = "Hello World";
-	ft_putendl_fd(s, 1);
-}
+//int main(void)
+//{
+//	char s[] = "Hello World";
+//	ft_putendl_fd(s, 1);
+//}

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:15:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 10:17:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:46:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ int	ft_atoi(const char *str)
 	i = 0;
 	is_neg = 0;
 	total = 0;
-	if (!(str[0] >= '0' && str[0] <= '9' || str[1] >= '0' && str[1] <= '9'))
-		return (0);
+	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
+	{
+		if ((str[i] != '+' && str[i] != '-') && (str[i] < '0' && str[i] > '9'))
+			return (0);
+		i++;
+	}
 	if (str[i] == '-')
 		is_neg = 1;
 	if (str[i] == '+' || str[i] == '-')
@@ -39,17 +43,11 @@ int	ft_atoi(const char *str)
 
 //int main(void)
 //{
-//	printf("%d ft_atoi\n", ft_atoi("2147483650"));
-//	printf("%d ft_atoi1\n", ft_atoi("2147483650"));
-//	//printf("%d ft_atoi2\n ", ft_atoi("--+1234567890"));
-//	//printf("%d ft_atoi3\n ", ft_atoi("-+1234567890"));
-//	//printf("%d ft_atoi4\n ", ft_atoi("+1234567890"));
-//	//printf("%d ft_atoi5\n ", ft_atoi("++1234567890"));
-//	//printf("%d ft_atoi6\n", ft_atoi("-1234567890"));
-//	printf("%d atoi1\n", atoi("2147483647"));
-//	printf("%d atoi2\n", atoi("-2147483648"));
-//	printf("%d atoi3\n", atoi("21474836550"));
-//	printf("%d atoi4\n", atoi("-2147483650"));
-//	//printf("%d atoi5\n", atoi("++1234567890"));
-//	//printf("%d atoi6\n", atoi("-1234567890"));
+//	char n[40] = "\t\v\f\r\n \f-06050-1234";
+//	int i1 = printf("%d\n",atoi(n));
+//	int i2 = printf("%d\n", ft_atoi(n));
+//
+//	// if (i1 == i2)
+//	// 	exit(TEST_SUCCESS);
+//	// exit(TEST_KO);
 //}

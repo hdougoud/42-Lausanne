@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:49:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/01 17:30:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:55:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int				i;
+	unsigned int	i;
 	unsigned char	*ptr;
 	unsigned char	uc;
 
