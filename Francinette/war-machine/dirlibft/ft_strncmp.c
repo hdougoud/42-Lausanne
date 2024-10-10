@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:54:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 12:21:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:34:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	int		i;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
 	i = 0;
-	while (n > 0 && s1[i] != '\0')
+	us1 = (unsigned char *) s1;
+	us2 = (unsigned char *) s2;
+	while (n > 0)
 	{
-		if (s1[i] > s2[i])
-			return (1); // A verifier 
-		if (s1[i] < s2[i])
-			return (-1); // A verifier
+		if (us1[i] == '\0' && us2[i] == '\0')
+			return (0);
+		if (us1[i] > us2[i] || us2[i] == '\0')
+			return (1);
+		if (us1[i] < us2[i] || us1[i] == '\0')
+			return (-1);
 		i++;
 		n--;
 	}
@@ -31,8 +37,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 //int main(void)
 //{
-//	char s1[] = "Hello World";
-//	char s2[] = "Hello World";
-//	printf("%d\n", ft_strcmp(s1, s2, 20));
+//	char s1[] = "test2";
+//	char s2[] = "";
+//	printf("%d\n", ft_strncmp(s1, s2, 20));
+//	printf("%d\n", strncmp(s1, s2, 20));
 //	return (0);
 //}

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:43:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/08 15:48:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:05:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (s[i])
 	{

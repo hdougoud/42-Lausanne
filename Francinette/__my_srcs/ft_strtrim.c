@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 12:03:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:06:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	}
 	str[i] = '\0';
-	return (str); //ftstrdup
+	return (str);
 }
 
 //int main(void)
 //{
-//	char s[] = "CAB12ABC3ABA";
+//	char s[] = "CABABCABCABC12ABC3ABACBABACBACBCA";
 //	char c[] = "ABC";
 //	printf("%s\n", ft_strtrim(s, c));
 //}

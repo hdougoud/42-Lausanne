@@ -1,2 +1,2 @@
-[1;31mError[0m in test 6: [0;36mft_strchr(0x105067a40: "teste", 1024: '\0')[0m: expected: 0x105067a45, yours: 0x0
+[1;31mError[0m in test 6: [0;36mft_strchr(0x108ca6a40: "teste", 1024: '\0')[0m: expected: 0x108ca6a45, yours: 0x0
 

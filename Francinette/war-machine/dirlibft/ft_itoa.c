@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 13:21:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:03:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_itoa(int n)
 		n = -n;
 		negative = 1;
 	}
-	while (n / div >= 9)
+	while (n / div > 9)
 	{
 		len++;
 		div *= 10;
@@ -78,6 +78,6 @@ char	*ft_itoa(int n)
 
 //int main(void)
 //{
-//	int nb = -2147483648;  
+//	int nb = 9874;  
 //	printf("Final %s\n", ft_itoa(nb));
 //}

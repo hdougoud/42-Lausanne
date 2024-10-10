@@ -1,25 +1,16 @@
 For ft_memmove, in /Users/hdougoud/francinette/tests/libft/fsoares/test_memmove.c:
 
-Error in test 1: ft_memmove(0x7ffee0acc380, 0x7ffee0acc382: "123456", 4): different memory
+Error in test 1: ft_memmove(0x7ffee3832380, 0x7ffee3832382: "123456", 4): different memory
 expected:
 0000: 3132 3334 3334 3536 0011 1111 1111 1111 ->  12343456........
 yours:
 0000: 1111 3132 3334 3536 0011 1111 1111 1111 ->  ..123456........
 
-Error in test 2: ft_memmove(0x7ffee0acc382, 0x7ffee0acc380: "123456", 4): different memory
+Error in test 2: ft_memmove(0x7ffee3832382, 0x7ffee3832380: "123456", 4): different memory
 expected:
 0000: 3132 3334 0011 1111 1111 1111 1111 1111 ->  1234............
 yours:
-0000: 3334 3334 3511 1111 1111 1111 1111 1111 ->  34345...........
-
-
-For ft_strlcpy, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strlcpy.c:
-
-Error in test 1: ft_strlcpy(dest, "aaa", 0): different memory
-expected:
-0000: 1111 1111 1111 1111 1111 1111 1111 1111 ->  ................
-yours:
-0000: 6161 6100 1111 1111 1111 1111 1111 1111 ->  aaa.............
+0000: 3334 3536 0011 1111 1111 1111 1111 1111 ->  3456............
 
 
 For ft_strlcat, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strlcat.c:
@@ -90,33 +81,15 @@ yours:
 
 For ft_strchr, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strchr.c:
 
-Error in test 6: ft_strchr(0x105067a40: "teste", 1024: '\0'): expected: 0x105067a45, yours: 0x0
-
-For ft_strncmp, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strncmp.c:
-
-Error in test 8: ft_strncmp("", "test", 1): 
-expected sign: -1 (value: -1), yours sign: 0 (value: 0)
-
-Error in test 9: ft_strncmp("", "test", 2): 
-expected sign: -1 (value: -1), yours sign: 0 (value: 0)
-
-Error in test 16: ft_strncmp("teste", "testex", 6): 
-expected sign: -1 (value: -1), yours sign: 0 (value: 0)
-
-Error in test 18: ft_strncmp("test", "teste", 10): 
-expected sign: -1 (value: -1), yours sign: 0 (value: 0)
-
-Error in test 19: ft_strncmp("abcdef", "abc\375xx", 5): 
-expected sign: -1 (value: -1), yours sign: 1 (value: 1)
-
+Error in test 6: ft_strchr(0x108ca6a40: "teste", 1024: '\0'): expected: 0x108ca6a45, yours: 0x0
 
 For ft_memchr, in /Users/hdougoud/francinette/tests/libft/fsoares/test_memchr.c:
 
-Error in test 17: ft_memchr(0x7ffeef289500, 658(92): '\222', 37): expected: 0x7ffeef28951e, yours: 0x0
+Error in test 7: ft_memchr(0x7ffee92da500, 566(36): '6', 33): expected: 0x7ffee92da50e, yours: 0x0
 Memory content:
-at 0x0x7ffeef289500: 81dc c0d6 b459 daee 83cc d155 e508 8724 ->  .....Y.....U...$
-at 0x0x7ffeef289510: fcee edf3 ec5e 293c d922 7db1 cd40 9273 ->  .....^)<."}..@.s
-at 0x0x7ffeef289520: 62fc 5837 3f46 f0fa aa8a 4199 16ee d81f ->  b.X7?F....A.....
+at 0x0x7ffee92da500: 5841 9bbf cd35 406d 8a6e 38cf 6d62 36cb ->  XA...5@m.n8.mb6.
+at 0x0x7ffee92da510: caf8 fd42 4512 d33e fb7f 779f d682 b3e0 ->  ...BE..>..w.....
+at 0x0x7ffee92da520: a7ce eb4f 2f1c d0bc 724f b3db 0feb 767c ->  ...O/...rO....v|
 
 
 For ft_memcmp, in /Users/hdougoud/francinette/tests/libft/fsoares/test_memcmp.c:
@@ -125,40 +98,17 @@ Error in test 5: ft_memcmp("teste", "testex", 6):
 expected sign: -1 (value: -120), yours sign: 0 (value: 0)
 
 
-For ft_strnstr, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strnstr.c:
-
-Error in test 3: ft_strnstr(0x10f5ecda0: "", "", 0): expected: 0x10f5ecda0, yours: 0x0
-Error in test 4: ft_strnstr(0x10f5ecda0: "", "", 1): expected: 0x10f5ecda0, yours: 0x0
-Error in test 5: ft_strnstr(0x10f5ecda0: "", "", 2): expected: 0x10f5ecda0, yours: 0x0
-Error in test 9: ft_strnstr(0x10f5eb820: "teste", "", 0): expected: 0x10f5eb820, yours: 0x0
-Error in test 10: ft_strnstr(0x10f5eb820: "teste", "", 1): expected: 0x10f5eb820, yours: 0x0
-Error in test 11: ft_strnstr(0x10f5eb820: "teste", "", 2): 
-expected: 0x10f5eb820 (offset 0), yours: 0x10f5eb821 (offset 1)
-
-Error in test 13: ft_strnstr(0x10f5eb860: "abcdefgh", "abc", 3): expected: 0x10f5eb860, yours: 0x0
-Error in test 22: ft_strnstr(0x10f5eb8e0: "aaxx", "xx", 4): expected: 0x10f5eb8e2, yours: 0x0
-
 For ft_substr, in /Users/hdougoud/francinette/tests/libft/fsoares/test_substr.c:
 
-Error in test 3: ft_substr("", 1, 1): Memory problems!
-     in sigabort utils.c:58:1
-     in ft_substr ft_substr.c:26:12
+Error in test 1: ft_substr("", 0, 0): not enough memory allocated, needed: 1, reserved: 0
+Could not find the corresponding allocation or the pointer 0x10243eee0
+Error in test 1: ft_substr("", 0, 0): Bus error: Trying to set unwritable memory
+     in sigbus utils.c:63:1
+     in free malloc_mock.c:83:1
+  -> in check_leaks malloc_mock.c:159:13
      in test_single_substr test_substr.c:7:2
-     in test_substr test_substr.c:15:8
+     in test_substr test_substr.c:13:8
      in main test_substr.c:43:2
-
-=================================================================
-==67669==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000104023e21 at pc 0x000104022226 bp 0x7ffeebbe7580 sp 0x7ffeebbe7578
-READ of size 1 at 0x000104023e21 thread T0
-    #0 0x104022225 in ft_substr ft_substr.c:26
-    #1 0x10401bcbf in test_single_substr test_substr.c:7
-    #2 0x10401be1b in test_substr test_substr.c:15
-    #3 0x10401c43d in main test_substr.c:43
-    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
-
-0x000104023e21 is located 0 bytes to the right of global variable '<string literal>' defined in 'test_substr.c:13:30' (0x104023e20) of size 1
-  '<string literal>' is ascii string ''
-SUMMARY: AddressSanitizer: global-buffer-overflow ft_substr.c:26 in ft_substr
 
 For ft_strjoin, in /Users/hdougoud/francinette/tests/libft/fsoares/test_strjoin.c:
 
@@ -179,23 +129,23 @@ Error in test 2: ft_strjoin("abc", ""): Memory problems!
      in main test_strjoin.c:24:2
 
 =================================================================
-==67672==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000113 at pc 0x000104643371 bp 0x7ffeeb5c6570 sp 0x7ffeeb5c6568
+==40197==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000113 at pc 0x0001045b6371 bp 0x7ffeeb653570 sp 0x7ffeeb653568
 WRITE of size 1 at 0x602000000113 thread T0
-    #0 0x104643370 in ft_strjoin ft_strjoin.c:37
-    #1 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
-    #2 0x10463d0f2 in test_strjoin test_strjoin.c:14
-    #3 0x10463d24d in main test_strjoin.c:24
-    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x1045b6370 in ft_strjoin ft_strjoin.c:37
+    #1 0x1045affe6 in test_single_strjoin test_strjoin.c:7
+    #2 0x1045b00f2 in test_strjoin test_strjoin.c:14
+    #3 0x1045b024d in main test_strjoin.c:24
+    #4 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 0x602000000113 is located 0 bytes to the right of 3-byte region [0x602000000110,0x602000000113)
 allocated by thread T0 here:
-    #0 0x107c3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
-    #1 0x10463d36c in malloc malloc_mock.c:65
-    #2 0x104643069 in ft_strjoin ft_strjoin.c:23
-    #3 0x10463cfe6 in test_single_strjoin test_strjoin.c:7
-    #4 0x10463d0f2 in test_strjoin test_strjoin.c:14
-    #5 0x10463d24d in main test_strjoin.c:24
-    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x107bab17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x1045b036c in malloc malloc_mock.c:65
+    #2 0x1045b6069 in ft_strjoin ft_strjoin.c:23
+    #3 0x1045affe6 in test_single_strjoin test_strjoin.c:7
+    #4 0x1045b00f2 in test_strjoin test_strjoin.c:14
+    #5 0x1045b024d in main test_strjoin.c:24
+    #6 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 SUMMARY: AddressSanitizer: heap-buffer-overflow ft_strjoin.c:37 in ft_strjoin
 
@@ -217,23 +167,23 @@ Error in test 2: ft_strtrim("abcd", ""): Memory problems!
      in main test_strtrim.c:26:2
 
 =================================================================
-==67675==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000114 at pc 0x0001033f3ebe bp 0x7ffeec815580 sp 0x7ffeec815578
+==40200==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000114 at pc 0x00010d942ebe bp 0x7ffee22c6580 sp 0x7ffee22c6578
 WRITE of size 1 at 0x602000000114 thread T0
-    #0 0x1033f3ebd in ft_strtrim ft_strtrim.c:36
-    #1 0x1033edaf6 in single_test_strtrim test_strtrim.c:7
-    #2 0x1033edbcf in test_strtrim test_strtrim.c:13
-    #3 0x1033ede3d in main test_strtrim.c:26
-    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x10d942ebd in ft_strtrim ft_strtrim.c:36
+    #1 0x10d93caf6 in single_test_strtrim test_strtrim.c:7
+    #2 0x10d93cbcf in test_strtrim test_strtrim.c:13
+    #3 0x10d93ce3d in main test_strtrim.c:26
+    #4 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 0x602000000114 is located 0 bytes to the right of 4-byte region [0x602000000110,0x602000000114)
 allocated by thread T0 here:
-    #0 0x1069e717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
-    #1 0x1033edf5c in malloc malloc_mock.c:65
-    #2 0x1033f3d4e in ft_strtrim ft_strtrim.c:28
-    #3 0x1033edaf6 in single_test_strtrim test_strtrim.c:7
-    #4 0x1033edbcf in test_strtrim test_strtrim.c:13
-    #5 0x1033ede3d in main test_strtrim.c:26
-    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x110f3717d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10d93cf5c in malloc malloc_mock.c:65
+    #2 0x10d942d4e in ft_strtrim ft_strtrim.c:28
+    #3 0x10d93caf6 in single_test_strtrim test_strtrim.c:7
+    #4 0x10d93cbcf in test_strtrim test_strtrim.c:13
+    #5 0x10d93ce3d in main test_strtrim.c:26
+    #6 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 SUMMARY: AddressSanitizer: heap-buffer-overflow ft_strtrim.c:36 in ft_strtrim
 
@@ -247,86 +197,23 @@ Error in test 1: ft_split("hello!", 32:' '): Memory problems!
      in main test_split.c:101:2
 
 =================================================================
-==67680==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000118 at pc 0x0001070d4070 bp 0x7ffee8b35550 sp 0x7ffee8b35548
+==40203==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000118 at pc 0x00010f844070 bp 0x7ffee03c5550 sp 0x7ffee03c5548
 WRITE of size 8 at 0x602000000118 thread T0
-    #0 0x1070d406f in ft_split ft_split.c:67
-    #1 0x1070cd929 in test_single_split test_split.c:59
-    #2 0x1070cdb2c in test_split test_split.c:79
-    #3 0x1070cdded in main test_split.c:101
-    #4 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x10f84406f in ft_split ft_split.c:67
+    #1 0x10f83d929 in test_single_split test_split.c:59
+    #2 0x10f83db2c in test_split test_split.c:79
+    #3 0x10f83dded in main test_split.c:101
+    #4 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 0x602000000119 is located 0 bytes to the right of 9-byte region [0x602000000110,0x602000000119)
 allocated by thread T0 here:
-    #0 0x10a6ce17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
-    #1 0x1070cdf0c in malloc malloc_mock.c:65
-    #2 0x1070d3c80 in ft_split ft_split.c:43
-    #3 0x1070cd929 in test_single_split test_split.c:59
-    #4 0x1070cdb2c in test_split test_split.c:79
-    #5 0x1070cdded in main test_split.c:101
-    #6 0x7fff6821acc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+    #0 0x112e3d17d in wrap_malloc+0x9d (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x4917d)
+    #1 0x10f83df0c in malloc malloc_mock.c:65
+    #2 0x10f843c80 in ft_split ft_split.c:43
+    #3 0x10f83d929 in test_single_split test_split.c:59
+    #4 0x10f83db2c in test_split test_split.c:79
+    #5 0x10f83dded in main test_split.c:101
+    #6 0x7fff6c740cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
 
 SUMMARY: AddressSanitizer: heap-buffer-overflow ft_split.c:67 in ft_split
-
-For ft_itoa, in /Users/hdougoud/francinette/tests/libft/fsoares/test_itoa.c:
-
-Error in test 18: ft_itoa(-924181598): expected: "-924181598", got: "-0924181598"
-
-For ft_putnbr_fd, in /Users/hdougoud/francinette/tests/libft/fsoares/test_putnbr_fd.c:
-
-Error in test 1: ft_putnbr_fd(0, fd: 4): 
-Memory leak: 0x6020000000f0 - 2 bytes
-You failed to free the memory allocated at:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_itoa ft_itoa.c:73:6
-     in ft_putnbr_fd ft_putnbr_fd.c:19:6
-     in single_test_putnbr test_putnbr_fd.c:9:20
-     in test_putnbr_fd test_putnbr_fd.c:17:6
-     in main test_putnbr_fd.c:42:2
-
-Error in test 2: ft_putnbr_fd(10000043, fd: 4): 
-Memory leak: 0x602000000110 - 9 bytes
-You failed to free the memory allocated at:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_itoa ft_itoa.c:73:6
-     in ft_putnbr_fd ft_putnbr_fd.c:19:6
-     in single_test_putnbr test_putnbr_fd.c:9:20
-     in test_putnbr_fd test_putnbr_fd.c:18:8
-     in main test_putnbr_fd.c:42:2
-
-Error in test 3: ft_putnbr_fd(-10000043, fd: 4): 
-Memory leak: 0x602000000130 - 10 bytes
-You failed to free the memory allocated at:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_itoa ft_itoa.c:73:6
-     in ft_putnbr_fd ft_putnbr_fd.c:19:6
-     in single_test_putnbr test_putnbr_fd.c:9:20
-     in test_putnbr_fd test_putnbr_fd.c:19:8
-     in main test_putnbr_fd.c:42:2
-
-Error in test 4: ft_putnbr_fd(2147483647, fd: 4): 
-Memory leak: 0x602000000150 - 11 bytes
-You failed to free the memory allocated at:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_itoa ft_itoa.c:73:6
-     in ft_putnbr_fd ft_putnbr_fd.c:19:6
-     in single_test_putnbr test_putnbr_fd.c:9:20
-     in test_putnbr_fd test_putnbr_fd.c:20:8
-     in main test_putnbr_fd.c:42:2
-
-Error in test 5: ft_putnbr_fd(-2147483648, fd: 4): 
-Memory leak: 0x602000000170 - 12 bytes
-You failed to free the memory allocated at:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_min_int ft_itoa.c:19:6
-     in ft_itoa ft_itoa.c:62:3
-     in ft_putnbr_fd ft_putnbr_fd.c:19:6
-     in single_test_putnbr test_putnbr_fd.c:9:20
-     in test_putnbr_fd test_putnbr_fd.c:21:8
-     in main test_putnbr_fd.c:42:2
-
 

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 21:45:42 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 13:10:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:05:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
-	
+
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		f(i, &s[i]);
 		i++;

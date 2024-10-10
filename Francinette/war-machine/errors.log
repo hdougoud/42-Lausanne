@@ -6,7 +6,7 @@ Test 1:
 Expected (cat -e test01.output):
 conseipsum dolor sit a
 Your result (cat -e user_output_test01):
-ornsecpsum dolor sit a
+orem ipsum dolor sit a
 Test 2:
     if (dest != ft_memmove(dest, "con\0sec\0\0te\0tur", 10))
         write(1, "dest's adress was not returned\n", 31);
@@ -14,7 +14,7 @@ Test 2:
 Expected (cat -e test02.output):
 con^@sec^@^@t dolor sit a
 Your result (cat -e user_output_test02):
-orn^@sec^@^@tedolor sit a
+orem ipsum dolor sit a
 Test 3:
     if (dest != ft_memmove(dest, src, 8))
         write(1, "dest's adress was not returned\n", 31);
@@ -22,7 +22,7 @@ Test 3:
 Expected (cat -e test03.output):
 lorem ipum dolor sit a
 Your result (cat -e user_output_test03):
-orrem ipsm dolor sit a
+orem ipsum dolor sit a
 Test 4:
     if (src != ft_memmove(src, dest, 8))
         write(1, "dest's adress was not returned\n", 31);
@@ -31,17 +31,6 @@ Expected (cat -e test04.output):
 rem ipssum dolor sit a
 Your result (cat -e user_output_test04):
 orem ipsum dolor sit a
-Errors in strlcpy: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strlcpy
-Test 5:
-    ft_print_result(ft_strlcpy(dest, "lorem ipsum dolor sit amet", 0));
-    write(1, "\n", 1);
-    write(1, dest, 15);
-Expected (cat -e test05.output):
-26$
-rrrrrr^@^@^@^@^@^@^@^@^@
-Your result (cat -e user_output_test05):
-26$
-lorem ipsum dol
 Errors in strlcat: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strlcat
 Test 1:
     dest[11] = 'a';
@@ -98,25 +87,6 @@ rrrrrrrrrrrrrr^@
 Your result (cat -e user_output_test09):
 41$
 rrrrrrrrrrrrrr^@
-Errors in strncmp: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strncmp
-Test 2:
-    ft_print_result(ft_strncmp("test", "testss", 7));
-Expected (cat -e test02.output):
--1
-Your result (cat -e user_output_test02):
-0
-Test 5:
-    ft_print_result(ft_strncmp("", "test", 4));
-Expected (cat -e test05.output):
--1
-Your result (cat -e user_output_test05):
-0
-Test 11:
-    ft_print_result(ft_strncmp("test\200", "test\0", 6));
-Expected (cat -e test11.output):
-1
-Your result (cat -e user_output_test11):
--1
 Errors in memcmp: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_memcmp
 Test 2:
     ft_print_result(ft_memcmp("t\200", "t\0", 2));
@@ -130,46 +100,6 @@ Expected (cat -e test03.output):
 1
 Your result (cat -e user_output_test03):
 0
-Errors in strnstr: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strnstr
-Test 4:
-    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "", 10)))
-        ft_print_result("NULL");
-    else
-        ft_print_result(str);
-Expected (cat -e test04.output):
-lorem ipsum dolor sit amet
-Your result (cat -e user_output_test04):
-orem ipsum dolor sit amet
-Test 5:
-    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "ipsumm", 30)))
-        ft_print_result("NULL");
-    else
-        ft_print_result(str);
-Expected (cat -e test05.output):
-NULL
-Your result (cat -e user_output_test05):
-sit amet
-Errors in substr: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_substr
-Test 5:
-    char *bullshit;
-    if (!(strsub = ft_substr(str, 400, 20)))
-        ft_print_result("NULL");
-    else
-    {
-        bullshit = (char *)&strsub[30];
-        bullshit = "FULL BULLSHIT";
-        if (strsub)
-            ft_print_result(strsub);
-        else
-            ft_print_result("rip");
-    }
-    if (str == strsub)
-        ft_print_result("\nA new string was not returned");
-    (void)bullshit;
-Expected (cat -e test05.output):
-
-Your result (cat -e user_output_test05):
-OZ5\xe8\xfe^?
 Errors in strjoin: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_strjoin
 Test 1:
     if (!(strjoin = ft_strjoin(s1, s2)))
@@ -474,35 +404,3 @@ ok$
 
 Your result (cat -e user_output_test06):
 
-Errors in itoa: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_itoa
-Test 2:
-    char *res = ft_itoa(9);
-    ft_print_result(res);
-    free(res);
-Expected (cat -e test02.output):
-9
-Your result (cat -e user_output_test02):
-09
-Test 3:
-    char *res = ft_itoa(-9);
-    ft_print_result(res);
-    free(res);
-Expected (cat -e test03.output):
--9
-Your result (cat -e user_output_test03):
--09
-Test 7:
-    char *res = ft_itoa(-9874);
-    ft_print_result(res);
-    free(res);
-Expected (cat -e test07.output):
--9874
-Your result (cat -e user_output_test07):
--09874
-Errors in putnbr_fd: /Users/hdougoud/francinette/temp/libft/war-machine/tests/Part2_functions/ft_putnbr_fd
-Test 7:
-    ft_putnbr_fd(-987441, 2);
-Expected (cat -e test07.output):
--987441
-Your result (cat -e user_output_test07):
--0987441
