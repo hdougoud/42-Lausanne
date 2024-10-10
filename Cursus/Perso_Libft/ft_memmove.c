@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:21:28 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 11:40:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:50:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	udst = (unsigned char *) dst;
 	usrc = (unsigned char *) src;
-	while (len > -1)
+	while (len >= 1)
 	{
 		udst[len] = usrc[len];
 		len--;

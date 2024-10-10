@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 11:03:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/10 21:51:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int	ft_is_negative(int n)
 
 char	*ft_convert(int n, int len, char *str, int negative)
 {
-	int	div;
-
-	div = 1;
 	str[len] = '\0';
 	len--;
 	while (len >= 0)
