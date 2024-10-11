@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:27:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 19:29:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:18:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+#include <string.h>
+
+
+
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);

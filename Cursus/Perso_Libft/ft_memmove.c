@@ -6,11 +6,10 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:21:28 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 21:50:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:54:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
@@ -20,19 +19,27 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	udst = (unsigned char *) dst;
 	usrc = (unsigned char *) src;
-	while (len >= 1)
+	if (dst == NULL && src == NULL)
+		return (0);
+	if (src < dst)
 	{
-		udst[len] = usrc[len];
-		len--;
+		while (len >= 1)
+		{
+			udst[len - 1] = usrc[len - 1];
+			len --;
+		}
 	}
+	else
+		return (ft_memcpy(dst, src, len));
 	return (dst);
 }
 
 //int main(void)
 //{
-//	char s[] = "Hello World";
-//	char se[] = "AAAAAAAAAAA";
-//	printf("%s\n", memmove(se, s , 3));
-//	printf("%s\n", ft_memmove(se, s , 3));
-//	
+//	char s[] = "lorem";
+//	char se[] = "aaaaaaaaaaaa";
+//	printf("Original %s\n", memmove(se, s , '\0'));
+//	char s1[] = "lorem";
+//	char se1[] = "aaaaaaaaaaaa";
+//	printf("42	 %s\n", ft_memmove(se1, s1 , '\0'));
 //}
