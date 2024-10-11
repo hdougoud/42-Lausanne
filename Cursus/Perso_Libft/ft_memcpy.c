@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:27:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 11:55:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:31:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*udst;
 	unsigned char	*usrc;
 
+	if (dst == NULL && src == NULL)
+		return (0);
 	udst = (unsigned char *) dst;
 	usrc = (unsigned char *) src;
 	i = 0;
