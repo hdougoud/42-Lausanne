@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:27:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/11 13:31:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:51:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 }
 
 //int main(void)
-//{
+//{	
 //	char s[] = "Hello World How Are You";
 //	char se[] = "bjbjbjsbsnvsdndn kldf;lse";
 //	printf("%s\n", se);

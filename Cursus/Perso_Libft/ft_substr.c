@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:36:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 16:38:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:08:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
+	if (start >= strlen(s))
+		return ("0");
 	str = malloc((len + 1) * sizeof(char));
 	if (str == 0)
 		return (NULL);
@@ -36,5 +38,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 //{
 //	char s[] = "01234";
 //	printf("%s\n", ft_substr(s, 10, 10));
+//	printf("%s\n", substr(s, 10, 10));
 //	return (0);
 //}

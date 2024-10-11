@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:30:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/11 14:40:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:54:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst_len = (ft_strlen(dst));
 	if (ft_strlen(dst) >= dstsize)
 		return (ft_strlen(src) + dstsize);
-	while (i + dst_len < dstsize - 1)
+	while (i + dst_len < dstsize - 1 && src[i])
 	{
 		dst[dst_len + i] = src[i];
 		i++;
