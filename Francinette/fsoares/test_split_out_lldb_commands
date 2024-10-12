@@ -1,5 +1,0 @@
-image lookup --address sigabort+33
-image lookup --address ft_split+1088
-image lookup --address test_single_split+106
-image lookup --address test_split+61
-image lookup --address main+158

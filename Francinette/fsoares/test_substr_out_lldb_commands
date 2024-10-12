@@ -1,6 +1,0 @@
-image lookup --address sigbus+33
-image lookup --address free+54
-image lookup --address check_leaks+283
-image lookup --address test_single_substr+182
-image lookup --address test_substr+46
-image lookup --address main+158

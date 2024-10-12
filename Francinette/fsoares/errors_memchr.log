@@ -1,7 +1,0 @@
-[1;31mError[0m in test 7: [0;36mft_memchr(0x7ffee92da500, 566(36): '6', 33)[0m: expected: 0x7ffee92da50e, yours: 0x0
-[0;33mMemory content:
-[0mat 0x0x7ffee92da500: 5841 9bbf cd35 406d 8a6e 38cf 6d62 36cb ->  XA...5@m.n8.mb6.
-at 0x0x7ffee92da510: caf8 fd42 4512 d33e fb7f 779f d682 b3e0 ->  ...BE..>..w.....
-at 0x0x7ffee92da520: a7ce eb4f 2f1c d0bc 724f b3db 0feb 767c ->  ...O/...rO....v|
-
-
