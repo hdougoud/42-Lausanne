@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 10:06:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:13:52 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-//int main(void)
-//{
-//	char s[] = "CABABCABCABC12ABC3ABACBABACBACBCA";
-//	char c[] = "ABC";
-//	printf("%s\n", ft_strtrim(s, c));
-//}
+int main(void)
+{
+	char s[] = "CABABCABCABC12ABC3ABACBABACBACBCA";
+	char c[] = "ABC";
+	printf("%s\n", ft_strtrim(s, c));
+}

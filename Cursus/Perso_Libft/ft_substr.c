@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:36:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/11 16:08:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:59:41 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+unsigned int	ft_memorylen(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	r;
+
+	r = ft_strlen(s) - start;
+	if (r < len)
+		return (r);
+	return (len);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -18,17 +28,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
-	if (start >= strlen(s))
-		return ("0");
-	str = malloc((len + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return(ft_strdup(""));
+	str = malloc((ft_memorylen(s, start, len) + 1) * sizeof(char));
 	if (str == 0)
 		return (NULL);
-	while (len > 0 && s[start] != '\0')
+	while (len > i && s[start] != '\0')
 	{
 		str[i] = s[start];
 		start++;
 		i++;
-		len --;
 	}
 	str[i] = '\0';
 	return (str);
@@ -36,8 +47,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 //int main(void)
 //{
-//	char s[] = "01234";
-//	printf("%s\n", ft_substr(s, 10, 10));
-//	printf("%s\n", substr(s, 10, 10));
+//	char s[] = "1234567";
+//	printf("%s\n", ft_substr(s, 5, 4));
+//	//printf("%s\n", substr(s, 10, 10));
 //	return (0);
 //}
