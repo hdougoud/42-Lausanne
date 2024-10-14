@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:54:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 11:34:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:20:26 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		i;
+	int				i;
 	unsigned char	*us1;
 	unsigned char	*us2;
 

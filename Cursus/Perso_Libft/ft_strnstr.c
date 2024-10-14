@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:13:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 16:27:34 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:21:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	if (ft_strlen(needle) == 0)
 		return (str);
 	nlen = ft_strlen(needle);
-	while (len > 0  && str[i] != '\0')
+	while (len > 0 && str[i] != '\0')
 	{
 		if (str[i] == sch[count])
 		{

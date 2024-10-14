@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:11:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/12 18:24:41 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/14 15:19:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ char	*ft_strchr(const char *s, int c)
 	if (c == '\0')
 		return ((char *) s);
 	return (0);
-
 	//memchr + 1 pour le nul
 }
-
 
 //int main(void)
 //{
