@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:47:30 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/11 15:12:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:38:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,24 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*a;
 	unsigned char	*b;
-	int				i;
+	unsigned int	i;
 
 	i = 0;
 	a = (unsigned char *) s1;
 	b = (unsigned char *) s2;
-	while (n > 0)
+	while (n > i)
 	{
-		if (a[i] > b[i])
-			return (1);
-		if (a[i] < b[i])
-			return (-1);
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
 		i++;
-		n--;
 	}
 	return (0);
 }
 
 //int main(void)
 //{
-//	char s1[] = "atoms\0\0\0\0";
-//	char s2[] = "atoms\0abc";
+//	char s1[] = "atome";
+//	char s2[] = "atomeu";
 //	printf("%d\n", ft_memcmp(s1, s2, 8));
 //	printf("%d\n", memcmp(s1, s2, 8));
 //	return (0);
