@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:15:04 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 10:38:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 10:14:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,9 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+//int main(void)
+//{
+//	char s[] = "Hello World";
+//	printf("%zu\n", ft_strlen(s));
+//}
