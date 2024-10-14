@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:13:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 15:21:08 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:48:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (0);
 }
 
-//int main(void)
-//{
-//    char *s1 = "lorem ipsum dolor sit amet";
-//	char *s2 = "ipsumm";
-//    size_t max = strlen(s1);
-//    printf("%s\n", strnstr(s1, s2, 30));
-//    printf("%s\n", ft_strnstr(s1, s2, 30));
-//    return 0;
-//}
+int main(void)
+{
+    char *s1 = "lorem ipsum dolor sit amet";
+	char *s2 = "ipsum";
+    size_t max = strlen(s1);
+    printf("%s\n", strnstr(s1, s2, 10));
+    printf("%s\n", ft_strnstr(s1, s2, 10));
+    return 0;
+}
