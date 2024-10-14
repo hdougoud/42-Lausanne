@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:02:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 21:50:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:48:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 //	char s[] = "lorem ipsum dolor sit amet";
 //	char se[6] = "";
 //	char sr[6] = "";
-//	printf("%zu\n", ft_strlcpy(se, s, 0));
+//	printf("%zu\n", ft_strlcpy(se, s, 5));
 //	printf("%s\n", se);
-////	printf("%zu\n", strlcpy(sr, s, 0));
-////	printf("%s\n", sr);
-////	return (0);
+//	printf("%zu\n", strlcpy(sr, s, 0));
+//	printf("%s\n", sr);
+//	return (0);
 //}

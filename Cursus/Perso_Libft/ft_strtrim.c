@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 10:16:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/14 11:03:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = 0;
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
-	end = (ft_strlen(s1) - 1);
+	end = (ft_strlen(s1));
 	while (end >= 0 && ft_strchr(set, s1[end]))
 		end--;
-	str = malloc(sizeof(char) * (end + 1));
+	str = malloc(sizeof(char) * (end + 2));
 	if (str == 0)
 		return (NULL);
 	while (i <= end)
@@ -39,7 +39,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 //int main(void)
 //{
-//	char s[] = "CABABCABCABC12ABC3ABACBABACBACBCA";
+//	char s[] = "ABC123";
 //	char c[] = "ABC";
 //	printf("%s\n", ft_strtrim(s, c));
 //}
