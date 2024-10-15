@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:31:01 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 16:41:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:24:49 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		us++;
 		n--;
 	}
-	return (0);
+	return (NULL);
 }
 
 //int main(void)
 //{
 //	char s[] = "hello World";
-//	printf("%s\n", ft_memchr(s, '3', 11));
+//	printf("%s\n", ft_memchr(s, 'W', 11));
 //	return (0);
 //}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:13:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 17:15:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:04:40 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*str;
-	char	*sch;
-	unsigned int		i;
-	unsigned int		count;
+	unsigned int	i;
+	unsigned int	count;
+	unsigned int	needle_len;
 
-	str = (char *) haystack;
-	sch = (char *) needle;
 	count = 0;
+	needle_len = ft_strlen(needle);
 	i = 0;
-	if (ft_strlen(needle) == 0)
-		return (str);
-	while (len > i && str[i] != '\0')
+	if (needle_len == 0)
+		return ((char *) haystack);
+	while (haystack[i] != '\0' && len > i)
 	{
-		if (str[i] == sch[count])
-		{
+		if (haystack[i] == needle [count])
 			count++;
-		}
 		else
+		{
+			i -= count;
 			count = 0;
+		}
 		i++;
-		if (count == ft_strlen(needle))
-			return (str = str + (i - count));
+		if (needle_len == count)
+			return ((char *) &haystack[i - count]);
 	}
 	return (NULL);
 }
@@ -45,7 +44,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 //    char *s1 = "lorem ipsum dolor sit amet";
 //	char *s2 = "ipsum";
 //    size_t max = strlen(s1);
-//    printf("%s\n", strnstr(s1, s2, 9));
-//    printf("%s\n", ft_strnstr(s1, s2, 9));
+//    //printf("%s\n", strnstr(s1, s2, 9));
+//    printf("%s\n", ft_strnstr(s1, s2, 20));
 //    return 0;
 //}
