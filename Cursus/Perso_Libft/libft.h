@@ -6,7 +6,7 @@
 /*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:27:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/15 16:09:19 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/15 21:12:13 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
-typedef struct s_list
+typedef struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
-}				t_list;
+}					t_list;
+
+t_list		*ft_lstnew(void *content);
 
 #endif
