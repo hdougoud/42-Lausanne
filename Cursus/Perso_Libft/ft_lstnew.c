@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 18:39:00 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/10/15 21:10:17 by lausanne42       ###   ########.fr       */
+/*   Created: 2024/10/16 12:30:44 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/16 14:15:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new;
-
-	new = (t_list *)malloc(sizeof(t_list));
-	if (content == 0)
+	t_list *new;
+	
+	new = malloc(sizeof(t_list));
+	if (new == NULL)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
 	return (new);
 }
 
-int main(void)
-{
-	t_list *t1 = ft_lstnew("Hello World");
-
-	printf("%s\n", (char *)t1->content);
-	printf("%p\n", t1->next);
-}
+//int main(void)
+//{
+//	t_list *text;
+//
+//	text = ft_lstnew("Hello World");
+//	printf("%s\n", text->content);
+//	printf("%p\n", text->next);
+//	return (0);
+//}
