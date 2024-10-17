@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/16 23:40:36 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/17 11:59:39 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,11 @@ SOURCESBONUS =	ft_lstadd_back_bonus.c \
 				ft_lstadd_front_bonus.c \
 				ft_lstlast_bonus.c \
 				ft_lstnew_bonus.c \
-				ft_lstsize_bonus.c
-
+				ft_lstsize_bonus.c \
+				ft_lstdelone_bonus.c \
+				ft_lstclear_bonus.c \
+				ft_lstiter_bonus.c \
+				ft_lstmap_bonus.c
 OBJECTSBONUS = $(SOURCESBONUS:.c=.o)
 
 all: $(NAME)
@@ -42,7 +45,7 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJECTS) $(OBJECTSBONUS)
-	ar rcs $(NAME) $(OBJECTsBONUS)
+bonus: all $(OBJECTSBONUS)
+	ar rcs $(NAME) $(OBJECTSBONUS)
 
 .PHONY: all clean fclean re bonus

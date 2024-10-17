@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:30:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/16 23:56:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:27:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list *new;
-	
+	t_list	*new;
+
 	new = malloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);

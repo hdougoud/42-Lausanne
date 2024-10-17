@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/16 15:35:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:27:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new->next = *lst;
 	*lst = new;
@@ -27,7 +27,7 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 	ft_lstadd_front(&low, new);
 }
 
-	/* to add in the function
+ to add in the function
 	t_list *liste;
 	liste = *lst;
 	

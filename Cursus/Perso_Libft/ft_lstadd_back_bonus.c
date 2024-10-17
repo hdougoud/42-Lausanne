@@ -6,21 +6,19 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 23:23:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 00:18:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:53:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*ulist;
-	ulist = *lst;
-	while (ulist->next != NULL)
-	{
-		ulist = ulist->next;
-	}
-	ulist->next = new;
+		while ((*lst)->next != NULL)
+		{
+			(*lst) = (*lst)->next;
+		}
+		(*lst)->next = new;
 }
 
 //int main(void)
