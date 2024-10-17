@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 23:23:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 11:53:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:17:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-		while ((*lst)->next != NULL)
-		{
-			(*lst) = (*lst)->next;
-		}
-		(*lst)->next = new;
+	int		i;
+	t_list	*ulst;
+
+	i = 0;
+	ulst = *lst;
+	if (*lst != NULL)
+	{
+		while ((ulst)->next != NULL)
+			ulst = ulst->next;
+		ulst->next = new;
+	}
+	else
+		*lst = new;
 }
 
 //int main(void)
