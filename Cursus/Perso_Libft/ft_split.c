@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/15 16:06:27 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/18 10:52:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	unsigned int	word;
 
@@ -29,18 +29,19 @@ int	ft_count_words(char const *s, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+static void	ft_free_tab(char **tab, int j)
 {
-	char			**tab;
-	unsigned int	word;
+	while (j > 0)
+		free(tab[--j]);
+	free(tab);
+}
+
+static char	**ft_fill_tab(char const *s, char c, char **tab)
+{
 	unsigned int	i;
 	unsigned int	j;
 
 	j = 0;
-	word = ft_count_words(s, c);
-	tab = malloc(sizeof(char *) * (word + 1)); //proteger contre le s vide ?
-	if (tab == 0)
-		return (NULL);
 	while (*s)
 	{
 		i = 0;
@@ -50,19 +51,35 @@ char	**ft_split(char const *s, char c)
 		{
 			while (s[i] != c && s[i])
 				i++;
-			tab[j++] = ft_substr(s, 0, i);
+			tab[j] = ft_substr(s, 0, i);
+			if (tab[j] == NULL)
+			{
+				ft_free_tab(tab, j);
+				return (NULL);
+			}
 			s += i;
+			j++;
 		}
 	}
 	tab[j] = NULL;
 	return (tab);
 }
 
+char	**ft_split(char const *s, char c)
+{
+	char			**tab;
+
+	tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (tab == 0)
+		return (NULL);
+	return (ft_fill_tab(s, c, tab));
+}
+
 //int main(void)
 //{
 //	int 	i = 0;
 //	int		nb = 0;
-//	char	c = '5';
+//	char	c = ' ';
 //	char s[] = "  Hello    This is a             test"  ;
 //	char **tab = ft_split(s, c);
 //	while (tab[i] != NULL)

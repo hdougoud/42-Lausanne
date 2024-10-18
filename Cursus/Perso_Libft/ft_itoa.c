@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/11 09:51:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:51:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_min_int(void)
+static char	*ft_min_int(void)
 {
 	char	*str;
 
@@ -23,14 +23,14 @@ char	*ft_min_int(void)
 	return (str);
 }
 
-int	ft_is_negative(int n)
+static int	ft_is_negative(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-char	*ft_convert(int n, int len, char *str, int negative)
+static char	*ft_convert(int n, int len, char *str, int negative)
 {
 	str[len] = '\0';
 	len--;

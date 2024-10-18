@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:00:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 14:34:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:42:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	while (*lst)
 	{
-			blst = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = blst;
+		blst = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = blst;
 	}
 }
 

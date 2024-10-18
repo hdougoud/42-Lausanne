@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:36:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 15:21:43 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/18 10:53:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_memorylen(char const *s, unsigned int start, size_t len)
+static unsigned int	ft_memorylen(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	r;
 
