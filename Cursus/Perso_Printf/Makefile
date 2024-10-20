@@ -6,12 +6,12 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:46:49 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/18 14:23:55 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/20 22:49:50 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 GCC = cc
 SOURCES =	ft_printf.c ft_putchar_pf.c ft_putnbr_pf.c ft_putstr_pf.c
 

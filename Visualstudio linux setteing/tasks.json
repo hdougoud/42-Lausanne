@@ -9,9 +9,9 @@
                 "-fdiagnostics-color=always",
                 "-g",                        // Inclut les symboles de débogage
                 "${file}",                   // Compile le fichier actif
-                "${workspaceFolder}/Cursus/Perso_Libft/libft.a",  // Lien avec libft.a
+                "${workspaceFolder}/Cursus/Perso_Printf/libftprintf.a",  // Lien avec libft.a
                 "-o",                        // Spécifie le nom de l'exécutable
-                "${workspaceFolder}/Cursus/Perso_Libft/my_program",  // L'exécutable se nomme my_program
+                "${workspaceFolder}/Cursus/Perso_Printf/my_program",  // L'exécutable se nomme my_program
                 "-Wall", "-Wextra", "-Werror" // Active les avertissements recommandés
             ],
             "options": {

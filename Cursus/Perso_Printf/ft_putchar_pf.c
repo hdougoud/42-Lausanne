@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:46:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/18 15:57:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/21 00:17:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar_pf(char c, int fd)
+ft_putchar_pf(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 }

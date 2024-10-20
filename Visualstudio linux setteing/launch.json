@@ -5,10 +5,10 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Cursus/Perso_Libft/my_program",  // Le programme à déboguer
+            "program": "${workspaceFolder}/Cursus/Perso_Printf/my_program",  // Le programme à déboguer
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/Cursus/Perso_Libft",  // Répertoire de travail
+            "cwd": "${workspaceFolder}/Cursus/Perso_Printf",  // Répertoire de travail
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

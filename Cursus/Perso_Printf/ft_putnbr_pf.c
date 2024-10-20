@@ -6,22 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:47:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/18 14:09:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/21 00:07:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr_pf(int n, int fd)
+int	ft_putnbr_pf(int n, int *value)
 {
 	if (n == -2147483648)
-		return (ft_putstr_pf("-2147483648", fd));
+		return (ft_putstr_pf("-2147483648"));
 	if (n < 0)
 	{
 		n = -n;
-		ft_putchar_pf('-', fd);
+		ft_putchar_pf('-');
+		(*value)++;
 	}
 	if (n > 9)
-		ft_putnbr_pf(n / 10, fd);
-	ft_putchar_pf(n % 10 + '0', fd);
+		ft_putnbr_pf(n / 10, value);
+	ft_putchar_pf(n % 10 + '0');
+	(*value)++;
+	return ((*value) + 1);
 }
