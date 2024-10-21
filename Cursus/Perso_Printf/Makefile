@@ -6,14 +6,15 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:46:49 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/20 22:49:50 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/21 11:52:41 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CFLAGS = -Wall -Werror -Wextra -g
 GCC = cc
-SOURCES =	ft_printf.c ft_putchar_pf.c ft_putnbr_pf.c ft_putstr_pf.c
+SOURCES =	ft_printf.c ft_putchar_pf.c ft_putnbr_pf.c ft_putstr_pf.c \
+			ft_unsigned_putnbr_pf.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
