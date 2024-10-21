@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_putnbr_pf.c                            :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:47:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/21 11:50:11 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/10/21 13:14:25 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/21 15:31:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_unsigned_putnbr_pf(unsigned int n, int *value)
+int	ft_print_pointer(unsigned long *s)
 {
-	if (n > 9)
-		ft_putnbr_pf(n / 10, value);
-	ft_putchar_pf(n % 10 + '0');
-	(*value)++;
-	return ((*value) + 1);
+	int	i;
+	int	value;
+
+	i = 0;	
+	write(1, "0x", 2);
+	value = 2;
+	while (s[i])
+	{
+		ft_putchar_pf(s[i]);
+		i++;
+		value++;
+	}
+	return (value);
 }
