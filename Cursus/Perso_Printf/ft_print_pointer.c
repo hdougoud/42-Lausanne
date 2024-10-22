@@ -3,28 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:14:25 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/21 15:31:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:30:55 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_print_pointer(unsigned long *s)
+int	ft_print_pointer(void *p, int *value)
 {
-	int	i;
-	int	value;
+	int				mod;
+	static char		*dict;
+	unsigned long	adr;
 
-	i = 0;	
-	write(1, "0x", 2);
-	value = 2;
-	while (s[i])
-	{
-		ft_putchar_pf(s[i]);
-		i++;
-		value++;
-	}
-	return (value);
+	adr = (unsigned long) p;
+	dict = "0123456789abcdef";
+	if (adr > 16)
+		ft_print_pointer((void *)(adr / 16), value);
+	mod = adr % 16;
+	(*value) += ft_putchar_pf(dict[mod]);
+	return ((*value));
 }

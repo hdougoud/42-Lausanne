@@ -3,30 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/21 16:34:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:33:52 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	check_args(const char *format, va_list list, int return_value, int i)
+static int	check_args(const char *format, va_list list, int return_val, int i)
 {
 	if (format[i] == 'c')
-		return_value += ft_putchar_pf(va_arg(list, int));
+		return_val += ft_putchar_pf(va_arg(list, int));
 	if (format[i] == 's')
-		return_value += ft_putstr_pf(va_arg(list, char *));
-	//if (format[i] == 'p')
-		//return_value += ft_long_putnbr_pf(va_arg(list, unsigned long *));
+		return_val += ft_putstr_pf(va_arg(list, char *));
+	if (format[i] == 'p')
+	{
+		return_val += ft_putstr_pf("0x");
+		ft_print_pointer(va_arg(list, void *), &return_val);
+	}
 	if (format[i] == 'd' || format[i] == 'i')
-		ft_int_putnbr_pf(va_arg(list, int), &return_value);
+		ft_int_putnbr_pf(va_arg(list, int), &return_val);
 	if (format[i] == 'u')
-		ft_unsigned_putnbr_pf(va_arg(list, unsigned int), &return_value);
+		ft_unsigned_putnbr_pf(va_arg(list, unsigned int), &return_val);
+	if (format[i] == 'x')
+		ft_hexlow_putnbr_pf(va_arg(list, unsigned int), &return_val);
+	if (format[i] == 'X')
+		ft_hexup_putnbr_pf(va_arg(list, unsigned int), &return_val);
 	if (format[i] == '%')
-		return_value += ft_putchar_pf('%');
-	return (return_value);
+		return_val += ft_putchar_pf('%');
+	return (return_val);
 }
 
 int	ft_printf(const char *format, ...)
@@ -56,17 +63,45 @@ int	ft_printf(const char *format, ...)
 	return (return_value);
 }
 
-
-
-int main(void)
-{
-	int				n = 1256;
-	int				c = 'c';
-	unsigned int	un = -1234;
-	void *v = "test";
-	printf("\n%d\n", ft_printf("Hello %d", n));
-	printf("\n%d\n", printf("Hello %X", 124564514));
-	//printf("%%\n");
-	//printf("%d\n", n);
-	//printf("%s\n", s);
-}
+//int main(void)
+//{
+//	char			c = 'c';
+//	char			*s = "Hello World";
+//	void			*p = "void"; 
+//	int				i = -124564514;
+//	int				d = 1554416;
+//	unsigned int	u = 123456789;
+//	int				x = 562145;
+//	int				X = 1541610;
+//
+//	
+//	printf("\nft_printf	%d\n", ft_printf("test sans format"));
+//	printf("\nprintf		%d\n", printf("test sans format"));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %c encore un test 1234", c));
+//	printf("\nprintf		%d\n", printf("test %c encore un test 1234", c));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %s encore un test 1234", s));
+//	printf("\nprintf		%d\n", printf("test %s encore un test 1234", s));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %p encore un test 1234", p));
+//	printf("\nprintf		%d\n", printf("test %p encore un test 1234", p));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d	\n", ft_printf("test %d encore un test 1234", d));
+//	printf("\nprintf		%d\n", printf("test %d encore un test 1234", d));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d	\n", ft_printf("test %i encore un test 1234", i));
+//	printf("\nprintf		%d\n", printf("test %i encore un test 1234", i));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %u encore un test 1234", u));
+//	printf("\nprintf		%d\n", printf("test %u encore un test 1234", u));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %x encore un test 1234", x));
+//	printf("\nprintf		%d\n", printf("test %x encore un test 1234", x));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %X encore un test 1234", X));
+//	printf("\nprintf		%d\n", printf("test %X encore un test 1234", X));
+//	write (1, "\n", 1);
+//	printf("\nft_printf	%d\n", ft_printf("test %% encore un test 1234"));
+//	printf("\nprintf		%d\n", printf("test %% encore un test 1234"));
+//}
