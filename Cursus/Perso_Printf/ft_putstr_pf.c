@@ -21,9 +21,8 @@ int	ft_putstr_pf(char *s)
 	value = 0;
 	while (s[i])
 	{
-		ft_putchar_pf(s[i]);
+		value =+ ft_putchar_pf(s[i]);
 		i++;
-		value++;
 	}
 	return (value);
 }
