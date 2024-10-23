@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:46:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/21 15:30:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:58:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar_pf(char c)
 {

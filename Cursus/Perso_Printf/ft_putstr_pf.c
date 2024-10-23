@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:50:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/21 15:29:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:49:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_pf(char *s)
 {
@@ -19,9 +19,14 @@ int	ft_putstr_pf(char *s)
 
 	i = 0;
 	value = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (s[i])
 	{
-		value =+ ft_putchar_pf(s[i]);
+		value += ft_putchar_pf(s[i]);
 		i++;
 	}
 	return (value);
