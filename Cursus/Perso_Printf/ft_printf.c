@@ -6,7 +6,7 @@
 /*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/24 20:48:45 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/24 21:42:16 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	ft_printf(const char *format, ...)
 	return (return_value);
 }
 
+//#include <stdio.h>
+//
 //int main(void)
 //{
 	//char			c = 'c';
@@ -99,4 +101,9 @@ int	ft_printf(const char *format, ...)
 	//write (1, "\n", 1);
 	//printf("\nft_printf	%d\n", ft_printf("test %% 1234"));
 	//printf("\nprintf		%d\n", printf("test %% 1234"));
+    //printf("Standard printf: Empty string: %s\n", "");
+    //ft_printf("Custom  ft_printf: Empty string: %s\n", "");
+	//write (1, "\n", 1);
+	//printf("Standard printf: NULL pointer: %p\n", NULL);
+    //ft_printf("Custom  ft_printf: NULL pointer: %p\n", NULL);
 //}
