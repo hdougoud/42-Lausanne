@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:48:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/23 10:31:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:48:56 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include <stdio.h>
-
 
 # include <stdarg.h>
 # include <unistd.h>

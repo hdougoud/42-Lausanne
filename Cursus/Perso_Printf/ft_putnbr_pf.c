@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_pf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:47:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/23 15:46:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:47:45 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	ft_unsigned_putnbr_pf(unsigned int n, int *value)
 
 int	ft_hexlow_putnbr_pf(int n, int *value)
 {
-	int			mod;
-	static char	*dict;
-	unsigned int un;
+	int				mod;
+	static char		*dict;
+	unsigned int	un;
 
 	un = (unsigned int) n;
 	dict = "0123456789abcdef";
@@ -52,9 +52,9 @@ int	ft_hexlow_putnbr_pf(int n, int *value)
 
 int	ft_hexup_putnbr_pf(int n, int *value)
 {
-	int			mod;
-	static char	*dict;
-	unsigned int un;
+	int				mod;
+	static char		*dict;
+	unsigned int	un;
 
 	un = (unsigned int) n;
 	dict = "0123456789ABCDEF";
@@ -64,4 +64,3 @@ int	ft_hexup_putnbr_pf(int n, int *value)
 	(*value) += ft_putchar_pf(dict[mod]);
 	return ((*value));
 }
-

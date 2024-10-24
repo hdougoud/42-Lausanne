@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/23 15:46:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:48:45 by lausanne42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
 
 static int	check_args(const char *format, va_list list, int return_val, int i)
 {
@@ -75,41 +73,30 @@ int	ft_printf(const char *format, ...)
 	//printf("\nft_printf	%d\n", ft_printf("test sans format"));
 	//printf("\nprintf		%d\n", printf("test sans format"));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %c encore un test 1234", c));
-	//printf("\nprintf		%d\n", printf("test %c encore un test 1234", c));
+	//printf("\nft_printf	%d\n", ft_printf("test %c 1234", c));
+	//printf("\nprintf		%d\n", printf("test %c 1234", c));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %s encore un test 1234", s));
-	//printf("\nprintf		%d\n", printf("test %s encore un test 1234", s));
+	//printf("\nft_printf	%d\n", ft_printf("test %s 1234", s));
+	//printf("\nprintf		%d\n", printf("test %s 1234", s));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %p encore un test 1234", p));
-	//printf("\nprintf		%d\n", printf("test %p encore un test 1234", p));
+	//printf("\nft_printf	%d\n", ft_printf("test %p 1234", p));
+	//printf("\nprintf		%d\n", printf("test %p 1234", p));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d	\n", ft_printf("test %d encore un test 1234", d));
-	//printf("\nprintf		%d\n", printf("test %d encore un test 1234", d));
+	//printf("\nft_printf	%d	\n", ft_printf("test %d 1234", d));
+	//printf("\nprintf		%d\n", printf("test %d 1234", d));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d	\n", ft_printf("test %i encore un test 1234", i));
-	//printf("\nprintf		%d\n", printf("test %i encore un test 1234", i));
+	//printf("\nft_printf	%d	\n", ft_printf("test %i 1234", i));
+	//printf("\nprintf		%d\n", printf("test %i 1234", i));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %u encore un test 1234", u));
-	//printf("\nprintf		%d\n", printf("test %u encore un test 1234", u));
+	//printf("\nft_printf	%d\n", ft_printf("test %u 1234", u));
+	//printf("\nprintf		%d\n", printf("test %u 1234", u));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %x encore un test 1234", x));
-	//printf("\nprintf		%d\n", printf("test %x encore un test 1234", x));
+	//printf("\nft_printf	%d\n", ft_printf("test %x 1234", x));
+	//printf("\nprintf		%d\n", printf("test %x 1234", x));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %X encore un test 1234", X));
-	//printf("\nprintf		%d\n", printf("test %X encore un test 1234", X));
+	//printf("\nft_printf	%d\n", ft_printf("test %X 1234", X));
+	//printf("\nprintf		%d\n", printf("test %X 1234", X));
 	//write (1, "\n", 1);
-	//printf("\nft_printf	%d\n", ft_printf("test %% encore un test 1234"));
-	//printf("\nprintf		%d\n", printf("test %% encore un test 1234"));
-	//write (1, "\n", 1);
-	//printf("%d\n", printf(" %d ", -1));
-	//printf("%d\n", ft_printf(" %d ", -1));
-	//write (1, "\n", 1);
-	//printf("%d\n", ft_printf("%s %d", (char *)NULL, 20));
-	//printf("%d\n", printf("%s %d", (char *)NULL, 20));
-	//write (1, "\n", 1);
-	//printf("%d\n", ft_printf("%d\n", -2147483648));
-	//printf("%d\n", printf("%d\n", -2147483648));
-//	printf("%d\n", ft_printf("%X\n", -9));
-//	printf("%d\n", printf("%X\n", -9));	
+	//printf("\nft_printf	%d\n", ft_printf("test %% 1234"));
+	//printf("\nprintf		%d\n", printf("test %% 1234"));
 //}

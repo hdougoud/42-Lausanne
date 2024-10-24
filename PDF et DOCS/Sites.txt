@@ -1,0 +1,1 @@
+Variables statiques, globales, locales :    https://www.codequoi.com/variables-locales-globales-statiques-en-c/
