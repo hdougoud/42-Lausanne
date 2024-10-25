@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:57:02 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/10/24 19:12:08 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/25 12:14:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ static int	ft_strlen(char *s, int readed)
 	int	i;
 
 	i = 0;
-	while (i < readed && s[i] != '\n')
+	while (i < readed)
+	{
 		i++;
-	if (s[i] == '\n')
-		i++;
+		if (s[i] == '\n')
+			return (i);
+	}
 	return (i);
 }
 
@@ -35,7 +37,7 @@ char	*get_next_line(int fd)
 
 
 	i = 0;
-	while (i <= 0 && buff[i] != '\n')
+	while (buff[i] != '\n')
 	{
 		buffi = 0;
 		readed = read(fd, buff, BUFFER_SIZE);

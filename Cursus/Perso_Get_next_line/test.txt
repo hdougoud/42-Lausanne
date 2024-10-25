@@ -1,3 +1,4 @@
+123456
 42 c'est la réponse à tout !
 Mais est-ce que ça marche pour compiler ?
 Attends... Ah non, il manque un `;`...
