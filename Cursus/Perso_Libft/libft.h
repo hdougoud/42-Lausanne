@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_sorted.h                                     :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:27:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/22 20:18:07 by lausanne42       ###   ########.fr       */
+/*   Updated: 2024/10/25 11:51:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ int		ft_atoi(const char *str);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void	ft_bzero(void *s, size_t n);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
@@ -45,6 +38,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	**ft_split(char const *s, char c);
+
+void	ft_bzero(void *s, size_t n);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
