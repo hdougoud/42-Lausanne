@@ -6,11 +6,51 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/25 11:47:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/25 23:08:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_putchar_pf(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+static int	ft_putstr_pf(char *s)
+{
+	int	i;
+	int	value;
+
+	i = 0;
+	value = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (s[i])
+	{
+		value += ft_putchar_pf(s[i]);
+		i++;
+	}
+	return (value);
+}
+static int	ft_print_pointer(void *p, int *value)
+{
+	int				mod;
+	static char		*dict;
+	unsigned long	adr;
+
+	adr = (unsigned long) p;
+	dict = "0123456789abcdef";
+	if (adr >= 16)
+		ft_print_pointer((void *)(adr / 16), value);
+	mod = adr % 16;
+	(*value) += ft_putchar_pf(dict[mod]);
+	return ((*value));
+}
 
 static int	check_args(const char *format, va_list list, int return_val, int i)
 {
