@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_pf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:46:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/25 11:26:45 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/10/27 17:03:51 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/27 17:03:51 by hdougoud         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	ft_putchar_pf(char c, int value)
 {
 	if (write(1, &c, 1) == - 1)
 		return (-1);
-	else
-		return (++value);
+	return (++value);
 }
 
 int	ft_putstr_pf(char *s, int value)
@@ -29,16 +28,14 @@ int	ft_putstr_pf(char *s, int value)
 	{
 		if (write(1, "(null)", 6) == -1)
 			return (-1);
-		else
-			return (value + 6);
+		return (value + 6);
 	}
 	while (s[i])
 	{
 		if (ft_putchar_pf(s[i], value) == -1)
 			return (-1);
-		else
-			value++;
-			i++;
+		value++;
+		i++;
 	}
 	return (value);
 }
@@ -56,7 +53,6 @@ int	ft_print_pointer(void *p, int *value)
 	mod = adr % 16;
 	if (ft_putchar_pf(dict[mod], (*value)) == -1)
 		return (-1);
-	else 
-		(*value)++;
+	(*value)++;
 	return ((*value));
 }

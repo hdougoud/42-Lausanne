@@ -1,5 +1,2 @@
 - Variables statiques, globales, locales	: https://www.codequoi.com/variables-locales-globales-statiques-en-c/
-
 - Écriture en hexadécimales			: https://www.binarydecode.com/fr/decimal-to-hexadecimal-conversion
-
--
