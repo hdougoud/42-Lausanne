@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:47:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/25 11:35:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/27 22:00:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_int_putnbr_pf(int n, int *value)
 	}
 	if (n > 9)
 		ft_int_putnbr_pf(n / 10, value);
-	if (ft_putchar_pf(n % 10 + '0', (*value)) == -1)
+	if (ft_putchar_pf(n % 10 + '0', value) == -1)
 		return ((*value) = -1);
 	else 
 		(*value)++;
@@ -37,7 +37,7 @@ int	ft_unsigned_putnbr_pf(unsigned int n, int *value)
 {
 	if (n > 9)
 		ft_unsigned_putnbr_pf(n / 10, value);
-	if (ft_putchar_pf(n % 10 + '0', (*value)) == -1)
+	if (ft_putchar_pf(n % 10 + '0', value) == -1)
 		return ((*value) = -1);
 	else 
 		(*value)++;
@@ -55,7 +55,7 @@ int	ft_hexlow_putnbr_pf(int n, int *value)
 	if (un >= 16)
 		ft_hexlow_putnbr_pf(un / 16, value);
 	mod = un % 16;
-	if (ft_putchar_pf(dict[mod], (*value)) == -1)
+	if (ft_putchar_pf(dict[mod], value) == -1)
 		return ((*value) = -1);
 	else 
 		(*value)++;
@@ -73,7 +73,7 @@ int	ft_hexup_putnbr_pf(int n, int *value)
 	if (un >= 16)
 		ft_hexup_putnbr_pf(un / 16, value);
 	mod = un % 16;
-	if (ft_putchar_pf(dict[mod], (*value)) == -1)
+	if (ft_putchar_pf(dict[mod], value) == -1)
 		return ((*value) = -1);
 	else 
 		(*value)++;

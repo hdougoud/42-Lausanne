@@ -10,42 +10,68 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int putnbr(int nb, int *value)
+int putnbr_pf(int nb, int *value)
 {
 	if (nb == -2147483648)
 	{
-		(*value) = ft_putstr_pf("-2147483648");
-		if ((*value) == -1);
+		(*value) = putstr_pf("-2147483648", (*value));
+		if ((*value) == -1)
 			return (-1);
 		return ((*value));
 	}
-	else if (nb < 0)
+	if (nb < 0)
 	{
 		nb = -nb;
-		(*value) = ft_putchar_pf('-');
+		(*value) = putchar_pf('-', (*value));
 		if ((*value == -1))
 			return (-1);
 	}
-	else if (nb > 9)
-	{
-		ft_int_putnbr_pf(nb / 10, value);
-		(*value) = ft_putchar_pf(nb % 10 + '0');
-		if ((*value) == -1)
-			return (-1);
-		return ((*value) + 1);
-	}
+	if (nb > 9)
+		putnbr_pf(nb / 10, value);
+	(*value) = putchar_pf(nb % 10 + '0', (*value));
+	if ((*value) == -1)
+		return (-1);
+	return ((*value));
 }
 
-int unsigned_putnbr(unsigned int nb, int *value)
+int unsigned_putnbr_pf(unsigned int nb, int *value)
 {
 	if (nb > 9)
-	{
-		ft_int_putnbr_pf(nb / 10, value);
-		(*value) = ft_putchar_pf(nb % 10 + '0');
+		unsigned_putnbr_pf(nb / 10, value);
+	(*value) = putchar_pf(nb % 10 + '0', (*value));
+	if ((*value) == -1)
+		return (-1);
+	return ((*value));
+}
+
+int	hexlow_pf(unsigned long un, int *value)
+{
+	int				mod;
+	static char		*dict;
+
+	dict = "0123456789abcdef";
+	if (un >= 16)
+		hexlow_pf(un / 16, value);
+	mod = un % 16;
+	(*value) = putchar_pf(dict[mod], (*value));
 		if ((*value) == -1)
 			return (-1);
-		return ((*value) + 1);
-	}
+	return (*value);
+}
+
+int	hexup_pf(unsigned long un, int *value)
+{
+	int				mod;
+	static char		*dict;
+
+	dict = "0123456789ABCDEF";
+	if (un >= 16)
+		hexlow_pf(un / 16, value);
+	mod = un % 16;
+	(*value) = putchar_pf(dict[mod], (*value));
+	if ((*value) == -1)
+		return (-1);
+	return (*value);
 }
