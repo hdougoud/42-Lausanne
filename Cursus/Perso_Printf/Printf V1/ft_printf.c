@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:52:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/26 01:00:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/28 14:25:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,51 +99,51 @@ int	ft_printf(const char *format, ...)
 	return (return_value);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	char			c = 'c';
-	char			*s = "Hello World";
-	void			*p = "void"; 
-	int				i = -124564514;
-	int				d = 1554416;
-	unsigned int	u = 123456789;
-	int				x = 562145;
-	int				X = 1541610;
+// int main(void)
+// {
+// 	char			c = 'c';
+// 	char			*s = "Hello World";
+// 	void			*p = "void"; 
+// 	int				i = -124564514;
+// 	int				d = 1554416;
+// 	unsigned int	u = 123456789;
+// 	int				x = 562145;
+// 	int				X = 1541610;
 	
-	printf("\nft_printf	%d\n", ft_printf("test sans format"));
-	printf("\nprintf		%d\n", printf("test sans format"));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %c 1234", c));
-	printf("\nprintf		%d\n", printf("test %c 1234", c));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %s 1234", s));
-	printf("\nprintf		%d\n", printf("test %s 1234", s));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %p 1234", p));
-	printf("\nprintf		%d\n", printf("test %p 1234", p));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d	\n", ft_printf("test %d 1234", d));
-	printf("\nprintf		%d\n", printf("test %d 1234", d));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d	\n", ft_printf("test %i 1234", i));
-	printf("\nprintf		%d\n", printf("test %i 1234", i));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %u 1234", u));
-	printf("\nprintf		%d\n", printf("test %u 1234", u));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %x 1234", x));
-	printf("\nprintf		%d\n", printf("test %x 1234", x));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %X 1234", X));
-	printf("\nprintf		%d\n", printf("test %X 1234", X));
-	write (1, "\n", 1);
-	printf("\nft_printf	%d\n", ft_printf("test %% 1234"));
-	printf("\nprintf		%d\n", printf("test %% 1234"));
-	printf("Standard printf: Empty string: %s\n", "");
-	ft_printf("Custom  ft_printf: Empty string: %s\n", "");
-	write (1, "\n", 1);
-	printf("Standard printf: NULL pointer: %p\n", NULL);
-	ft_printf("Custom  ft_printf: NULL pointer: %p\n", NULL);
-}
+// 	printf("\nft_printf	%d\n", ft_printf("test sans format"));
+// 	printf("\nprintf		%d\n", printf("test sans format"));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %c 1234", c));
+// 	printf("\nprintf		%d\n", printf("test %c 1234", c));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %s 1234", s));
+// 	printf("\nprintf		%d\n", printf("test %s 1234", s));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %p 1234", p));
+// 	printf("\nprintf		%d\n", printf("test %p 1234", p));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d	\n", ft_printf("test %d 1234", d));
+// 	printf("\nprintf		%d\n", printf("test %d 1234", d));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d	\n", ft_printf("test %i 1234", i));
+// 	printf("\nprintf		%d\n", printf("test %i 1234", i));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %u 1234", u));
+// 	printf("\nprintf		%d\n", printf("test %u 1234", u));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %x 1234", x));
+// 	printf("\nprintf		%d\n", printf("test %x 1234", x));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %X 1234", X));
+// 	printf("\nprintf		%d\n", printf("test %X 1234", X));
+// 	write (1, "\n", 1);
+// 	printf("\nft_printf	%d\n", ft_printf("test %% 1234"));
+// 	printf("\nprintf		%d\n", printf("test %% 1234"));
+// 	printf("Standard printf: Empty string: %s\n", "");
+// 	ft_printf("Custom  ft_printf: Empty string: %s\n", "");
+// 	write (1, "\n", 1);
+// 	printf("Standard printf: NULL pointer: %p\n", NULL);
+// 	ft_printf("Custom  ft_printf: NULL pointer: %p\n", NULL);
+// }

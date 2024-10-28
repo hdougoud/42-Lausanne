@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lausanne42 <lausanne42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:56:52 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/10/24 12:56:52 by lausanne42       ###   ########.fr       */
+/*   Created: 2024/10/28 14:43:19 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/28 14:57:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
