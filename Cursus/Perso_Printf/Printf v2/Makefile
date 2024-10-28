@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 18:26:38 by hdougoud          #+#    #+#              #
-#    Updated: 2024/10/27 22:00:18 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/10/28 14:17:54 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ all : $(NAME)
 
 $(NAME) : $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
 	
 clean :
 	rm -rf $(OBJECTS)

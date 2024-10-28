@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>           +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 18:12:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/27 18:12:32 by hdougoud         ###   ########.ch       */
+/*   Created: 2024/10/28 14:08:50 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/10/28 14:13:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int putnbr_pf(int nb, int *value)
+int	putnbr_pf(int nb, int *value)
 {
 	if (nb == -2147483648)
 	{
@@ -25,53 +25,73 @@ int putnbr_pf(int nb, int *value)
 	{
 		nb = -nb;
 		(*value) = putchar_pf('-', (*value));
-		if ((*value == -1))
+		if ((*value) == -1)
 			return (-1);
 	}
 	if (nb > 9)
-		putnbr_pf(nb / 10, value);
+	{
+		if (putnbr_pf(nb / 10, value) == -1)
+			return (-1);
+	}
 	(*value) = putchar_pf(nb % 10 + '0', (*value));
 	if ((*value) == -1)
 		return (-1);
 	return ((*value));
 }
 
-int unsigned_putnbr_pf(unsigned int nb, int *value)
+int	unsigned_putnbr_pf(unsigned int nb, int *value)
 {
 	if (nb > 9)
-		unsigned_putnbr_pf(nb / 10, value);
+	{
+		if (unsigned_putnbr_pf(nb / 10, value) == -1)
+			return (-1);
+	}
 	(*value) = putchar_pf(nb % 10 + '0', (*value));
-	if ((*value) == -1)
+	if (*value == -1)
 		return (-1);
 	return ((*value));
 }
 
-int	hexlow_pf(unsigned long un, int *value)
+int	print_hex_pf(unsigned int un, int *value, char param)
 {
 	int				mod;
-	static char		*dict;
+	const char		*dict1;
+	const char		*dict2;
+
+	dict1 = "0123456789abcdef";
+	dict2 = "0123456789ABCDEF";
+	if (un >= 16)
+	{
+		if (print_hex_pf(un / 16, value, param) == -1)
+			return (-1);
+	}
+	mod = un % 16;
+	if (param == 'x')
+	{
+		(*value) = putchar_pf(dict1[mod], (*value));
+		if ((*value) == -1)
+			return (-1);
+	}
+	else
+	{
+		(*value) = putchar_pf(dict2[mod], (*value));
+		if ((*value) == -1)
+			return (-1);
+	}
+	return (*value);
+}
+
+int	write_pointer_pf(unsigned long un, int *value)
+{
+	int				mod;
+	const char		*dict;
 
 	dict = "0123456789abcdef";
 	if (un >= 16)
-		hexlow_pf(un / 16, value);
-	mod = un % 16;
-	(*value) = putchar_pf(dict[mod], (*value));
-		if ((*value) == -1)
-			return (-1);
-	return (*value);
-}
-
-int	hexup_pf(unsigned long un, int *value)
-{
-	int				mod;
-	static char		*dict;
-
-	dict = "0123456789ABCDEF";
-	if (un >= 16)
-		hexlow_pf(un / 16, value);
+		write_pointer_pf(un / 16, value);
 	mod = un % 16;
 	(*value) = putchar_pf(dict[mod], (*value));
 	if ((*value) == -1)
 		return (-1);
-	return (*value);
+	return ((*value));
 }
