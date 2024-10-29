@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/29 12:44:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:13:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 char *get_next_line(int fd)
 {
-	t_line *new;
+	t_line *current_line;
 	static char buff[BUFFER_SIZE];
 	
-	new = malloc(sizeof(t_line));
-	if (!new)
+	current_line = malloc(sizeof(t_line));
+	if (!current_line)
 		return (NULL);
 	read(fd, buff, BUFFER_SIZE);
-	new->content = buff;
-	new->next = NULL;
-	return (new->content);
+	current_line->content = buff;
+	current_line->next = NULL;
+	while()
+	current_line = current->line 
+	return (current_line->content);
 }
 
 #include <fcntl.h>
