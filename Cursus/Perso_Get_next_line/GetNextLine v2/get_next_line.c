@@ -6,15 +6,24 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/28 14:58:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:44:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void get_next_line(fd)
+char *get_next_line(int fd)
 {
+	t_line *new;
+	static char buff[BUFFER_SIZE];
 	
+	new = malloc(sizeof(t_line));
+	if (!new)
+		return (NULL);
+	read(fd, buff, BUFFER_SIZE);
+	new->content = buff;
+	new->next = NULL;
+	return (new->content);
 }
 
 #include <fcntl.h>

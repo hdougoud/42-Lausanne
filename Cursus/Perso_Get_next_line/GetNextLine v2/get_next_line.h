@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/28 14:56:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:52:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 
 #include <stdio.h>
 
+
 char	*get_next_line(int fd);
+
+typedef struct s_line
+{
+	char *content;
+	struct s_line *next;
+}	t_line;
 
 #endif
