@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/28 14:18:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:29:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ int	ft_printf(const char *format, ...)
 		{
 			return_value = putchar_pf(format[i++], return_value);
 			if (return_value == -1)
-				return (-1);
+				break;
 		}
 		else
 		{
 			return_value = check_args(format, list, return_value, ++i);
 			if (return_value == -1)
-				return (-1);
+				break;
 			i++;
 		}
 	}

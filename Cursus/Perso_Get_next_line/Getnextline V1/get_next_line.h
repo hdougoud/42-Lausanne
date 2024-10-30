@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:57:04 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/10/28 15:02:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:02:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-
-tppe
 
 #include <stdio.h>
 
