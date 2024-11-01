@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/31 23:33:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:27:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void *add_back(char *buff, t_line **current_line)
 	t_line *last_node;
 	t_line *new_node;
 
-	last_node = *current_line;
+	last_node = *current_line; // double
 
 	new_node = malloc(sizeof(t_line));
 	if (new_node == NULL)
@@ -27,7 +27,7 @@ void *add_back(char *buff, t_line **current_line)
 		
 	if (*current_line == NULL)
 	{
-		*current_line = new_node; //ajouter un premier maillon
+		*current_line = new_node;
 		return (0);
 	}
 	
@@ -38,21 +38,75 @@ void *add_back(char *buff, t_line **current_line)
 	return (0);
 }
 
-char *get_next_line(int fd)
+int read_file(int fd, t_line **current_line, char *buff)
 {
-	static char buff[BUFFER_SIZE];
-	t_line *current_line;
+	int		r;
+	int		i;
+	int		new_line;
+	char	*temp;
+	
+	r = 1;
+	new_line = 0;
+	while (r != 0 && buff[i] != '\n')
+	{
+		temp = malloc(sizeof(char) * BUFFER_SIZE);
+		i = 0;
+		r = read(fd, buff, BUFFER_SIZE);
+		while (i < BUFFER_SIZE && buff[i] != '\n')
+		{
+			temp[i] = buff[i];
+			i++;
+		}
+		add_back(temp, current_line);
+	}
+	return (r);
+}
+
+char *combine_node(t_line **current_line)
+{
+	int		i;
+	int		j;
+	int		count_line;
+	t_line	*count_list;
+	t_line	*add_node;
+	char	*combined_line;
+
+	count_line = 0;
+	count_list = *current_line;
+	add_node = *current_line;
+	while (count_list != NULL)
+	{
+		i = 0;
+		while(i < BUFFER_SIZE && count_list->content[i++] != '\n')
+			count_line++;
+		count_list = count_list->next;
+	}
+	combined_line = malloc(sizeof(char) * (count_line + 1));
+	j = 0;
+	while (add_node != NULL)
+	{
+		i = 0;
+		while(i < BUFFER_SIZE && add_node->content[i] != '\n')
+		{
+			combined_line[j] = add_node->content[i];
+			i++;
+			j++;
+		}
+		add_node = add_node->next;
+	}
+	combined_line[j] = '\0';
+	return (combined_line);
+}
+
+char *get_next_line(int fd)
+{	
+	static char	buff[BUFFER_SIZE];
+	t_line		*current_line;
+	char		*temp;
 
 	current_line = NULL;
-	add_back("hello", &current_line);
-	add_back("world", &current_line);
-	add_back("how", &current_line);
-	while (current_line != NULL)
-	{
-		printf("%s\n", current_line->content);
-		current_line = current_line->next;
-	}
-	return ("test");
+	read_file(fd, &current_line, buff);
+	return (combine_node(&current_line));
 }
 
 #include <fcntl.h>
@@ -60,7 +114,10 @@ char *get_next_line(int fd)
 int main(void)
 {
 	int fd;
-	
+	int	i;
+
+	i = 0;
+
 	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
 	{
@@ -68,6 +125,13 @@ int main(void)
 		return 1;
 	}
 	else
-		printf("%s\n", get_next_line(fd));
+	{
+		while (i <= 2)
+		{
+			printf("Open sucessfull\n");
+			printf("%s\n", get_next_line(fd));
+			i++;
+		}
+	}
 	return (0);
 }

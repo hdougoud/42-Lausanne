@@ -6,30 +6,28 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/30 17:02:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:14:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
-#endif  
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif  
 
-#include <stdlib.h>
-#include <unistd.h>
-
+# include <stdlib.h>
+# include <unistd.h>
 
 #include <stdio.h>
-
 
 char	*get_next_line(int fd);
 
 typedef struct s_line
 {
-	char *content;
-	struct s_line *next;
+	char			*content;
+	struct s_line	*next;
 }	t_line;
 
 #endif
