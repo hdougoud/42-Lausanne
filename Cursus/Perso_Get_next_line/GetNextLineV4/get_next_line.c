@@ -6,35 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/01 15:27:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:15:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void *add_back(char *buff, t_line **current_line)
+void *recover_last_line(char *buff)
 {
-	t_line *last_node;
-	t_line *new_node;
+	int		i;
+	char	*temp;
 
-	last_node = *current_line; // double
-
-	new_node = malloc(sizeof(t_line));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->content = buff;
-    new_node->next = NULL;
-		
-	if (*current_line == NULL)
+	i = 0;
+	temp = malloc(sizeof(char) * BUFFER_SIZE); //add strlen
+	while (i < BUFFER_SIZE && buff[i] != '\n')
 	{
-		*current_line = new_node;
-		return (0);
+		temp[i] = buff[i];
+		i++;
 	}
-	
-	last_node = *current_line;
-	while (last_node->next != NULL)
-		last_node = last_node->next;
-	last_node->next = new_node;
+	printf("test recover last line %s\n", temp);
 	return (0);
 }
 
@@ -47,9 +37,11 @@ int read_file(int fd, t_line **current_line, char *buff)
 	
 	r = 1;
 	new_line = 0;
+	if (buff != NULL)
+		add_back(recover_last_line(buff);
 	while (r != 0 && buff[i] != '\n')
 	{
-		temp = malloc(sizeof(char) * BUFFER_SIZE);
+		temp = malloc(sizeof(char) * BUFFER_SIZE); //add strlen
 		i = 0;
 		r = read(fd, buff, BUFFER_SIZE);
 		while (i < BUFFER_SIZE && buff[i] != '\n')
@@ -62,50 +54,15 @@ int read_file(int fd, t_line **current_line, char *buff)
 	return (r);
 }
 
-char *combine_node(t_line **current_line)
-{
-	int		i;
-	int		j;
-	int		count_line;
-	t_line	*count_list;
-	t_line	*add_node;
-	char	*combined_line;
-
-	count_line = 0;
-	count_list = *current_line;
-	add_node = *current_line;
-	while (count_list != NULL)
-	{
-		i = 0;
-		while(i < BUFFER_SIZE && count_list->content[i++] != '\n')
-			count_line++;
-		count_list = count_list->next;
-	}
-	combined_line = malloc(sizeof(char) * (count_line + 1));
-	j = 0;
-	while (add_node != NULL)
-	{
-		i = 0;
-		while(i < BUFFER_SIZE && add_node->content[i] != '\n')
-		{
-			combined_line[j] = add_node->content[i];
-			i++;
-			j++;
-		}
-		add_node = add_node->next;
-	}
-	combined_line[j] = '\0';
-	return (combined_line);
-}
-
 char *get_next_line(int fd)
-{	
+{
 	static char	buff[BUFFER_SIZE];
 	t_line		*current_line;
 	char		*temp;
 
 	current_line = NULL;
-	read_file(fd, &current_line, buff);
+	if (read_file(fd, &current_line, buff) == -1)
+		return (NULL);
 	return (combine_node(&current_line));
 }
 
@@ -126,10 +83,10 @@ int main(void)
 	}
 	else
 	{
+		printf("Open sucessfull\n");
 		while (i <= 2)
 		{
-			printf("Open sucessfull\n");
-			printf("%s\n", get_next_line(fd));
+			printf("GNL result %s\n", get_next_line(fd));
 			i++;
 		}
 	}
