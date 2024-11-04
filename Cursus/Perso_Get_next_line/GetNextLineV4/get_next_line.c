@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:43:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/04 13:04:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:23:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,15 @@ char *combine_node(t_line **current_line)
 	count_line = 0;
 	count_list = *current_line;
 	add_node = *current_line;
-	while (count_list != NULL)
+	while (count_list)
 	{
 		i = 0;
 		while(i < BUFFER_SIZE && count_list->content[i++] != '\n')
 			count_line++;
-		count_list = count_list->next;
 	}
 	combined_line = malloc(sizeof(char) * (count_line + 1));
+	if (!combined_line)
+		return (NULL);
 	j = 0;
 	while (add_node != NULL)
 	{
@@ -102,28 +103,22 @@ int read_file(int fd, t_line **current_line, char *buff)
 {
 	int		r;
 	int		i;
-	int		new_line;
 	char	*temp;
 	
 	r = 1;
-	new_line = 0;
-	// if ((*buff) != 0)
-	// {
-	// 	i = 0;
-	// 	while (buff[i] != '\n')
-	// 		i++;
-	// 	temp = malloc(sizeof(char) * BUFFER_SIZE);
-	// 	while (i < BUFFER_SIZE && buff[++i] != '\n')
-	// 		temp[i] = buff[i];
-	// 	add_back(temp, current_line);
-	// }	
-	while (r != 0 && buff[i] != '\n')
+	while (r > 0)
 	{
-		temp = malloc(sizeof(char) * BUFFER_SIZE); //add strlen
+		temp = malloc(sizeof(char) * (BUFFER_SIZE + 1)); //add strlen
 		i = -1;
 		r = read(fd, buff, BUFFER_SIZE);
-		while (i < BUFFER_SIZE && buff[++i] != '\n')
+		if (r <= 0)
+			break;
+		while (i < r && buff[++i] != '\n')
 			temp[i] = buff[i];
+		if (buff[i] == '\n')
+			i++;
+		i++;
+		temp[i] = '\0';
 		add_back(temp, current_line);
 	}
 	return (r);
