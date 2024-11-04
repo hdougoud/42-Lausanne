@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:57:02 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/11/04 16:28:19 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/11/04 17:53:23 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/11/04 17:53:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+//char *combine_buffer(char *str)
+//{
+//
+//}
 
 int	new_line_len(char *buff)
 {
@@ -35,10 +40,21 @@ char	*get_next_line(int fd)
 	while(buff[i] != '\n')
 	{
 		byte_read = read(fd, buff, BUFFER_SIZE);
+			printf("%s", buff);
 		if (byte_read <= 0)
 			break;
 		temp = malloc(sizeof(char) * (new_line_len(buff)+ 1));
+		if (!temp)
+			return (NULL);
+		while (buff[i] != '\n' && i < BUFFER_SIZE)
+		{
+			temp[i] = buff[i];
+			i++;
+		}
+		if (buff[i] == '\n')
+			break;
 	}
+	return ("test");
 }
 
 #include <fcntl.h>
