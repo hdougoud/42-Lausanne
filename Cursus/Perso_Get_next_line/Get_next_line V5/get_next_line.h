@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:57:04 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/11/05 13:19:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:45:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 #include <stdio.h>
 
 char	*get_next_line(int fd);
+char	*add_back_buffer(char *line, char *buff, int buff_len);
+int		ft_strlen(char *str);
 
 #endif
