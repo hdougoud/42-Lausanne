@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/06 21:07:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/06 23:09:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ char	*ft_strjoin(char *line, char *buff)
 	return (combined_line);
 }
 
-char *get_line(int fd, char *buff, char *combined_line)
+char	*get_line(int fd, char *buff, char *combined_line)
 {
 	int		i;
 	int		byte_read;
@@ -77,7 +77,18 @@ char *get_line(int fd, char *buff, char *combined_line)
 	return (combined_line);
 }
 
-char *get_next_line(int fd)
+char	*restore_buffer(char *buff, char *combined_line)
+{
+	int	i;
+	
+	i = 0;
+	
+			//check la gestzion de muliple \n
+			//check cas ou buffer n'as pas de \n
+			//check cas ou l'ancien buffer c'est arreter pile au \n
+}
+
+char	*get_next_line(int fd)
 {
 	static char	buff[BUFFER_SIZE + 1];
 	char		*combined_line;
@@ -85,8 +96,8 @@ char *get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	combined_line = NULL;
-	//if (buff[0] == '\0')
-	//rest buffer
+	if (buff[0] == '\0')
+		combined_line = restore_buffer(buff, combined_line);
 	combined_line = get_line(fd, buff, combined_line);
 	return (combined_line);
 }
