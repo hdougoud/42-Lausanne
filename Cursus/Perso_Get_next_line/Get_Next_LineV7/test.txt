@@ -1,0 +1,13 @@
+12345
+56789
+10101
+
+123
+123
+456
+
+
+456
+Ceci est un fichier de
+test afin de vérifier
+si GNL fonctionne bien !

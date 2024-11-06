@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:57:02 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/11/06 15:14:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:40:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,30 @@ char *recover_last_buff(char *buff, char *new_buff)
 
 	i = 0;
 	j = 0;
-	while (buff[i] != '\n')
+	while (i < BUFFER_SIZE && buff[i] != '\n')
 		i++;
-	i++;
+	if (buff[i] == '\n')
+		i++;
 	new_buff = malloc(sizeof(char) * (BUFFER_SIZE - i + 1));
 	if (new_buff == NULL)
 		return (NULL);
-	while (buff[i] != '\0')
+	new_buff[j++] = buff[i++];
+	while (buff[i] != '\0' && buff[i] != '\n')
 	{
-		new_buff[j] = buff[i];
-		i++;
-		j++;
+		new_buff[j++] = buff[i++];
 	}
 	new_buff[j] = '\0';
 	return (new_buff);
+}
+
+int	check_newline(char *buff, int byte_read)
+{
+	int	i;
+
+	i = 0;
+	while (i < byte_read && buff[i] != '\n')
+		i++;
+	return (i);
 }
 
 char	*get_next_line(int fd)
@@ -90,10 +100,15 @@ char	*get_next_line(int fd)
 		if (byte_read == 0)
 			return (combined_line);
 		buff[byte_read] = '\0';
-		temp = malloc(sizeof(char) * (byte_read+ 1));
+		temp = malloc(sizeof(char) * (check_newline(buff, byte_read + 2)));
 		if (temp == NULL)
 			return (NULL);
 		while (buff[i] != '\n' && buff[i] != '\0')
+		{
+			temp[i] = buff[i];
+			i++;
+		}
+		if (buff[i] == '\n')
 		{
 			temp[i] = buff[i];
 			i++;
@@ -103,6 +118,7 @@ char	*get_next_line(int fd)
 		if (buff[i] == '\n')
 			break ;
 	}
+	//buff = combined_line;
 	return (combined_line);
 }
 
@@ -118,9 +134,9 @@ int main(void)
 		if (fd1 == -1)
 			printf("Open failed");
 		else
-		while (i < 5)
+		while (i < 10)
 		{
-			printf("GNL result %s\n", get_next_line(fd1));
+			printf("GNL result %s", get_next_line(fd1));
 			i++;
 		}
 	close(fd1);
