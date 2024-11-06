@@ -1,0 +1,3 @@
+Ceci est un fichier de
+test afin de vérifier
+si GNL fonctionne bien !
