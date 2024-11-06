@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:57:04 by lausanne42        #+#    #+#             */
-/*   Updated: 2024/11/05 15:45:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:59:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 1024
 # endif  
 
 # include <stdlib.h>
