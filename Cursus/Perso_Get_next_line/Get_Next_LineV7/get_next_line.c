@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/06 23:09:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:15:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,64 +42,120 @@ char	*ft_strjoin(char *line, char *buff)
 			combined_line[i] = line[i];
 			i++;
 		}
-		//free line ?
+		free (line);
 	}
-	while (buff[i])
+	while (buff[j])
 		combined_line[i++] = buff[j++];
 	combined_line[i] = '\0';
 	return (combined_line);
+}
+
+char	*restore_buffer(char *buff, char *combined_line)
+{
+    int	i;
+    
+    i = 0;
+    combined_line = malloc(sizeof(char) * (ft_strlen(buff) + 1));
+    if (!combined_line)
+        return (NULL);
+    while(buff[i] != '\0' && buff[i] != '\n')
+    {
+        combined_line[i] = buff[i];
+        i++;
+    }
+    if (buff[i] == '\n')
+        i++;
+    combined_line[i] = '\0';
+    return (combined_line);
+}
+
+void	trim_buffer(char *buff)
+{
+	char	*newbuff;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (buff[i] != '\n' && buff[i] != '\0')
+		i++;
+	if (buff[i] == '\n')
+		i++;
+	while (buff[i] != '\0')
+			buff[j++] = buff[i++];
+	buff[j] = '\0';
+}
+
+char *buff_copy(char *buff, char *back_buff)
+{
+	int i;
+
+	i = 0;
+	back_buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!back_buff)
+		return (NULL);
+	while (buff[i])
+	{
+		back_buff[i] = buff[i];
+		i++;
+	}
+	back_buff[i] = '\0';
+	return (back_buff);
 }
 
 char	*get_line(int fd, char *buff, char *combined_line)
 {
 	int		i;
 	int		byte_read;
-	char	*temp;
+	char	*back_buff;
+	
 	while (1)
 	{
 		i = 0;
 		byte_read = read(fd, buff, BUFFER_SIZE);
 		if (byte_read <= 0)
-			return (NULL);
+			return (combined_line);
 		buff[byte_read] = '\0';
-		while (buff[i])
+		back_buff = buff_copy(buff, back_buff);
+		while (back_buff[i])
 		{
-			if (buff[i] == '\n')
+			if (back_buff[i] == '\n')
 			{
-				buff[i + 1] = '\0';
-				combined_line = ft_strjoin(combined_line, buff);
-				return (combined_line);
+				back_buff[i + 1] = '\0';
+				combined_line = ft_strjoin(combined_line, back_buff);
+				return (free(back_buff), combined_line);
 			}
 			i++;
 		}
-		combined_line = ft_strjoin(combined_line, buff);
+		combined_line = ft_strjoin(combined_line, back_buff);
 	}
-	return (combined_line);
-}
-
-char	*restore_buffer(char *buff, char *combined_line)
-{
-	int	i;
-	
-	i = 0;
-	
-			//check la gestzion de muliple \n
-			//check cas ou buffer n'as pas de \n
-			//check cas ou l'ancien buffer c'est arreter pile au \n
+	return (free(back_buff), combined_line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buff[BUFFER_SIZE + 1];
-	char		*combined_line;
-
-	if (fd < 0 || BUFFER_SIZE < 0)
-		return (NULL);
-	combined_line = NULL;
-	if (buff[0] == '\0')
-		combined_line = restore_buffer(buff, combined_line);
-	combined_line = get_line(fd, buff, combined_line);
-	return (combined_line);
+    static char	buff[BUFFER_SIZE + 1];
+    char		*combined_line;
+    int 		i;
+    
+    i = 0;
+    if (fd < 0 || BUFFER_SIZE <= 0)
+        return (NULL);
+    combined_line = NULL;
+    if (buff[0] != '\0')
+        combined_line = restore_buffer(buff, combined_line);
+    while(buff[i])
+    {
+        if (buff[i] == '\n')
+        {
+            trim_buffer(buff);
+            return (combined_line);
+        }
+        i++;
+    }
+    combined_line = get_line(fd, buff, combined_line);
+    trim_buffer(buff);
+    return (combined_line);
 }
 
 #include <fcntl.h>
