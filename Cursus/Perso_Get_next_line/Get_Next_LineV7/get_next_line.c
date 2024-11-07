@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/07 13:15:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:28:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjoin(char *line, char *buff)
 			combined_line[i] = line[i];
 			i++;
 		}
-		free (line);
+		free (line);git
 	}
 	while (buff[j])
 		combined_line[i++] = buff[j++];
