@@ -6,14 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/10 22:14:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/11 00:22:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static char	*stash;
-stash = NULL;
 
 int ft_strlen(char *str)
 {
@@ -35,6 +32,8 @@ char *combine_line(char *buff, char *line)
 
 	i = 0;
 	new_line = malloc(sizeof(char) * (ft_strlen(buff) + ft_strlen(line) + 1));
+	if (new_line == NULL)
+		return (NULL);
 	if (line != NULL)
 	{
 		while (line[i])
@@ -42,6 +41,7 @@ char *combine_line(char *buff, char *line)
 			new_line[i] = line[i];
 			i++;	
 		}
+		free (line);
 	}
 	j = 0;
 	while (buff[j])
@@ -50,32 +50,34 @@ char *combine_line(char *buff, char *line)
 	return (new_line);
 }
 
-int *ft_strchr(char *str)
+int ft_strchr(char *str, char *old_buff)
 {
-	int i;
-	int n;
+	int			i;
 
 	i = 0;
-	while (str[i])
-	
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }
 
 char *get_next_line(int fd)
 {
+	static char *old_buff; //TODO initialiser old_buff en NULL
 	char		buff[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes_read;
 
+	line = NULL;
 	while (1)
 	{
-		line = NULL;
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
-		printf("%s\n", buff);
 		buff[bytes_read] = '\0';
 		line = combine_line(buff, line);
-		if (ft_strchr(line) == 1)
+		if (ft_strchr(line, old_buff) == 1) //TODO modifier line
 			break ;
 	}
 	return (line);
@@ -95,7 +97,7 @@ int main(void)
 	}    
 	while (i < 1)
 	{
-	    printf("%s\n", get_next_line(fd));
+	    printf("%s", get_next_line(fd));
 		i++;
 	}
 	return (0);
