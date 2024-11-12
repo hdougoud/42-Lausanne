@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/12 12:52:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:31:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
-
 char	*combine_line(char *buff, char *line)
 {
 	int		i;
