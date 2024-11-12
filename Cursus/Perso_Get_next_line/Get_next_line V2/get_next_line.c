@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/11 15:00:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:52:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	*combine_line(char *buff, char *line)
 	i = 0;
 	new_line = malloc(sizeof(char) * (ft_strlen(buff) + ft_strlen(line) + 1));
 	if (new_line == NULL)
+	{
+		free(line);
 		return (NULL);
+	}
 	if (line != NULL)
 	{
 		while (line[i])
@@ -90,26 +93,29 @@ char	*get_back_buff(char *line, char **old_buff, int len)
 	new_buff[j] = '\0';
 	*old_buff = new_buff;
 	line[newline] = '\0';
-	return (free(new_buff), line);
+	return (line);
 }
 
 char *recover_last_buff(char *old_buff)
 {
 	int		i;
 	char	*start;
-
 	if (!old_buff)
 		return (NULL);
 	i = 0;
 	start = malloc(sizeof(char) * (ft_strlen(old_buff) + 1));
 	if (!start)
+	{
+		free(old_buff);
 		return (NULL);
+	}
 	while(old_buff[i])
 	{
 		start[i] = old_buff[i];
 		i++;		
 	}
 	start[i] = '\0';
+	free(old_buff);
 	return (start);
 }
 
@@ -129,14 +135,14 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
-		if (bytes_read == 0)
-		{
-			if(line && *line)
-			{
-				old_buff = NULL;
-				break;
-			}
-			return (NULL);
+		 if (bytes_read == 0)
+		 {
+		 	if(line && *line)
+		 	{
+		 		old_buff = NULL;
+		 		break;
+		 	}
+		 	return (NULL);
 		}
 		buff[bytes_read] = '\0';
 		line = combine_line(buff, line);
@@ -150,22 +156,22 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// #include <fcntl.h>
+#include <fcntl.h>
 
-// int main(void)
-// {
-// 	int i = 0;
-//     int fd = open("test.txt", O_RDONLY);
+int main(void)
+{
+	int i = 0;
+    int fd = open("test.txt", O_RDONLY);
 
-// 	if (fd == -1)
-// 	{
-// 		printf("Open failed\n");
-// 		return (1);
-// 	}    
-// 	while (i < 10)
-// 	{
-// 	    printf("Result %s\n", get_next_line(fd));
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	if (fd == -1)
+	{
+		printf("Open failed\n");
+		return (1);
+	}    
+	while (i < 10)
+	{
+	    printf("Result %s\n", get_next_line(fd));
+		i++;
+	}
+	return (0);
+}
