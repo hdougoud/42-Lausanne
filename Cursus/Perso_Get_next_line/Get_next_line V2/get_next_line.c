@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/13 20:36:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/13 23:28:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,14 +156,8 @@ char	*get_next_line(int fd)
 {
 	static char	*old_buff;
 	char		buff[BUFFER_SIZE + 1];
-	char		*prev_line;
-	char		*line;
+	char		*line; 
 
-	if (prev_line)
-	{
-		free(prev_line);
-		prev_line = NULL;
-	}
 	line = NULL;
 	if (old_buff != NULL)
 	{
@@ -175,7 +169,6 @@ char	*get_next_line(int fd)
 	line = avoir_ligne(fd, line, buff, &old_buff);
 	if (!line)
 		return (NULL);
-	prev_line = line;
 	return (line);
 }
 

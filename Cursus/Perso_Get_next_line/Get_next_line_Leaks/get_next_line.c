@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:40:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/13 15:10:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/13 23:18:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char	*manage_stash(char *line, char **stash)
 		return (line);
 	}
 	new_line++;
-	complete_line =malloc(sizeof(char) * (new_line + 1));
+	complete_line = malloc(sizeof(char) * (new_line + 1));
 	if (!complete_line)
 		return (NULL);
 	i = -1;
@@ -135,8 +135,8 @@ char	*get_next_line(int fd)
 {
 	int			byte_read;
 	char		*line;
-	static char *stash; 
-	
+	static char	*stash; 
+
 	byte_read = 0;
 	line = NULL;
 	if (stash)
