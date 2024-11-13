@@ -116,6 +116,9 @@ char	*get_line(int fd, char *current_line, char **stash)
 	}
 	//if (byte_read > 0)
 		//current_line = manage_stash(current_line, stash);
+		
+		//remplacer manage_stash par une foxntion qui ajoute seulement le buffer au debit se la ligne
+		
 	return (current_line);
 }
 
@@ -126,6 +129,7 @@ char	*get_next_line(int fd)
 	
 	line = NULL;
 	line = get_line(fd, line, &stash);
+	// ajouter fonction recuperer le \n et ajouter a la stash
 	return (line);
 }
 
