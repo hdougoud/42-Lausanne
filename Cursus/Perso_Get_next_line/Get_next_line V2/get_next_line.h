@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:50 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/11 14:37:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:36:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 #  define BUFFER_SIZE 15
 # endif
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
-
-#include <stdio.h>
 
 #endif

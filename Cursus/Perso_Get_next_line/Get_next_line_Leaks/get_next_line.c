@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:40:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/13 00:49:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:10:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = '\0';
+	free(s2);
 	return (str);
 }
 
@@ -62,97 +63,114 @@ int	ft_strrchr(char *str)
 	return (0);
 }
 
-// char	*manage_stash(char *line, char **stash)
-// {
-// 	int	new_line;
-// 	int	i;
 
-// 	i = 0;
-// 	if (*stash)
-// 	{
-// 		line = ft_strjoin(*stash, line);
-// 		//free(*stash);
-// 		if (!line)
-// 			return (NULL);
-// 	}
-// 	while(line[i] && line[i] != '\n')
-// 		i++;
-// 	if (line[i] == '\n')
-// 	{
-// 		i++;
-// 		new_line = i;
-// 		while(line[i])
-// 			i++;
-// 		*stash = malloc(sizeof(char) * (i - new_line) + 1);
-// 		if (!*stash)
-// 			return (NULL);
-// 		i = 0;
-// 		while(line[i])
-// 			(*stash)[i++] = line[new_line++];
-// 		(*stash)[i] = '\0';
-// 	}
-// 	line[new_line] = '\0';	//TODO ajouter la stash au debut si elle existe et 
-// 	return (line);				//modifier celle si en fonction du reste de la ligne
-// }
-
-char	*get_line(int fd, char *current_line, char **stash)
+char	*get_line(int fd, int bytes_read, char *current_line)
 {
-	int			byte_read;
-	char		buff[BUFFER_SIZE + 1];
+	char		*buff;
 	
 	while(1)
 	{
-		byte_read = read(fd, buff, BUFFER_SIZE);
-		if (byte_read == -1)
-			return (NULL);
-		if (byte_read == 0)
-			break;
-		buff[byte_read] = '\0';
+		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (!buff)
+			return (buff);
+		bytes_read = read(fd, buff, BUFFER_SIZE);
+		if (bytes_read == -1)
+			return (free(current_line), NULL);
+		if (bytes_read == 0)
+			break ;
+		buff[bytes_read] = '\0';
 		current_line = ft_strjoin(current_line, buff);
 		if (!current_line)
 			return (NULL);
 		if (ft_strrchr(buff) == 1)
-			break;
+			break ;
 	}
-	//if (byte_read > 0)
-		//current_line = manage_stash(current_line, stash);
-		
-		//remplacer manage_stash par une foxntion qui ajoute seulement le buffer au debit se la ligne
-		
 	return (current_line);
+}
+
+char	*add_stash(char *line, int new_line)
+{
+	char	*new_stash;
+	int		i;
+	
+	i = 0;
+	new_stash = malloc(sizeof(char) * ft_strlen(line) - new_line + 1);
+	if (!new_stash)
+		return (NULL);
+	while(line[new_line])
+		new_stash[i++] = line[new_line++];
+	new_stash[i] = '\0';
+	return (new_stash);
+}
+
+char	*manage_stash(char *line, char **stash)
+{
+	char	*complete_line;
+	int		new_line;
+	int		i;
+	
+	new_line = 0;
+	while (line[new_line] && line[new_line] != '\n')
+		new_line++;
+	if (line[new_line] == '\0')
+	{
+		*stash = NULL;
+		return (line);
+	}
+	new_line++;
+	complete_line =malloc(sizeof(char) * (new_line + 1));
+	if (!complete_line)
+		return (NULL);
+	i = -1;
+	while (++i < new_line)
+		complete_line[i] = line[i];
+	complete_line[i] = '\0';
+	*stash = add_stash(line, new_line);
+	if (!*stash)
+		return (NULL);
+	return (free(line), complete_line);
 }
 
 char	*get_next_line(int fd)
 {
+	int			byte_read;
 	char		*line;
-	static char	*stash;
+	static char *stash; 
 	
+	byte_read = 0;
 	line = NULL;
-	line = get_line(fd, line, &stash);
-	// ajouter fonction recuperer le \n et ajouter a la stash
+	if (stash)
+	line = ft_strjoin(line, stash);
+	line = get_line(fd, byte_read, line);
+	if (!line)
+		return (NULL);
+	line = manage_stash(line, &stash);
 	return (line);
 }
 
-#include <fcntl.h>
+// #include <fcntl.h>
 
-int main(void)
-{
-	int i = 0;
-    int fd = open("test.txt", O_RDONLY);
-	char *line;
+// int main(void)
+// {
+// 	int i = 0;
+//     int fd = open("test.txt", O_RDONLY);
+// 	char *line;
 
-	if (fd == -1)
-	{
-		printf("Open failed\n");
-		return (1);
-	}    
-	while (i < 3)
-	{
-		line =  get_next_line(fd);
-	    printf("%s\n", line);
-		free(line);
-		i++;
-	}
-	close(fd);
-	return (0);
-}
+// 	if (fd == -1)
+// 	{
+// 		printf("Open failed\n");
+// 		return (1);
+// 	}    
+// 	while (i < 15)
+// 	{
+// 		line = get_next_line(fd);
+// 		if (line != NULL)
+// 	    	printf("Result %s", line);
+// 		else 
+// 			printf("Result %s\n", line);
+// 		free(line);
+// 		i++;
+// 	}
+// 	close(fd);
+// 	return (0);
+// }

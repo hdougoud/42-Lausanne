@@ -6,11 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/12 13:31:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:34:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+
 
 int	ft_strlen(char *str)
 {
@@ -23,6 +25,61 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
+
+char	*get_back_buff(char *line, char **old_buff, int len)
+{
+	char	*new_buff;
+	int		i;
+	int		j;
+	int		newline;
+
+	i = 0;
+	while (line[i] != '\n' && i < len)
+		i++;
+	i++;
+	if (line[i] == '\0')
+	{
+		old_buff = NULL;
+		return (line);
+	}
+	j = 0;
+	newline = i;
+	new_buff = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	if (!new_buff)
+		return (NULL);
+	while (line[i])
+		new_buff[j++] = line[i++];
+	new_buff[j] = '\0';
+	*old_buff = new_buff;
+	line[newline] = '\0';
+	return (line);
+}
+
+char	*recover_last_buff(char *old_buff)
+{
+	int		i;
+	char	*start;
+	if (!old_buff)
+		return (NULL);
+	i = 0;
+	start = malloc(sizeof(char) * (ft_strlen(old_buff) + 1));
+	if (!start)
+	{
+		free(old_buff);
+		return (NULL);
+	}
+	while (old_buff[i])
+	{
+		start[i] = old_buff[i];
+		i++;		
+	}
+	start[i] = '\0';
+	free(old_buff);
+	return (start);
+}
+
+
+
 char	*combine_line(char *buff, char *line)
 {
 	int		i;
@@ -54,11 +111,11 @@ char	*combine_line(char *buff, char *line)
 
 int	ft_strchr(char *str)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	if (!str)
-		return(0);
+		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
@@ -66,67 +123,10 @@ int	ft_strchr(char *str)
 	return (0);
 }
 
-char	*get_back_buff(char *line, char **old_buff, int len)
+char	*avoir_ligne(int fd, char *line, char *buff, char **old_buff)
 {
-	char	*new_buff;
-	int		i;
-	int		j;
-	int		newline;
+	int	bytes_read;
 
-	i = 0;
-	while (line[i] != '\n' && i < len)
-		i++;
-	i++;
-	if (line[i] == '\0')
-	{
-		*old_buff = NULL;
-		return (line);
-	}
-	j = 0;
-	newline = i;
-	new_buff = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
-	if (!new_buff)
-		return (NULL);
-	while (line[i])
-		new_buff[j++] = line[i++];
-	new_buff[j] = '\0';
-	*old_buff = new_buff;
-	line[newline] = '\0';
-	return (line);
-}
-
-char *recover_last_buff(char *old_buff)
-{
-	int		i;
-	char	*start;
-	if (!old_buff)
-		return (NULL);
-	i = 0;
-	start = malloc(sizeof(char) * (ft_strlen(old_buff) + 1));
-	if (!start)
-	{
-		free(old_buff);
-		return (NULL);
-	}
-	while(old_buff[i])
-	{
-		start[i] = old_buff[i];
-		i++;		
-	}
-	start[i] = '\0';
-	free(old_buff);
-	return (start);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*old_buff;
-	char		buff[BUFFER_SIZE + 1];
-	char		*line;
-	int			bytes_read;
-
-	line = NULL;
-	line = recover_last_buff(old_buff);
 	while (1)
 	{
 	if (ft_strchr(line) == 1)
@@ -134,43 +134,60 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
-		 if (bytes_read == 0)
-		 {
-		 	if(line && *line)
-		 	{
-		 		old_buff = NULL;
-		 		break;
-		 	}
-		 	return (NULL);
+		if (bytes_read == 0)
+		{
+			if (line && *line)
+			{
+				*old_buff = NULL;
+				break ;
+			}
+				return (NULL);
 		}
 		buff[bytes_read] = '\0';
-		line = combine_line(buff, line);
-		if (line == NULL)
+		if ((line = combine_line(buff, line)) == NULL)
 			return (NULL);
 	}
 	if (bytes_read > 0)
-		line = get_back_buff(line, &old_buff, ft_strlen(line));
-	if (line == NULL)
+		line = get_back_buff(line, old_buff, ft_strlen(line));
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*old_buff;
+	char		buff[BUFFER_SIZE + 1];
+	char		*line;
+
+	line = NULL;
+	if (old_buff != NULL)
+	{
+		line = recover_last_buff(old_buff);
+		if (!line)
+			return (NULL);
+		old_buff = NULL;
+	}
+	line = avoir_ligne(fd, line, buff, &old_buff);
+	if (!line)
 		return (NULL);
 	return (line);
 }
 
-#include <fcntl.h>
+// #include <fcntl.h>
 
-int main(void)
-{
-	int i = 0;
-    int fd = open("test.txt", O_RDONLY);
+// int main(void)
+// {
+// 	int i = 0;
+//     int fd = open("test.txt", O_RDONLY);
 
-	if (fd == -1)
-	{
-		printf("Open failed\n");
-		return (1);
-	}    
-	while (i < 10)
-	{
-	    printf("Result %s\n", get_next_line(fd));
-		i++;
-	}
-	return (0);
-}
+// 	if (fd == -1)
+// 	{
+// 		printf("Open failed\n");
+// 		return (1);
+// 	}    
+// 	while (i < 10)
+// 	{
+// 	    printf("Result %s\n", get_next_line(fd));
+// 		i++;
+// 	}
+// 	return (0);
+// }
