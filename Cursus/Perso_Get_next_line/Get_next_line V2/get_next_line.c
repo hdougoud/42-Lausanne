@@ -6,13 +6,20 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/13 23:28:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:59:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
+void safe_free(char **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
 
 int	ft_strlen(char *str)
 {
@@ -65,7 +72,7 @@ char	*recover_last_buff(char *old_buff)
 	start = malloc(sizeof(char) * (ft_strlen(old_buff) + 1));
 	if (!start)
 	{
-		free(old_buff);
+		safe_free(&old_buff);
 		return (NULL);
 	}
 	while (old_buff[i])
@@ -74,7 +81,7 @@ char	*recover_last_buff(char *old_buff)
 		i++;		
 	}
 	start[i] = '\0';
-	free(old_buff);
+	safe_free(&old_buff);
 	return (start);
 }
 
@@ -90,7 +97,7 @@ char	*combine_line(char *buff, char *line)
 	new_line = malloc(sizeof(char) * (ft_strlen(buff) + ft_strlen(line) + 1));
 	if (new_line == NULL)
 	{
-		free(line);
+		safe_free(&line);
 		return (NULL);
 	}
 	if (line != NULL)
@@ -100,7 +107,7 @@ char	*combine_line(char *buff, char *line)
 			new_line[i] = line[i];
 			i++;	
 		}
-		free (line);
+		safe_free(&line);
 	}
 	j = 0;
 	while (buff[j])
@@ -123,7 +130,7 @@ int	ft_strchr(char *str)
 	return (0);
 }
 
-char	*avoir_ligne(int fd, char *line, char *buff, char **old_buff)
+char	*read_line(int fd, char *line, char *buff, char **old_buff)
 {
 	int	bytes_read;
 
@@ -166,7 +173,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		old_buff = NULL;
 	}
-	line = avoir_ligne(fd, line, buff, &old_buff);
+	line = read_line(fd, line, buff, &old_buff);
 	if (!line)
 		return (NULL);
 	return (line);
