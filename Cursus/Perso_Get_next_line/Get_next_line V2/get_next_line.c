@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/14 11:59:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:26:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*get_back_buff(char *line, char **old_buff, int len)
 	i++;
 	if (line[i] == '\0')
 	{
-		old_buff = NULL;
+		*old_buff = NULL;
 		return (line);
 	}
 	j = 0;
@@ -165,6 +165,8 @@ char	*get_next_line(int fd)
 	char		buff[BUFFER_SIZE + 1];
 	char		*line; 
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	line = NULL;
 	if (old_buff != NULL)
 	{
@@ -179,22 +181,22 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
+// #include <fcntl.h>
 
-int main(void)
-{
-	int i = 0;
-    int fd = open("test.txt", O_RDONLY);
+// int main(void)
+// {
+// 	int i = 0;
+//     int fd = open("test.txt", O_RDONLY);
 
-	if (fd == -1)
-	{
-		printf("Open failed\n");
-		return (1);
-	}    
-	while (i < 10)
-	{
-	    printf("Result %s\n", get_next_line(fd));
-		i++;
-	}
-	return (0);
-}
+// 	if (fd == -1)
+// 	{
+// 		printf("Open failed\n");
+// 		return (1);
+// 	}    
+// 	while (i < 10)
+// 	{
+// 	    printf("Result %s\n", get_next_line(fd));
+// 		i++;
+// 	}
+// 	return (0);
+// }
