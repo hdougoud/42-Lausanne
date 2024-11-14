@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/14 18:22:43 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/14 19:48:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	ft_strchr(char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
@@ -108,7 +110,7 @@ char	*read_line(int fd, char *current_line)
 
 	while (1)
 	{
-		if (ft_strchr(current_line) == 1)
+		if (ft_strchr(buff) == 1)
 			break;
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -128,6 +130,23 @@ char	*read_line(int fd, char *current_line)
 	return (current_line);
 }
 
+char *manage_stash(char *line, char **stash)
+{
+	char 	*backup;
+	char	*complete_line;
+	int		i;
+	
+	backup = line;
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (line[i] == '\0')
+		return (line);
+	i++;
+	line += i;
+	return (line);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*stash;
@@ -140,8 +159,9 @@ char	*get_next_line(int fd)
 			if (!final_line)
 				return (NULL);
 	}
-	safe_free(&stash);
+	stash = NULL;
 	final_line = read_line(fd, final_line);
+	final_line = manage_stash(final_line, &stash);
 	return (final_line);
 }
 
