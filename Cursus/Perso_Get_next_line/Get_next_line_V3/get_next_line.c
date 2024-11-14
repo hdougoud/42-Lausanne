@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/14 19:48:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/15 00:17:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,10 @@ char *manage_stash(char *line, char **stash)
 	if (line[i] == '\0')
 		return (line);
 	i++;
-	line += i;
-	return (line);
+	line += i; //modification du pointeur de base 
+	*stash = ft_strdup(line);
+	printf("STASH %s\n", *stash);
+	//safe_free(&backup);
 }
 
 char	*get_next_line(int fd)
