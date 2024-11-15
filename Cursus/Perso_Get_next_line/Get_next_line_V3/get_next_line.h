@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:28 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/14 14:00:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:32:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # include <unistd.h>
 # include <stdio.h>
 
-char *get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
+char	*ft_strdup(char *s1);
+size_t	ft_strlen(const char *s);
+int		ft_strchr(char *str);
+void	safe_free(char **ptr);
 
 #endif
