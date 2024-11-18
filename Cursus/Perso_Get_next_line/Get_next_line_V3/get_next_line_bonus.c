@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/15 15:12:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:18:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,33 +93,44 @@ static char	*manage_stash(char *line, char **stash)
 	while (++j < i)
 		complete_line[j] = line[j];
 	complete_line[j] = '\0';
-	safe_free(&line);
+	free(line);
 	return (complete_line);
+}
+
+static char	*add_stash(char **stash, char *final_line)
+{
+	final_line = ft_strdup(*stash);
+	safe_free(stash);
+	return (final_line);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*return_line;
 	static char	*stash[MAXFD];
+	char		*final_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	return_line = NULL;
+	final_line = NULL;
 	if (stash[fd])
 	{
-		return_line = ft_strdup(stash[fd]);
-		if (!return_line)
+		final_line = add_stash(&stash[fd], final_line);
+		if (!final_line)
 			return (NULL);
-		safe_free(&stash[fd]);
 	}
-	stash[fd] = NULL;
-	return_line = read_line(fd, return_line);
-	if (return_line == NULL)
+	final_line = read_line(fd, final_line);
+	if (final_line == NULL)
+	{
+		safe_free(&stash[fd]);
 		return (NULL);
-	return_line = manage_stash(return_line, &stash[fd]);
-	if (return_line == NULL)
+	}
+	final_line = manage_stash(final_line, &stash[fd]);
+	if (final_line == NULL)
+	{
+		safe_free(&stash[fd]);
 		return (NULL);
-	return (return_line);
+	}
+	return (final_line);
 }
 
 // #include <fcntl.h>
@@ -135,7 +146,7 @@ char	*get_next_line(int fd)
 // 		printf("Open failed\n");
 // 		return (1);
 // 	}    
-// 	while (i < 25)
+// 	while (i < 15)
 // 	{
 // 		line = get_next_line(fd);
 // 	    printf("Result %s\n", line);

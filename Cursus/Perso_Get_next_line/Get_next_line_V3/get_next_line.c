@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/15 14:04:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:18:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,15 @@ static char	*manage_stash(char *line, char **stash)
 	while (++j < i)
 		complete_line[j] = line[j];
 	complete_line[j] = '\0';
-	safe_free(&line);
+	free(line);
 	return (complete_line);
+}
+
+static char	*add_stash(char **stash, char *final_line)
+{
+	final_line = ft_strdup(*stash);
+	safe_free(stash);
+	return (final_line);
 }
 
 char	*get_next_line(int fd)
@@ -107,18 +114,22 @@ char	*get_next_line(int fd)
 	final_line = NULL;
 	if (stash)
 	{
-		final_line = ft_strdup(stash);
+		final_line = add_stash(&stash, final_line);
 		if (!final_line)
 			return (NULL);
-		safe_free(&stash);
 	}
-	stash = NULL;
 	final_line = read_line(fd, final_line);
 	if (final_line == NULL)
+	{
+		safe_free(&stash);
 		return (NULL);
+	}
 	final_line = manage_stash(final_line, &stash);
 	if (final_line == NULL)
+	{
+		safe_free(&stash);
 		return (NULL);
+	}
 	return (final_line);
 }
 
