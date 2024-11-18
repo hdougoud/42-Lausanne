@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 18:54:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/10 15:16:46 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/11/14 13:49:28 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/11/18 11:16:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif  
+#  define BUFFER_SIZE 10
+# endif
+
+# define MAXFD 256
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
-#include <stdio.h>
-
+char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
-char	*add_back_buffer(char *line, char *buff, int buff_len);
-int		ft_strlen(char *str);
+char	*ft_strdup(char *s1);
+size_t	ft_strlen(const char *s);
+int		ft_strchr(char *str);
+void	safe_free(char **ptr);
 
 #endif

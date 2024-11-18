@@ -5,12 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 13:40:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/13 23:18:05 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/11/09 18:33:47 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/11/15 10:36:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void safe_free(char **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
 
 int	ft_strlen(char *str)
 {
@@ -24,153 +33,170 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*get_back_buff(char *line, char **old_buff, int len)
 {
-	char	*str;
+	char	*new_buff;
 	int		i;
 	int		j;
+	int		newline;
 
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (str == 0)
-		return (NULL);
 	i = 0;
-	if (s1 != NULL)
-	{	
-		while (s1[i])
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		free(s1);
+	while (line[i] != '\n' && i < len)
+		i++;
+	i++;
+	if (line[i] == '\0')
+	{
+		*old_buff = NULL;
+		return (line);
 	}
 	j = 0;
-	while (s2[j])
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	free(s2);
-	return (str);
+	newline = i;
+	new_buff = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	if (!new_buff)
+		return (NULL);
+	while (line[i])
+		new_buff[j++] = line[i++];
+	new_buff[j] = '\0';
+	*old_buff = new_buff;
+	line[newline] = '\0';
+	return (line);
 }
 
-int	ft_strrchr(char *str)
+char	*recover_last_buff(char *old_buff)
+{
+	int		i;
+	char	*start;
+	if (!old_buff)
+		return (NULL);
+	i = 0;
+	start = malloc(sizeof(char) * (ft_strlen(old_buff) + 1));
+	if (!start)
+	{
+		safe_free(&old_buff);
+		return (NULL);
+	}
+	while (old_buff[i])
+	{
+		start[i] = old_buff[i];
+		i++;		
+	}
+	start[i] = '\0';
+	safe_free(&old_buff);
+	return (start);
+}
+
+
+
+char	*combine_line(char *buff, char *line)
+{
+	int		i;
+	int		j;
+	char	*new_line;
+
+	i = 0;
+	new_line = malloc(sizeof(char) * (ft_strlen(buff) + ft_strlen(line) + 1));
+	if (new_line == NULL)
+	{
+		safe_free(&line);
+		return (NULL);
+	}
+	if (line != NULL)
+	{
+		while (line[i])
+		{
+			new_line[i] = line[i];
+			i++;	
+		}
+		safe_free(&line);
+	}
+	j = 0;
+	while (buff[j])
+		new_line[i++] = buff[j++];
+	new_line[i] = '\0';
+	return (new_line);
+}
+
+int	ft_strchr(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0' && str[i] != '\n')
+	if (!str)
+		return (0);
+	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
-		return(1);
+		return (1);
 	return (0);
 }
 
-
-char	*get_line(int fd, int bytes_read, char *current_line)
+char	*read_line(int fd, char *line, char *buff, char **old_buff)
 {
-	char		*buff;
-	
-	while(1)
+	int	bytes_read;
+
+	while (1)
 	{
-		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (!buff)
-			return (buff);
+	if (ft_strchr(line) == 1)
+			break ;
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
-			return (free(current_line), NULL);
-		if (bytes_read == 0)
-			break ;
-		buff[bytes_read] = '\0';
-		current_line = ft_strjoin(current_line, buff);
-		if (!current_line)
 			return (NULL);
-		if (ft_strrchr(buff) == 1)
-			break ;
+		if (bytes_read == 0)
+		{
+			if (line && *line)
+			{
+				*old_buff = NULL;
+				break ;
+			}
+				return (NULL);
+		}
+		buff[bytes_read] = '\0';
+		if ((line = combine_line(buff, line)) == NULL)
+			return (NULL);
 	}
-	return (current_line);
-}
-
-char	*add_stash(char *line, int new_line)
-{
-	char	*new_stash;
-	int		i;
-	
-	i = 0;
-	new_stash = malloc(sizeof(char) * ft_strlen(line) - new_line + 1);
-	if (!new_stash)
-		return (NULL);
-	while(line[new_line])
-		new_stash[i++] = line[new_line++];
-	new_stash[i] = '\0';
-	return (new_stash);
-}
-
-char	*manage_stash(char *line, char **stash)
-{
-	char	*complete_line;
-	int		new_line;
-	int		i;
-	
-	new_line = 0;
-	while (line[new_line] && line[new_line] != '\n')
-		new_line++;
-	if (line[new_line] == '\0')
-	{
-		*stash = NULL;
-		return (line);
-	}
-	new_line++;
-	complete_line = malloc(sizeof(char) * (new_line + 1));
-	if (!complete_line)
-		return (NULL);
-	i = -1;
-	while (++i < new_line)
-		complete_line[i] = line[i];
-	complete_line[i] = '\0';
-	*stash = add_stash(line, new_line);
-	if (!*stash)
-		return (NULL);
-	return (free(line), complete_line);
+	if (bytes_read > 0)
+		line = get_back_buff(line, old_buff, ft_strlen(line));
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	int			byte_read;
-	char		*line;
-	static char	*stash; 
+	static char	*old_buff;
+	char		buff[BUFFER_SIZE + 1];
+	char		*line; 
 
-	byte_read = 0;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	line = NULL;
-	if (stash)
-	line = ft_strjoin(line, stash);
-	line = get_line(fd, byte_read, line);
+	if (old_buff != NULL)
+	{
+		line = recover_last_buff(old_buff);
+		if (!line)
+			return (NULL);
+		old_buff = NULL;
+	}
+	line = read_line(fd, line, buff, &old_buff);
 	if (!line)
 		return (NULL);
-	line = manage_stash(line, &stash);
 	return (line);
 }
 
-// #include <fcntl.h>
+#include <fcntl.h>
 
-// int main(void)
-// {
-// 	int i = 0;
-//     int fd = open("test.txt", O_RDONLY);
-// 	char *line;
+int main(void)
+{
+	int i = 0;
+    int fd = open("test.txt", O_RDONLY);
 
-// 	if (fd == -1)
-// 	{
-// 		printf("Open failed\n");
-// 		return (1);
-// 	}    
-// 	while (i < 15)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (line != NULL)
-// 	    	printf("Result %s", line);
-// 		else 
-// 			printf("Result %s\n", line);
-// 		free(line);
-// 		i++;
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
+	if (fd == -1)
+	{
+		printf("Open failed\n");
+		return (1);
+	}    
+	while (i < 10)
+	{
+	    printf("Result %s\n", get_next_line(fd));
+		i++;
+	}
+	return (0);
+}
