@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/18 11:18:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:35:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ char	*get_next_line(int fd)
 	return (final_line);
 }
 
-// #include <fcntl.h>
+#include <fcntl.h>
 
 // int main(void)
 // {

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:32 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/18 11:18:00 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:57:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ char	*get_next_line(int fd)
 // 		printf("Open failed\n");
 // 		return (1);
 // 	}    
-// 	while (i < 15)
+// 	while (i < 30)
 // 	{
 // 		line = get_next_line(fd);
 // 	    printf("Result %s\n", line);
