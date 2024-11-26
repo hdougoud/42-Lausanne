@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:57:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/01 16:08:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:46:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);
