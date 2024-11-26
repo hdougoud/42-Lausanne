@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:23:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/25 16:37:34 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:32:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 {
-	int **test;
+	int i;
 
-	test = NULL;
-
-	printf("%s", argv[1]);
-	printf("%s\n", argv[2]);
-	if (test == NULL)
-		printf("ERROR");
-	return (0);
+	i = 0;
+	while (i < argc)
+	{
+		printf("%s\n", argv[i]);
+		i++;
+	}
+	printf("%d\n", argc);
 }

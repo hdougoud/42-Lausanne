@@ -1,7 +1,6 @@
 .vscode
 *.DS_Store
 a.out
-*.a
 *.o
 ../../.vscode/launch.json
 ../../.vscode/tasks.json
