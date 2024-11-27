@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/26 21:03:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:42:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,51 @@ int	check_args(int argc, char **argv)
 	return (0);
 }
 
+int	check_duplicate(int argc, char **argv)
+{
+	int	i;
+	int	current_value;
+	int position;
+
+	i = 1;
+	while (i < argc)
+	{
+		position = 1;
+		current_value = ft_atoi(argv[i]);
+		while (position < argc)
+		{
+			if (position == i)
+				position++;
+			if (position >= argc)
+				return (0);
+			if (ft_atoi(argv[position]) == current_value)
+				return (1);
+			position++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
 	int error;
 	
 	error = check_args(argc, argv);
 	if (error == 1)
+	{
 		print_error();
+		return (1);
+	}
 	else
-		printf("digit only");
+		printf("digit only\n");
+	error = check_duplicate(argc, argv);
+	if (error == 1)
+	{
+		print_error();
+		return (1);
+	}
+	else
+		printf("no duplicate\n");
 	return (0);
 }

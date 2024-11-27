@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/30 16:29:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:05:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	putchar_pf(char c, int value)
 {
@@ -40,7 +40,7 @@ int	putstr_pf(char *s, int value)
 	return (value);
 }
 
-int	print_pointer_pf(void *p, int value)
+static int	print_pointer_pf(void *p, int value)
 {
 	unsigned long	un;
 
@@ -85,13 +85,13 @@ int	ft_printf(const char *format, ...)
 		{
 			return_value = putchar_pf(format[i++], return_value);
 			if (return_value == -1)
-				break;
+				break ;
 		}
 		else
 		{
 			return_value = check_args(format, list, return_value, ++i);
 			if (return_value == -1)
-				break;
+				break ;
 			i++;
 		}
 	}

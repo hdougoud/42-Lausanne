@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 23:23:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/30 14:45:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

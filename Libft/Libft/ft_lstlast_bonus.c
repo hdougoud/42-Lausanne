@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 23:13:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 14:19:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {

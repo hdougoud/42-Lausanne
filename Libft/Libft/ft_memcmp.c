@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:47:30 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/16 12:25:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

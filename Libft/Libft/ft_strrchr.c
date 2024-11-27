@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:36:04 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/07 13:47:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:56:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

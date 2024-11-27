@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:49:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/10 10:04:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:57:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

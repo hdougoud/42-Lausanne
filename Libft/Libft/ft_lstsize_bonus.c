@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:18:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 11:39:39 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

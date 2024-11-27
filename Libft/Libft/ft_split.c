@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/18 10:52:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static int	ft_count_words(char const *s, char c)
 {

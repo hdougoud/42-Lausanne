@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:08:24 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/17 11:19:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

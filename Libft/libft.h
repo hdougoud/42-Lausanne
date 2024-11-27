@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:27:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/26 15:03:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:48:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-//---------------------------------LIBFT------------------------------------------
+//---------------------------------LIBFT----------------------------------------
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -80,19 +80,17 @@ t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+//---------------------------------PRINTF---------------------------------------
 
-//---------------------------------PRINTF-----------------------------------------
+int		putnbr_pf(int n, int *value);
+int		putchar_pf(char c, int value);
+int		putstr_pf(char *s, int value);
+int		ft_printf(const char *format, ...);
+int		unsigned_putnbr_pf(unsigned int n, int *value);
+int		write_pointer_pf(unsigned long un, int *value);
+int		print_hex_pf(unsigned int un, int *value, char param);
 
-
-// int		putnbr_pf(int n, int *value);
-// int		putchar_pf(char c, int value);
-// int		putstr_pf(char *s, int value);
-// int		ft_printf(const char *format, ...);
-// int		unsigned_putnbr_pf(unsigned int n, int *value);
-// int		write_pointer_pf(unsigned long un, int *value);
-// int		print_hex_pf(unsigned int un, int *value, char param);
-
-//---------------------------------GetNextLine------------------------------------
+//---------------------------------GetNextLine----------------------------------
 
 // # ifndef BUFFER_SIZE
 // #  define BUFFER_SIZE 30
@@ -108,6 +106,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // void	safe_free(char **ptr);
 
-//--------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 #endif

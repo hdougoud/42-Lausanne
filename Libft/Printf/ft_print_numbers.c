@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:50 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/28 14:13:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:54:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	putnbr_pf(int nb, int *value)
 {

@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 13:38:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 11:06:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:56:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:18:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/09 11:23:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:56:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

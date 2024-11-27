@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:38:06 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/18 10:51:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static char	*ft_min_int(void)
 {

@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/11/26 16:31:14 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/11/27 11:03:09 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,37 +33,36 @@ LIBFT_SRCS = 	$(LIBFT_DIR)/ft_isascii.c $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft
 				$(LIBFT_DIR)/ft_memchr.c $(LIBFT_DIR)/ft_putendl_fd.c $(LIBFT_DIR)/ft_striteri.c \
 				$(LIBFT_DIR)/ft_strncmp.c $(LIBFT_DIR)/ft_toupper.c $(LIBFT_DIR)/ft_isalpha.c \
 				$(LIBFT_DIR)/ft_memcmp.c $(LIBFT_DIR)/ft_putnbr_fd.c $(LIBFT_DIR)/ft_strjoin.c \
-				$(LIBFT_DIR)/ft_strnstr.c
+				$(LIBFT_DIR)/ft_strnstr.c \
 
-#LIBFT_SOURCES
+#BONUS_SOURCES
+LIBFTBONUS =	$(LIBFT_DIR)/ft_lstadd_back_bonus.c \
+				$(LIBFT_DIR)/ft_lstadd_front_bonus.c \
+				$(LIBFT_DIR)/ft_lstlast_bonus.c \
+				$(LIBFT_DIR)/ft_lstnew_bonus.c \
+				$(LIBFT_DIR)/ft_lstsize_bonus.c \
+				$(LIBFT_DIR)/ft_lstdelone_bonus.c \
+				$(LIBFT_DIR)/ft_lstclear_bonus.c \
+				$(LIBFT_DIR)/ft_lstiter_bonus.c \
+				$(LIBFT_DIR)/ft_lstmap_bonus.c
+
+#PRINTF_SOURCES
 PRINTF_SRCS =	$(PRINTF_DIR)/ft_printf.c \
 				$(PRINTF_DIR)/ft_print_numbers.c
 
 #ALL_SOURCES
-SOURCES = 		$(LIBFT_SRCS) $(PRINTF_SRCS)
+SOURCES = 		$(LIBFT_SRCS) $(LIBFTBONUS) $(PRINTF_SRCS)
 
-#BONUS_SOURCES
-SOURCESBONUS =	$(LIBFT_DIR)ft_lstadd_back_bonus.c \
-				$(LIBFT_DIR)ft_lstadd_front_bonus.c \
-				$(LIBFT_DIR)ft_lstlast_bonus.c \
-				$(LIBFT_DIR)ft_lstnew_bonus.c \
-				$(LIBFT_DIR)ft_lstsize_bonus.c \
-				$(LIBFT_DIR)ft_lstdelone_bonus.c \
-				$(LIBFT_DIR)ft_lstclear_bonus.c \
-				$(LIBFT_DIR)ft_lstiter_bonus.c \
-				$(LIBFT_DIR)ft_lstmap_bonus.c
 
 #--------------------------------------Objects---------------------------------
 
 OBJECTS = 		$(SOURCES:.c=.o)		
-OBJECTSBONUS = $(SOURCESBONUS:.c=.o)
 
 #--------------------------------------RULES-----------------------------------
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	$(MAKE) clean
 
 clean:
 	rm -f $(OBJECTS) $(OBJECTSBONUS)
@@ -72,8 +71,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: all $(OBJECTSBONUS)
-	ar rcs $(NAME) $(OBJECTSBONUS)
 
 .PHONY: all clean fclean re bonus

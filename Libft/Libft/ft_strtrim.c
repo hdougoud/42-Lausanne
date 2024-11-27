@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:31:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/14 11:03:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:56:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
