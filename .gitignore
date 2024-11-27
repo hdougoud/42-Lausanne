@@ -1,5 +1,6 @@
 .vscode
 *.DS_Store
+*.a
 a.out
 *.o
 ../../.vscode/launch.json

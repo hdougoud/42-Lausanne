@@ -6,19 +6,14 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 10:42:00 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:56:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void print_error(void)
-{
-	ft_printf("Error\n");
-}
-
-int	check_args(int argc, char **argv)
+static int	check_args(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -46,11 +41,11 @@ int	check_args(int argc, char **argv)
 	return (0);
 }
 
-int	check_duplicate(int argc, char **argv)
+static int	check_duplicate(int argc, char **argv)
 {
 	int	i;
 	int	current_value;
-	int position;
+	int	position;
 
 	i = 1;
 	while (i < argc)
@@ -72,25 +67,26 @@ int	check_duplicate(int argc, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	check_errors(int argc, char **argv)
 {
-	int error;
-	
+	int	error;
+
 	error = check_args(argc, argv);
-	if (error == 1)
+	if (argc <= 1)
 	{
-		print_error();
+		ft_printf("Error\n");
 		return (1);
 	}
-	else
-		printf("digit only\n");
+	if (error == 1)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	error = check_duplicate(argc, argv);
 	if (error == 1)
 	{
-		print_error();
+		ft_printf("Error\n");
 		return (1);
 	}
-	else
-		printf("no duplicate\n");
 	return (0);
 }
