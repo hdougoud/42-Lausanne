@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 16:34:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 22:23:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ void	check_errors(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_SUCCESS);
 }
