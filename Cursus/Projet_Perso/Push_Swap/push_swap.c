@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:23:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 11:58:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:34:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char *argv[])
 	int	i;
 
 	i = 0;
-	if (check_errors(argc, argv) == 1)
-		return (1);
+	check_errors(argc, argv);
 	while (i < argc)
 	{
 		printf("%s\n", argv[i]);

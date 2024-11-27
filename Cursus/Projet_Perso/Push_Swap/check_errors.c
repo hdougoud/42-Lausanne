@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 11:56:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:34:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,26 @@ static int	check_duplicate(int argc, char **argv)
 	return (0);
 }
 
-int	check_errors(int argc, char **argv)
+void	check_errors(int argc, char **argv)
 {
 	int	error;
 
 	error = check_args(argc, argv);
 	if (argc <= 1)
 	{
-		ft_printf("Error\n");
-		return (1);
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
 	}
 	if (error == 1)
 	{
-		ft_printf("Error\n");
-		return (1);
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
 	}
 	error = check_duplicate(argc, argv);
 	if (error == 1)
 	{
-		ft_printf("Error\n");
-		return (1);
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
 	}
-	return (0);
+	exit(EXIT_SUCCESS);
 }
