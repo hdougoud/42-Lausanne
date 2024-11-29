@@ -6,11 +6,10 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 22:23:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:07:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 static int	check_args(int argc, char **argv)
