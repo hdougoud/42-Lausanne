@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/01 03:25:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:51:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,32 @@ static char	*combine_str(size_t len, const char *format, char *str)
 	return (new_str);
 }
 
-// static void	check_args(const char *format, va_list list, int i)
-// {
-// 	if (format[i] == 'c')
-// 		putchar_pf(va_arg(list, int));
-// 	else if (format[i] == 's')
-// 		putstr_pf(va_arg(list, char *));
-// 	else if (format[i] == 'p')
-// 		print_pointer_pf(va_arg(list, void *));
-// 	else if (format[i] == 'd' || format[i] == 'i')
-// 		putnbr_pf(va_arg(list, int));
-// 	else if (format[i] == 'u')
-// 		unsigned_putnbr_pf(va_arg(list, int));
-// 	else if (format[i] == 'x' || format[i] == 'X')
-// 		print_hex_pf(va_arg(list, unsigned long), format[i]);
-// 	else if (format[i] == '%')
-// 		putchar_pf('%');
-// }
+static char	*check_args(char arg, va_list list, char *str, unsigned int str_len)
+{
+	if (arg == 'c')
+		str = addchar_pf(str, va_arg(list, int), str_len);
+	else if (arg == 's')
+		putstr_pf(str, va_arg(list, char *));
+	// else if (format[i] == 'p')
+	// 	print_pointer_pf(va_arg(list, void *));
+	// else if (format[i] == 'd' || format[i] == 'i')
+	// 	putnbr_pf(va_arg(list, int));
+	// else if (format[i] == 'u')
+	// 	unsigned_putnbr_pf(va_arg(list, int));
+	// else if (format[i] == 'x' || format[i] == 'X')
+	// 	print_hex_pf(va_arg(list, unsigned long), format[i]);
+	// else if (format[i] == '%')
+	// 	putchar_pf('%');
+	return (str);
+}
 
 static char *manage_format(const char *format, va_list list, char *str)
 {
-	int		i;
+	int				i;
+	unsigned int	str_len;
 
 	i = 0;
+	str_len = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -66,7 +69,9 @@ static char *manage_format(const char *format, va_list list, char *str)
 			str = combine_str(i, format, str);
 			if (!str)
 				return (NULL);
+			str_len += i;
 			i++;
+			str = check_args(format[i], list, str, str_len);
 			format += i + 1;
 			i = 0;
 		}
@@ -85,7 +90,7 @@ int	ft_printf(const char *format, ...)
 	char	*str;
 	int		len;
 	
-	
+	va_start(list, format);
 	str = NULL;
 	len = 0;
 	str = manage_format(format, list, str);
@@ -101,9 +106,11 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	char *s = "Hello%sWorld";
+	char c = ' ';
 	
-	printf("\n%d\n", ft_printf(s));
+	//char *s = "Hello%cWorld";
+	
+	printf("\n%d\n", ft_printf("Hello%cWorld", c));
 }
 
 //#include <stdio.h>
