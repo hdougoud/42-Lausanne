@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 00:36:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 00:51:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ size_t count_args(char format, va_list args, size_t len)
 		len += count_char(va_arg(args, int));
 	else if (format == 's')
 		len += ft_strlen(va_arg(args, char*));
-	else if (format == 'd' || format == 'i' || format == 'u')
+	else if (format == 'd' || format == 'i')
 		len += count_int(va_arg(args, int));
+	else if (format == 'u')
+		len += count_unsigned_int(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
 		len += 10;
 	return (len);
@@ -65,6 +67,7 @@ int main(void)
 {
 	char c = 'c';
 	char *s = "this";
+	unsigned int un = -12345;
 	
 	printf("\n%d\n", ft_printf("Hello%cWolrd%s",c , s));
 	printf("\n%d\n",  printf("Hello%cWorld%s",c , s));
@@ -72,4 +75,6 @@ int main(void)
 	printf("\n%d\n",  printf("Hello %s World", s));
 	printf("\n%d\n", ft_printf("Hello %d Wolrd", -12345));
 	printf("\n%d\n",  printf("Hello %d World", -12345));
+	printf("\n%d\n", ft_printf("Hello %u Wolrd", un));
+	printf("\n%d\n",  printf("Hello %u World", un));
 }
