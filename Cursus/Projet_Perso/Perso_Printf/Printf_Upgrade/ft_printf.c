@@ -6,58 +6,104 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 14:57:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/01 03:25:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	check_args(const char *format, va_list list, int value, int i)
+static char	*combine_str(size_t len, const char *format, char *str)
 {
-	if (format[i] == 'c')
-		value = putchar_pf(va_arg(list, int), value);
-	else if (format[i] == 's')
-		value = putstr_pf(va_arg(list, char *), value);
-	else if (format[i] == 'p')
-		value = print_pointer_pf(va_arg(list, void *), value);
-	else if (format[i] == 'd' || format[i] == 'i')
-		value = putnbr_pf(va_arg(list, int), &value);
-	else if (format[i] == 'u')
-		value = unsigned_putnbr_pf(va_arg(list, int), &value);
-	else if (format[i] == 'x' || format[i] == 'X')
-		value = print_hex_pf(va_arg(list, unsigned long), &value, format[i]);
-	else if (format[i] == '%')
-		value = putchar_pf('%', value);
-	return (value);
+	int		i;
+	char	*new_str;
+
+	i = 0;
+	if (str == NULL)
+	{
+		str = malloc(sizeof(char) * (len + 1));
+		if (!str)
+			return (NULL);
+		ft_strlcpy(str, format, len + 1);
+		return (str);	
+	}
+	new_str = ft_strjoin(str, format);
+	if (!new_str)
+	{
+		safe_free(&str);
+		return (NULL);
+	}
+	safe_free(&str);
+	return (new_str);
+}
+
+// static void	check_args(const char *format, va_list list, int i)
+// {
+// 	if (format[i] == 'c')
+// 		putchar_pf(va_arg(list, int));
+// 	else if (format[i] == 's')
+// 		putstr_pf(va_arg(list, char *));
+// 	else if (format[i] == 'p')
+// 		print_pointer_pf(va_arg(list, void *));
+// 	else if (format[i] == 'd' || format[i] == 'i')
+// 		putnbr_pf(va_arg(list, int));
+// 	else if (format[i] == 'u')
+// 		unsigned_putnbr_pf(va_arg(list, int));
+// 	else if (format[i] == 'x' || format[i] == 'X')
+// 		print_hex_pf(va_arg(list, unsigned long), format[i]);
+// 	else if (format[i] == '%')
+// 		putchar_pf('%');
+// }
+
+static char *manage_format(const char *format, va_list list, char *str)
+{
+	int		i;
+
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			str = combine_str(i, format, str);
+			if (!str)
+				return (NULL);
+			i++;
+			format += i + 1;
+			i = 0;
+		}
+		else 
+			i++;
+	}
+	str = combine_str(i, format, str);
+	if (!str)
+		return (NULL);
+	return (str);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	list;
-	int		return_value;
-	int		i;
-
-	i = 0;
-	return_value = 0;
-	va_start (list, format);
-	while (format[i] != '\0')
-	{
-		if (format[i] != '%')
-		{
-			return_value = putchar_pf(format[i++], return_value);
-			if (return_value == -1)
-				break;
-		}
-		else
-		{
-			return_value = check_args(format, list, return_value, ++i);
-			if (return_value == -1)
-				break;
-			i++;
-		}
-	}
+	char	*str;
+	int		len;
+	
+	
+	str = NULL;
+	len = 0;
+	str = manage_format(format, list, str);
+	if (!str)
+		return (free(str), -1);
+	len = ft_strlen(str);
+	if (write(1, str, len) == -1)
+		return (free(str), -1);
 	va_end (list);
-	return (return_value);
+	free(str);
+	return (len);
+}
+
+int main(void)
+{
+	char *s = "Hello%sWorld";
+	
+	printf("\n%d\n", ft_printf(s));
 }
 
 //#include <stdio.h>

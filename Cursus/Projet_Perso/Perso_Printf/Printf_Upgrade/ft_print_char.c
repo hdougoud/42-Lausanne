@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:56:43 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 15:02:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/11/30 02:02:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,27 @@ int	strlen_pf(char *s)
 	return (i);
 }
 
-int	putchar_pf(char c, int value)
+int	putchar_pf(char c)
 {
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (++value);
 }
 
-int	putstr_pf(char *s, int value)
+int	putstr_pf(char *s)
 {
 	int	i;
+	int	len;
 
 	i = 0;
 	if (!s)
 	{
-		value = 6;
 		if (write(1, "(null)", 6) == -1);
 			return (-1);
-		return (value);
 	}
-		value = strlen_pf(s);
-		if (write(1, s, value) == -1);
-			return (-1);
-	return (value);
 }
 
-int	print_pointer_pf(void *p, int value)
+int	print_pointer_pf(void *p)
 {
 	unsigned long	un;
 
