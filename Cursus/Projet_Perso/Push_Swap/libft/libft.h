@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:27:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/29 15:33:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:21:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	**ft_split(char const *s, char c);
 
+long	ft_atol(const char *str);
+
+void	safe_free(char **ptr);
 void	ft_bzero(void *s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
@@ -92,19 +95,14 @@ int		print_hex_pf(unsigned int un, int *value, char param);
 
 //---------------------------------GetNextLine----------------------------------
 
-// # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE 30
-// # endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-// # define MAXFD 256
+# define MAXFD 256
 
-// char	*get_next_line(int fd);
-
-// size_t	ft_strlen(const char *s);
-
-// int		ft_strsearch(char *str);
-
-// void	safe_free(char **ptr);
+char	*get_next_line(int fd);
+int		ft_gnl_strchr(char *str);
 
 //------------------------------------------------------------------------------
 

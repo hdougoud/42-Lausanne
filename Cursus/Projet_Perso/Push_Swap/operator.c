@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:25:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/29 16:10:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:03:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	switch_first(int argc, tab_a test)
+void	switch_first(int argc,  test)
 {
 	int	temp;
 
