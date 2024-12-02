@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 17:46:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:38:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t count_args(char format, va_list args, size_t len)
 	if (format == 'c')
 		len += count_char(va_arg(args, int));
 	else if (format == 's')
-		len += ft_strlen(va_arg(args, char*));
+		len += ft_strlen(va_arg(args, char *));
 	else if (format == 'p')
 		len += count_pointer(va_arg(args, void *));
 	else if (format == 'd' || format == 'i')
@@ -26,7 +26,7 @@ size_t count_args(char format, va_list args, size_t len)
 	else if (format == 'u')
 		len += count_unsigned_int(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		len += 10;
+		len += count_hexa(va_arg(args, unsigned int));
 	return (len);
 }
 
@@ -82,4 +82,8 @@ int main(void)
 	printf("\n%d\n",  printf("Hello %u World", un));
 	printf("\n%d\n", ft_printf("%p", p));
 	printf("\n%d\n",  printf("%p", p));
+	printf("\n%d\n", ft_printf("%x", 104756));
+	printf("\n%d\n",  printf("%x", 104756));
+	printf("\n%d\n", ft_printf("%X", 65748));
+	printf("\n%d\n",  printf("%X", 65748));
 }

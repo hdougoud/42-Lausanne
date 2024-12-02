@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 00:19:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 17:45:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:44:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ size_t count_char(char c)
 	return (c + 1);
 }
 
-size_t count_pointer(void *p)
+size_t	count_pointer(void *p)
 {
 	unsigned long ul;
 	int count;
@@ -59,6 +59,19 @@ size_t count_pointer(void *p)
 	while (ul > 9)
 	{
 		ul /= 10;
+		count++;
+	}
+	count++;
+	return (count);
+}
+size_t	count_hexa(int nb)
+{
+	int count;
+	
+	count = 0;
+	while (nb >= 16)
+	{
+		nb /= 16;
 		count++;
 	}
 	count++;
