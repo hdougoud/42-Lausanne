@@ -6,12 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 19:38:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 23:35:26 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+
+size_t add_args(char *format, char *str, va_list args)
+{
+	
+}
 
 size_t count_args(char format, va_list args, size_t len)
 {
@@ -57,11 +62,16 @@ int	ft_printf(const char *format, ...)
 {
 	size_t		total_len;
 	va_list		args;
+	char		*str;
 	
 	total_len = 0;
 	va_start(args, format);
 	total_len = count_len(format, args);
 	va_end(args);
+	str = malloc(sizeof(char) * total_len + 1);
+	if (!str)
+		return (-1);
+	str = add_args(format, str, args);
 	return (total_len);
 }
 

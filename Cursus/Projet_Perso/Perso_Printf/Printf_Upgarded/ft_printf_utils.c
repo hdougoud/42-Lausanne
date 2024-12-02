@@ -6,11 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 00:19:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 19:44:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:51:26 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+size_t count_char(char c)
+{
+	c -= c;
+	return (c + 1);
+}
 
 size_t	count_int(int nb)
 {
@@ -42,23 +48,16 @@ size_t	count_unsigned_int(unsigned int nb)
 	return (count);
 }
 
-size_t count_char(char c)
-{
-	c -= c;
-	return (c + 1);
-}
-
 size_t	count_pointer(void *p)
 {
 	unsigned long ul;
 	int count;
 	
 	ul = (unsigned long) p;
-	ul /= 16; 
 	count = 2;
-	while (ul > 9)
+	while (ul >= 16)
 	{
-		ul /= 10;
+		ul /= 16;
 		count++;
 	}
 	count++;
