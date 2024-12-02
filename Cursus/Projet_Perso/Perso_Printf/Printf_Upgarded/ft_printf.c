@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 00:51:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:46:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t count_args(char format, va_list args, size_t len)
 		len += count_char(va_arg(args, int));
 	else if (format == 's')
 		len += ft_strlen(va_arg(args, char*));
+	else if (format == 'p')
+		len += count_pointer(va_arg(args, void *));
 	else if (format == 'd' || format == 'i')
 		len += count_int(va_arg(args, int));
 	else if (format == 'u')
@@ -68,13 +70,16 @@ int main(void)
 	char c = 'c';
 	char *s = "this";
 	unsigned int un = -12345;
+	void *p = "test afin de verifier la longeur de l'adresse d'un pointeur";
 	
-	printf("\n%d\n", ft_printf("Hello%cWolrd%s",c , s));
-	printf("\n%d\n",  printf("Hello%cWorld%s",c , s));
+	//printf("\n%d\n", ft_printf("Hello%cWolrd%s",c , s));
+	//printf("\n%d\n",  printf("Hello%cWorld%s",c , s));
 	printf("\n%d\n", ft_printf("Hello %s Wolrd", s));
 	printf("\n%d\n",  printf("Hello %s World", s));
 	printf("\n%d\n", ft_printf("Hello %d Wolrd", -12345));
 	printf("\n%d\n",  printf("Hello %d World", -12345));
 	printf("\n%d\n", ft_printf("Hello %u Wolrd", un));
 	printf("\n%d\n",  printf("Hello %u World", un));
+	printf("\n%d\n", ft_printf("%p", p));
+	printf("\n%d\n",  printf("%p", p));
 }
