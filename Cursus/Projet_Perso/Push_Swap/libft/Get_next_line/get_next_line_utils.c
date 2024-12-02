@@ -6,12 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:49:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 16:20:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:31:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
 
 int	ft_gnl_strchr(char *str)
 {
