@@ -6,16 +6,38 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 23:35:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:42:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-size_t add_args(char *format, char *str, va_list args)
+char *add_args(char format, char *str, va_list args, int *i)
 {
-	
+	if (format == 'c')
+		return (str);
+	else if(format == 's')
+		str = add_str(str, va_arg(args, char *), i);
+	return (str);
+}
+
+char *manage_args(const char *format, char *str, va_list args)
+{
+	int	*i;
+	int form_indx;
+
+	i = 0;
+	form_indx = 0;
+	while(format[*i])
+	{
+		str[*i++] = format[form_indx++];
+		if (format[form_indx] == '%')
+		{
+			form_indx++;
+			str = add_args(format[form_indx], str, args, i); // ADD INT TAB
+		}
+	}
+	return (str);
 }
 
 size_t count_args(char format, va_list args, size_t len)
@@ -71,7 +93,8 @@ int	ft_printf(const char *format, ...)
 	str = malloc(sizeof(char) * total_len + 1);
 	if (!str)
 		return (-1);
-	str = add_args(format, str, args);
+	str = manage_args(format, str, args);
+	write(1, str, total_len);
 	return (total_len);
 }
 
@@ -86,14 +109,14 @@ int main(void)
 	//printf("\n%d\n",  printf("Hello%cWorld%s",c , s));
 	printf("\n%d\n", ft_printf("Hello %s Wolrd", s));
 	printf("\n%d\n",  printf("Hello %s World", s));
-	printf("\n%d\n", ft_printf("Hello %d Wolrd", -12345));
-	printf("\n%d\n",  printf("Hello %d World", -12345));
-	printf("\n%d\n", ft_printf("Hello %u Wolrd", un));
-	printf("\n%d\n",  printf("Hello %u World", un));
-	printf("\n%d\n", ft_printf("%p", p));
-	printf("\n%d\n",  printf("%p", p));
-	printf("\n%d\n", ft_printf("%x", 104756));
-	printf("\n%d\n",  printf("%x", 104756));
-	printf("\n%d\n", ft_printf("%X", 65748));
-	printf("\n%d\n",  printf("%X", 65748));
+	// printf("\n%d\n", ft_printf("Hello %d Wolrd", -12345));
+	// printf("\n%d\n",  printf("Hello %d World", -12345));
+	// printf("\n%d\n", ft_printf("Hello %u Wolrd", un));
+	// printf("\n%d\n",  printf("Hello %u World", un));
+	// printf("\n%d\n", ft_printf("%p", p));
+	// printf("\n%d\n",  printf("%p", p));
+	// printf("\n%d\n", ft_printf("%x", 104756));
+	// printf("\n%d\n",  printf("%x", 104756));
+	// printf("\n%d\n", ft_printf("%X", 65748));
+	// printf("\n%d\n",  printf("%X", 65748));
 }
