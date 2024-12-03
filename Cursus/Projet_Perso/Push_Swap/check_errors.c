@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/29 14:07:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:32:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ static int	check_args(int argc, char **argv)
 	int		j;
 	long	number;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		j = 0;
 		while (argv[i][j])
 		{
 			if (argv[i][j] == '-' || argv[i][j] == '+')
+				j++;
+			if (argv[i][j] == ' ')
 				j++;
 			if (ft_isdigit(argv[i][j]) == 0)
 				return (1);
@@ -35,7 +37,6 @@ static int	check_args(int argc, char **argv)
 		number = ft_atol(argv[i]);
 		if (number > INT_MAX || number < INT_MIN)
 			return (1);
-		i++;
 	}
 	return (0);
 }
@@ -70,12 +71,9 @@ void	check_errors(int argc, char **argv)
 {
 	int	error;
 
+	if (argc == 1)
+		exit(EXIT_SUCCESS);
 	error = check_args(argc, argv);
-	if (argc <= 1)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-	}
 	if (error == 1)
 	{
 		ft_putendl_fd("Error", 2);
