@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/03 20:10:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/04 00:20:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 char *add_args(char format, char *str, va_list args, int *i)
 {
-	printf("%d\n", *i);
 	if (format == 'c')
-		return (str);
+		str = add_char(str, va_arg(args, int), i);
 	else if(format == 's')
 		str = add_str(str, va_arg(args, char *), i);
+	else if (format == 'p')
+		str = add_pointer(str, va_arg(args, void *), i);
+	// else if (format == 'x')
+	// 	str = add_hexa(str, va_arg(args, void *), i, 'x');
+	// else if (format == 'X')
+	// 	str = add_hexa(str, va_arg(args, void *), i, 'X');
 	return (str);
 }
 
@@ -29,16 +34,17 @@ char *manage_args(const char *format, char *str, va_list args)
 
 	i = 0;
 	form_indx = 0;
-	while(format[i])
+	while(format[form_indx])
 	{
-		str[i++] = format[form_indx++];
 		if (format[form_indx] == '%')
 		{
 			form_indx++;
-			str = add_args(format[form_indx], str, args, &i); // ADD INT TAB
-			i++;
+			str = add_args(format[form_indx], str, args, &i);
+			form_indx++;
 		}
+		str[i++] = format[form_indx++];
 	}
+	str[i] = '\0';
 	return (str);
 }
 
@@ -95,10 +101,10 @@ int	ft_printf(const char *format, ...)
 	str = malloc(sizeof(char) * total_len + 1);
 	if (!str)
 		return (-1);
-	printf("%zu\n", total_len);
 	va_start(args, format);
 	str = manage_args(format, str, args);
-	write(1, str, total_len);
+	if (write(1, str, total_len) == -1)
+		return (-1);
 	free(str);
 	va_end(args);
 	return (total_len);
@@ -111,16 +117,16 @@ int main(void)
 	unsigned int un = -12345;
 	void *p = "test afin de verifier la longeur de l'adresse d'un pointeur";
 	
-	//printf("\n%d\n", ft_printf("Hello%cWolrd%s",c , s));
-	//printf("\n%d\n",  printf("Hello%cWorld%s",c , s));
-	printf("\n%d\n", ft_printf("Hello %s Wolrd", s));
-	printf("\n%d\n",  printf("Hello %s World", s));
+	//printf("\n%d\n", ft_printf("Hello%cWolrd",c));
+	//printf("\n%d\n",  printf("Hello%cWorld",c));
+	//printf("\n%d\n", ft_printf("Hello %s World", s));
+	//printf("\n%d\n",  printf("Hello %s World", s));
 	// printf("\n%d\n", ft_printf("Hello %d Wolrd", -12345));
 	// printf("\n%d\n",  printf("Hello %d World", -12345));
 	// printf("\n%d\n", ft_printf("Hello %u Wolrd", un));
 	// printf("\n%d\n",  printf("Hello %u World", un));
-	// printf("\n%d\n", ft_printf("%p", p));
-	// printf("\n%d\n",  printf("%p", p));
+	printf("\n%d\n", ft_printf("%p", p));
+	printf("\n%d\n",  printf("%p", p));
 	// printf("\n%d\n", ft_printf("%x", 104756));
 	// printf("\n%d\n",  printf("%x", 104756));
 	// printf("\n%d\n", ft_printf("%X", 65748));

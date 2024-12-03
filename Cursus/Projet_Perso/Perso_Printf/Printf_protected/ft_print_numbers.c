@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:08:50 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/10/28 14:13:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:22:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	putnbr_pf(int nb, int *value)
+int putnbr_pf(int nb, int *value)
 {
 	if (nb == -2147483648)
 	{
@@ -39,7 +39,7 @@ int	putnbr_pf(int nb, int *value)
 	return ((*value));
 }
 
-int	unsigned_putnbr_pf(unsigned int nb, int *value)
+int unsigned_putnbr_pf(unsigned int nb, int *value)
 {
 	if (nb > 9)
 	{
@@ -52,11 +52,11 @@ int	unsigned_putnbr_pf(unsigned int nb, int *value)
 	return ((*value));
 }
 
-int	print_hex_pf(unsigned int un, int *value, char param)
+int print_hex_pf(unsigned int un, int *value, char param)
 {
-	int				mod;
-	const char		*dict1;
-	const char		*dict2;
+	int mod;
+	const char *dict1;
+	const char *dict2;
 
 	dict1 = "0123456789abcdef";
 	dict2 = "0123456789ABCDEF";
@@ -81,10 +81,10 @@ int	print_hex_pf(unsigned int un, int *value, char param)
 	return (*value);
 }
 
-int	write_pointer_pf(unsigned long un, int *value)
+int write_pointer_pf(unsigned long un, int *value)
 {
-	int				mod;
-	const char		*dict;
+	int mod;
+	const char *dict;
 
 	dict = "0123456789abcdef";
 	if (un >= 16)
