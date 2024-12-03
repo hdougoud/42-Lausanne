@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/03 17:42:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:10:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char *add_args(char format, char *str, va_list args, int *i)
 {
+	printf("%d\n", *i);
 	if (format == 'c')
 		return (str);
 	else if(format == 's')
@@ -23,18 +24,19 @@ char *add_args(char format, char *str, va_list args, int *i)
 
 char *manage_args(const char *format, char *str, va_list args)
 {
-	int	*i;
+	int	i;
 	int form_indx;
 
 	i = 0;
 	form_indx = 0;
-	while(format[*i])
+	while(format[i])
 	{
-		str[*i++] = format[form_indx++];
+		str[i++] = format[form_indx++];
 		if (format[form_indx] == '%')
 		{
 			form_indx++;
-			str = add_args(format[form_indx], str, args, i); // ADD INT TAB
+			str = add_args(format[form_indx], str, args, &i); // ADD INT TAB
+			i++;
 		}
 	}
 	return (str);
@@ -93,8 +95,12 @@ int	ft_printf(const char *format, ...)
 	str = malloc(sizeof(char) * total_len + 1);
 	if (!str)
 		return (-1);
+	printf("%zu\n", total_len);
+	va_start(args, format);
 	str = manage_args(format, str, args);
 	write(1, str, total_len);
+	free(str);
+	va_end(args);
 	return (total_len);
 }
 
