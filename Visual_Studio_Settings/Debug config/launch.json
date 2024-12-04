@@ -1,0 +1,46 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"name": "Debug ft_printf",
+		"type": "lldb",
+		"request": "launch",
+		"program": "${workspaceFolder}/Printf_Upgarded/debug",
+		"args": [],
+		"cwd": "${workspaceFolder}",
+		"preLaunchTask": "build",
+		"internalConsoleOptions": "neverOpen"
+	  },
+	  {
+		"name": "C/C++ Runner: Debug Session",
+		"type": "lldb",
+		"request": "launch",
+		"args": [],
+		"cwd": ".",
+		"program": "Printf_Upgarded/debug"
+	  }
+	],
+	"tasks": {
+	  "version": "2.0.0",
+	  "tasks": [
+		{
+		  "label": "build",
+		  "type": "shell",
+		  "command": "gcc",
+		  "args": [
+			"-g",
+			"ft_printf.c",
+			"-o",
+			"debug"
+		  ],
+		  "group": {
+			"kind": "build",
+			"isDefault": true
+		  },
+		  "problemMatcher": [
+			"$gcc"
+		  ]
+		}
+	  ]
+	}
+  }

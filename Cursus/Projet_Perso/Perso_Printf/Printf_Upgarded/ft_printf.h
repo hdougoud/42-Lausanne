@@ -6,12 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:01:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/04 00:19:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:45:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_F
-# define PRINT_F
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <stdarg.h>

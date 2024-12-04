@@ -6,17 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:11:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/04 00:20:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:43:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *add_args(char format, char *str, va_list args, int *i)
+char	*add_args(char format, char *str, va_list args, int *i)
 {
 	if (format == 'c')
 		str = add_char(str, va_arg(args, int), i);
-	else if(format == 's')
+	else if (format == 's')
 		str = add_str(str, va_arg(args, char *), i);
 	else if (format == 'p')
 		str = add_pointer(str, va_arg(args, void *), i);
@@ -27,14 +27,14 @@ char *add_args(char format, char *str, va_list args, int *i)
 	return (str);
 }
 
-char *manage_args(const char *format, char *str, va_list args)
+char	*manage_args(const char *format, char *str, va_list args)
 {
 	int	i;
-	int form_indx;
+	int	form_indx;
 
 	i = 0;
 	form_indx = 0;
-	while(format[form_indx])
+	while (format[form_indx])
 	{
 		if (format[form_indx] == '%')
 		{
@@ -48,7 +48,7 @@ char *manage_args(const char *format, char *str, va_list args)
 	return (str);
 }
 
-size_t count_args(char format, va_list args, size_t len)
+size_t	count_args(char format, va_list args, size_t len)
 {
 	if (format == 'c')
 		len += count_char(va_arg(args, int));
@@ -65,14 +65,14 @@ size_t count_args(char format, va_list args, size_t len)
 	return (len);
 }
 
-size_t count_len(const char *format, va_list args)
+size_t	count_len(const char *format, va_list args)
 {
-	int len;
-	int i;
-	
+	int	len;
+	int	i;
+
 	i = 0;
 	len = 0;
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -93,7 +93,7 @@ int	ft_printf(const char *format, ...)
 	size_t		total_len;
 	va_list		args;
 	char		*str;
-	
+
 	total_len = 0;
 	va_start(args, format);
 	total_len = count_len(format, args);

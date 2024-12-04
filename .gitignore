@@ -5,3 +5,4 @@ a.out
 *.o
 ../../.vscode/launch.json
 ../../.vscode/tasks.json
+*debug

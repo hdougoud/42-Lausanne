@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 17:35:53 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/04 00:22:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/04 10:46:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ char	*add_str(char *str, char *format, int *idx)
 		(*idx)++;
 		i++;
 	}
-	return (str); //TODO : CONVERT i TO A POINTER INT
+	return (str);
 }
 
 static char	*convert_pointer(char *str, unsigned long ul, int *idx)
 {
-	int mod;
-	char *dict = {"0123456789abcdef"};
-	
+	int		mod;
+	char	*dict;
+
+	dict = "0123456789abcdef";
 	printf("%d\n", *idx);
 	if (ul >= 16)
 		convert_pointer(str, ul / 16, idx);
@@ -49,7 +50,7 @@ static char	*convert_pointer(char *str, unsigned long ul, int *idx)
 
 char	*add_pointer(char *str, void *format, int *idx)
 {
-	unsigned long ul;
+	unsigned long	ul;
 
 	ul = (unsigned long) format;
 	str[*idx] = '0';
