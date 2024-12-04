@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/04 15:07:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 00:03:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int *create_array(int argc, char **argv, int *tab_size)
 
 	j = 0;
 	tab = NULL;
-	tab_size = 0;
+	*tab_size = 0;
 	while(++j < argc)
 	{
 		i = 0;
@@ -85,36 +85,41 @@ static int *create_array(int argc, char **argv, int *tab_size)
 		}
 		tab_size++;
 	}
-	tab = malloc(sizeof(int) * tab_size);
+	tab = malloc(sizeof(int) * (*tab_size));
+	if (!tab)
+	{
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
+	}
 	return (tab);
 }
 
 static int	check_duplicate(int argc, char **argv)
 {
-	int	i;
-	int	current_value;
-	int	position;
+	//int	*tab;
+	//int	i;
+	//int	position;
 	int	tab_size;
 
-	create_array(argc, argv, &tab_size);
-	i = 1;
-	while (i < argc)
-	{
-		position = 1;
-		current_value = ft_atoi(argv[i]);
-		while (position < argc)
-		{
-			if (position == i)
-				position++;
-			if (position >= argc)
-				return (0);
-			if (ft_atoi(argv[position]) == current_value)
-				return (1);
-			position++;
-		}
-		i++;
-	}
-	return (0);
+	//i = 0;
+	/*tab =*/ create_array(argc, argv, &tab_size);
+	// while (i < tab_size)
+	// {
+	// 	position = 0;
+	// 	while (position < tab_size)
+	// 	{
+	// 		if (position > tab_size)
+	// 			break;
+	// 		else if (i == position)
+	// 			position++;
+	// 		else if (tab[position] == tab[i])
+	// 			return (1);
+	// 		else
+	// 			position++;
+	// 	}
+	// 	i++;
+	//}
+	return (0); //ADD FREE TAB
 }
 
 void	check_errors(int argc, char **argv)
