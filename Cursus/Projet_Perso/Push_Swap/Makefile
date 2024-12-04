@@ -6,13 +6,13 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 12:49:34 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/02 16:13:13 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/04 12:09:14 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 GCC  = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 LIBFT = libft/libft.a
 
