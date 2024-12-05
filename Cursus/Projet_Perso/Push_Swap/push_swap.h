@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:05:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/02 16:03:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 10:35:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 void	switch_first(int argc, int *tab);
 void	check_errors(int argc, char **argv);
 void	ss(int argc, int *tab_a, int *tab_b);
+
+int		check_duplicate(int argc, char **argv);
 
 typedef struct s_tab
 {
