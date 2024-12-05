@@ -6,11 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 11:00:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:24:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	show_error(void)
+{
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
+}
 
 static int check_limits(int argc, char *argv[])
 {
@@ -64,7 +70,7 @@ static int	check_noascii(int argc, char **argv)
 	return (0);
 }
 
-void	check_errors(int argc, char **argv)
+int	*check_errors(int argc, char **argv, int *tab_size)
 {
 	int	error;
 
@@ -82,10 +88,5 @@ void	check_errors(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
-	error = check_duplicate(argc, argv);
-	if (error == 1)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-	}
+	return (check_duplicate(argc, argv, tab_size));
 }

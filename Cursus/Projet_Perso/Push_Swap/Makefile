@@ -6,19 +6,19 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 12:49:34 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/05 11:00:46 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/05 13:50:41 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-GCC  = cc
-CFLAGS = -Wall -Werror -Wextra -g
+NAME	= push_swap
+GCC		= cc
+CFLAGS	= -Wall -Werror -Wextra -g
 
-LIBFT = libft/libft.a
+LIBFT	= libft/libft.a
 
-SOURCES = push_swap.c check_errors.c check_duplicates.c
+SOURCES	= push_swap.c check_errors.c check_duplicates.c operator.c \
 
-OBJECTS = $(SOURCES:.c=.o)
+OBJECTS	= $(SOURCES:.c=.o)
 
 $(LIBFT):
 	$(MAKE) -C libft

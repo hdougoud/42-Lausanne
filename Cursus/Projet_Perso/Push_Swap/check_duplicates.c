@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:33:24 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 11:35:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:26:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*fill_array(int argc, char **argv, int *tab)
+static int	*check_fill_array(int argc, char **argv, int *tab)
 {
 	char	buffer[13];
 	int		tab_pos;
@@ -40,7 +40,7 @@ static int	*fill_array(int argc, char **argv, int *tab)
 	return (tab);
 }
 
-static int *create_array(int argc, char **argv, int *tab_size)
+static int *check_create_array(int argc, char **argv, int *tab_size)
 {
 	int	*tab;
 	int	i;
@@ -62,38 +62,34 @@ static int *create_array(int argc, char **argv, int *tab_size)
 	}
 	tab = malloc(sizeof(int) * (*tab_size));
 	if (!tab)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-	}
+		show_error();
 	return (tab);
 }
 
-int	check_duplicate(int argc, char **argv)
+int	*check_duplicate(int argc, char **argv, int *tab_size)
 {
 	int	*tab;
 	int	i;
 	int	position;
-	int	tab_size;
 
 	i = 0;
-	tab = create_array(argc, argv, &tab_size);
-	tab = fill_array(argc, argv, tab);
-	while (i < tab_size)
+	tab = check_create_array(argc, argv, tab_size);
+	tab = check_fill_array(argc, argv, tab);
+	while (i < *tab_size)
 	{
 		position = 0;
-		while (position < tab_size)
+		while (position < *tab_size)
 		{
-			if (position > tab_size)
+			if (position > *tab_size)
 				break;
 			else if (i == position)
 				position++;
 			else if (tab[position] == tab[i])
-				return (1);
+				show_error();
 			else
 				position++;
 		}
 		i++;
 	}
-	return (free(tab), 0);
+	return (tab);
 }
