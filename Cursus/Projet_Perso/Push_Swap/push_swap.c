@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:08:46 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 16:08:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:18:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	t_tab	tab_a;
-	//t_tab	tab_b;
+	t_tab	tab_b;
 	i = 0;
 	tab_a.size = 0;
 	tab_a.array = check_errors(argc, argv, &tab_a.size);
+	tab_b.array = malloc(sizeof(int *) * tab_a.size);
+	if (!tab_b.array)
+	{
+		free(tab_a.array);
+		show_error();
+	}
+	tab_b.size = tab_a.size;
 	while (i < tab_a.size)
 	{
 		printf("PUSHSWAP BEFORE%d\n", tab_a.array[i]);
@@ -44,5 +51,7 @@ int	main(int argc, char **argv)
 		printf("PUSHSWAP AFTER%d\n", tab_a.array[i]);
 		i++;
 	}
+	free(tab_a.array);
+	free(tab_b.array);
 	exit(EXIT_SUCCESS);
 }

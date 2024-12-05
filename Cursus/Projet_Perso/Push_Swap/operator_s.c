@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:25:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 16:09:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:20:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	swap(int **array)
 
 void	double_swap(int **array_a, int **array_b)
  {
- 	switch_first(array_a);
- 	switch_first(array_b);
+ 	swap(array_a);
+ 	swap(array_b);
  }

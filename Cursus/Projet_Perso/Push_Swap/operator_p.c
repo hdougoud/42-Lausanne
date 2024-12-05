@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:23:18 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 16:18:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:12:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void push(t_tab **donor, t_tab **receptor)
 {
-	receptor  
+	
 }
