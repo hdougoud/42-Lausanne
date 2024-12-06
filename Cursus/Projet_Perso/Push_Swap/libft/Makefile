@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/02 16:27:05 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/06 15:56:32 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,16 +58,29 @@ GNL_SRCS	=	$(GNL_DIR)/get_next_line.c \
 #ALL_SOURCES
 SOURCES = 		$(LIBFT_SRCS) $(LIBFTBONUS) $(PRINTF_SRCS) $(GNL_SRCS)
 
-#--------------------------------------Objects---------------------------------
+#-------------------------------------OBJECTS----------------------------------
 
 OBJECTS = 		$(SOURCES:.c=.o)		
 
+#--------------------------------------COLOR-----------------------------------
+
+GRAY	= \033[1;30m
+RED		= \033[1;31m
+GREEN	= \033[1;32m
+YELLOW	= \033[1;33m
+BLUE	= \033[1;34m
+PURPLE	= \033[1;35m
+CYAN	= \033[1;36m
+WHITE	= \033[1;37m
+
 #--------------------------------------RULES-----------------------------------
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-
+	echo "$(GREEN)Libft done$(WHITE)"
+	
 clean:
 	rm -f $(OBJECTS)
 
