@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/06 15:56:32 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/08 00:59:51 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,4 +89,5 @@ fclean: clean
 
 re: fclean all
 
+.SILENT:
 .PHONY: all clean fclean re

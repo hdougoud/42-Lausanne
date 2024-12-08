@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 12:49:34 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/06 16:26:24 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/08 03:36:27 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS	= -Wall -Werror -Wextra -g
 LIBFT	= libft/libft.a
 
 SOURCES = push_swap.c	check_errors.c	check_duplicates.c	operator_s.c \
-		  operator_p.c	operator_r.c
+		  operator_p.c	operator_r.c	sort.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:08:46 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/06 16:04:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/08 03:47:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_tab(t_tab tab_a, t_tab tab_b) //DEBUG FUNCTION
 			printf("PUSHSWAP	TAB_A[]	");
 		if (j < tab_b.size)
 			printf("		TAB_B[%d]%d\n", i, tab_b.array[i]);
-		else
+		else 	
 			printf("		TAB_B[]\n");
 		i++;
 		j++;
@@ -49,21 +49,23 @@ int	main(int argc, char **argv)
 		free(tab_a.array);
 		show_error();
 	}
-	// print_tab(tab_a, tab_b);
+	tab_b.size = 0;
+	//sort_tab(tab_a, tab_b);
+	print_tab(tab_a, tab_b);
 	// swap(&tab_a.array);
-	print_tab(tab_a, tab_b);
-	push(&tab_a, &tab_b);
-	print_tab(tab_a, tab_b);
-	push(&tab_a, &tab_b);
-	print_tab(tab_a, tab_b);
-	push(&tab_a, &tab_b);
-	print_tab(tab_a, tab_b);
-	rotate(&tab_a);
+	// print_tab(tab_a, tab_b);
+	// push(&tab_a, &tab_b);
+	// print_tab(tab_a, tab_b);
+	// push(&tab_a, &tab_b);
+	// print_tab(tab_a, tab_b);
+	// push(&tab_a, &tab_b);
+	// print_tab(tab_a, tab_b);
+	// rotate(&tab_a);
 	// print_tab(tab_a, tab_b);
 	// double_rotate(&tab_a, &tab_b);
-	print_tab(tab_a, tab_b);
-	double_rotate(&tab_a, &tab_b);
-	print_tab(tab_a, tab_b);
+	// print_tab(tab_a, tab_b);
+	// double_rotate(&tab_a, &tab_b);
+	// print_tab(tab_a, tab_b);
 	free(tab_a.array);
 	free(tab_b.array);
 	exit(EXIT_SUCCESS);
