@@ -6,25 +6,50 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 13:24:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:07:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	show_error(void)
+void	show_error(int n)
 {
+	if (n == 1)
+		ft_putendl_fd("Malloc Error", 2);
+	else if (n == 2)
 		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
-static int check_limits(int argc, char *argv[])
+void	check_duplicate(t_stack *stack)
+{
+	t_stack	*backup;
+	t_stack	*checker;
+	
+	checker = stack;
+	backup = stack;
+	while (stack->next != NULL)
+	{
+		if (stack == checker)
+			checker = checker->next;
+		if (stack->nb == checker->nb)
+			show_error(2);
+		if (checker->next == NULL)
+		{
+			checker = backup;
+			stack = stack->next;
+		}
+		checker = checker->next;
+	}
+}
+
+static int	check_limits(int argc, char *argv[])
 {
 	int		i;
 	int		x;
 	int		y;
 	char	buffer[13];
-	
+
 	i = 0;
 	y = 0;
 	while (++y < argc)
@@ -70,7 +95,7 @@ static int	check_noascii(int argc, char **argv)
 	return (0);
 }
 
-int	*check_errors(int argc, char **argv, int *tab_size)
+void	check_errors(int argc, char **argv)
 {
 	int	error;
 
@@ -88,5 +113,4 @@ int	*check_errors(int argc, char **argv, int *tab_size)
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
-	return (check_duplicate(argc, argv, tab_size));
 }

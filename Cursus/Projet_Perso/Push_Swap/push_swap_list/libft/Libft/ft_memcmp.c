@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 16:11:28 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/08 03:39:24 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/10/03 11:47:30 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/11/27 10:55:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../libft.h"
 
-static int check_result(t_tab tab)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int i;
-	
+	unsigned char	*a;
+	unsigned char	*b;
+	unsigned int	i;
+
 	i = 0;
-	while (i < tab.size)
+	a = (unsigned char *) s1;
+	b = (unsigned char *) s2;
+	while (n > i)
 	{
-		if (tab.array[i] > tab.array[i + 1])
-			return (1);
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
 		i++;
 	}
 	return (0);
 }
 
-void sort_tab(t_tab tab_a, t_tab tab_b)
-{
-	tab_b.size = 2;
-	tab_b.array[1] = 10;
- 	
-	if (check_result(tab_a) == 1)
-	{
-		printf("%s\n", "stack not sorted");
-		exit(EXIT_FAILURE);
-	}
-	else 
-		printf("%s\n", "stack sorted :)");
-}
+//int main(void)
+//{
+//	char s1[] = "atome";
+//	char s2[] = "atomeu";
+//	printf("%d\n", ft_memcmp(s1, s2, 8));
+//	printf("%d\n", memcmp(s1, s2, 8));
+//	return (0);
+//}

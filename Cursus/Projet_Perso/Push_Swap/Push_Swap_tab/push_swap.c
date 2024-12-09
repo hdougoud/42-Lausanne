@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:08:46 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/08 03:47:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:56:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ int	main(int argc, char **argv)
 		show_error();
 	}
 	tab_b.size = 0;
-	//sort_tab(tab_a, tab_b);
 	print_tab(tab_a, tab_b);
+	sort_tab(&tab_a, &tab_b);
+	print_tab(tab_a, tab_b);
+	sort_tab(&tab_a, &tab_b);
 	// swap(&tab_a.array);
 	// print_tab(tab_a, tab_b);
 	// push(&tab_a, &tab_b);

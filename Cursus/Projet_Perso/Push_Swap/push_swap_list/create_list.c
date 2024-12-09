@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicates.c                                 :+:      :+:    :+:   */
+/*   create_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 10:33:24 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/06 16:05:30 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/09 13:18:29 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/09 15:43:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*check_fill_array(int argc, char **argv, int *tab)
+static int	*fill_array(int argc, char **argv, int *tab)
 {
 	char	buffer[13];
 	int		tab_pos;
@@ -40,7 +40,7 @@ static int	*check_fill_array(int argc, char **argv, int *tab)
 	return (tab);
 }
 
-static int *check_create_array(int argc, char **argv, int *tab_size)
+static int *create_array(int argc, char **argv, int *size)
 {
 	int	*tab;
 	int	i;
@@ -48,48 +48,53 @@ static int *check_create_array(int argc, char **argv, int *tab_size)
 
 	j = 0;
 	tab = NULL;
-	(*tab_size) = 0;
+	(*size) = 0;
 	while(++j < argc)
 	{
 		i = 0;
 		while(argv[j][i])
 		{
 			if (argv[j][i] == ' ')
-				(*tab_size)++;
+				(*size)++;
 			i++;
 		}
-		(*tab_size)++;
+		(*size)++;
 	}
-	tab = malloc(sizeof(int) * (*tab_size));
+	tab = malloc(sizeof(int) * (*size));
 	if (!tab)
-		show_error();
-	return (tab);
+		show_error(1);
+	return (fill_array(argc, argv, tab));
 }
 
-int	*check_duplicate(int argc, char **argv, int *tab_size)
+static t_stack	*new_stack(int n)
 {
-	int	*tab;
-	int	i;
-	int	position;
+	t_stack	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		show_error(1);
+	new->nb = n;
+	new->next = NULL;
+	return (new);
+	
+}
+
+t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
+{
+	t_stack	*current;
+	int 	*array;
+	int		size;
+	int		i;
 
 	i = 0;
-	tab = check_create_array(argc, argv, tab_size);
-	tab = check_fill_array(argc, argv, tab);
-	while (i < *tab_size)
+	array = create_array(argc, argv, &size);
+	stack_a = new_stack(array[i]);
+	current = stack_a;
+	while(++i < size)
 	{
-		position = 0;
-		while (position < *tab_size)
-		{
-			if (position > *tab_size)
-				break;
-			else if (i == position)
-				position++;
-			else if (tab[position] == tab[i])
-				show_error();
-			else
-				position++;
-		}
-		i++;
+		current->next = new_stack(array[i]);
+		current = current->next;
 	}
-	return (tab);
+	safe_free((void**) &array);
+	return (stack_a);
 }

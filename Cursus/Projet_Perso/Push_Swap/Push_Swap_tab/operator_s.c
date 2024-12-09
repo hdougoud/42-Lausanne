@@ -6,25 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:25:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/05 19:20:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:51:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(int **array)
+void	swap(t_tab *tab)
 {
 	int	temp;
 
-	if (*array == NULL || array[0] == NULL || array[1] == NULL)
+	if (tab->size < 2)
 		return;
-	temp = (*array)[0];
-	(*array)[0] = (*array)[1];
-	(*array)[1] = temp;
+	temp = ((tab)->array)[0];
+	((tab)->array)[0] = ((tab)->array)[1];
+	((tab)->array)[1] = temp;
 }
 
-void	double_swap(int **array_a, int **array_b)
+void	double_swap(t_tab *tab_a, t_tab *tab_b)
  {
- 	swap(array_a);
- 	swap(array_b);
+ 	swap(tab_a);
+ 	swap(tab_b);
  }
