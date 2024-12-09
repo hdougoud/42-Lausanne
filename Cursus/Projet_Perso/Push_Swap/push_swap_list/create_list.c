@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:18:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 15:43:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:10:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,20 @@ static int *create_array(int argc, char **argv, int *size)
 	return (fill_array(argc, argv, tab));
 }
 
-static t_stack	*new_stack(int n)
+static t_stack	*add_stack_a(int n, int *array)
 {
 	t_stack	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_stack));
 	if (!new)
-		show_error(1);
+	{
+		if (array)
+			safe_free((void **) &array);
+		return (NULL);
+	}
 	new->nb = n;
 	new->next = NULL;
 	return (new);
-	
 }
 
 t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
@@ -88,11 +91,18 @@ t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
 
 	i = 0;
 	array = create_array(argc, argv, &size);
-	stack_a = new_stack(array[i]);
+	stack_a = add_stack_a(array[i], array);
+	if (!stack_a)
+		show_error(1);
 	current = stack_a;
 	while(++i < size)
 	{
-		current->next = new_stack(array[i]);
+		current->next = add_stack_a(array[i], array);
+		if (!current->next)
+		{
+			free_stack(stack_a);
+			show_error(1);
+		}
 		current = current->next;
 	}
 	safe_free((void**) &array);

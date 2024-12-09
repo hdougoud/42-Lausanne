@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/09 14:36:08 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/09 19:03:23 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ CFLAGS	= -Wall -Werror -Wextra -g
 
 LIBFT	= libft/libft.a
 
-SOURCES = push_swap.c	check_errors.c	create_list.c operator_swap.c
+SOURCES = push_swap.c		check_errors.c		create_list.c \
+		  operator_swap.c 	operator_push.c		stack_utils.c \
+		  operator_rotate.c \
+		  DEBUG_test_malloc.c #DEBUG OPTION
+		  
 OBJECTS	= $(SOURCES:.c=.o)
 
 GREEN = \033[1;32m

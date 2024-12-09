@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 15:07:43 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:30:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	show_error(int n)
 {
 	if (n == 1)
 		ft_putendl_fd("Malloc Error", 2);
-	else if (n == 2)
+	if (n == 2)
 		ft_putendl_fd("Error", 2);
-	exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);	
 }
 
 void	check_duplicate(t_stack *stack)
@@ -33,7 +33,10 @@ void	check_duplicate(t_stack *stack)
 		if (stack == checker)
 			checker = checker->next;
 		if (stack->nb == checker->nb)
+		{
+			free_stack(backup);
 			show_error(2);
+		}
 		if (checker->next == NULL)
 		{
 			checker = backup;
