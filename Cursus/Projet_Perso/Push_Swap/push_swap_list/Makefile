@@ -6,20 +6,21 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/09 19:03:23 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/10 13:27:11 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 GCC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g
+#CFLAGS	= -Wall -Werror -Wextra -g
+CFLAGS	= -g
 
 LIBFT	= libft/libft.a
 
 SOURCES = push_swap.c		check_errors.c		create_list.c \
-		  operator_swap.c 	operator_push.c		stack_utils.c \
-		  operator_rotate.c \
-		  DEBUG_test_malloc.c #DEBUG OPTION
+		  operator_swap.c 	operator_push.c		stack_utils.c  \
+		  operator_rotate.c sort.c				quick_sort.c    \
+		  A_DEBUG_test_malloc.c #DEBUG OPTION
 		  
 OBJECTS	= $(SOURCES:.c=.o)
 

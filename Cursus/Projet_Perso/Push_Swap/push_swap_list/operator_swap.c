@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 23:08:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:42:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	double_swap(t_stack *stack_a, t_stack *stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
+	printf("ss");
 }

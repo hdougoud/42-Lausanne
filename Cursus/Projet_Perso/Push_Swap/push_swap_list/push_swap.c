@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:57:00 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 23:42:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:28:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,8 @@ int main(int argc, char **argv)
 	stack_a = create_list(argc, argv, stack_a);
 	check_duplicate(stack_a);
 	print_list(stack_a, stack_b);
-	// swap(stack_a);
-	// print_list(stack_a, stack_b);
-	// push(&stack_a, &stack_b);
-	// print_list(stack_a, stack_b);
-	// push(&stack_a, &stack_b);
-	// print_list(stack_a, stack_b);
-	// push(&stack_a, &stack_b);
-	// print_list(stack_a, stack_b);
-	// rotate(&stack_a);
-	reverse_rotate(&stack_a);
+	check_sort(&stack_a, &stack_b);
 	print_list(stack_a, stack_b);
-	//print_list(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

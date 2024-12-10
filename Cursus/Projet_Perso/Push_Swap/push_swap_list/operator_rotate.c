@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 23:44:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:42:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void rotate(t_stack **stack)
 	*stack = (*stack)->next;
 	first->next = NULL;
 }
+
 void	double_rotate(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
+	ft_printf("rr");
 }
 
 void	reverse_rotate(t_stack **stack)
@@ -52,4 +54,5 @@ void	double_reverse(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
+	ft_printf("rrr");
 }
