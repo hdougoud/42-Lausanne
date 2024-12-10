@@ -1,2 +1,3 @@
 - Variables statiques, globales, locales	: https://www.codequoi.com/variables-locales-globales-statiques-en-c/
 - Écriture en hexadécimales			: https://www.binarydecode.com/fr/decimal-to-hexadecimal-conversion
+- System de tri Push_swap 125			: https://medium.com/@ayogun/push-swap-c1f5d2d41e97
