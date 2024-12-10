@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 13:42:08 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:52:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+static void	swap(t_stack *stack)
 {
 	t_stack *current;
 	int temp;
@@ -27,9 +27,21 @@ void	swap(t_stack *stack)
 	stack->nb = temp;
 }
 
+void	swap_a(t_stack *stack)
+{
+	swap(stack);
+	write(1, "sa\n", 3);
+}
+
+void	swap_b(t_stack *stack)
+{
+	swap(stack);
+	write(1, "sb\n", 3);
+}
+
 void	double_swap(t_stack *stack_a, t_stack *stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	printf("ss");
+	write(1, "ss\n", 3);
 }

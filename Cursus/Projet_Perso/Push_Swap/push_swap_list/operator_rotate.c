@@ -6,14 +6,14 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 13:42:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:51:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void rotate(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
 	t_stack *first;
 	t_stack	*temp;
@@ -27,32 +27,23 @@ void rotate(t_stack **stack)
 	first->next = NULL;
 }
 
+void	rotate_a(t_stack **stack)
+{
+	rotate(stack);
+	write(1, "ra\n", 3);
+}
+
+void	rotate_b(t_stack **stack)
+{
+	rotate(stack);
+	write(1, "rb\n", 3);
+}
+
 void	double_rotate(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_printf("rr");
+	write(1, "rr\n", 3);
 }
 
-void	reverse_rotate(t_stack **stack)
-{
-	t_stack	*last;
-	t_stack	*backup;
 
-	backup = *stack;
-	last = *stack;
-	while (last->next != NULL)
-		last = last->next;
-	while (backup->next->next != NULL)
-		backup = backup->next;
-	backup->next = NULL;
-	last->next = (*stack);
-	(*stack) = last;
-}
-
-void	double_reverse(t_stack **stack_a, t_stack **stack_b)
-{
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
-	ft_printf("rrr");
-}

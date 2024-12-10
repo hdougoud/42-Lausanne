@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:54:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 13:41:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:52:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **stack_src, t_stack **stack_dest)
+static void	push(t_stack **stack_src, t_stack **stack_dest)
 {
 	t_stack *temp;
 
@@ -22,4 +22,16 @@ void	push(t_stack **stack_src, t_stack **stack_dest)
 	*stack_src = (*stack_src)->next;
 	temp->next = *stack_dest;
 	(*stack_dest) = temp;
+}
+
+void	push_a(t_stack **stack_src, t_stack **stack_dest)
+{
+	push(stack_src, stack_dest);
+	write(1, "pa\n", 3);
+}
+
+void	push_b(t_stack **stack_src, t_stack **stack_dest)
+{
+	push(stack_src, stack_dest);
+	write(1, "pb\n", 3);
 }

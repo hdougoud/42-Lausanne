@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:55:13 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 13:28:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:20:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void	check_sort(t_stack **stack_a, t_stack **stack_b)
 	if (check_list(*stack_a) == 0)
 		return ;
 	if (nodes == 2)
-		sort_two_nodes(*stack_a);
+		swap_a(*stack_a);
+	if (nodes == 3)
+		sort_three_nodes(stack_a);
 }
