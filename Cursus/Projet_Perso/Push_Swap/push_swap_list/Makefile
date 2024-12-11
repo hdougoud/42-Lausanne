@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/10 16:27:09 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/11 20:44:53 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(GCC) $(CFLAGS) $(OBJECTS) -Llibft -lft -o $(NAME)
-	echo "$(GREEN)done$(WHITE)"
+	echo -e "$(GREEN)done$(WHITE)"
 %.o: %.c
 	$(GCC) $(CFLAGS) -o $@ -c $<
 

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 15:19:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:50:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void	self_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 {
 	t_stack *index;
 	int number;
-	int i;
 
-	i = 0;
 	while(*stack_a)
 	{
 		index = *stack_a;

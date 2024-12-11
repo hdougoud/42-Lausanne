@@ -6,27 +6,26 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/11 14:30:37 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/11 19:20:46 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 GCC		= cc
-#CFLAGS	= -Wall -Werror -Wextra -g
-CFLAGS	= -g
+CFLAGS	= -Wall -Werror -Wextra
 
 LIBFT	= libft/libft.a
 
-SOURCES = push_swap.c		check_errors.c		create_list.c \
-		  operator_swap.c 	operator_push.c		stack_utils.c  \
-		  operator_rotate.c sort.c				quick_sort.c    \
-		  operator_rev_rotate.c 				self_sort.c		 \
-		  A_DEBUG_test_malloc.c A_DEBUG_print_list.c #DEBUG OPTION
+SOURCES = 	push_swap.c			check_errors.c		create_list.c \
+		  	operator_swap.c 	operator_push.c		sort.c		   \
+		  	operator_rotate.c 	quick_sort.c    	self_sort.c		\
+		  	operator_rev_rotate.c
 		  
 OBJECTS	= $(SOURCES:.c=.o)
 
 GREEN = \033[1;32m
-WHITE = \033[1;37m
+RESET = \033[0m
+
 
 $(LIBFT):
 	$(MAKE) -C libft
@@ -35,7 +34,8 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(GCC) $(CFLAGS) $(OBJECTS) -Llibft -lft -o $(NAME)
-	echo "$(GREEN)done$(WHITE)"
+	echo -e "$(GREEN)done$(RESET)"
+	
 %.o: %.c
 	$(GCC) $(CFLAGS) -o $@ -c $<
 

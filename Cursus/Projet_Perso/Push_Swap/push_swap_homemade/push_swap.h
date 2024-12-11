@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:05:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 14:42:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:50:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-//#define malloc test_malloc //DEBUG FUNCTION
-void print_list(t_stack *stack_a, t_stack *stack_b); //DEBUG FUNCTION
-
 int	count_list(t_stack *stack);
 
 t_stack	*new_node(int n);
 t_stack	*create_list(int argc, char **argv, t_stack *stack_a);
-
-void	*test_malloc(size_t size); //DEBUG FUNCTION
 
 void	show_error(int n);
 void	free_stack(t_stack *stack);

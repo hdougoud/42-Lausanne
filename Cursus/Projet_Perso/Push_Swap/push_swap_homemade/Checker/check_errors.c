@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 18:37:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:13:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	show_error(int n)
+void	show_error(int n)
 {
 	if (n == 1)
 		ft_putendl_fd("Malloc Error", 2);
