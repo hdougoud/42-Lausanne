@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 13:08:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:50:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	free_stack(t_stack *stack)
 	}
 }
 
+#include <fcntl.h>
+
 int main(int argc, char **argv)
 {
 	char	*line;
@@ -75,6 +77,8 @@ int main(int argc, char **argv)
 	check_errors(argc, argv);
 	stack_a = create_list(argc, argv, stack_a);
 	check_duplicate(stack_a);
+
+	int i = 0;
 	while (1)
 	{
 		line = get_next_line(STDIN_FILENO);
@@ -82,6 +86,7 @@ int main(int argc, char **argv)
 			break;
 		execute_args(&stack_a, &stack_b, line);
 		free(line);
+		i++;
 	}
 	if (check_result(stack_a) == 1)
 		ft_putendl_fd("KO", 1);
@@ -89,5 +94,8 @@ int main(int argc, char **argv)
 		ft_putendl_fd("OK", 1);
 	free_stack(stack_a);
 	free_stack(stack_b);
+
+	printf("%d moves\n", i);
+	
 	return(0);
 }
