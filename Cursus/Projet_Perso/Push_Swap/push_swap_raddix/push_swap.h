@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:05:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 16:29:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:58:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_stack
 }					t_stack;
 
 //#define malloc test_malloc //DEBUG FUNCTION
-static void print_list(t_stack *stack_a, t_stack *stack_b); //DEBUG FUNCTION
+void print_list(t_stack *stack_a, t_stack *stack_b); //DEBUG FUNCTION
 
 t_stack	*new_node(int n);
 t_stack	*create_list(int argc, char **argv, t_stack *stack_a);
@@ -39,6 +39,7 @@ void	check_sort(t_stack **stack_a, t_stack **stack_b);
 
 void	sort_two_nodes(t_stack *stack_a);
 void	sort_three_nodes(t_stack **stack_a);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 /*-------------------------Opeartor--------------------------------*/
 

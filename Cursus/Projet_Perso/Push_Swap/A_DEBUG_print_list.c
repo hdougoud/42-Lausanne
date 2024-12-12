@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void print_list(t_stack *stack_a, t_stack *stack_b)
+void print_list(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
 
