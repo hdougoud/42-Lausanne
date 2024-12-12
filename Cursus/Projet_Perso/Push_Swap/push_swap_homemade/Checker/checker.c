@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 00:13:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:08:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,29 @@ static int	check_result(t_stack *stack)
 
 static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 {
-	if (ft_strncmp("sa\n", line, 3) == 0)
+	if (line == NULL)
+		return ;
+	else if (ft_strncmp("sa", line, 2) == 0)
 		swap(*stack_a);
-	else if (ft_strncmp("sb\n", line, 3) == 0)
+	else if (ft_strncmp("sb", line, 2) == 0)
 		swap(*stack_b);
-	else if (ft_strncmp("ss\n", line, 3) == 0)
+	else if (ft_strncmp("ss", line, 2) == 0)
 		double_swap(*stack_a, *stack_b);
-	else if (ft_strncmp("pa\n", line, 3) == 0)
-		push(stack_a, stack_b);
-	else if (ft_strncmp("pb\n", line, 3) == 0)
+	else if (ft_strncmp("pa", line, 2) == 0)
 		push(stack_b, stack_a);
-	else if (ft_strncmp("ra\n", line, 3) == 0)
+	else if (ft_strncmp("pb", line, 2) == 0)
+		push(stack_a, stack_b);
+	else if (ft_strncmp("ra", line, 2) == 0)
 		rotate(stack_a);
-	else if (ft_strncmp("rb\n", line, 3) == 0)
+	else if (ft_strncmp("rb", line, 2) == 0)
 		rotate(stack_b);
-	else if (ft_strncmp("rr\n", line, 3) == 0)
+	else if (ft_strncmp("rr", line, 2) == 0)
 		double_rotate(stack_a, stack_b);
-	else if (ft_strncmp("rra\n", line, 4) == 0)
+	else if (ft_strncmp("rra", line, 3) == 0)
 		reverse_rotate(stack_a);
-	else if (ft_strncmp("rrb\n", line, 4) == 0)
+	else if (ft_strncmp("rrb", line, 3) == 0)
 		reverse_rotate(stack_b);
-	else if (ft_strncmp("rrr\n", line, 4) == 0)
+	else if (ft_strncmp("rrr", line, 3) == 0)
 		double_reverse(stack_a, stack_b);
 }
 
@@ -82,11 +84,9 @@ int main(int argc, char **argv)
 		free(line);
 	}
 	if (check_result(stack_a) == 1)
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		show_error(2);
-	}
+		ft_putendl_fd("KO", 1);
+	else 
+		ft_putendl_fd("OK", 1);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return(0);
