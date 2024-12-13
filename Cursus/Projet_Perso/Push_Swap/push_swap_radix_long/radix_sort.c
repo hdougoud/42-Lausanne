@@ -6,38 +6,54 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 17:31:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:11:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	check_negatif(t_stack **stack)
+static int	check_negatif(t_stack *stack)
 {
-	int		negative;
+	int		min;
 	t_stack	*index;
 
-	negative = 0;
-	index = *stack;
-	while(index)
+	min = 0;
+	index = stack;
+	while (index)
 	{
-		if (index->nb < 0)
-			negative = index->nb;
+		if (index->nb < min)
+			min = index->nb;
 		index = index->next;
 	}
-	if (negative == 0)
-		return ;
-	//TODO modifier tout les nombre EX: negatif = -122 stack->nb = stack->(nb + 122)
-	while()
+	printf("%d\n", min);
+	if (min == 0)
+		return (0);
+	min = -min;
+	printf("%d\n", min);
+	while (stack)
+	{
+		stack->nb = stack->nb + min;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+static void	restore_value(t_stack *stack, int min)
+{
+	while (stack)
+	{
+		stack->nb = stack->nb - min;
+		stack = stack->next;
+	}
 }
 
 void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 {
-	t_stack	*index; //decaler les negatif pour qu'il deviennent positif
+	int		min;
 	int		bits;
 	int		bnodes;
 
-	check_negatif(stack_a);
+	min = check_negatif(*stack_a);
 	bnodes = nodes;
 	bits = 0;
 	while (bits < 32)
@@ -55,4 +71,6 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 			push_a(stack_b, stack_a);
 		bits++;
 	}
+	if (min != 0)
+		restore_value(*stack_a, min);
 }

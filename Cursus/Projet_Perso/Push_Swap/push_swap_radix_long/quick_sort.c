@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:23:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:04:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:04:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	utils_four_nodes(t_stack **stack_a, t_stack **stack_b, int low)
 
 void	sort_four_nodes(t_stack **stack_a, t_stack **stack_b)
 {
-	int		i;
 	int		low;
 	t_stack	*index;
 
