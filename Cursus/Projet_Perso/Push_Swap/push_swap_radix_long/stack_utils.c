@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:53:35 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/09 17:21:33 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/13 16:40:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
+t_stack	*new_node(int n)
 {
-	t_stack	*index;
-	int		bits;
-	int		bnodes;
+	t_stack	*new;
 
-	bnodes = nodes;
-	bits = 0;
-	while (bits < 32)
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->nb = n;
+	new->next = NULL;
+	return (new);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*backup;
+
+	backup = stack;
+	while (stack)
 	{
-		while (bnodes > 0)
-		{
-			if ((((*stack_a)->nb >> bits) & 1) == 0)
-				push_b(stack_a, stack_b);
-			else
-				rotate_a(stack_a);
-			bnodes--;
-		}
-		bnodes = nodes;
-		while (*stack_b)
-			push_a(stack_b, stack_a);
-		bits++;
+		backup = backup->next;
+		free (stack);
+		stack = backup;
 	}
 }

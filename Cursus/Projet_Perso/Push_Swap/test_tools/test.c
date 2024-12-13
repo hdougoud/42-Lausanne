@@ -18,8 +18,6 @@ static void print_bytes(int nb)
 int main(void)
 {
 	int bits;
-	int nb = 2;
-	//print_bytes(nb);
-	bits = ((nb) & 1);
-	printf("%d\n", bits);
+	int nb = -1;
+	print_bytes(nb);
 }
