@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:37:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 00:13:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:41:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	show_error(int n)
 		ft_putendl_fd("Malloc Error", 2);
 	if (n == 2)
 		ft_putendl_fd("Error", 2);
-	exit(EXIT_FAILURE);	
+	exit(EXIT_FAILURE);
 }
 
 void	check_duplicate(t_stack *stack)
 {
 	t_stack	*backup;
 	t_stack	*checker;
-	
+
 	checker = stack;
 	backup = stack;
 	while (stack->next != NULL)

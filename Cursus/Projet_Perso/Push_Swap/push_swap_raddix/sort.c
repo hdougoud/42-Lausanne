@@ -6,18 +6,18 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:55:13 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 14:12:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:40:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int check_list(t_stack *stack)
+static int	check_list(t_stack *stack)
 {
-	int sorted;
+	int	sorted;
 
 	sorted = 0;
-	while(stack->next)
+	while (stack->next)
 	{
 		if ((stack->nb) > (stack->next->nb))
 			sorted = 1;
@@ -29,9 +29,9 @@ static int check_list(t_stack *stack)
 static int	count_list(t_stack *stack)
 {
 	int	i;
-	
+
 	i = 0;
-	while(stack)
+	while (stack)
 	{
 		i++;
 		stack = stack->next;
@@ -41,8 +41,8 @@ static int	count_list(t_stack *stack)
 
 void	check_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int nodes;
-		
+	int	nodes;
+
 	nodes = count_list(*stack_a);
 	if (check_list(*stack_a) == 0)
 		return ;
@@ -50,6 +50,10 @@ void	check_sort(t_stack **stack_a, t_stack **stack_b)
 		swap_a(*stack_a);
 	else if (nodes == 3)
 		sort_three_nodes(stack_a);
+	else if (nodes == 4)
+		sort_four_nodes(stack_a, stack_b);
+	else if (nodes == 5)
+		sort_five_nodes(stack_a, stack_b);
 	else
-		radix_sort(stack_a, stack_b);
+		radix_sort(stack_a, stack_b, nodes);
 }

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 16:52:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:34:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	swap(t_stack *stack)
 {
-	t_stack *current;
-	int temp;
-	
+	t_stack	*current;
+	int		temp;
+
 	if (stack == NULL || stack->next == NULL)
 		return ;
 	current = stack;

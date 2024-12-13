@@ -6,12 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:24:04 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 00:01:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:43:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
-#define CHECKER_H
+# define CHECKER_H
 
 # include "../libft/libft.h"
 

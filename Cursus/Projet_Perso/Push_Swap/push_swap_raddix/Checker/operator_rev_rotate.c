@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:32:18 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 18:36:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 11:38:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*backup;
 
+	if (*stack == NULL || stack == NULL)
+		return ;
 	backup = *stack;
 	last = *stack;
 	while (last->next != NULL)

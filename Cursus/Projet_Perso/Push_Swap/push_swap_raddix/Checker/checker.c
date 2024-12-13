@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/12 19:50:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:43:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_result(t_stack *stack)
 {
-	while(stack->next)
+	while (stack->next)
 	{
 		if (stack->nb > stack->next->nb)
 			return (1);
@@ -49,11 +49,12 @@ static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 		reverse_rotate(stack_b);
 	else if (ft_strncmp("rrr", line, 3) == 0)
 		double_reverse(stack_a, stack_b);
+	printf("one move\n");
 }
 
 void	free_stack(t_stack *stack)
 {
-	t_stack *backup;
+	t_stack	*backup;
 
 	backup = stack;
 	while (stack)
@@ -64,38 +65,30 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-#include <fcntl.h>
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*line;
-	t_stack *stack_a;
-	t_stack *stack_b;
-	
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	check_errors(argc, argv);
 	stack_a = create_list(argc, argv, stack_a);
 	check_duplicate(stack_a);
-
-	int i = 0;
 	while (1)
 	{
 		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
-			break;
+			break ;
 		execute_args(&stack_a, &stack_b, line);
 		free(line);
-		i++;
 	}
 	if (check_result(stack_a) == 1)
 		ft_putendl_fd("KO", 1);
-	else 
+	else
 		ft_putendl_fd("OK", 1);
 	free_stack(stack_a);
 	free_stack(stack_b);
-
-	printf("%d moves\n", i);
-	
-	return(0);
+	return (0);
 }

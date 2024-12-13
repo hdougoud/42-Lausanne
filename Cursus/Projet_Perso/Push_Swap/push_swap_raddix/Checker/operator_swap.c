@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 18:35:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:46:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	swap(t_stack *stack)
 {
-	t_stack *current;
-	int temp;
-	
+	t_stack	*current;
+	int		temp;
+
 	if (stack == NULL || stack->next == NULL)
 		return ;
 	current = stack;
@@ -26,7 +26,6 @@ void	swap(t_stack *stack)
 	stack = stack->next;
 	stack->nb = temp;
 }
-
 
 void	double_swap(t_stack *stack_a, t_stack *stack_b)
 {

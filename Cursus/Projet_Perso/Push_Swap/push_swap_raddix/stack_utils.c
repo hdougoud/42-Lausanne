@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:21:33 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 23:08:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:40:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*new_node(int n)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
@@ -24,9 +24,9 @@ t_stack	*new_node(int n)
 	return (new);
 }
 
-void free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
-	t_stack *backup;
+	t_stack	*backup;
 
 	backup = stack;
 	while (stack)

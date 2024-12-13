@@ -6,17 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:57:00 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 16:26:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:35:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	check_errors(argc, argv);

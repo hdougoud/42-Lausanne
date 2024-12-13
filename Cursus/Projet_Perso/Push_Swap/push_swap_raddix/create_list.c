@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:18:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/09 18:10:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:32:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int	*fill_array(int argc, char **argv, int *tab)
 
 	y = 0;
 	tab_pos = 0;
-	while(++y < argc)
+	while (++y < argc)
 	{
 		x = 0;
-		while(argv[y][x])
+		while (argv[y][x])
 		{
 			i = 0;
-			while(argv[y][x] && argv[y][x] != ' ')
+			while (argv[y][x] && argv[y][x] != ' ')
 				buffer[i++] = argv[y][x++];
 			buffer[i] = '\0';
 			tab[tab_pos] = ft_atoi(buffer);
@@ -40,7 +40,7 @@ static int	*fill_array(int argc, char **argv, int *tab)
 	return (tab);
 }
 
-static int *create_array(int argc, char **argv, int *size)
+static int	*create_array(int argc, char **argv, int *size)
 {
 	int	*tab;
 	int	i;
@@ -49,10 +49,10 @@ static int *create_array(int argc, char **argv, int *size)
 	j = 0;
 	tab = NULL;
 	(*size) = 0;
-	while(++j < argc)
+	while (++j < argc)
 	{
 		i = 0;
-		while(argv[j][i])
+		while (argv[j][i])
 		{
 			if (argv[j][i] == ' ')
 				(*size)++;
@@ -85,7 +85,7 @@ static t_stack	*add_stack_a(int n, int *array)
 t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
 {
 	t_stack	*current;
-	int 	*array;
+	int		*array;
 	int		size;
 	int		i;
 
@@ -95,7 +95,7 @@ t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
 	if (!stack_a)
 		show_error(1);
 	current = stack_a;
-	while(++i < size)
+	while (++i < size)
 	{
 		current->next = add_stack_a(array[i], array);
 		if (!current->next)
@@ -105,6 +105,6 @@ t_stack	*create_list(int argc, char **argv, t_stack *stack_a)
 		}
 		current = current->next;
 	}
-	safe_free((void**) &array);
+	safe_free((void **) &array);
 	return (stack_a);
 }

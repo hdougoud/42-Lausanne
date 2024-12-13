@@ -6,16 +6,15 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/10 16:51:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:33:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 static void	rotate(t_stack **stack)
 {
-	t_stack *first;
+	t_stack	*first;
 	t_stack	*temp;
 
 	first = *stack;
@@ -45,5 +44,3 @@ void	double_rotate(t_stack **stack_a, t_stack **stack_b)
 	rotate(stack_b);
 	write(1, "rr\n", 3);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:54:59 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/11 18:36:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:44:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	push(t_stack **stack_src, t_stack **stack_dest)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
-	if ((*stack_src) == NULL)
+	if (stack_src == NULL || *stack_src == NULL)
 		return ;
 	temp = (*stack_src);
 	*stack_src = (*stack_src)->next;

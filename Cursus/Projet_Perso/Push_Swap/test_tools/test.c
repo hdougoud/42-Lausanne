@@ -6,7 +6,7 @@ static void print_bytes(int nb)
 	int i;
 	char byte;
 	
-	i = 16;
+	i = 31;
 	while(i >= 0)
 	{
 		byte = ((nb >> i) & 1) + '0';
@@ -17,7 +17,9 @@ static void print_bytes(int nb)
 
 int main(void)
 {
-	int nb = 500;
-		print_bytes(nb);
-		printf("\n%d\n	", ((nb) & 1));
+	int bits;
+	int nb = 2;
+	//print_bytes(nb);
+	bits = ((nb) & 1);
+	printf("%d\n", bits);
 }
