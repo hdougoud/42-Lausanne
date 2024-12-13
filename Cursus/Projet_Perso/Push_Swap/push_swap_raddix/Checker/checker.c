@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:43:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:51:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 		reverse_rotate(stack_b);
 	else if (ft_strncmp("rrr", line, 3) == 0)
 		double_reverse(stack_a, stack_b);
-	printf("one move\n");
 }
 
 void	free_stack(t_stack *stack)

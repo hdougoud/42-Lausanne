@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:39:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:53:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,4 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 			push_a(stack_b, stack_a);
 		bits++;
 	}
-	print_list(*stack_a, *stack_b);
 }
