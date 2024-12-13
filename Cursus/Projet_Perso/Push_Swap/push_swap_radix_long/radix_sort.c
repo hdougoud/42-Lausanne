@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 18:11:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:06:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,47 @@ static void	restore_value(t_stack *stack, int min)
 	}
 }
 
+static int	get_binary(int nb)
+{
+	int i;
+
+	i = 0;
+	while(nb > 0)
+	{
+		nb /= 2;
+		i++;
+	}
+	printf("%d\n", i);
+	return (i);
+}
+
+static int	get_max_bits(t_stack *stack)
+{
+	int		max;
+
+	max = get_binay(stack->nb);
+	while(stack)
+	{
+		if (get_binay(stack->nb) > max)
+			max = stack->nb;
+		stack = stack->next;
+	}
+	return (0);
+}
+
 void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 {
 	int		min;
 	int		bits;
 	int		bnodes;
+	int 	max_bits;
 
+	max_bits = get_max_bits(*stack_a);  //TODO : TEST INT_MAX ET INT_MIN
+	return ;
 	min = check_negatif(*stack_a);
 	bnodes = nodes;
-	bits = 0;
-	while (bits < 32)
+	bits = -1;
+	while (++bits < max_bits)
 	{
 		while (bnodes > 0)
 		{
@@ -69,7 +100,6 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 		bnodes = nodes;
 		while (*stack_b)
 			push_a(stack_b, stack_a);
-		bits++;
 	}
 	if (min != 0)
 		restore_value(*stack_a, min);
