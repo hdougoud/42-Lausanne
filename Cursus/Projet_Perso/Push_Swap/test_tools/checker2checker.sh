@@ -32,7 +32,7 @@ elif [[ "$1" == "-c" ]]; then
   CHECKERS=("checker_exec")
   shift
 else
-  CHECKERS=("checker_Mac")
+  CHECKERS=("Checker/checker")
 fi
 
 if [[ -z "$1" || ! "$1" =~ ^[1-9][0-9]*$ ]]; then

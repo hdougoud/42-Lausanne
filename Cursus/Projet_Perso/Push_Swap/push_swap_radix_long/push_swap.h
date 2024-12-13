@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:05:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 18:00:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:18:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ typedef struct s_stack
 	long			nb;
 	struct s_stack	*next;
 }					t_stack;
-
-
-void print_list(t_stack *stack_a, t_stack *stack_b);
-
 
 t_stack		*new_node(int n);
 t_stack		*create_list(int argc, char **argv, t_stack *stack_a);
