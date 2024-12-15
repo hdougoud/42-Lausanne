@@ -6,88 +6,53 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 19:15:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/16 00:27:46 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_negatif(t_stack *stack)
+// FAIRE UN TABLEAU QUI CONVERTI 200 50 350 300 en 2 1 4 3;
+
+
+static int	get_binary(long nb)
 {
-	int		min;
-	t_stack	*index;
+	int bits;
 
-	min = 0;
-	index = stack;
-	while (index)
-	{
-		if (index->nb < min)
-			min = index->nb;
-		index = index->next;
-	}
-	printf("%d\n", min);
-	if (min == 0)
-		return (0);
-	min = -min;
-	printf("%d\n", min);
-	while (stack)
-	{
-		stack->nb = stack->nb + min;
-		stack = stack->next;
-	}
-	return (min);
-}
-
-static void	restore_value(t_stack *stack, int min)
-{
-	while (stack)
-	{
-		stack->nb = stack->nb - min;
-		stack = stack->next;
-	}
-}
-
-static int	get_binary(int nb)
-{
-	int i;
-
-	i = 0;
+	bits = 0;
 	if (nb == 0)
 		return(1);
-	if (nb < 0)
-		i++;
 	while(nb != 0)
 	{
 		nb /= 2;
-		i++;
+		bits++;
 	}
-	return (i);
+	return (bits);
 }
 
 static int	get_max_bits(t_stack *stack)
 {
-	int		max;
+	long	max;
 
-	max = get_binary(stack->nb);
+	max = stack->nb;
 	while(stack)
 	{
-		if (get_binary(stack->nb) > max)
+		if (stack->nb > max)
 			max = stack->nb;
 		stack = stack->next;
 	}
-	return (0);
+	return (get_binary(max));
 }
 
 void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 {
-	int		min;
 	int		bits;
 	int		bnodes;
 	int 	max_bits;
 
-	max_bits = get_max_bits(*stack_a);  //TODO : TEST INT_MAX ET INT_MIN
-	min = check_negatif(*stack_a);
 	bnodes = nodes;
+	max_bits = get_max_bits(*stack_a);
+	convert_list(*stack_a);
 	bits = -1;
 	while (++bits < max_bits)
 	{
@@ -103,6 +68,4 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 		while (*stack_b)
 			push_a(stack_b, stack_a);
 	}
-	if (min != 0)
-		restore_value(*stack_a, min);
 }

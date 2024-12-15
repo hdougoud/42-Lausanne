@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:51:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:28:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	free_stack(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
+	int i = 0;
 	char	*line;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -81,6 +82,7 @@ int	main(int argc, char **argv)
 		if (line == NULL)
 			break ;
 		execute_args(&stack_a, &stack_b, line);
+		i++;
 		free(line);
 	}
 	if (check_result(stack_a) == 1)
@@ -89,5 +91,6 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("OK", 1);
 	free_stack(stack_a);
 	free_stack(stack_b);
+	printf("%d\n", i);
 	return (0);
 }

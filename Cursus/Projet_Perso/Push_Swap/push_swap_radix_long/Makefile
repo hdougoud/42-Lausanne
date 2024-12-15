@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/13 18:13:26 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/15 15:50:44 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT	= libft/libft.a
 SOURCES = push_swap.c		check_errors.c		create_list.c \
 		  operator_swap.c 	operator_push.c		stack_utils.c  \
 		  operator_rotate.c select_sort.c		quick_sort.c    \
-		  radix_sort.c		operator_rev_rotate.c
+		  radix_sort.c		operator_rev_rotate.c A_DEBUG_print_list.c
 		  
 OBJECTS	= $(SOURCES:.c=.o)
 
