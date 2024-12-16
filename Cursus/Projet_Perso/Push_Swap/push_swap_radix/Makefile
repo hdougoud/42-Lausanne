@@ -6,22 +6,21 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/13 16:53:53 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/16 13:15:31 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 GCC		= cc
-#CFLAGS	= -Wall -Werror -Wextra -g
-CFLAGS	= -g
+CFLAGS	= -Wall -Werror -Wextra
 
 LIBFT	= libft/libft.a
 
 SOURCES = push_swap.c		check_errors.c		create_list.c \
 		  operator_swap.c 	operator_push.c		stack_utils.c  \
-		  operator_rotate.c sort.c				quick_sort.c    \
-		  operator_rev_rotate.c 				radix_sort.c
-		  
+		  operator_rotate.c select_sort.c		quick_sort.c    \
+		  radix_sort.c		operator_rev_rotate.c
+
 OBJECTS	= $(SOURCES:.c=.o)
 
 GREEN = \033[1;32m

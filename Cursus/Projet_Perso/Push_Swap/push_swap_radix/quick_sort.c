@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:23:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:04:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:20:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	sort_three_nodes(t_stack **stack_a)
 {
-	if ((*stack_a)->nb > (*stack_a)->next->next->nb 
+	if ((*stack_a)->nb > (*stack_a)->next->next->nb
 		&& (*stack_a)->next->nb < (*stack_a)->next->next->nb)
 		rotate_a(stack_a);
 	if (((*stack_a)->nb < (*stack_a)->next->nb
-		&& (*stack_a)->nb > (*stack_a)->next->next->nb)
+			&& (*stack_a)->nb > (*stack_a)->next->next->nb)
 		|| ((*stack_a)->next->nb > (*stack_a)->next->next->nb))
 		reverse_rotate_a(stack_a);
 	if ((*stack_a)->nb > ((*stack_a)->next->nb))
@@ -27,12 +27,12 @@ void	sort_three_nodes(t_stack **stack_a)
 
 static void	utils_four_nodes(t_stack **stack_a, t_stack **stack_b, int low)
 {
-	int i;
-	t_stack *index;
+	int		i;
+	t_stack	*index;
 
 	index = *stack_a;
 	i = 0;
-	while(index->nb != low)
+	while (index->nb != low)
 	{
 		index = index->next;
 		i++;
@@ -51,15 +51,14 @@ static void	utils_four_nodes(t_stack **stack_a, t_stack **stack_b, int low)
 
 void	sort_four_nodes(t_stack **stack_a, t_stack **stack_b)
 {
-	int		i;
 	int		low;
 	t_stack	*index;
 
 	index = *stack_a;
 	low = index->nb;
-	while(index)
+	while (index)
 	{
-		if(index->nb < low)
+		if (index->nb < low)
 			low = index->nb;
 		index = index->next;
 	}
@@ -104,9 +103,9 @@ void	sort_five_nodes(t_stack **stack_a, t_stack **stack_b)
 
 	index = *stack_a;
 	low = index->nb;
-	while(index)
+	while (index)
 	{
-		if(low > index->nb)
+		if (low > index->nb)
 			low = index->nb;
 		index = index->next;
 	}
