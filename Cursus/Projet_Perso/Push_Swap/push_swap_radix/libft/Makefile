@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/08 00:59:51 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/16 14:17:50 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	echo "$(GREEN)Libft done$(WHITE)"
+	echo -e "$(GREEN)Libft done$(WHITE)"
 	
 clean:
 	rm -f $(OBJECTS)

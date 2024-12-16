@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/16 13:53:18 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/16 14:17:11 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,17 @@ SOURCES = push_swap.c		instr_push.c		radix_sort.c  \
 OBJECTS	= $(SOURCES:.c=.o)
 
 GREEN = \033[1;32m
-WHITE = \033[1;37m
+RESET = \033[0m
+
+all: $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C libft
 
-all: $(NAME)
-
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(GCC) $(CFLAGS) $(OBJECTS) -Llibft -lft -o $(NAME)
-	echo "$(GREEN)done$(WHITE)"
+	echo -e "$(GREEN)done$(RESET)"
+	
 %.o: %.c
 	$(GCC) $(CFLAGS) -o $@ -c $<
 

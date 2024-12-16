@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 18:15:31 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/16 13:42:40 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/16 14:15:08 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ OBJECTS =	$(SOURCES:.c=.o)
 GREEN = \033[1;32m
 RESET = \033[0m
 
+all: $(NAME)
+
 $(LIBFT):
 	$(MAKE) -C ../libft
-
-all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(GCC) $(CFLAGS) $(OBJECTS) -L../libft -lft -o $(NAME)
