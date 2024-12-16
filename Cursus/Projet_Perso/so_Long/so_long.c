@@ -6,8 +6,19 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/16 16:30:02 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:58:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibxs/minilibx-linux/libmlx.a"
+#include <mlx.h>
+
+int	main(void)
+{
+	void	*mlx;
+
+	mlx = mlx_init();
+	
+	if (mlx)
+		return (0);
+	return (0);
+}
