@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 15:43:54 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/11/27 10:55:49 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/11/14 13:49:44 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/02 16:31:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_gnl_strchr(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
+	if (!str)
+		return (0);
+	while (str[i] != '\0' && str[i] != '\n')
 		i++;
-	}
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }
-
-//int main(void)
-//{
-//	char s[] = "Hello World";
-//	ft_putstr_fd(s, 1);
-//}
