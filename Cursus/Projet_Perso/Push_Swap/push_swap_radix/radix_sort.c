@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:55:17 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/16 13:24:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:35:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,6 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, int nodes)
 		while (*stack_b)
 			push_a(stack_b, stack_a);
 	}
+	if (is_sorted(*stack_a) == 0)
+		return ;
 }

@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:55:13 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/15 19:22:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:34:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_list(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	int	sorted;
 
@@ -39,12 +39,12 @@ static int	count_list(t_stack *stack)
 	return (i);
 }
 
-void	check_sort(t_stack **stack_a, t_stack **stack_b)
+void	select_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	nodes;
 
 	nodes = count_list(*stack_a);
-	if (check_list(*stack_a) == 0)
+	if (is_sorted(*stack_a) == 0)
 		return ;
 	else if (nodes == 2)
 		swap_a(*stack_a);

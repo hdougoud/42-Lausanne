@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:01:18 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/16 13:15:31 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/16 13:53:18 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CFLAGS	= -Wall -Werror -Wextra
 
 LIBFT	= libft/libft.a
 
-SOURCES = push_swap.c		check_errors.c		create_list.c \
-		  operator_swap.c 	operator_push.c		stack_utils.c  \
-		  operator_rotate.c select_sort.c		quick_sort.c    \
-		  radix_sort.c		operator_rev_rotate.c
+SOURCES = push_swap.c		instr_push.c		radix_sort.c  \
+		  instr_swap.c		quick_sort.c		create_list.c  \
+		  select_sort.c		instr_rotate.c		check_errors.c  \
+		  instr_rev_rotate.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 

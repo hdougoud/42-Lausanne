@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_rev_rotate.c                              :+:      :+:    :+:   */
+/*   rotates.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 14:32:18 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 11:38:51 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/16 13:36:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	rotate(t_stack **stack)
+{
+	t_stack	*first;
+	t_stack	*temp;
+
+	if (*stack == NULL || stack == NULL)
+		return ;
+	first = *stack;
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = first;
+	*stack = (*stack)->next;
+	first->next = NULL;
+}
+
+void	double_rotate(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+}
 
 void	reverse_rotate(t_stack **stack)
 {
