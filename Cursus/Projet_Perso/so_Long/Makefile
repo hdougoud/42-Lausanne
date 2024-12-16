@@ -1,31 +1,33 @@
-NAME	= so_long
+NAME		= so_long
+OS			= $(shell uname -s)
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
+MACOS_DIR	= mlx/minilibx-macos
+LINUX_DIR	= mlx/minilibx-linux
 
-OS 		= $(shell uname -s)
-CC		= gcc
-CFLAGS 	= -Wall -Wextra
-
-RED		= \033[1;31m
-GREEN	= \033[1;32m
-RESET	= \033[0m
-
+RED			= \033[1;31m
+GREEN		= \033[1;32m
+RESET		= \033[0m
 
 ifeq ($(OS), Linux)
-	OS_FLAGS = -Lminilibxs/minilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
-else ifeq ($(OS), Macos)
-	OS_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+	OS_FLAGS = -L$(LINUX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+	LIB_DIR  = $(LINUX_DIR)
+else ifeq ($(OS), Darwin)
+	OS_FLAGS = -L$(MACOS_DIR) -lmlx -framework OpenGL -framework AppKit
+	LIB_DIR  = $(MACOS_DIR)
 endif
 
-SOURCES = so_long.c
+SOURCES	= so_long.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I$(LIB_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
