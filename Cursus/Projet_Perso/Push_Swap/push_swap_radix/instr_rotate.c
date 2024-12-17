@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operator_rotate.c                                  :+:      :+:    :+:   */
+/*   instr_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 16:33:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:28:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	rotate(t_stack **stack)
 	t_stack	*first;
 	t_stack	*temp;
 
+	if(*stack == NULL || stack == NULL)
+		return ;
 	first = *stack;
 	temp = *stack;
 	while (temp->next != NULL)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_and_swap.c                                    :+:      :+:    :+:   */
+/*   swap_and_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 14:28:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/17 13:25:31 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/17 14:03:51 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/17 14:28:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	swap(t_stack *stack)
 {
-    t_stack	*current;
-    int		temp;
+	t_stack	*current;
+	int		temp;
 
-    if (stack == NULL || stack->next == NULL)
-        return ;
-    current = stack->next;
-    temp = stack->nb;
-    stack->nb = current->nb;
-    current->nb = temp;
-	printf("swap in function");
+	if (stack == NULL || stack->next == NULL)
+		return ;
+	current = stack;
+	current = current->next;
+	temp = stack->nb;
+	stack->nb = current->nb;
+	stack = stack->next;
+	stack->nb = temp;
 }
 
 void	double_swap(t_stack *stack_a, t_stack *stack_b)

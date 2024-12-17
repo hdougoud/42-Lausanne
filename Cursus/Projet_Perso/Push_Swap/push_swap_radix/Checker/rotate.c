@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotates.c                                          :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 18:47:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/16 13:36:20 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/17 14:11:51 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/17 14:28:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	rotate(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*temp;
-
-	if (*stack == NULL || stack == NULL)
+	
+	if(*stack == NULL || stack == NULL)
 		return ;
 	first = *stack;
 	temp = *stack;
@@ -39,7 +39,7 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*backup;
 
-	if (*stack == NULL || stack == NULL)
+	if(*stack == NULL || stack == NULL)
 		return ;
 	backup = *stack;
 	last = *stack;

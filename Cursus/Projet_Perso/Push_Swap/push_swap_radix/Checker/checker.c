@@ -5,39 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/17 13:00:04 by hdougoud         ###   ########.fr       */
+/*   Created: 2024/12/17 13:40:35 by hdougoud          #+#    #+#             */
+/*   Updated: 2024/12/17 14:35:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void print_list(t_stack *stack_a, t_stack *stack_b)
-{
-	int i;
-
-	i = 0;
-	printf("\n");
-	while (stack_a || stack_b)
-	{
-		if (stack_a)
-		{
-			printf("TAB_A	[%d] %d		",i , stack_a->nb);
-			stack_a = stack_a->next;
-		}
-		else
-			printf("TAB_A[]	NULL		");
-		if (stack_b)
-		{
-			printf("TAB_B[%d] %d\n",i , stack_b->nb);	
-			stack_b = stack_b->next;
-		}
-		else
-			printf("TAB_B[]	NULL\n");
-		i++;
-	}
-	printf("_____________________________________________\n");
-}
 
 static int	check_result(t_stack *stack)
 {
@@ -50,14 +24,10 @@ static int	check_result(t_stack *stack)
 	return (0);
 }
 
-static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
+static void	apply_args(t_stack **stack_a, t_stack **stack_b, char *line)
 {
-	printf("%s", line);
 	if (ft_strncmp("sa", line, 2) == 0)
-	{
 		swap(*stack_a);
-		print_list(*stack_a, *stack_b);
-	}
 	else if (ft_strncmp("sb", line, 2) == 0)
 		swap(*stack_b);
 	else if (ft_strncmp("ss", line, 2) == 0)
@@ -70,7 +40,7 @@ static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 		rotate(stack_a);
 	else if (ft_strncmp("rb", line, 2) == 0)
 		rotate(stack_b);
-	else if (ft_strncmp("rr", line, 2) == 0)
+	else if (ft_strncmp("rr\n", line, 3) == 0)
 		double_rotate(stack_a, stack_b);
 	else if (ft_strncmp("rra", line, 3) == 0)
 		reverse_rotate(stack_a);
@@ -95,9 +65,9 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char	*line;
+	char *line;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -111,14 +81,13 @@ int	main(int argc, char **argv)
 		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
 			break ;
-		execute_args(&stack_a, &stack_b, line);
+		apply_args(&stack_a, &stack_b, line);
 		free(line);
 	}
 	if (check_result(stack_a) == 1)
 		ft_putendl_fd("KO", 1);
 	else
 		ft_putendl_fd("OK", 1);
-	print_list(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

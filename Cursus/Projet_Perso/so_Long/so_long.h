@@ -6,13 +6,14 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/17 10:41:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:44:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONF
+#ifndef SO_LONG
 #define SO_LONG
 
+#include "libft/libft.h"
 #include <errno.h>
 
 #endif
