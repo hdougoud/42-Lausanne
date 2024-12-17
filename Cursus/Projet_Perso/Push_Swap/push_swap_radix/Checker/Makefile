@@ -6,12 +6,12 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 18:15:31 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/16 14:15:08 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/17 11:48:35 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = checker
-CFLAGS  = -g #-Wall -Werror -Wextra
+CFLAGS  = -Wall -Werror -Wextra
 GCC 	= cc
 LIBFT = ../libft/libft.a
 

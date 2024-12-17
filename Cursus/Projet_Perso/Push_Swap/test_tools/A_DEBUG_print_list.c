@@ -10,14 +10,14 @@ void print_list(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_a)
 		{
-			printf("TAB_A	[%d] %d		",i , stack_a->nb);
+			printf("TAB_A	[%d] %ld		",i , stack_a->nb);
 			stack_a = stack_a->next;
 		}
 		else
 			printf("TAB_A[]	NULL		");
 		if (stack_b)
 		{
-			printf("TAB_B[%d] %d\n",i , stack_b->nb);	
+			printf("TAB_B[%d] %ld\n",i , stack_b->nb);	
 			stack_b = stack_b->next;
 		}
 		else

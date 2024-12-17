@@ -6,11 +6,38 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:52:07 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/16 13:17:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:00:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void print_list(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+
+	i = 0;
+	printf("\n");
+	while (stack_a || stack_b)
+	{
+		if (stack_a)
+		{
+			printf("TAB_A	[%d] %d		",i , stack_a->nb);
+			stack_a = stack_a->next;
+		}
+		else
+			printf("TAB_A[]	NULL		");
+		if (stack_b)
+		{
+			printf("TAB_B[%d] %d\n",i , stack_b->nb);	
+			stack_b = stack_b->next;
+		}
+		else
+			printf("TAB_B[]	NULL\n");
+		i++;
+	}
+	printf("_____________________________________________\n");
+}
 
 static int	check_result(t_stack *stack)
 {
@@ -25,10 +52,12 @@ static int	check_result(t_stack *stack)
 
 static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 {
-	if (line == NULL)
-		return ;
-	else if (ft_strncmp("sa", line, 2) == 0)
+	printf("%s", line);
+	if (ft_strncmp("sa", line, 2) == 0)
+	{
 		swap(*stack_a);
+		print_list(*stack_a, *stack_b);
+	}
 	else if (ft_strncmp("sb", line, 2) == 0)
 		swap(*stack_b);
 	else if (ft_strncmp("ss", line, 2) == 0)
@@ -49,6 +78,8 @@ static void	execute_args(t_stack **stack_a, t_stack **stack_b, char *line)
 		reverse_rotate(stack_b);
 	else if (ft_strncmp("rrr", line, 3) == 0)
 		double_reverse(stack_a, stack_b);
+	else
+		show_error(2);
 }
 
 void	free_stack(t_stack *stack)
@@ -87,6 +118,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("KO", 1);
 	else
 		ft_putendl_fd("OK", 1);
+	print_list(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

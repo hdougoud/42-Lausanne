@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:23:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/13 18:20:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:46:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	sort_three_nodes(t_stack **stack_a)
 {
+	if ((((*stack_a)->nb > (*stack_a)->next->nb))
+		&& ((*stack_a)->next->nb > (*stack_a)->next->next->nb))
+		swap_a(*stack_a);
 	if ((*stack_a)->nb > (*stack_a)->next->next->nb
 		&& (*stack_a)->next->nb < (*stack_a)->next->next->nb)
 		rotate_a(stack_a);
@@ -92,7 +95,7 @@ static void	utils_five_nodes(t_stack **stack_a, t_stack **stack_b, int low)
 		reverse_rotate_a(stack_a);
 	}
 	if (i == 4)
-		reverse_rotate_b(stack_a);
+		reverse_rotate_a(stack_a);
 	push_b(stack_a, stack_b);
 }
 
