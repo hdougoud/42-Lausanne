@@ -13,18 +13,18 @@ ifeq ($(OS), Linux)
 	OS_FLAGS = -L$(LINUX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 	LIB_DIR  = $(LINUX_DIR)
 else ifeq ($(OS), Darwin)
-	OS_FLAGS = -L$(MACOS_DIR) -lmlx -framework OpenGL -framework AppKit
+	OS_FLAGS = -L$(MACOS_DIR) -lmlx -framework OpenGL -framework AppKit -lz
 	LIB_DIR  = $(MACOS_DIR)
 endif
 
-SOURCES	= so_long.c
+SOURCES	= main.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
+	$(CC) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
