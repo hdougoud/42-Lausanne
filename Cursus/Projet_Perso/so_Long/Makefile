@@ -1,7 +1,7 @@
 NAME		= so_long
 OS			= $(shell uname -s)
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		=-g # -Wall -Werror -Wextra
 MACOS_DIR	= mlx/minilibx-macos
 LINUX_DIR	= mlx/minilibx-linux
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I$(LIB_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
