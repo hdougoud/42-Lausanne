@@ -4,6 +4,7 @@ CC			= gcc
 CFLAGS		=-g # -Wall -Werror -Wextra
 MACOS_DIR	= mlx/minilibx-macos
 LINUX_DIR	= mlx/minilibx-linux
+LIBFT		= libft/libft.a
 
 RED			= \033[1;31m
 GREEN		= \033[1;32m
@@ -17,23 +18,28 @@ else ifeq ($(OS), Darwin)
 	LIB_DIR  = $(MACOS_DIR)
 endif
 
-SOURCES	= main.c
+SOURCES	= main.c file_to_image.c init_map.c show_error.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	$(CC) $(OBJECTS) $(OS_FLAGS) -o $(NAME)
+$(LIBFT):
+	$(MAKE) -C libft
+
+$(NAME): $(LIBFT) $(OBJECTS)
+	$(CC) $(OBJECTS) $(OS_FLAGS) -Llibft -lft -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f libft/libft.a
 
 re: fclean all
 
