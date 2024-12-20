@@ -18,23 +18,30 @@ else ifeq ($(OS), Darwin)
 	LIB_DIR  = $(MACOS_DIR)
 endif
 
-SOURCES	= main.c file_to_image.c init_map.c show_error.c
+SRC_DIR = Sources/
+SRCS	= main.c file_to_image.c init_map.c show_error.c so_long_utils.c
+SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 
-OBJECTS	= $(SOURCES:.c=.o)
-
-all: $(NAME)
+OBJ_DIR	= Objects/
+OBJS	= $(SRCS:.c=.o)
+OBJECTS = $(addprefix $(OBJ_DIR), $(OBJS))
+  
+all: $(OBJ_DIR) $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C libft
 
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
+
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(CC) $(OBJECTS) $(OS_FLAGS) -Llibft -lft -o $(NAME)
 
-%.o: %.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS)
+	rm -rf $(OBJ_DIR)
 	$(MAKE) -C libft clean
 
 fclean: clean

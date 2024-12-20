@@ -6,25 +6,42 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/19 16:13:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:38:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	validate_map(t_minilx *mlx)
+static void show_map(t_minilx *mlx)
+{
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
+		show_error(server_x);
+	mlx->win = mlx_new_window(mlx->mlx, (mlx->map_width * 50), 
+		(mlx->map_height * 50), "so_long");
+	if(!mlx->win)
+		show_error(window_error);
+	// while(mlx->map_width <= (mlx->map_width * 50))
+	// {
+		
+	// }
+}
+
+static void	validate_map_size(t_minilx *mlx)
 {
 	int	height;
 	int	map_line_len;
 
-	height = 0;
+	height = 1;
 	map_line_len = ft_strlen(mlx->map[0]);
-	while(mlx->map[height])
+	while (mlx->map[height])
 	{
-		printf("%s\n", mlx->map[height]);
+		if (map_line_len != ft_strlen(mlx->map[height]))
+			show_error(wrong_map_size);
 		height++;
 	}
-	printf("%d\n", map_line_len);
+	mlx->map_width = map_line_len;
+	mlx->map_height = height;
 }
 
 static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
@@ -37,18 +54,18 @@ static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
 	height = 0;
 	mlx->map = malloc(sizeof(char) * (map_height + 1));
 	fd = open(map_name, O_RDONLY);
-	if(fd == -1)
+	if (fd == -1)
 		show_error(cannot_open_file);
-	while(1)
+	while (1)
 	{
 		map_line = get_next_line(fd);
 		if (map_line == NULL)
 			break ;
-		map_line_len = (ft_strlen(map_line) - 1);
+		map_line_len = (ft_strlen(map_line));
 		mlx->map[height] = malloc(sizeof(char) * (map_line_len + 1));
-		if(!mlx->map[height])
+		if (!mlx->map[height])
 			show_error(malloc_error);
-		ft_strlcpy(mlx->map[height], map_line, map_line_len);
+		mlx->map[height] = strdup_map_line(map_line);
 		height++;
 		free(map_line);
 	}
@@ -62,7 +79,7 @@ void	init_map(t_minilx *mlx, char *map_name)
 	char	*ext;
 	int		map_height;
 	char	*line;
-	
+
 	map_height = 0;
 	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
 	if (ext == NULL)
@@ -70,12 +87,12 @@ void	init_map(t_minilx *mlx, char *map_name)
 	if (ft_strncmp(ext, ".ber", 5) != 0)
 		show_error(wrong_ext);
 	fd = open(map_name, O_RDONLY);
-	if(fd == -1)
+	if (fd == -1)
 		show_error(-1);
-	while(get_next_line(fd))
+	while (get_next_line(fd))
 		map_height++;
-	printf("%d\n", map_height);
 	convert_map_tab(mlx, map_name, map_height);
 	close (fd);
-	validate_map(mlx);
+	validate_map_size(mlx);
+	show_map(mlx);
 }
