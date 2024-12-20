@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 16:27:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:59:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	show_error(int error_nb)
 		perror("can't link to X server");
 	else if (error_nb == 6)
 		perror("can't create windows");
+	//TODO : CLOSE AND FREE ALL
 	exit(EXIT_FAILURE);
 }

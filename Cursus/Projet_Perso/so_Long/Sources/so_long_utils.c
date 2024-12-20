@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 16:43:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:11:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_mlx(t_minilx *mlx)
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		show_error(SERVER_X);
-	mlx->win = mlx_new_window(mlx->mlx, (mlx->map_height * TEXTURE_SIZE),
-			(mlx->map_width * TEXTURE_SIZE), "so_long");
+	mlx->win = mlx_new_window(mlx->mlx, (mlx->map_width * TEXTURE_SIZE),
+			(mlx->map_height * TEXTURE_SIZE), "so_long");
 	if (!mlx->win)
 		show_error(WINDOW_ERROR);
 }
