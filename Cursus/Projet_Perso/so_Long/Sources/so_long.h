@@ -6,40 +6,49 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 11:53:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:44:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG
-#define SO_LONG
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-#include "../libft/libft.h"
-#include <errno.h>
-#include <mlx.h>
+# include "../libft/libft.h"
+# include <errno.h>
+# include <mlx.h>
+
+# define SPRITE "sprites/XPM"
+# define TEXTURE_SIZE 50
 
 /*-----------------------------------Error-----------------------------------*/
 
-#define sprite "sprites/XPM"
-
 void	show_error(int error_nb);
 
-# define malloc_error 0
-# define cannot_open_file 1
-# define wrong_arguments 2
-# define wrong_ext 3
-# define wrong_map_size 4
-# define server_x 5
-# define window_error 6
+# define MALLOC_ERROR 0
+# define CANNOT_OPEN_FILE 1
+# define WRONG_ARGUMENTS 2
+# define WRONG_EXT 3
+# define WRONG_MAP_SIZE 4
+# define SERVER_X 5
+# define WINDOW_ERROR 6
+
+/*-----------------------------------Struct----------------------------------*/
+
+typedef struct s_img
+{
+	void	*name;
+	int		x;
+	int		y;
+}			t_img;
 
 typedef struct s_sprite
 {
-	void		*wall;
-	int			wall_x;
-	int			wall_y;
-	void		*empty;
-	int			empty_x;
-	int			empty_y;
-}				t_sprite;
+	t_img	*player;
+	t_img	*collectable;
+	t_img	*exit;
+	t_img	*wall;
+	t_img	*empty;
+}			t_sprite;
 
 typedef struct s_minilx
 {
@@ -47,15 +56,16 @@ typedef struct s_minilx
 	void		*win;
 	int			win_x;
 	int			win_y;
-	t_sprite	img;
+	t_sprite	*sprites;
 	char		**map;
 	int			map_height;
 	int			map_width;
 }				t_minilx;
 
-void			file_to_image(t_minilx *mlx);
-void			init_map(t_minilx *mlx, char *map_name);
+void	init_mlx(t_minilx *mlx);
+void	file_to_image(t_minilx *mlx);
+void	init_map(t_minilx *mlx, char *map_name);
 
-char			*strdup_map_line(const char *s1);
+char	*strdup_map_line(const char *s1);
 
 #endif

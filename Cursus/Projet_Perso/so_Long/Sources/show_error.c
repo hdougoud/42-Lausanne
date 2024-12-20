@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 11:26:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:27:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	show_error(int error_nb)
 {
-	if (error_nb == -1)
-		perror("Can't open file");
-	else if (error_nb == 0)
+	if (error_nb == 0)
 		perror("Malloc error");
+	else if (error_nb == 1)
+		perror("Can't open file");
 	else if (error_nb == 2)
 		ft_printf("wrong number of agrument, please selecte one map");
 	else if (error_nb == 3)

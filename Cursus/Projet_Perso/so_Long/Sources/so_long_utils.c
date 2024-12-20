@@ -6,11 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 11:29:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:43:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_mlx(t_minilx *mlx)
+{
+	mlx->sprites = malloc(sizeof(t_sprite));
+	mlx->sprites->empty = malloc(sizeof(t_img));
+	mlx->sprites->wall = malloc(sizeof(t_img));
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
+		show_error(SERVER_X);
+	mlx->win = mlx_new_window(mlx->mlx, (mlx->map_height * TEXTURE_SIZE),
+			(mlx->map_width * TEXTURE_SIZE), "so_long");
+	if (!mlx->win)
+		show_error(WINDOW_ERROR);
+}
 
 char	*strdup_map_line(const char *s1)
 {
@@ -20,7 +34,7 @@ char	*strdup_map_line(const char *s1)
 	i = 0;
 	ptr = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!ptr)
-		show_error(malloc_error);
+		show_error(MALLOC_ERROR);
 	while (s1[i])
 	{
 		if (s1[i] == '\n')
