@@ -19,7 +19,9 @@ else ifeq ($(OS), Darwin)
 endif
 
 SRC_DIR = Sources/
-SRCS	= main.c file_to_image.c init_map.c show_error.c so_long_utils.c
+SRCS	= main.c file_to_image.c init_map.c show_error.c so_long_utils.c \
+		  gameplay.c
+
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 
 OBJ_DIR	= Objects/
@@ -36,6 +38,7 @@ $(OBJ_DIR):
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(CC) $(OBJECTS) $(OS_FLAGS) -Llibft -lft -o $(NAME)
+	echo "$(GREEN)$(NAME) compiled!$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -I$(LIB_DIR) -c $< -o $@
@@ -50,4 +53,5 @@ fclean: clean
 
 re: fclean all
 
+.SILENT:
 .PHONY: all clean fclean re

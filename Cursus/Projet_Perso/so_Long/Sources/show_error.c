@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/20 16:59:00 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/21 22:12:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 void	show_error(int error_nb)
 {
-	if (error_nb == 0)
-		perror("Malloc error");
-	else if (error_nb == 1)
-		perror("Can't open file");
-	else if (error_nb == 2)
-		ft_printf("wrong number of agrument, please selecte one map");
-	else if (error_nb == 3)
-		ft_printf("wrong extension, this program can only read .ber files");
-	else if (error_nb == 4)
-		ft_printf("wrong map size : map need to be a rectangle");
-	else if (error_nb == 5)
-		perror("can't link to X server");
-	else if (error_nb == 6)
-		perror("can't create windows");
+	ft_putendl_fd(COLOR_RED "Error", 2);
+	if (error_nb == MALLOC_ERROR)
+		perror(COLOR_RED "Malloc failed");
+	else if (error_nb == CANNOT_OPEN_FILE)
+		perror(COLOR_YELLOW "Can't open file");
+	else if (error_nb == WRONG_ARGUMENTS)
+		ft_printf(COLOR_YELLOW "wrong number of agrument, please selecte one map");
+	else if (error_nb == WRONG_EXT)
+		ft_printf(COLOR_YELLOW "wrong extension, this program can only read .ber files");
+	else if (error_nb == WRONG_MAP_SIZE)
+		ft_printf(COLOR_YELLOW "wrong map size : map need to be a rectangle");
+	else if (error_nb == SERVER_X)
+		perror(COLOR_RED "can't link to X server");
+	else if (error_nb == WINDOW_ERROR)
+		perror(COLOR_RED "can't create windows");
+	else if (error_nb == BAD_CHAR)
+		ft_printf(COLOR_YELLOW "invalid map: character not recognized on the map file");
+	//TODO : ADD COLORS
 	//TODO : CLOSE AND FREE ALL
+	//TODO : SEPARETE CRITICAL ERROR AND SIMPLE ERROR AND CHANGE DE ERROR COLOR IN FUCNTION
 	exit(EXIT_FAILURE);
 }
