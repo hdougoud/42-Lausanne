@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/21 23:43:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/22 19:30:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void	show_map(t_minilx *mlx)
 			}
 			else if (mlx->map[height][width] == 'E')
 				ft_put_image(mlx, mlx->sprites->exit, width, height);
+			else if (mlx->map[height][width] == 'C')
+				ft_put_image(mlx, mlx->sprites->collectable, width, height);
 			width++;
 		}
 		height++;

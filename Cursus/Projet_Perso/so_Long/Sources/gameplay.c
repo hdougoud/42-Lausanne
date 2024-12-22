@@ -6,11 +6,30 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/22 02:19:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/22 19:45:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void count_player_movement(t_minilx *mlx)
+{
+	char *mouv;
+	char *string;
+
+	mouv = ft_itoa(++mlx->mouvement);
+	if (!mouv)
+		show_error(MALLOC_ERROR);
+	string = ft_strjoin(mouv, " moves");
+	if (!string)
+		show_error(MALLOC_ERROR);
+	ft_put_image(mlx, mlx->sprites->wall, 0, 0);
+	ft_put_image(mlx, mlx->sprites->wall, 1, 0);
+	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
+	ft_printf("%d\n", mlx->mouvement);
+	free(mouv);
+	free(string);
+}
 
 static int check_movement(int keycode, t_minilx *mlx)
 {
@@ -55,7 +74,7 @@ void move_player(int keycode, t_minilx *mlx)
 		mlx->player_pos_x += 1;
 	ft_put_image(mlx, mlx->sprites->player,
 	mlx->player_pos_x, mlx->player_pos_y);
-	ft_printf("%d\n", ++mlx->mouvement);
+	count_player_movement(mlx);
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/21 21:47:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/22 19:34:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,10 @@ void	file_to_image(t_minilx *mlx)
 
 void	files_to_image_2(t_minilx *mlx)
 {
-	//TODO COLLECTIBLE
+	mlx->sprites->collectable->name = mlx_xpm_file_to_image(mlx->mlx,
+			"sprites/XPM/collectable.xpm",
+			&mlx->sprites->collectable->x,
+			&mlx->sprites->collectable->y);
+	if (!mlx->sprites->collectable->name)
+		show_error(CANNOT_OPEN_FILE);	
 }
