@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/21 22:23:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/22 02:18:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 /*----------------------------------Keycode----------------------------------*/
 
 # define ESC	53
+# define E		14
 # define W		13
 # define A		0
 # define S		1
@@ -69,9 +70,12 @@ typedef struct s_minilx
 	char		**map;
 	int			map_height;
 	int			map_width;
+	int			player_pos_x;
+	int			player_pos_y;
+	int			mouvement;
 }				t_minilx;
 
-int	moveplayer(int keycode, t_minilx *mlx);
+int	hook_keyboard(int keycode, t_minilx *mlx);
 
 void	init_mlx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);
