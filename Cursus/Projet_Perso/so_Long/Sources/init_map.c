@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:04:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 21:57:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,31 @@ static void	show_map(t_minilx *mlx)
 	}
 }
 
+static void validate_map_char(t_minilx *mlx, int height)
+{
+	int	width;
+	
+	width = 0;
+	while (mlx->map->map_tab[height][width])
+	{
+		if ((mlx->map->map_tab[height][width] != '0')
+				&& (mlx->map->map_tab[height][width] != '1')
+				&& (mlx->map->map_tab[height][width] != 'E')
+				&& (mlx->map->map_tab[height][width] != 'C')
+				&& (mlx->map->map_tab[height][width] != 'P'))
+			show_error(mlx, BAD_CHAR);
+		if (mlx->map->map_tab[height][width] == 'C')
+			mlx->map->collectable++;
+		if (mlx->map->map_tab[height][width] == 'P')
+			mlx->map->player++;
+		if (mlx->map->map_tab[height][width] == 'E')
+			mlx->map->exit++;
+		width++;
+	}
+}
+
 static void	validate_map_size(t_minilx *mlx)
 {
-	int 	width;
 	int		height;
 	size_t	map_line_len;
 
@@ -62,23 +84,19 @@ static void	validate_map_size(t_minilx *mlx)
 	map_line_len = ft_strlen(mlx->map->map_tab[0]);
 	while (mlx->map->map_tab[height])
 	{
-		width = 0;
-		while (mlx->map->map_tab[height][width])
-		{
-			if ((mlx->map->map_tab[height][width] != '0')
-					&& (mlx->map->map_tab[height][width] != '1')
-					&& (mlx->map->map_tab[height][width] != 'E')
-					&& (mlx->map->map_tab[height][width] != 'C')
-					&& (mlx->map->map_tab[height][width] != 'P'))
-				show_error(mlx, BAD_CHAR);
-			width++;
-		}
+		validate_map_char(mlx, height);
 		if (map_line_len != ft_strlen(mlx->map->map_tab[height]))
 			show_error(mlx, WRONG_MAP_SIZE);
 		height++;
 	}
 	mlx->map->width = map_line_len;
 	mlx->map->height = height;
+	if (mlx->map->collectable < 1)
+		show_error(mlx, UNDER_COLLECIBLE);
+	if (mlx->map->exit != 1)
+		show_error(mlx, TOO_MUCH_EXIT);
+	if (mlx->map->player != 1)
+		show_error(mlx, TOO_MUCH_PLAYER);
 }
 
 static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
@@ -107,7 +125,7 @@ static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
 	close(fd);
 }
 
-void	init_mlx_and_map(t_minilx *mlx, char *map_name)
+void	init_map(t_minilx *mlx, char *map_name)
 {
 	int		fd;
 	char	*ext;

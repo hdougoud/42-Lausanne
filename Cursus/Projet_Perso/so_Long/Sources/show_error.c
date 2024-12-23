@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:58:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 22:09:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,15 @@ void	show_error(t_minilx *mlx, int error_nb)
 		perror(COLOR_RED "can't create windows");
 	else if (error_nb == BAD_CHAR)
 		ft_printf(COLOR_YELLOW "invalid map: character not recognized on the map file");
-	//TODO : ADD COLORS
-	//TODO : CLOSE AND FREE ALL
+	else if (error_nb == TOO_MUCH_EXIT)
+		ft_printf(COLOR_YELLOW "wrong number of exit, there can only be one exit on the map");
+	else if (error_nb == TOO_MUCH_PLAYER)
+		ft_printf(COLOR_YELLOW "wrong number of player, ther can only be one player on the map");
+	else if (error_nb == UNDER_COLLECIBLE)
+		ft_printf(COLOR_YELLOW "Not enough collectives, there must be at least one on the map");
+	else if (error_nb == WRONG_MAP_PATERN)
+		ft_printf(COLOR_YELLOW "Wrong map patern, the map must be surrounded by walls, the exit and all collectibles must be accessible to the player");
 	//TODO : SEPARETE CRITICAL ERROR AND SIMPLE ERROR AND CHANGE DE ERROR COLOR IN FUCNTION
+	ft_printf(COLOR_RESET);
 	quit_properly(mlx, EXIT_FAILURE);
 }

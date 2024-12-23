@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:04:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 21:47:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 # define SERVER_X			5
 # define WINDOW_ERROR		6
 # define BAD_CHAR			7
+# define TOO_MUCH_EXIT		8
+# define TOO_MUCH_PLAYER	9
+# define UNDER_COLLECIBLE	10
+# define WRONG_MAP_PATERN	11
 
 /*-----------------------------------Struct----------------------------------*/
 
@@ -63,8 +67,8 @@ typedef struct s_map
 	char	**map_tab;
 	int		height;
 	int		width;
-	int		max_exit;
-	int		max_player;
+	int		exit;
+	int		player;
 	int		collectable;
 }			t_map;
 
@@ -72,8 +76,6 @@ typedef struct s_minilx
 {
 	void		*mlx;
 	void		*win;
-	//int			win_x;
-	//int			win_y;
 	t_sprite	*sprites;
 	t_map		*map;
 	int			player_pos_x;
@@ -83,12 +85,12 @@ typedef struct s_minilx
 
 int	hook_keyboard(int keycode, t_minilx *mlx);
 
-void	show_error(t_minilx *mlx, int error_nb);
-void	quit_properly(t_minilx *mlx, int exit_status);
-
 void	init_minilx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);
-void	init_mlx_and_map(t_minilx *mlx, char *map_name);
+void	check_path_map(t_minilx *mlx);
+void	init_map(t_minilx *mlx, char *map_name);
+void	show_error(t_minilx *mlx, int error_nb);
+void	quit_properly(t_minilx *mlx, int exit_status);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
 
 char	*strdup_map_line(t_minilx *mlx, char *str);

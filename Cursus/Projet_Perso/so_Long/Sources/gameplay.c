@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:01:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 20:05:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,7 @@ void move_player(int keycode, t_minilx *mlx)
 int	hook_keyboard(int keycode, t_minilx *mlx)
 {
 	if (keycode == ESC)
-	{
-		mlx_clear_window(mlx->mlx, mlx->win);
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		quit_properly(mlx, EXIT_SUCCESS);
-	}
+		quit_properly(mlx, EXIT_SUCCESS); 
 	else if (keycode == W || keycode == A || keycode == S || keycode == D)
 		move_player(keycode, mlx);
 	else if (keycode == E)
