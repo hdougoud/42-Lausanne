@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:11:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:52:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void count_player_movement(t_minilx *mlx)
 	char *mouv;
 	char *string;
 
-	mouv = ft_itoa(++mlx->mouvement);
+	mouv = ft_itoa(++mlx->movement);
 	if (!mouv)
 		show_error(MALLOC_ERROR);
 	string = ft_strjoin(mouv, " moves");
@@ -26,7 +26,7 @@ static void count_player_movement(t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->wall, 0, 0);
 	ft_put_image(mlx, mlx->sprites->wall, 1, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
-	ft_printf("%d\n", mlx->mouvement);
+	ft_printf("%d\n", mlx->movement);
 	free(mouv);
 	free(string);
 }
