@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/22 19:30:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:12:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,14 @@ void	init_mlx_and_map(t_minilx *mlx, char *map_name)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		show_error(-1);
-	while (get_next_line(fd))
+	while (1)
+	{
+		line = get_next_line(fd);
+		if(!line)
+			break;
 		map_height++;
+		free(line);
+	}
 	convert_map_tab(mlx, map_name, map_height);
 	close (fd);
 	validate_map_size(mlx);

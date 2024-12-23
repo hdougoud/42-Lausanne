@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/22 19:45:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:21:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 	else if (keycode == E)
 	{
 		if (mlx->map[mlx->player_pos_y][mlx->player_pos_x] == 'E')
+		{
+			quit_properly(mlx);
 			exit(EXIT_SUCCESS);
+		}
 	}
 	return (0);
 }

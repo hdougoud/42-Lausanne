@@ -6,23 +6,21 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/22 22:54:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:54:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	quit_properly(t_minilx *mlx)
+void	init_minilx(t_minilx *mlx)
 {
-	safe_free((void *) &mlx->sprites->collectable);
-	safe_free((void *) &mlx->sprites->empty);
-	safe_free((void *) &mlx->sprites->exit);
-	safe_free((void *) &mlx->sprites->player);
-	safe_free((void *) &mlx->sprites->wall);
-	safe_free((void *) &mlx->sprites);
-	mlx_clear_window(mlx->mlx, mlx->win);
-	mlx_destroy_window(mlx->mlx, mlx->win);
-} 
+	mlx->mlx = NULL;
+	mlx->mlx = NULL;
+	mlx->sprites = NULL;
+	mlx->map = NULL;
+	mlx->mouvement = 0;
+	mlx->collectable = 0;
+}
 
 void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 {

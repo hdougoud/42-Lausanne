@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/22 02:18:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:29:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,13 @@ typedef struct s_minilx
 	int			player_pos_x;
 	int			player_pos_y;
 	int			mouvement;
+	int			collectable;
 }				t_minilx;
 
 int	hook_keyboard(int keycode, t_minilx *mlx);
+
+void	init_minilx(t_minilx *mlx);
+void	quit_properly(t_minilx *mlx);
 
 void	init_mlx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);

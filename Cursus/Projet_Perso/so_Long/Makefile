@@ -19,8 +19,8 @@ else ifeq ($(OS), Darwin)
 endif
 
 SRC_DIR = Sources/
-SRCS	= main.c file_to_image.c init_map.c show_error.c so_long_utils.c \
-		  gameplay.c
+SRCS	= main.c			file_to_image.c 	init_map.c show_error.c \
+		  so_long_utils.c 	gameplay.c			clean_exit.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 
