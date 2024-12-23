@@ -6,43 +6,16 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 13:54:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:50:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_minilx(t_minilx *mlx)
-{
-	mlx->mlx = NULL;
-	mlx->mlx = NULL;
-	mlx->sprites = NULL;
-	mlx->map = NULL;
-	mlx->mouvement = 0;
-	mlx->collectable = 0;
-}
-
 void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 {
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->name,
 	x * TEXTURE_SIZE, y * TEXTURE_SIZE);
-}
-
-void	init_mlx(t_minilx *mlx)
-{
-	mlx->sprites = malloc(sizeof(t_sprite));	//TODO : PROTECT MALLOC
-	mlx->sprites->empty = malloc(sizeof(t_img));
-	mlx->sprites->wall = malloc(sizeof(t_img));
-	mlx->sprites->player = malloc(sizeof(t_img));
-	mlx->sprites->exit = malloc(sizeof(t_img));
-	mlx->sprites->collectable = malloc(sizeof(t_img));
-	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		show_error(SERVER_X);
-	mlx->win = mlx_new_window(mlx->mlx, (mlx->map_width * TEXTURE_SIZE),
-			(mlx->map_height * TEXTURE_SIZE), "so_long");
-	if (!mlx->win)
-		show_error(WINDOW_ERROR);
 }
 
 char	*strdup_map_line(const char *str)

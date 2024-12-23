@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 12:21:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:11:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ static int check_movement(int keycode, t_minilx *mlx)
 {
 	if (keycode == W)
 	{
-		if (mlx->map[mlx->player_pos_y - 1][mlx->player_pos_x] == '1')
+		if (mlx->map->map_tab[mlx->player_pos_y - 1][mlx->player_pos_x] == '1')
 			return (1);
 	}
 	if (keycode == S)
 	{
-		if (mlx->map[mlx->player_pos_y + 1][mlx->player_pos_x] == '1')
+		if (mlx->map->map_tab[mlx->player_pos_y + 1][mlx->player_pos_x] == '1')
 			return (1);
 	}
 	if (keycode == A)
 	{
-		if (mlx->map[mlx->player_pos_y][mlx->player_pos_x - 1] == '1')
+		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == '1')
 			return (1);
 	}
 	if (keycode == D)
 	{
-		if (mlx->map[mlx->player_pos_y][mlx->player_pos_x + 1] == '1')
+		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x + 1] == '1')
 			return (1);
 	}
 	return (0);
@@ -62,7 +62,7 @@ void move_player(int keycode, t_minilx *mlx)
 		return ;
 	ft_put_image(mlx, mlx->sprites->empty,
 		mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->map[mlx->player_pos_y][mlx->player_pos_x] == 'E')
+	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
 		ft_put_image(mlx, mlx->sprites->exit, mlx->player_pos_x, mlx->player_pos_y);
 	if (keycode == W)
 		mlx->player_pos_y -= 1;
@@ -89,7 +89,7 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		move_player(keycode, mlx);
 	else if (keycode == E)
 	{
-		if (mlx->map[mlx->player_pos_y][mlx->player_pos_x] == 'E')
+		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
 		{
 			quit_properly(mlx);
 			exit(EXIT_SUCCESS);

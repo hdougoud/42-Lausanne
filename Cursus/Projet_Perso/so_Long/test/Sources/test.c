@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/18 23:07:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:02:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "so_long.h"
+#include "../../libft/libft.h"
 
 typedef struct	s_minilx {
 	void	*mlx;
@@ -81,19 +81,9 @@ int	main(void)
 	t_minilx	minilx;
 	void		*mlx_img;
 
-	minilx.x = 0;
-	minilx.y = 0;
-	minilx.limx = 50;
-	minilx.limy = 50;
 	minilx.color = 0xFFFFFF;
 	minilx.mlx = mlx_init();
 	minilx.win = mlx_new_window(minilx.mlx, 500, 500, "Hello world!");
-	mlx_img = mlx_png_file_to_image(minilx.mlx, "sprites/mini_boxe.png", &minilx.img_width, &minilx.img_height);
-	mlx_put_image_to_window(minilx.mlx, minilx.win, mlx_img, 0, 0);
-	mlx_put_image_to_window(minilx.mlx, minilx.win, mlx_img, 0, 50);
-	mlx_put_image_to_window(minilx.mlx, minilx.win, mlx_img, 0, 100);
-	mlx_put_image_to_window(minilx.mlx, minilx.win, mlx_img, 50, 0);
-	mlx_put_image_to_window(minilx.mlx, minilx.win, mlx_img, 100, 0);
 	mlx_key_hook(minilx.win, closes, &minilx);
 	mlx_loop(minilx.mlx);
 }

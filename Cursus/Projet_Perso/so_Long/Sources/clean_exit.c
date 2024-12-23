@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 14:22:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:19:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	quit_properly(t_minilx *mlx)
     if (mlx->map)
     {
 	    i = 0;
-        while (mlx->map[i])
-            free(mlx->map[i++]);
-        free(mlx->map);
+        while (mlx->map->map_tab[i])
+            free(mlx->map->map_tab[i++]);
+        free(mlx->map->map_tab);
 	}
 	mlx_clear_window(mlx->mlx, mlx->win);
 	mlx_destroy_window(mlx->mlx, mlx->win);

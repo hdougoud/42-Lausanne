@@ -1,7 +1,7 @@
 NAME		= so_long
 OS			= $(shell uname -s)
 CC			= gcc
-CFLAGS		=-g # -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra
 MACOS_DIR	= mlx/minilibx-macos
 LINUX_DIR	= mlx/minilibx-linux
 LIBFT		= libft/libft.a
@@ -19,8 +19,8 @@ else ifeq ($(OS), Darwin)
 endif
 
 SRC_DIR = Sources/
-SRCS	= main.c			file_to_image.c 	init_map.c show_error.c \
-		  so_long_utils.c 	gameplay.c			clean_exit.c
+SRCS	= main.c			file_to_image.c 	init_map.c	show_error.c \
+		  so_long_utils.c 	gameplay.c			clean_exit.c init_mlx.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 

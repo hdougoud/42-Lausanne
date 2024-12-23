@@ -6,11 +6,28 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 11:12:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:48:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void xpm_to_map(t_minilx *mlx, int width, int height)
+{
+				ft_put_image(mlx, mlx->sprites->empty, width, height);
+			if (mlx->map->map_tab[height][width] == '1')
+				ft_put_image(mlx, mlx->sprites->wall, width, height);
+			else if (mlx->map->map_tab[height][width] == 'P')
+			{
+				ft_put_image(mlx, mlx->sprites->player, width, height);
+				mlx->player_pos_x = width;
+				mlx->player_pos_y = height;
+			}
+			else if (mlx->map->map_tab[height][width] == 'E')
+				ft_put_image(mlx, mlx->sprites->exit, width, height);
+			else if (mlx->map->map_tab[height][width] == 'C')
+				ft_put_image(mlx, mlx->sprites->collectable, width, height);
+}
 
 static void	show_map(t_minilx *mlx)
 {
@@ -18,26 +35,17 @@ static void	show_map(t_minilx *mlx)
 	int	width;
 
 	height = 0;
-	init_mlx(mlx);
+	mlx->win = mlx_new_window(mlx->mlx, (mlx->map->width * TEXTURE_SIZE),
+			(mlx->map->height * TEXTURE_SIZE), "so_long");
+	if (!mlx->win)
+		show_error(WINDOW_ERROR);
 	file_to_image(mlx);
-	while (mlx->map[height])
+	while (mlx->map->map_tab[height])
 	{
 		width = 0;
-		while (mlx->map[height][width])
+		while (mlx->map->map_tab[height][width])
 		{
-			ft_put_image(mlx, mlx->sprites->empty, width, height);
-			if (mlx->map[height][width] == '1')
-				ft_put_image(mlx, mlx->sprites->wall, width, height);
-			else if (mlx->map[height][width] == 'P')
-			{
-				ft_put_image(mlx, mlx->sprites->player, width, height);
-				mlx->player_pos_x = width;
-				mlx->player_pos_y = height;
-			}
-			else if (mlx->map[height][width] == 'E')
-				ft_put_image(mlx, mlx->sprites->exit, width, height);
-			else if (mlx->map[height][width] == 'C')
-				ft_put_image(mlx, mlx->sprites->collectable, width, height);
+			xpm_to_map(mlx, width, height);
 			width++;
 		}
 		height++;
@@ -46,42 +54,43 @@ static void	show_map(t_minilx *mlx)
 
 static void	validate_map_size(t_minilx *mlx)
 {
-	int width;
-	int	height;
-	int	map_line_len;
+	int 	width;
+	int		height;
+	size_t	map_line_len;
 
 	height = 0;
-	map_line_len = ft_strlen(mlx->map[0]);
-	while (mlx->map[height])
+	map_line_len = ft_strlen(mlx->map->map_tab[0]);
+	while (mlx->map->map_tab[height])
 	{
 		width = 0;
-		while (mlx->map[height][width])
+		while (mlx->map->map_tab[height][width])
 		{
-			if ((mlx->map[height][width] != '0')
-					&& (mlx->map[height][width] != '1')
-					&& (mlx->map[height][width] != 'E')
-					&& (mlx->map[height][width] != 'C')
-					&& (mlx->map[height][width] != 'P'))
+			if ((mlx->map->map_tab[height][width] != '0')
+					&& (mlx->map->map_tab[height][width] != '1')
+					&& (mlx->map->map_tab[height][width] != 'E')
+					&& (mlx->map->map_tab[height][width] != 'C')
+					&& (mlx->map->map_tab[height][width] != 'P'))
 				show_error(BAD_CHAR);
 			width++;
 		}
-		if (map_line_len != ft_strlen(mlx->map[height]))
+		if (map_line_len != ft_strlen(mlx->map->map_tab[height]))
 			show_error(WRONG_MAP_SIZE);
 		height++;
 	}
-	mlx->map_width = map_line_len;
-	mlx->map_height = height;
+	mlx->map->width = map_line_len;
+	mlx->map->height = height;
 }
 
 static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
 {
 	int		fd;
 	int		height;
-	int		map_line_len;
 	char	*map_line;
 
 	height = 0;
-	mlx->map = malloc(sizeof(char *) * (map_height + 1));
+	mlx->map->map_tab = malloc(sizeof(char *) * (map_height + 1));
+	if (!mlx->map->map_tab)
+		show_error(MALLOC_ERROR);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		show_error(CANNOT_OPEN_FILE);
@@ -90,11 +99,11 @@ static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
 		map_line = get_next_line(fd);
 		if (map_line == NULL)
 			break ;
-		mlx->map[height] = strdup_map_line(map_line);
+		mlx->map->map_tab[height] = strdup_map_line(map_line);
 		height++;
 		free(map_line);
 	}
-	mlx->map[height] = NULL;
+	mlx->map->map_tab[height] = NULL;
 	close(fd);
 }
 

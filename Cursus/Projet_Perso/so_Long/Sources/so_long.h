@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 12:29:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:49:46 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,35 @@ typedef struct s_sprite
 	t_img	*empty;
 }			t_sprite;
 
+typedef struct s_map
+{
+	char	**map_tab;
+	int		height;
+	int		width;
+	int		max_exit;
+	int		max_player;
+	int		collectable;
+}			t_map;
+
 typedef struct s_minilx
 {
 	void		*mlx;
 	void		*win;
-	int			win_x;
-	int			win_y;
+	//int			win_x;
+	//int			win_y;
 	t_sprite	*sprites;
-	char		**map;
-	int			map_height;
-	int			map_width;
+	t_map		*map;
 	int			player_pos_x;
 	int			player_pos_y;
-	int			mouvement;
-	int			collectable;
+	int			movement;
 }				t_minilx;
 
 int	hook_keyboard(int keycode, t_minilx *mlx);
 
-void	init_minilx(t_minilx *mlx);
+
 void	quit_properly(t_minilx *mlx);
 
-void	init_mlx(t_minilx *mlx);
+void	init_minilx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);
 void	init_mlx_and_map(t_minilx *mlx, char *map_name);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
