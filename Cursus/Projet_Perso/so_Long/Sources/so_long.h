@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:49:46 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:04:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define D		2
 
 /*-----------------------------------Error-----------------------------------*/
-
-void	show_error(int error_nb);
 
 # define MALLOC_ERROR		0
 # define CANNOT_OPEN_FILE	1
@@ -85,14 +83,14 @@ typedef struct s_minilx
 
 int	hook_keyboard(int keycode, t_minilx *mlx);
 
-
-void	quit_properly(t_minilx *mlx);
+void	show_error(t_minilx *mlx, int error_nb);
+void	quit_properly(t_minilx *mlx, int exit_status);
 
 void	init_minilx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);
 void	init_mlx_and_map(t_minilx *mlx, char *map_name);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
 
-char	*strdup_map_line(const char *s1);
+char	*strdup_map_line(t_minilx *mlx, char *str);
 
 #endif

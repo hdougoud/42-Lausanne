@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:48:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:04:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	show_map(t_minilx *mlx)
 	mlx->win = mlx_new_window(mlx->mlx, (mlx->map->width * TEXTURE_SIZE),
 			(mlx->map->height * TEXTURE_SIZE), "so_long");
 	if (!mlx->win)
-		show_error(WINDOW_ERROR);
+		show_error(mlx, WINDOW_ERROR);
 	file_to_image(mlx);
 	while (mlx->map->map_tab[height])
 	{
@@ -70,11 +70,11 @@ static void	validate_map_size(t_minilx *mlx)
 					&& (mlx->map->map_tab[height][width] != 'E')
 					&& (mlx->map->map_tab[height][width] != 'C')
 					&& (mlx->map->map_tab[height][width] != 'P'))
-				show_error(BAD_CHAR);
+				show_error(mlx, BAD_CHAR);
 			width++;
 		}
 		if (map_line_len != ft_strlen(mlx->map->map_tab[height]))
-			show_error(WRONG_MAP_SIZE);
+			show_error(mlx, WRONG_MAP_SIZE);
 		height++;
 	}
 	mlx->map->width = map_line_len;
@@ -90,16 +90,16 @@ static void	convert_map_tab(t_minilx *mlx, char *map_name, int map_height)
 	height = 0;
 	mlx->map->map_tab = malloc(sizeof(char *) * (map_height + 1));
 	if (!mlx->map->map_tab)
-		show_error(MALLOC_ERROR);
+		show_error(mlx, MALLOC_ERROR);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		show_error(CANNOT_OPEN_FILE);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	while (1)
 	{
 		map_line = get_next_line(fd);
 		if (map_line == NULL)
 			break ;
-		mlx->map->map_tab[height] = strdup_map_line(map_line);
+		mlx->map->map_tab[height] = strdup_map_line(mlx, map_line);
 		height++;
 		free(map_line);
 	}
@@ -117,12 +117,12 @@ void	init_mlx_and_map(t_minilx *mlx, char *map_name)
 	map_height = 0;
 	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
 	if (ext == NULL)
-		show_error(WRONG_EXT);
+		show_error(mlx, WRONG_EXT);
 	if (ft_strncmp(ext, ".ber", 5) != 0)
-		show_error(WRONG_EXT);
+		show_error(mlx, WRONG_EXT);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		show_error(-1);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	while (1)
 	{
 		line = get_next_line(fd);

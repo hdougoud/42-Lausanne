@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/21 22:12:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:58:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	show_error(int error_nb)
+void	show_error(t_minilx *mlx, int error_nb)
 {
 	ft_putendl_fd(COLOR_RED "Error", 2);
 	if (error_nb == MALLOC_ERROR)
@@ -34,5 +34,5 @@ void	show_error(int error_nb)
 	//TODO : ADD COLORS
 	//TODO : CLOSE AND FREE ALL
 	//TODO : SEPARETE CRITICAL ERROR AND SIMPLE ERROR AND CHANGE DE ERROR COLOR IN FUCNTION
-	exit(EXIT_FAILURE);
+	quit_properly(mlx, EXIT_FAILURE);
 }

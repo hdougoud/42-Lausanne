@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:52:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:01:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void count_player_movement(t_minilx *mlx)
 
 	mouv = ft_itoa(++mlx->movement);
 	if (!mouv)
-		show_error(MALLOC_ERROR);
+		show_error(mlx, MALLOC_ERROR);
 	string = ft_strjoin(mouv, " moves");
 	if (!string)
-		show_error(MALLOC_ERROR);
+		show_error(mlx, MALLOC_ERROR);
 	ft_put_image(mlx, mlx->sprites->wall, 0, 0);
 	ft_put_image(mlx, mlx->sprites->wall, 1, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
@@ -83,17 +83,15 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 	{
 		mlx_clear_window(mlx->mlx, mlx->win);
 		mlx_destroy_window(mlx->mlx, mlx->win);
-		exit(EXIT_SUCCESS);
+		quit_properly(mlx, EXIT_SUCCESS);
 	}
 	else if (keycode == W || keycode == A || keycode == S || keycode == D)
 		move_player(keycode, mlx);
 	else if (keycode == E)
 	{
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
-		{
-			quit_properly(mlx);
-			exit(EXIT_SUCCESS);
-		}
+			quit_properly(mlx, EXIT_SUCCESS);
 	}
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 18:50:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:03:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 	x * TEXTURE_SIZE, y * TEXTURE_SIZE);
 }
 
-char	*strdup_map_line(const char *str)
+char	*strdup_map_line(t_minilx *mlx, char *str)
 {
 	int		i;
 	int		str_len;
@@ -30,7 +30,7 @@ char	*strdup_map_line(const char *str)
 		str_len -= 1;
 	ptr = malloc(sizeof(char) * (str_len) + 1);
 	if (!ptr)
-		show_error(MALLOC_ERROR);
+		show_error(mlx, MALLOC_ERROR);
 	while (i < str_len)
 	{
 		ptr[i] = str[i];
