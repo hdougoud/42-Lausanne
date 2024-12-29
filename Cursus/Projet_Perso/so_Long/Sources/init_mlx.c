@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:50:41 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/29 13:30:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void init_map_values(t_minilx *mlx)
 {
-	mlx->map->collectable = 0;
-	mlx->map->exit = 0;
-	mlx->map->player = 0;
+	mlx->map->collectable_nb = 0;
+	mlx->map->exit_nb = 0;
+	mlx->map->player_nb = 0;
 }
 
 static void secure_all_img(t_minilx *mlx, int param)

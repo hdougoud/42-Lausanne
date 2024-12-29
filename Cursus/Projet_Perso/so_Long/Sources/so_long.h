@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 21:47:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:38:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 # include <errno.h>
 # include <mlx.h>
 
-# define SPRITE "sprites/XPM"
-# define TEXTURE_SIZE 64
+# define TEXTURE_SIZE		64
+# define MAX_EXIT			1
+# define MAX_PLAYER			1
+# define MIN_COLLECTABLE	1
 
 /*----------------------------------Keycode----------------------------------*/
 
-# define ESC	53
-# define E		14
-# define W		13
-# define A		0
-# define S		1
-# define D		2
+# define ESC				53
+# define E					14
+# define W					13
+# define A					0
+# define S					1
+# define D					2
 
 /*-----------------------------------Error-----------------------------------*/
 
@@ -67,9 +69,9 @@ typedef struct s_map
 	char	**map_tab;
 	int		height;
 	int		width;
-	int		exit;
-	int		player;
-	int		collectable;
+	int		exit_nb;
+	int		player_nb;
+	int		collectable_nb;
 }			t_map;
 
 typedef struct s_minilx
@@ -83,7 +85,8 @@ typedef struct s_minilx
 	int			movement;
 }				t_minilx;
 
-int	hook_keyboard(int keycode, t_minilx *mlx);
+int		windows_closed(t_minilx *mlx);
+int		hook_keyboard(int keycode, t_minilx *mlx);
 
 void	init_minilx(t_minilx *mlx);
 void	file_to_image(t_minilx *mlx);

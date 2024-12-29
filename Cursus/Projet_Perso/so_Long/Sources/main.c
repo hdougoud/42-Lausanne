@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:45:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:37:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int main(int argc, char **argv)
 	init_map(&mlx, argv[1]);
 	check_path_map(&mlx);
 	mlx_key_hook(mlx.win, hook_keyboard, &mlx);
+	mlx_hook(mlx.win, 17, 0, windows_closed, &mlx);
 	mlx_loop(mlx.mlx);
 }

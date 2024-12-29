@@ -6,11 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:03:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:58:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	windows_closed(t_minilx *mlx)
+{
+	quit_properly(mlx, EXIT_SUCCESS);
+	return (0);
+}
 
 void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 {

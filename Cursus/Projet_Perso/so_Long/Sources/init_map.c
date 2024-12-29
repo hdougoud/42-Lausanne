@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 21:57:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:57:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ static void xpm_to_map(t_minilx *mlx, int width, int height)
 			if (mlx->map->map_tab[height][width] == '1')
 				ft_put_image(mlx, mlx->sprites->wall, width, height);
 			else if (mlx->map->map_tab[height][width] == 'P')
-			{
 				ft_put_image(mlx, mlx->sprites->player, width, height);
-				mlx->player_pos_x = width;
-				mlx->player_pos_y = height;
-			}
 			else if (mlx->map->map_tab[height][width] == 'E')
 				ft_put_image(mlx, mlx->sprites->exit, width, height);
 			else if (mlx->map->map_tab[height][width] == 'C')
@@ -66,11 +62,15 @@ static void validate_map_char(t_minilx *mlx, int height)
 				&& (mlx->map->map_tab[height][width] != 'P'))
 			show_error(mlx, BAD_CHAR);
 		if (mlx->map->map_tab[height][width] == 'C')
-			mlx->map->collectable++;
-		if (mlx->map->map_tab[height][width] == 'P')
-			mlx->map->player++;
-		if (mlx->map->map_tab[height][width] == 'E')
-			mlx->map->exit++;
+			mlx->map->collectable_nb++;
+		else if (mlx->map->map_tab[height][width] == 'P')
+		{
+			mlx->player_pos_x = width;
+			mlx->player_pos_y = height;
+			mlx->map->player_nb++;
+		}
+		else if (mlx->map->map_tab[height][width] == 'E')
+			mlx->map->exit_nb++;
 		width++;
 	}
 }
@@ -91,11 +91,11 @@ static void	validate_map_size(t_minilx *mlx)
 	}
 	mlx->map->width = map_line_len;
 	mlx->map->height = height;
-	if (mlx->map->collectable < 1)
+	if (mlx->map->collectable_nb < MIN_COLLECTABLE)
 		show_error(mlx, UNDER_COLLECIBLE);
-	if (mlx->map->exit != 1)
+	if (mlx->map->exit_nb != MAX_EXIT)
 		show_error(mlx, TOO_MUCH_EXIT);
-	if (mlx->map->player != 1)
+	if (mlx->map->player_nb != MAX_PLAYER)
 		show_error(mlx, TOO_MUCH_PLAYER);
 }
 
@@ -129,10 +129,10 @@ void	init_map(t_minilx *mlx, char *map_name)
 {
 	int		fd;
 	char	*ext;
+	char	buff[1];
 	int		map_height;
-	char	*line;
 
-	map_height = 0;
+	map_height = 1;
 	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
 	if (ext == NULL)
 		show_error(mlx, WRONG_EXT);
@@ -141,13 +141,10 @@ void	init_map(t_minilx *mlx, char *map_name)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		show_error(mlx, CANNOT_OPEN_FILE);
-	while (1)
+	while (read(fd, buff, 1) == 1) //CHECK LEAKS OR CREATE A FUNCTION FOR COUNT LINE
 	{
-		line = get_next_line(fd);
-		if(!line)
-			break;
-		map_height++;
-		free(line);
+		if (buff[0] == '\n')
+			map_height++;
 	}
 	convert_map_tab(mlx, map_name, map_height);
 	close (fd);
