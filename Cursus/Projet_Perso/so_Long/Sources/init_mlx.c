@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/29 13:30:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:31:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,6 @@ void	init_minilx(t_minilx *mlx)
 	if (!mlx->mlx)
 		show_error(mlx, SERVER_X);
 	mlx->movement = 0;
+	mlx->screen_size_x = SCREEN_SIZE_X;
+	mlx->screen_size_y = SCREEN_SIZE_Y;
 }

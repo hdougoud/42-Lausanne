@@ -1,7 +1,7 @@
 NAME		= so_long
 OS			= $(shell uname -s)
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -g #-Wall -Werror -Wextra
 MACOS_DIR	= mlx/minilibx-macos
 LINUX_DIR	= mlx/minilibx-linux
 LIBFT		= libft/libft.a

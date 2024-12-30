@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/29 21:38:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:29:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define MAX_EXIT			1
 # define MAX_PLAYER			1
 # define MIN_COLLECTABLE	1
+# define SCREEN_SIZE_X		1920
+# define SCREEN_SIZE_Y		1080
 
 /*----------------------------------Keycode----------------------------------*/
 
@@ -45,7 +47,7 @@
 # define TOO_MUCH_PLAYER	9
 # define UNDER_COLLECIBLE	10
 # define WRONG_MAP_PATERN	11
-
+# define WINDOWS_TOO_BIG	12
 /*-----------------------------------Struct----------------------------------*/
 
 typedef struct s_img
@@ -82,6 +84,8 @@ typedef struct s_minilx
 	t_map		*map;
 	int			player_pos_x;
 	int			player_pos_y;
+	int			screen_size_x;
+	int			screen_size_y;
 	int			movement;
 }				t_minilx;
 

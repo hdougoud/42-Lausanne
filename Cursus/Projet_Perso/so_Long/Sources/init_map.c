@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/29 21:57:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:31:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static void	show_map(t_minilx *mlx)
 	int	width;
 
 	height = 0;
+	if (mlx->map->width * TEXTURE_SIZE > mlx->screen_size_x
+			|| mlx->map->height * TEXTURE_SIZE > mlx->screen_size_y)
+		show_error(mlx, WINDOWS_TOO_BIG);
 	mlx->win = mlx_new_window(mlx->mlx, (mlx->map->width * TEXTURE_SIZE),
 			(mlx->map->height * TEXTURE_SIZE), "so_long");
 	if (!mlx->win)
@@ -133,7 +136,7 @@ void	init_map(t_minilx *mlx, char *map_name)
 	int		map_height;
 
 	map_height = 1;
-	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
+	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name)); //TODO VERIFIER LES FICHIER INEXISTANT, SANS DROIT, SANS EXTESION, OU MAUVAISE EXTENTION
 	if (ext == NULL)
 		show_error(mlx, WRONG_EXT);
 	if (ft_strncmp(ext, ".ber", 5) != 0)
@@ -141,7 +144,7 @@ void	init_map(t_minilx *mlx, char *map_name)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		show_error(mlx, CANNOT_OPEN_FILE);
-	while (read(fd, buff, 1) == 1) //CHECK LEAKS OR CREATE A FUNCTION FOR COUNT LINE
+	while (read(fd, buff, 1) == 1)
 	{
 		if (buff[0] == '\n')
 			map_height++;
