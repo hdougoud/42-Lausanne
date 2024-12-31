@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 22:09:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/30 21:04:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	show_error(t_minilx *mlx, int error_nb)
 		ft_printf(COLOR_YELLOW "Not enough collectives, there must be at least one on the map");
 	else if (error_nb == WRONG_MAP_PATERN)
 		ft_printf(COLOR_YELLOW "Wrong map patern, the map must be surrounded by walls, the exit and all collectibles must be accessible to the player");
+	else if (error_nb == WINDOWS_TOO_BIG)
+		ft_printf(COLOR_YELLOW "Map too big for this resolution");
 	//TODO : SEPARETE CRITICAL ERROR AND SIMPLE ERROR AND CHANGE DE ERROR COLOR IN FUCNTION
 	ft_printf(COLOR_RESET);
 	quit_properly(mlx, EXIT_FAILURE);

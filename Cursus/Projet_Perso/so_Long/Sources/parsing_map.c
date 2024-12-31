@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:13:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/30 15:47:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2024/12/31 01:25:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,20 @@ static void check_map_border(t_minilx *mlx)
 	}
 }
 
+void	path_is_valide(t_minilx *mlx, int collectable, int exit)
+{
+	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x])
+		return ;
+}
+
 void	check_path_map(t_minilx *mlx)
 {
-	int	collectible;
-	int	exit;
-
+	int exit;
+	int collectable;
+	
 	check_map_border(mlx);
-	collectible = 0;
+	collectable = 0;
 	exit = 0;
-	
-	
 }
+
 // ADD VERIF FOR ENEMY
