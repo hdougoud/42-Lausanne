@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:13:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/31 01:25:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/05 20:13:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,34 @@ static void check_map_border(t_minilx *mlx)
 	}
 }
 
-void	path_is_valide(t_minilx *mlx, int collectable, int exit)
+void	path_is_valide(int **map, int *collectable, int *exit, int x, int y)
 {
-	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x])
-		return ;
+	if (map[y][x] == 'C')
+		*collectable++;
+	if (map[y][x] == 'E')
+		*exit++;
+	if (map[y][x] != '1' && map[y][x] != 'V')
+		map[y][x] = 'V';
+	path_is_valide(map, collectable, exit, x + 1, y);
+	path_is_valide(map, collectable, exit, x, y + 1);
+	path_is_valide(map, collectable, exit, x - 1, y);
+	path_is_valide(map, collectable, exit, x, y - 1);
+	return ;
 }
 
 void	check_path_map(t_minilx *mlx)
 {
 	int exit;
 	int collectable;
+	int **map;
 	
 	check_map_border(mlx);
 	collectable = 0;
 	exit = 0;
+	map = mlx->map->map_tab;
+	path_is_valide(map, &collectable, &exit, mlx->player_pos_x, mlx->player_pos_y);
+	if (exit != mlx->map->exit_nb && collectable != mlx->map->collectable_nb)
+		show_error(mlx, WRONG_MAP_PATH);
 }
 
 // ADD VERIF FOR ENEMY

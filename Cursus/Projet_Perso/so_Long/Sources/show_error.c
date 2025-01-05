@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/30 21:04:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/05 20:14:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	show_error(t_minilx *mlx, int error_nb)
 	else if (error_nb == WINDOWS_TOO_BIG)
 		ft_printf(COLOR_YELLOW "Map too big for this resolution");
 	//TODO : SEPARETE CRITICAL ERROR AND SIMPLE ERROR AND CHANGE DE ERROR COLOR IN FUCNTION
+	else if (error_nb == WRONG_MAP_PATH)
+		ft_printf(COLOR_YELLOW "The path of the map is invalid");
 	ft_printf(COLOR_RESET);
 	quit_properly(mlx, EXIT_FAILURE);
+	//CHECKER TOUTE LES PHRASES
 }
