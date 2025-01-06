@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/30 22:12:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:07:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	init_minilx(t_minilx *mlx)
 	mlx->sprites = NULL;
 	mlx->map = NULL;
 	allocate_struct(mlx);
+	mlx->map->map_tab = NULL;
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		show_error(mlx, SERVER_X);

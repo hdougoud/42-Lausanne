@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:24:43 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:08:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	quit_properly(t_minilx *mlx, int exit_status)
 	int i;
 	
 	if (mlx->mlx && mlx->sprites)
+	{
 		destroy_image(mlx);
+	}
     if (mlx->map && mlx->map->map_tab)
     {
 	    i = 0;
