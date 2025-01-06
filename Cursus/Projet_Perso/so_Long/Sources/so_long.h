@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/05 20:12:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:28:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define MAX_EXIT			1
 # define MAX_PLAYER			1
 # define MIN_COLLECTABLE	1
-# define SCREEN_SIZE_X		1920
-# define SCREEN_SIZE_Y		1080
+# define SCREEN_SIZE_X		5120
+# define SCREEN_SIZE_Y		2880
 
 /*----------------------------------Keycode----------------------------------*/
 
