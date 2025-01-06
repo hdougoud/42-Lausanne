@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/23 19:00:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:42:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	files_to_image_2(t_minilx *mlx)
 			&mlx->sprites->collectable->x,
 			&mlx->sprites->collectable->y);
 	if (!mlx->sprites->collectable->name)
-		show_error(mlx, CANNOT_OPEN_FILE);	
+		show_error(mlx, CANNOT_OPEN_FILE);
 }
