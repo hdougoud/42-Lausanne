@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 11:28:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:47:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@
 # define UNDER_COLLECIBLE	10
 # define WRONG_MAP_PATERN	11
 # define WINDOWS_TOO_BIG	12
-# define WRONG_MAP_PATH		13
+# define EXIT_NOT_REACH		13
+# define C_NOT_REACH		14
 /*-----------------------------------Struct----------------------------------*/
 
 typedef struct s_img

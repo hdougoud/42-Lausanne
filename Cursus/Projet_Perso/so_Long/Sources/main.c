@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 10:37:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:48:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) //SEGFAULT direct clean exit
 {
 	t_minilx	mlx;
 	
