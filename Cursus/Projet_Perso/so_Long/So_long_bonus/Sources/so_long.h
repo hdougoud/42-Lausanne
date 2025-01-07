@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 11:42:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:40:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define WINDOWS_TOO_BIG	12
 # define EXIT_NOT_REACH		13
 # define C_NOT_REACH		14
+
 /*-----------------------------------Struct----------------------------------*/
 
 typedef struct s_img
@@ -105,7 +106,10 @@ typedef struct s_minilx
 	int			screen_size_x;
 	int			screen_size_y;
 	int			movement;
+	int			frame_count;
 }				t_minilx;
+
+/*----------------------------------Functions--------------------------------*/
 
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);

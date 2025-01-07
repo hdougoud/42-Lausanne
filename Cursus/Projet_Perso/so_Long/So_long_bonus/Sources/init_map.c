@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/30 21:03:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:02:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void xpm_to_map(t_minilx *mlx, int width, int height)
 {
-				ft_put_image(mlx, mlx->sprites->empty, width, height);
-			if (mlx->map->map_tab[height][width] == '1')
-				ft_put_image(mlx, mlx->sprites->wall, width, height);
-			else if (mlx->map->map_tab[height][width] == 'P')
-				ft_put_image(mlx, mlx->sprites->player, width, height);
-			else if (mlx->map->map_tab[height][width] == 'E')
-				ft_put_image(mlx, mlx->sprites->exit, width, height);
-			else if (mlx->map->map_tab[height][width] == 'C')
-				ft_put_image(mlx, mlx->sprites->collectable, width, height);
+		ft_put_image(mlx, mlx->sprites->empty->name, width, height);
+	if (mlx->map->map_tab[height][width] == '1')
+		ft_put_image(mlx, mlx->sprites->wall->name, width, height);
+	else if (mlx->map->map_tab[height][width] == 'P')
+		ft_put_image(mlx, mlx->sprites->player->frames[0], width, height);
+	else if (mlx->map->map_tab[height][width] == 'E')
+		ft_put_image(mlx, mlx->sprites->exit->name, width, height);
+	else if (mlx->map->map_tab[height][width] == 'C')
+		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
 }
 
 static void	show_map(t_minilx *mlx)

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2024/12/29 21:58:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:01:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	windows_closed(t_minilx *mlx)
 
 void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 {
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img->name,
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img,
 	x * TEXTURE_SIZE, y * TEXTURE_SIZE);
 }
 

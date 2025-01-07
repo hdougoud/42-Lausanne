@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 12:04:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:43:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void init_map_values(t_minilx *mlx)
 	mlx->map->player_nb = 0;
 }
 
-static void	secure_all_image(t_minilx *mlx)
+static void	secure_all_img(t_minilx *mlx)
 {
 	mlx->sprites->player->frames[0] = NULL;
 	mlx->sprites->player->frames[1] = NULL;
@@ -38,12 +38,12 @@ static void	secure_all_image(t_minilx *mlx)
 	mlx->sprites->wall->name = NULL;
 }
 
-static void secure_struct(t_minilx *mlx)
+static void secure_all_struct(t_minilx *mlx)
 {
+	mlx->sprites->player = NULL;
 	mlx->sprites->chest = NULL;
 	mlx->sprites->empty = NULL;
 	mlx->sprites->exit = NULL;
-	mlx->sprites->player = NULL;
 	mlx->sprites->wall = NULL;
 }
 
@@ -53,22 +53,22 @@ static void	allocate_struct(t_minilx *mlx)
 	if (!mlx->sprites)
 		show_error(mlx, MALLOC_ERROR);
 	secure_all_struct(mlx);
+	mlx->sprites->player = malloc(sizeof(t_player));
+	if (!mlx->sprites->player)
+		show_error(mlx, MALLOC_ERROR);
+	mlx->sprites->chest = malloc(sizeof(t_chest));
+	if (!mlx->sprites->chest)
+		show_error(mlx, MALLOC_ERROR);
 	mlx->sprites->empty = malloc(sizeof(t_img));
 	if (!mlx->sprites->empty)
 		show_error(mlx, MALLOC_ERROR);
 	mlx->sprites->wall = malloc(sizeof(t_img));
 	if (!mlx->sprites->wall)
 		show_error(mlx, MALLOC_ERROR);
-	mlx->sprites->player = malloc(sizeof(t_player));
-	if (!mlx->sprites->player)
-		show_error(mlx, MALLOC_ERROR);
 	mlx->sprites->exit = malloc(sizeof(t_img));
 	if (!mlx->sprites->exit)
 		show_error(mlx, MALLOC_ERROR);
-	mlx->sprites->chest = malloc(sizeof(t_chest));
-	if (!mlx->sprites->chest)
-		show_error(mlx, MALLOC_ERROR);
-	secure_all_img(mlx, 2);
+	secure_all_img(mlx);
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
 		show_error(mlx, MALLOC_ERROR);
@@ -87,6 +87,8 @@ void	init_minilx(t_minilx *mlx)
 	if (!mlx->mlx)
 		show_error(mlx, SERVER_X);
 	mlx->movement = 0;
+	mlx->frame_count = 0;
+	mlx->sprites->player->current_frame = 0;
 	mlx->screen_size_x = SCREEN_SIZE_X;
 	mlx->screen_size_y = SCREEN_SIZE_Y;
 }
