@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 17:02:39 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:23:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,27 +98,12 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		}
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
 		{
-			chestx = mlx->player_pos_x;
-			chesty = mlx->player_pos_y;
+			if (mlx->sprites->chest->is_animating == 1)
+				return(0);
 			mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] = 'O';
-			mlx->map->collectable_nb--;
-			sleep(1);
-			ft_put_image(mlx, mlx->sprites->empty->name, chestx, chesty);
-			ft_put_image(mlx, mlx->sprites->chest->frames[1], chestx, chesty);
-			if (chestx == mlx->player_pos_x && chesty == mlx->player_pos_y)
-				ft_put_image(mlx, mlx->sprites->player->frames[0], mlx->player_pos_x, mlx->player_pos_y);
-			sleep(1);
-			ft_put_image(mlx, mlx->sprites->empty->name, chestx, chesty);
-			ft_put_image(mlx, mlx->sprites->chest->frames[2], chestx, chesty);
-			if (chestx == mlx->player_pos_x && chesty == mlx->player_pos_y)
-				ft_put_image(mlx, mlx->sprites->player->frames[0], mlx->player_pos_x, mlx->player_pos_y);
-			sleep(1);
-			ft_put_image(mlx, mlx->sprites->empty->name, chestx, chesty);
-			ft_put_image(mlx, mlx->sprites->chest->frames[3], chestx, chesty);
-			if (chestx == mlx->player_pos_x && chesty == mlx->player_pos_y)
-				ft_put_image(mlx, mlx->sprites->player->frames[0], mlx->player_pos_x, mlx->player_pos_y);
-			ft_put_image(mlx, mlx->sprites->empty->name, mlx->player_pos_x, mlx->player_pos_y);
-			ft_put_image(mlx, mlx->sprites->player->frames[0], mlx->player_pos_x, mlx->player_pos_y);
+			mlx->sprites->chest->posx = mlx->player_pos_x;
+			mlx->sprites->chest->posy = mlx->player_pos_y;
+			mlx->sprites->chest->is_animating = 1;
 		}
 			
 	}

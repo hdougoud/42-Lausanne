@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 14:43:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:21:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	init_minilx(t_minilx *mlx)
 		show_error(mlx, SERVER_X);
 	mlx->movement = 0;
 	mlx->frame_count = 0;
+	mlx->sprites->chest->is_animating = 0;
+	mlx->sprites->chest->current_frame = 0;
 	mlx->sprites->player->current_frame = 0;
 	mlx->screen_size_x = SCREEN_SIZE_X;
 	mlx->screen_size_y = SCREEN_SIZE_Y;

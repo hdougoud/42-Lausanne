@@ -6,19 +6,33 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 17:03:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:34:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 int next_frame(t_minilx *mlx)
-{
+{	
 	mlx->frame_count++;
-	if (mlx->frame_count >= 2500)
+	if (mlx->frame_count >= 10000)
 	{
-		mlx->sprites->player->current_frame++;
 		ft_put_image(mlx->mlx, mlx->sprites->empty->name, mlx->player_pos_x, mlx->player_pos_y);
+		if (mlx->sprites->chest->is_animating == 1)
+		{
+			ft_put_image(mlx->mlx, mlx->sprites->empty->name, mlx->sprites->chest->posx, mlx->sprites->chest->posy);
+			ft_put_image(mlx->mlx, mlx->sprites->chest->frames[mlx->sprites->chest->current_frame],
+					mlx->sprites->chest->posx, mlx->sprites->chest->posy);
+			mlx->sprites->chest->current_frame++;
+			if (mlx->sprites->chest->current_frame >= 3)
+			{
+				mlx->sprites->chest->current_frame = 0;
+				mlx->sprites->chest->is_animating = 0;
+			}
+		}
+		mlx->sprites->player->current_frame++;
+		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
+			ft_put_image(mlx->mlx, mlx->sprites->chest->frames[0], mlx->player_pos_x, mlx->player_pos_y);
 		ft_put_image(mlx->mlx, mlx->sprites->player->frames[mlx->sprites->player->current_frame], mlx->player_pos_x, mlx->player_pos_y);
 		if (mlx->sprites->player->current_frame >= 7)
 			mlx->sprites->player->current_frame = 0;

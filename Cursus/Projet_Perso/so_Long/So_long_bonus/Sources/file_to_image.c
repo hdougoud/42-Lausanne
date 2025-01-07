@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 12:00:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:37:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void	load_collectable_image(t_minilx *mlx)
 	if (!mlx->sprites->chest->frames[0])
 		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->chest->frames[1] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Chest/Chest_1.xpm",
+			"Sprites/Chest/Chest_2.xpm",
 			&mlx->sprites->chest->x, &mlx->sprites->chest->y);
 	if (!mlx->sprites->chest->frames[1])
 		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->chest->frames[2] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Chest/Chest_1.xpm",
+			"Sprites/Chest/Chest_3.xpm",
 			&mlx->sprites->chest->x, &mlx->sprites->chest->y);
 	if (!mlx->sprites->chest->frames[2])
 		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->chest->frames[3] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Chest/Chest_1.xpm",
+			"Sprites/Chest/Chest_4.xpm",
 			&mlx->sprites->chest->x, &mlx->sprites->chest->y);
 	if (!mlx->sprites->chest->frames[3])
 		show_error(mlx, CANNOT_OPEN_FILE);

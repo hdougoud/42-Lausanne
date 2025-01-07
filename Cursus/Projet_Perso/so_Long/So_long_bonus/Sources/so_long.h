@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 14:40:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:23:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_chest
 {
 	void	*frames[4];
 	int		current_frame;
+	int		is_animating;
+	int		posx;
+	int		posy;
 	int		x;
 	int		y;
 }			t_chest;
