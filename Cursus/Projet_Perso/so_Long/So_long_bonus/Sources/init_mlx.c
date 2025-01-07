@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 15:50:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:04:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,32 @@ static void init_map_values(t_minilx *mlx)
 	mlx->map->player_nb = 0;
 }
 
-static void secure_all_img(t_minilx *mlx, int param)
+static void	secure_all_image(t_minilx *mlx)
 {
-	if (param == 1)
-	{
-		mlx->sprites->collectable = NULL;
-		mlx->sprites->empty = NULL;
-		mlx->sprites->exit = NULL;
-		mlx->sprites->player = NULL;
-		mlx->sprites->wall = NULL;
-	}
-	else if (param == 2)
-	{
-		mlx->sprites->collectable->name = NULL;
-		mlx->sprites->empty->name = NULL;
-		mlx->sprites->exit->name = NULL;
-		mlx->sprites->player->name = NULL;
-		mlx->sprites->wall->name = NULL;
-	}
+	mlx->sprites->player->frames[0] = NULL;
+	mlx->sprites->player->frames[1] = NULL;
+	mlx->sprites->player->frames[2] = NULL;
+	mlx->sprites->player->frames[3] = NULL;
+	mlx->sprites->player->frames[4] = NULL;
+	mlx->sprites->player->frames[5] = NULL;
+	mlx->sprites->player->frames[6] = NULL;
+	mlx->sprites->player->frames[7] = NULL;
+	mlx->sprites->chest->frames[0] = NULL;
+	mlx->sprites->chest->frames[1] = NULL;
+	mlx->sprites->chest->frames[2] = NULL;
+	mlx->sprites->chest->frames[3] = NULL;
+	mlx->sprites->empty->name = NULL;
+	mlx->sprites->exit->name = NULL;
+	mlx->sprites->wall->name = NULL;
+}
+
+static void secure_struct(t_minilx *mlx)
+{
+	mlx->sprites->chest = NULL;
+	mlx->sprites->empty = NULL;
+	mlx->sprites->exit = NULL;
+	mlx->sprites->player = NULL;
+	mlx->sprites->wall = NULL;
 }
 
 static void	allocate_struct(t_minilx *mlx)
@@ -44,21 +52,21 @@ static void	allocate_struct(t_minilx *mlx)
 	mlx->sprites = malloc(sizeof(t_sprite));
 	if (!mlx->sprites)
 		show_error(mlx, MALLOC_ERROR);
-	secure_all_img(mlx, 1);
+	secure_all_struct(mlx);
 	mlx->sprites->empty = malloc(sizeof(t_img));
 	if (!mlx->sprites->empty)
 		show_error(mlx, MALLOC_ERROR);
 	mlx->sprites->wall = malloc(sizeof(t_img));
 	if (!mlx->sprites->wall)
 		show_error(mlx, MALLOC_ERROR);
-	mlx->sprites->player = malloc(sizeof(t_img));
+	mlx->sprites->player = malloc(sizeof(t_player));
 	if (!mlx->sprites->player)
 		show_error(mlx, MALLOC_ERROR);
 	mlx->sprites->exit = malloc(sizeof(t_img));
 	if (!mlx->sprites->exit)
 		show_error(mlx, MALLOC_ERROR);
-	mlx->sprites->collectable = malloc(sizeof(t_img));
-	if (!mlx->sprites->collectable)
+	mlx->sprites->chest = malloc(sizeof(t_chest));
+	if (!mlx->sprites->chest)
 		show_error(mlx, MALLOC_ERROR);
 	secure_all_img(mlx, 2);
 	mlx->map = malloc(sizeof(t_map));

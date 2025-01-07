@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 15:40:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:42:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,22 @@ typedef struct s_chest
 	int		y;
 }			t_chest;
 
+typedef struct s_player
+{
+	void	*frames[8];
+	int		current_frame;
+	int		x;
+	int		y;
+}			t_player;
+
 typedef struct s_sprite
 {
-	t_img	*player;
-	t_img	*collectable;
-	t_img	*exit;
-	t_img	*wall;
-	t_img	*empty;
-	t_chest	*chest;
-}			t_sprite;
+	t_img		*exit;
+	t_img		*wall;
+	t_img		*empty;
+	t_chest		*chest;
+	t_player	*player;
+}				t_sprite;
 
 typedef struct s_map
 {
