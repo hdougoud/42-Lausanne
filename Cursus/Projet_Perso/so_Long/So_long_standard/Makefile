@@ -1,10 +1,10 @@
 NAME		= so_long
 OS			= $(shell uname -s)
 CC			= gcc
-CFLAGS		=-g # -Wall -Werror -Wextra
-MACOS_DIR	= ../mlx/minilibx-macos
-LINUX_DIR	= ../mlx/minilibx-linux
-LIBFT		= ../libft/libft.a
+CFLAGS		= -g -O0 #-Wall -Werror -Wextra
+MACOS_DIR	= mlx/minilibx-macos
+LINUX_DIR	= mlx/minilibx-linux
+LIBFT		= libft/libft.a
 
 RED			= \033[1;31m
 GREEN		= \033[1;32m
@@ -19,7 +19,9 @@ else ifeq ($(OS), Darwin)
 endif
 
 SRC_DIR = Sources/
-SRCS	= test.c
+SRCS	= main.c			file_to_image.c 	init_map.c	show_error.c \
+		  so_long_utils.c 	gameplay.c			clean_exit.c init_mlx.c \
+		  parsing_map.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 
@@ -30,13 +32,13 @@ OBJECTS = $(addprefix $(OBJ_DIR), $(OBJS))
 all: $(OBJ_DIR) $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C ../libft
+	$(MAKE) -C libft
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) $(OBJECTS) $(OS_FLAGS) -L../libft -lft -o $(NAME)
+	$(CC) $(OBJECTS) $(OS_FLAGS) -Llibft -lft -o $(NAME)
 	echo "$(GREEN)$(NAME) compiled!$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -44,11 +46,11 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 clean:
 	rm -rf $(OBJ_DIR)
-	$(MAKE) -C ../libft clean
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f ../libft/libft.a
+	rm -f libft/libft.a
 
 re: fclean all
 
