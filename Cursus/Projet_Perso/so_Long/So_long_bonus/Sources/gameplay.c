@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 10:33:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:27:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void move_player(int keycode, t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->empty,
 		mlx->player_pos_x, mlx->player_pos_y);
 	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
-		ft_put_image(mlx, mlx->sprites->collectable, mlx->player_pos_x, mlx->player_pos_y);
+		ft_put_image(mlx, mlx->sprites->chest->frames[0], mlx->player_pos_x, mlx->player_pos_y);
 	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
 		ft_put_image(mlx, mlx->sprites->exit, mlx->player_pos_x, mlx->player_pos_y);
 	if (keycode == W)

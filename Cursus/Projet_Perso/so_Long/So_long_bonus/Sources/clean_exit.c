@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 14:08:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:30:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void destroy_image(t_minilx *mlx)
 {
-	if (mlx->sprites->collectable->name)
-		mlx_destroy_image(mlx->mlx, mlx->sprites->collectable->name);
+	if (mlx->sprites->chest->frames[0])
+		mlx_destroy_image(mlx->mlx, mlx->sprites->chest->frames[0]);
 	if (mlx->sprites->empty->name)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->empty->name);
 	if (mlx->sprites->exit->name)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->exit->name);
-	if (mlx->sprites->player->name)
-		mlx_destroy_image(mlx->mlx, mlx->sprites->player->name);
+	if (mlx->sprites->player->frames[0])
+		mlx_destroy_image(mlx->mlx, mlx->sprites->player->frames[0]);
 	if (mlx->sprites->wall->name)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->wall->name);
 }
@@ -30,8 +30,8 @@ static void free_struct(t_minilx *mlx)
 {
 	if (mlx->sprites)
 	{
-		if (mlx->sprites->collectable)
-			free(mlx->sprites->collectable);
+		if (mlx->sprites->chest)
+			free(mlx->sprites->chest);
 		if(mlx->sprites->empty)
 			free(mlx->sprites->empty);
 		if(mlx->sprites->exit)
