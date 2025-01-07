@@ -1,7 +1,7 @@
 /* XPM */
 static char *idle_2[] = {
 /* columns rows colors chars-per-pixel */
-"33 61 23 1 ",
+"33 64 23 1 ",
 "  c None",
 ". c black",
 "X c #230726",
@@ -26,6 +26,9 @@ static char *idle_2[] = {
 "3 c #E5959F",
 "4 c #F2E9F2",
 /* pixels */
+"                                 ",
+"                                 ",
+"                                 ",
 "           ...........           ",
 "           ...........           ",
 "           ...........           ",

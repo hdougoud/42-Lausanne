@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 15:38:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:03:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int next_frame(t_minilx *mlx)
 {
 	mlx->frame_count++;
-	if (mlx->frame_count >= 5000)
+	if (mlx->frame_count >= 2500)
 	{
 		mlx->sprites->player->current_frame++;
 		ft_put_image(mlx->mlx, mlx->sprites->empty->name, mlx->player_pos_x, mlx->player_pos_y);
