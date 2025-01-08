@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:13:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/06 12:56:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:58:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_parsing
 	int		exit;
 }			t_parsing;
 
-static void	clear_copy_map(char **map, int j)
+void	clear_map(char **map, int j)
 {
 	while (j >= 0)
 	{
@@ -45,7 +45,7 @@ static char	**copy_map(t_minilx *mlx)
 		map[j] = malloc(sizeof(char) * (mlx->map->width + 1));
 		if (!map)
 		{
-			clear_copy_map(map, j);
+			clear_map(map, j);
 			show_error(mlx, MALLOC_ERROR);
 		}
 		while (mlx->map->map_tab[j][++i])
@@ -115,5 +115,5 @@ void	check_path_map(t_minilx *mlx)
 		show_error(mlx, EXIT_NOT_REACH);
 	if (parsing.collectable != mlx->map->collectable_nb)
 		show_error(mlx, C_NOT_REACH);
-	clear_copy_map(parsing.map, mlx->map->height);
+	clear_map(parsing.map, mlx->map->height);
 }

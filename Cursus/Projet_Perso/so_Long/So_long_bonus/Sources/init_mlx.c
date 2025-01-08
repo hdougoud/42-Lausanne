@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 18:21:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:10:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void secure_all_struct(t_minilx *mlx)
 	mlx->sprites->empty = NULL;
 	mlx->sprites->exit = NULL;
 	mlx->sprites->wall = NULL;
+	mlx->sprites->enemy = NULL;
 }
 
 static void	allocate_struct(t_minilx *mlx)
@@ -68,6 +69,9 @@ static void	allocate_struct(t_minilx *mlx)
 	mlx->sprites->exit = malloc(sizeof(t_img));
 	if (!mlx->sprites->exit)
 		show_error(mlx, MALLOC_ERROR);
+	mlx->sprites->enemy = malloc(sizeof(t_enemy));
+	if (!mlx->sprites->enemy)
+		show_error(mlx, MALLOC_ERROR);
 	secure_all_img(mlx);
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
@@ -88,9 +92,11 @@ void	init_minilx(t_minilx *mlx)
 		show_error(mlx, SERVER_X);
 	mlx->movement = 0;
 	mlx->frame_count = 0;
+	mlx->sprites->enemy->current_frame = 0;
 	mlx->sprites->chest->is_animating = 0;
 	mlx->sprites->chest->current_frame = 0;
 	mlx->sprites->player->current_frame = 0;
+	mlx->sprites->player->life = 0;
 	mlx->screen_size_x = SCREEN_SIZE_X;
 	mlx->screen_size_y = SCREEN_SIZE_Y;
 }

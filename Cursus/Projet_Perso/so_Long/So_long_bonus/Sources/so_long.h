@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 18:23:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:09:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,18 @@ typedef struct s_player
 {
 	void	*frames[8];
 	int		current_frame;
+	int		life;
 	int		x;
 	int		y;
 }			t_player;
+
+typedef struct s_enemy
+{
+	void			*frames[5];
+	int				current_frame;
+	int				x;
+	int				y;
+}					t_enemy;
 
 typedef struct s_sprite
 {
@@ -85,12 +94,14 @@ typedef struct s_sprite
 	t_img		*wall;
 	t_img		*empty;
 	t_chest		*chest;
+	t_enemy		*enemy;
 	t_player	*player;
 }				t_sprite;
 
 typedef struct s_map
 {
 	char	**map_tab;
+	char	**map_enemy;
 	int		height;
 	int		width;
 	int		exit_nb;
@@ -117,9 +128,12 @@ typedef struct s_minilx
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	find_enemy(t_minilx *mlx);
 void	init_minilx(t_minilx *mlx);
+void	clear_map(char **map, int j);
 void	file_to_image(t_minilx *mlx);
 void	check_path_map(t_minilx *mlx);
+void	create_enemy_map(t_minilx *mlx);
 void	init_map(t_minilx *mlx, char *map_name);
 void	show_error(t_minilx *mlx, int error_nb);
 void	quit_properly(t_minilx *mlx, int exit_status);

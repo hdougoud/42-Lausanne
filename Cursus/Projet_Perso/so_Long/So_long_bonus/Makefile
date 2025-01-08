@@ -21,7 +21,7 @@ endif
 SRC_DIR = Sources/
 SRCS	= main.c			file_to_image.c 	init_map.c	show_error.c \
 		  so_long_utils.c 	gameplay.c			clean_exit.c init_mlx.c \
-		  parsing_map.c
+		  parsing_map.c		enemy.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 

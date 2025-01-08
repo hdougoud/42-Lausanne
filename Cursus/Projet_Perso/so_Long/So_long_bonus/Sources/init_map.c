@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 14:02:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:38:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void xpm_to_map(t_minilx *mlx, int width, int height)
 		ft_put_image(mlx, mlx->sprites->exit->name, width, height);
 	else if (mlx->map->map_tab[height][width] == 'C')
 		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
+	else if (mlx->map->map_tab[height][width] == 'B')
+		ft_put_image(mlx, mlx->sprites->enemy->frames[0], width, height);
 }
 
 static void	show_map(t_minilx *mlx)
@@ -62,7 +64,8 @@ static void validate_map_char(t_minilx *mlx, int height)
 				&& (mlx->map->map_tab[height][width] != '1')
 				&& (mlx->map->map_tab[height][width] != 'E')
 				&& (mlx->map->map_tab[height][width] != 'C')
-				&& (mlx->map->map_tab[height][width] != 'P'))
+				&& (mlx->map->map_tab[height][width] != 'P')
+				&& (mlx->map->map_tab[height][width] != 'B'))
 			show_error(mlx, BAD_CHAR);
 		if (mlx->map->map_tab[height][width] == 'C')
 			mlx->map->collectable_nb++;
