@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:11:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:40:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int main(int argc, char **argv) //SEGFAULT direct clean exit
 		show_error(&mlx, WRONG_ARGUMENTS);
 	init_map(&mlx, argv[1]);
 	check_path_map(&mlx);
-	create_enemy_map(&mlx);
+	printf("%s\n", "path_map_finished");
+	mlx.map->map_enemy = create_enemy_map(&mlx, mlx.map->map_tab);
 	mlx_key_hook(mlx.win, hook_keyboard, &mlx);
 	mlx_hook(mlx.win, 17, 0, windows_closed, &mlx);
 	mlx_loop_hook(mlx.mlx, next_frame, &mlx);

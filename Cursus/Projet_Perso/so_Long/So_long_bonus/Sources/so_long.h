@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:09:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:33:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_map
 {
 	char	**map_tab;
 	char	**map_enemy;
+	char	**map_enemy_copy;
 	int		height;
 	int		width;
 	int		exit_nb;
@@ -133,12 +134,12 @@ void	init_minilx(t_minilx *mlx);
 void	clear_map(char **map, int j);
 void	file_to_image(t_minilx *mlx);
 void	check_path_map(t_minilx *mlx);
-void	create_enemy_map(t_minilx *mlx);
 void	init_map(t_minilx *mlx, char *map_name);
 void	show_error(t_minilx *mlx, int error_nb);
 void	quit_properly(t_minilx *mlx, int exit_status);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
 
 char	*strdup_map_line(t_minilx *mlx, char *str);
+char	**create_enemy_map(t_minilx *mlx, char **map);
 
 #endif
