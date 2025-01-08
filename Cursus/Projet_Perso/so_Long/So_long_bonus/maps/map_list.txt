@@ -1,2 +1,0 @@
-map_test.ber
-small_map.ber
