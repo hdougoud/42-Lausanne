@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 16:56:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:17:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void move_player(int keycode, t_minilx *mlx)
 {
 	if (check_movement(keycode, mlx) == 1)
 		return ;
-	put_previous_layer(mlx);
+	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
 	if (keycode == W)
 		mlx->player_pos_y -= 1;
 	else if (keycode == S)
@@ -107,7 +107,7 @@ void move_player(int keycode, t_minilx *mlx)
 		mlx->player_pos_x += 1;
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
-	find_enemy(mlx);
+	find_enemy(mlx, 1);
 	count_player_movement(mlx);
 }
 
@@ -128,17 +128,9 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 				quit_properly(mlx, EXIT_SUCCESS);
 			else (ft_printf("you need to collect all the collectibles before you can go out.\n")); //TODO : CHANGE COLLECTIBLE FOR SPRITE NAME
 		}
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
-		{
-			if (mlx->sprites->chest->is_animating == 1)
-				return(0);
-			mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] = 'O';
-			mlx->sprites->chest->posx = mlx->player_pos_x;
-			mlx->sprites->chest->posy = mlx->player_pos_y;
-			mlx->sprites->chest->is_animating = 1;
-			mlx->map->collectable_nb--;
-		}
-			
+		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C' 
+				|| mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')
+			open_chest(mlx);
 	}
 	return (0);
 }

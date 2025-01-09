@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 17:04:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:39:26 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,44 @@ static void	chest_animation(t_minilx *mlx)
 	mlx->sprites->chest->current_frame++;
 }
 
-void	put_previous_layer(t_minilx *mlx)
+void	next_enemy_frame(t_minilx *mlx, int x, int y)
 {
-	int	x;
-	int	y;
+	int frame;
 
-	x = mlx->player_pos_x;
-	y = mlx->player_pos_y;
+	frame = mlx->sprites->enemy->current_frame;
+	put_previous_layer(mlx, x, y);
+	ft_put_image(mlx, mlx->sprites->enemy->frames[frame], x, y);
+	if (mlx->sprites->enemy->current_frame >= 4)
+		mlx->sprites->enemy->current_frame = 0;
+	mlx->sprites->enemy->current_frame++;
+}
+
+void	put_previous_layer(t_minilx *mlx, int x, int y)
+{
 	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
-	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
+	if (mlx->map->map_tab[y][x] == 'C')
 		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
 	if (mlx->sprites->chest->is_animating == 0)
 	{
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'O')
+		if (mlx->map->map_tab[y][x] == 'O')
 			ft_put_image(mlx, mlx->sprites->chest->frames[3], x, y);
 	}
-	
-	else if (mlx->sprites->chest->is_animating)
-	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
+	else if (mlx->sprites->chest->is_animating == 1)
+	{
+		ft_put_image(mlx, mlx->sprites->chest->frames
+		[mlx->sprites->chest->current_frame],
+		mlx->sprites->chest->posx, mlx->sprites->chest->posy);
+	}
+	if (mlx->map->map_tab[y][x] == 'E')
 		ft_put_image(mlx, mlx->sprites->exit->name, x, y);
 }
 
 int	next_frame(t_minilx *mlx)
 {
 	mlx->frame_count++;
-	if (mlx->frame_count >= 1500)
+	if (mlx->frame_count >= 1000)
 	{
-		put_previous_layer(mlx);
+		put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
 		if (mlx->sprites->chest->is_animating == 1)
 			chest_animation(mlx);
 		ft_put_image(mlx, mlx->sprites->player->frames
@@ -64,9 +75,9 @@ int	next_frame(t_minilx *mlx)
 			mlx->player_pos_x, mlx->player_pos_y);
 		if (mlx->sprites->player->current_frame >= 7)
 			mlx->sprites->player->current_frame = 0;
+		find_enemy(mlx, 2);
 		mlx->frame_count = 0;
 		mlx->sprites->player->current_frame++;
 	}
-	
 	return (0);
 }

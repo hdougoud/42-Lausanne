@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 16:55:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:21:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,17 +142,19 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
-void	find_enemy(t_minilx *mlx);
+void	next_enemy_frame(t_minilx *mlx, int x, int y);
+void	find_enemy(t_minilx *mlx, int param);
+void 	open_chest(t_minilx *mlx);
 void	init_minilx(t_minilx *mlx);
 void	clear_map(char **map, int j);
 void	file_to_image(t_minilx *mlx);
 void	check_path_map(t_minilx *mlx);
 void	load_player_image(t_minilx *mlx);
 void	check_player_life(t_minilx *mlx);
-void	put_previous_layer(t_minilx *mlx);
 void	init_map(t_minilx *mlx, char *map_name);
 void	show_error(t_minilx *mlx, int error_nb);
 void	quit_properly(t_minilx *mlx, int exit_status);
+void	put_previous_layer(t_minilx *mlx, int x, int y);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
 
 char	*strdup_map_line(t_minilx *mlx, char *str);

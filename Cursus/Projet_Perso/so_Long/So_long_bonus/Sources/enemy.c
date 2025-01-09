@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 13:18:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:34:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ char	**create_enemy_map(t_minilx *mlx, char **map)
 	}
 	copyed_map[j] = NULL;
 	return (copyed_map);
-	printf("%s\n", "map_copyed");
-
 }
 
 static void move_enemy(t_minilx *mlx, int x, int y)
@@ -87,7 +85,7 @@ static void move_enemy(t_minilx *mlx, int x, int y)
 	ft_put_image(mlx, mlx->sprites->enemy->frames[0], x, y);
 }
 
-void find_enemy(t_minilx *mlx)
+void find_enemy(t_minilx *mlx, int param)
 {
 	int height;
 	int width;
@@ -100,9 +98,11 @@ void find_enemy(t_minilx *mlx)
 		width = 0;
 		while (mlx->map->map_enemy[height][width])
 		{
-			if (mlx->map->map_enemy[height][width] == 'B')
+			if (mlx->map->map_enemy[height][width] == 'B' && param == 1)
 				move_enemy(mlx, width, height);
-			width++;
+			else if (mlx->map->map_enemy[height][width] == 'B' && param == 2)
+				next_enemy_frame(mlx, width, height)
+;			width++;
 		}
 		height++;
 	}
