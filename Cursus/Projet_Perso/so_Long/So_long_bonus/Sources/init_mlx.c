@@ -6,17 +6,26 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:10:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:58:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void init_map_values(t_minilx *mlx)
+static void init_values(t_minilx *mlx)
 {
 	mlx->map->collectable_nb = 0;
 	mlx->map->exit_nb = 0;
 	mlx->map->player_nb = 0;
+	mlx->movement = 0;
+	mlx->frame_count = 0;
+	mlx->sprites->enemy->current_frame = 0;
+	mlx->sprites->chest->is_animating = 0;
+	mlx->sprites->chest->current_frame = 0;
+	mlx->sprites->player->current_frame = 0;
+	mlx->sprites->player->life = 3;
+	mlx->screen_size_x = SCREEN_SIZE_X;
+	mlx->screen_size_y = SCREEN_SIZE_Y;
 }
 
 static void	secure_all_img(t_minilx *mlx)
@@ -33,6 +42,14 @@ static void	secure_all_img(t_minilx *mlx)
 	mlx->sprites->chest->frames[1] = NULL;
 	mlx->sprites->chest->frames[2] = NULL;
 	mlx->sprites->chest->frames[3] = NULL;
+	mlx->sprites->enemy->frames[0] = NULL;
+	mlx->sprites->enemy->frames[1] = NULL;
+	mlx->sprites->enemy->frames[2] = NULL;
+	mlx->sprites->enemy->frames[3] = NULL;
+	mlx->sprites->enemy->frames[4] = NULL;
+	mlx->sprites->heart->frames[0] = NULL;
+	mlx->sprites->heart->frames[1] = NULL;
+	mlx->sprites->heart->frames[2] = NULL;
 	mlx->sprites->empty->name = NULL;
 	mlx->sprites->exit->name = NULL;
 	mlx->sprites->wall->name = NULL;
@@ -72,11 +89,13 @@ static void	allocate_struct(t_minilx *mlx)
 	mlx->sprites->enemy = malloc(sizeof(t_enemy));
 	if (!mlx->sprites->enemy)
 		show_error(mlx, MALLOC_ERROR);
+	mlx->sprites->heart = malloc(sizeof(t_heart));
+	if (!mlx->sprites->heart)
+		show_error(mlx, MALLOC_ERROR);
 	secure_all_img(mlx);
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
 		show_error(mlx, MALLOC_ERROR);
-	init_map_values(mlx);
 }
 
 void	init_minilx(t_minilx *mlx)
@@ -90,13 +109,5 @@ void	init_minilx(t_minilx *mlx)
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		show_error(mlx, SERVER_X);
-	mlx->movement = 0;
-	mlx->frame_count = 0;
-	mlx->sprites->enemy->current_frame = 0;
-	mlx->sprites->chest->is_animating = 0;
-	mlx->sprites->chest->current_frame = 0;
-	mlx->sprites->player->current_frame = 0;
-	mlx->sprites->player->life = 0;
-	mlx->screen_size_x = SCREEN_SIZE_X;
-	mlx->screen_size_y = SCREEN_SIZE_Y;
+	init_values(mlx);
 }

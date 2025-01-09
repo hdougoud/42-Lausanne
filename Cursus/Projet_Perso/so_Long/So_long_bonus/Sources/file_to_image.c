@@ -6,11 +6,31 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:11:02 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:56:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void load_heart_image(t_minilx *mlx)
+{
+	mlx->sprites->heart->frames[0] = mlx_xpm_file_to_image(mlx->mlx,
+			"Sprites/Heart/Heart_1.xpm",
+			&mlx->sprites->heart->x, &mlx->sprites->heart->y);
+	if (!mlx->sprites->heart->frames[0])
+		show_error(mlx, CANNOT_OPEN_FILE);
+	mlx->sprites->heart->frames[1] = mlx_xpm_file_to_image(mlx->mlx,
+			"Sprites/Heart/Heart_2.xpm",
+			&mlx->sprites->heart->x, &mlx->sprites->heart->y);
+	if (!mlx->sprites->heart->frames[1])
+		show_error(mlx, CANNOT_OPEN_FILE);
+	mlx->sprites->heart->frames[2] = mlx_xpm_file_to_image(mlx->mlx,
+			"Sprites/Heart/Heart_3.xpm",
+			&mlx->sprites->heart->x, &mlx->sprites->heart->y);
+	if (!mlx->sprites->heart->frames[2])
+		show_error(mlx, CANNOT_OPEN_FILE);
+
+}
 
 static void	load_enemy_image(t_minilx *mlx)
 {
@@ -66,55 +86,6 @@ static void	load_collectable_image(t_minilx *mlx)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
-static void	load_player_image_2(t_minilx *mlx)
-{
-	mlx->sprites->player->frames[4] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_5.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[4])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[5] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_6.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[5])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[6] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_7.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[6])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[7] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_8.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[7])
-		show_error(mlx, CANNOT_OPEN_FILE);
-}
-
-static void	load_player_image(t_minilx *mlx)
-{
-	mlx->sprites->player->frames[0] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_1.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[0])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[1] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_2.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[1])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[2] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_3.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[2])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->player->frames[3] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Player/idle_4.xpm",
-			&mlx->sprites->player->x, &mlx->sprites->player->y);
-	if (!mlx->sprites->player->frames[3])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	load_player_image_2(mlx);
-}
-
 void	file_to_image(t_minilx *mlx)
 {
 	mlx->sprites->empty->name = mlx_xpm_file_to_image(mlx->mlx,
@@ -135,4 +106,5 @@ void	file_to_image(t_minilx *mlx)
 	load_player_image(mlx);
 	load_collectable_image(mlx);
 	load_enemy_image(mlx);
+	load_heart_image(mlx);
 }

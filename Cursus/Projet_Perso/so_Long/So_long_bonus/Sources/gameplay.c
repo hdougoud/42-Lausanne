@@ -6,11 +6,45 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 18:02:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:56:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_player_life(t_minilx *mlx)
+{
+	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -4, 0);
+	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -3, 0);
+	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -2, 0);
+	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -4, 0);
+	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -3, 0);
+	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -2, 0);
+	if (mlx->sprites->player->life == 3)
+	{
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -2, 0);
+	}
+	if (mlx->sprites->player->life == 2)
+	{
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
+	}
+	if (mlx->sprites->player->life == 1)
+	{
+		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -3, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
+	}
+	if (mlx->sprites->player->life == 0)
+	{
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -4, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -3, 0);
+		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
+	}
+}
 
 static void count_player_movement(t_minilx *mlx)
 {
@@ -28,7 +62,7 @@ static void count_player_movement(t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->wall->name, 0, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, 1, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
-	ft_printf("%d\n", mlx->movement);
+	ft_printf("%d\n movements", mlx->movement);
 	free(mouv);
 	free(string);
 }
@@ -62,22 +96,7 @@ void move_player(int keycode, t_minilx *mlx)
 {
 	if (check_movement(keycode, mlx) == 1)
 		return ;
-	ft_put_image(mlx, mlx->sprites->empty->name, mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
-		ft_put_image(mlx, mlx->sprites->exit->name, mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C')
-		ft_put_image(mlx, mlx->sprites->chest->frames[0], mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->sprites->chest->is_animating == 0)
-	{
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'O')
-			ft_put_image(mlx, mlx->sprites->chest->frames[3], mlx->player_pos_x, mlx->player_pos_y);
-	}
-	if (mlx->sprites->chest->is_animating == 1)
-	{
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'O')
-			ft_put_image(mlx, mlx->sprites->chest->frames[mlx->sprites->chest->current_frame],
-					mlx->player_pos_x, mlx->player_pos_y);	
-	}
+	put_previous_layer(mlx);
 	if (keycode == W)
 		mlx->player_pos_y -= 1;
 	else if (keycode == S)

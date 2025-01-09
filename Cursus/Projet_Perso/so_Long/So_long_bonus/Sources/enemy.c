@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:44:08 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:18:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,39 @@ char	**create_enemy_map(t_minilx *mlx, char **map)
 
 static void move_enemy(t_minilx *mlx, int x, int y)
 {
-	printf("%s\n", "move enemy start");
+	int random;
+	int enemy_x;
+	int enemy_y;
+	
+	enemy_x = x;
+	enemy_y = y;
+	random = rand() % (MAX_RAND + 1);
+	if (random == 0 && mlx->map->map_enemy_copy[y][x + 1] != '1')
+			enemy_x += 1;	
+	else if (random == 1 && mlx->map->map_enemy_copy[y][x - 1] != '1')
+			enemy_x -= 1;
+	else if (random == 2 && mlx->map->map_enemy_copy[y + 1][x] != '1')
+			enemy_y += 1;
+	else if (random == 3 && mlx->map->map_enemy_copy[y - 1][x] != '1')
+			enemy_y -= 1;
+	else 
+		return;
 	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
+	if (mlx->map->map_tab[y][x] == 'C')
+		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
+	if (mlx->map->map_tab[y][x] == 'O')
+		ft_put_image(mlx, mlx->sprites->chest->frames[3], x, y);
 	mlx->map->map_enemy_copy[y][x] = '0';
-	x += 1;
+	x = enemy_x;
+	y = enemy_y;
 	mlx->map->map_enemy_copy[y][x] = 'B';
 	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
+	if (mlx->map->map_tab[y][x] == 'C')
+		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
+	if (mlx->map->map_tab[y][x] == 'O')
+		ft_put_image(mlx, mlx->sprites->chest->frames[3], x, y);
+	if (x == mlx->player_pos_x && y == mlx->player_pos_y)
+		mlx->sprites->player->life -= 1;
 	ft_put_image(mlx, mlx->sprites->enemy->frames[0], x, y);
 }
 
@@ -65,7 +92,6 @@ void find_enemy(t_minilx *mlx)
 	int height;
 	int width;
 
-	printf("%s\n", "find enemy start");
 	height = 0;
 	mlx->map->map_enemy_copy = create_enemy_map(mlx, mlx->map->map_enemy);
 	

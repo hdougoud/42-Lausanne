@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 23:33:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:55:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <errno.h>
+# include <time.h>
 # include <mlx.h>
 
 # define TEXTURE_SIZE		64
@@ -23,7 +24,7 @@
 # define MIN_COLLECTABLE	1
 # define SCREEN_SIZE_X		5120
 # define SCREEN_SIZE_Y		2880
-
+# define MAX_RAND				3
 /*----------------------------------Keycode----------------------------------*/
 
 # define ESC				53
@@ -74,7 +75,9 @@ typedef struct s_chest
 typedef struct s_player
 {
 	void	*frames[8];
+	void	*dth_frames[8];
 	int		current_frame;
+	int		dth_current_frame;
 	int		life;
 	int		x;
 	int		y;
@@ -88,6 +91,14 @@ typedef struct s_enemy
 	int				y;
 }					t_enemy;
 
+typedef struct s_heart
+{
+	void	*frames[3];
+	int		current_frame;
+	int		x;
+	int		y;
+}			t_heart;
+
 typedef struct s_sprite
 {
 	t_img		*exit;
@@ -95,6 +106,7 @@ typedef struct s_sprite
 	t_img		*empty;
 	t_chest		*chest;
 	t_enemy		*enemy;
+	t_heart		*heart;
 	t_player	*player;
 }				t_sprite;
 
@@ -126,6 +138,7 @@ typedef struct s_minilx
 
 /*----------------------------------Functions--------------------------------*/
 
+int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
@@ -134,6 +147,9 @@ void	init_minilx(t_minilx *mlx);
 void	clear_map(char **map, int j);
 void	file_to_image(t_minilx *mlx);
 void	check_path_map(t_minilx *mlx);
+void	load_player_image(t_minilx *mlx);
+void	check_player_life(t_minilx *mlx);
+void	put_previous_layer(t_minilx *mlx);
 void	init_map(t_minilx *mlx, char *map_name);
 void	show_error(t_minilx *mlx, int error_nb);
 void	quit_properly(t_minilx *mlx, int exit_status);
