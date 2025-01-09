@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 18:21:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:18:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_minilx
 	int			screen_size_y;
 	int			movement;
 	int			frame_count;
+	int			frames_rates;
 }				t_minilx;
 
 /*----------------------------------Functions--------------------------------*/
@@ -142,6 +143,7 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	player_death(t_minilx *mlx);
 void	next_enemy_frame(t_minilx *mlx, int x, int y);
 void	find_enemy(t_minilx *mlx, int param);
 void 	open_chest(t_minilx *mlx);

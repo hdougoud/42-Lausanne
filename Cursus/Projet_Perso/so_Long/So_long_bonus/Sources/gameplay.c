@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 18:17:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:19:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_player_life(t_minilx *mlx)
 {
-	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -4, 0);
+	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -4, 0); //TODO : Protect small map
 	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -3, 0);
 	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -2, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -4, 0);
@@ -43,6 +43,7 @@ void	check_player_life(t_minilx *mlx)
 		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -4, 0);
 		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -3, 0);
 		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
+		ft_put_image(mlx, mlx->sprites->player->frames[7], mlx->player_pos_x, mlx->player_pos_y);
 	}
 }
 
@@ -62,7 +63,7 @@ static void count_player_movement(t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->wall->name, 0, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, 1, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
-	ft_printf("%d\n movements", mlx->movement);
+	ft_printf("%d movements\n", mlx->movement);
 	free(mouv);
 	free(string);
 }
@@ -109,6 +110,7 @@ void move_player(int keycode, t_minilx *mlx)
 	mlx->player_pos_x, mlx->player_pos_y);
 	find_enemy(mlx, 1);
 	count_player_movement(mlx);
+	
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)

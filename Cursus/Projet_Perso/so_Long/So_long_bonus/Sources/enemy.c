@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 18:34:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:57:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,41 +47,47 @@ char	**create_enemy_map(t_minilx *mlx, char **map)
 	return (copyed_map);
 }
 
-static void move_enemy(t_minilx *mlx, int x, int y)
+static int	check_enemy_next_move(t_minilx *mlx, int *x, int *y, int random)
 {
-	int random;
 	int enemy_x;
 	int enemy_y;
 	
-	enemy_x = x;
-	enemy_y = y;
-	random = rand() % (MAX_RAND + 1);
-	if (random == 0 && mlx->map->map_enemy_copy[y][x + 1] != '1')
-			enemy_x += 1;	
-	else if (random == 1 && mlx->map->map_enemy_copy[y][x - 1] != '1')
+	enemy_x = *x;
+	enemy_y = *y;
+	if (random == 0 && (mlx->map->map_enemy_copy[*y][*x + 1] != '1'
+				&& mlx->map->map_enemy_copy[*y][*x + 1] != 'B'))
+			enemy_x += 1;
+	else if (random == 1 && (mlx->map->map_enemy_copy[*y][*x - 1] != '1'
+				&& mlx->map->map_enemy_copy[*y][*x - 1] != 'B'))
 			enemy_x -= 1;
-	else if (random == 2 && mlx->map->map_enemy_copy[y + 1][x] != '1')
+	else if (random == 2 && (mlx->map->map_enemy_copy[*y + 1][*x] != '1'
+				&& mlx->map->map_enemy_copy[*y + 1][*x] != 'B'))
 			enemy_y += 1;
-	else if (random == 3 && mlx->map->map_enemy_copy[y - 1][x] != '1')
+	else if (random == 3 && (mlx->map->map_enemy_copy[*y - 1][*x] != '1'
+				&& mlx->map->map_enemy_copy[*y - 1][*x] != 'B'))
 			enemy_y -= 1;
 	else 
+		return (1);
+	mlx->map->map_enemy_copy[*y][*x] = '0';
+	put_previous_layer(mlx, *x, *y);
+	*x = enemy_x;
+	*y = enemy_y;
+	return (0);
+}
+
+static void move_enemy(t_minilx *mlx, int x, int y)
+{
+	int random;
+	
+	if (mlx->player_pos_y == y && mlx->player_pos_x == x)
+		mlx->sprites->player->life--;
+	random = rand() % (MAX_RAND + 1);
+	if (check_enemy_next_move(mlx, &x, &y, random))
 		return;
-	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
-	if (mlx->map->map_tab[y][x] == 'C')
-		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
-	if (mlx->map->map_tab[y][x] == 'O')
-		ft_put_image(mlx, mlx->sprites->chest->frames[3], x, y);
-	mlx->map->map_enemy_copy[y][x] = '0';
-	x = enemy_x;
-	y = enemy_y;
 	mlx->map->map_enemy_copy[y][x] = 'B';
-	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
-	if (mlx->map->map_tab[y][x] == 'C')
-		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
-	if (mlx->map->map_tab[y][x] == 'O')
-		ft_put_image(mlx, mlx->sprites->chest->frames[3], x, y);
-	if (x == mlx->player_pos_x && y == mlx->player_pos_y)
-		mlx->sprites->player->life -= 1;
+	if (mlx->player_pos_y == y && mlx->player_pos_x == x)
+		mlx->sprites->player->life--;
+	put_previous_layer(mlx, x, y);
 	ft_put_image(mlx, mlx->sprites->enemy->frames[0], x, y);
 }
 
