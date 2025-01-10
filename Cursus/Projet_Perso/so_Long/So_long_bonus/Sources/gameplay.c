@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 16:53:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:45:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	check_player_life(t_minilx *mlx)
 {
-	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -4, 0); //TODO : Protect small map
-	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -3, 0);
-	ft_put_image(mlx, mlx->sprites->empty->name, mlx->map->width -2, 0);
+	ft_put_floor(mlx, mlx->map->width -4, 0);
+	ft_put_floor(mlx, mlx->map->width -3, 0);
+	ft_put_floor(mlx, mlx->map->width -2, 0); //TODO : Protect small map
 	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -4, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -3, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -2, 0);
@@ -58,8 +58,8 @@ static void count_player_movement(t_minilx *mlx)
 	string = ft_strjoin(mouv, " moves");
 	if (!string)
 		show_error(mlx, MALLOC_ERROR);
-	ft_put_image(mlx, mlx->sprites->empty->name, 0, 0);
-	ft_put_image(mlx, mlx->sprites->empty->name, 1, 0);
+	ft_put_floor(mlx, 0, 0);
+	ft_put_floor(mlx, 1, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, 0, 0);
 	ft_put_image(mlx, mlx->sprites->wall->name, 1, 0);
 	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
@@ -115,7 +115,7 @@ void move_player(int keycode, t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
 	count_player_movement(mlx);
-	check_enemy_hits(mlx, old_x, old_y);
+	//check_enemy_hits(mlx, old_x, old_y);
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)

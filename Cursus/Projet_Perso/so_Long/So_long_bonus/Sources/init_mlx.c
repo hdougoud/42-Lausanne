@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 14:58:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:42:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void init_values(t_minilx *mlx)
 	mlx->sprites->player->current_frame = 0;
 	mlx->sprites->player->dth_current_frame = 0;
 	mlx->sprites->player->life = 3;
+	mlx->map->max_map_frames = 9; //TODO : AUTOMATISER map_frame
 	mlx->screen_size_x = SCREEN_SIZE_X;
 	mlx->screen_size_y = SCREEN_SIZE_Y;
 }
@@ -95,6 +96,9 @@ static void	allocate_struct(t_minilx *mlx)
 	mlx->sprites->heart = malloc(sizeof(t_heart));
 	if (!mlx->sprites->heart)
 		show_error(mlx, MALLOC_ERROR);
+	mlx->sprites->grass = malloc(sizeof(t_grass));
+	if (!mlx->sprites->grass)
+		show_error(mlx, MALLOC_ERROR);
 	secure_all_img(mlx);
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
@@ -113,4 +117,6 @@ void	init_minilx(t_minilx *mlx)
 	if (!mlx->mlx)
 		show_error(mlx, SERVER_X);
 	init_values(mlx);
+	file_to_image(mlx);
+	load_grass_image(mlx); //TODO : LOAD IMAGES HERE
 }

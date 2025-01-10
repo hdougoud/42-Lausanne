@@ -6,18 +6,18 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 16:57:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:37:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_enemy_hits(t_minilx *mlx, int old_x, int old_y)
-{
-	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] = 'B')
-		mlx->sprites->player->life--;
-	else if (mlx->map->map_enemy[old_y][old_x] == 'B' &&)
-}
+// void	check_enemy_hits(t_minilx *mlx, int old_x, int old_y)
+// {
+// 	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] = 'B')
+// 		mlx->sprites->player->life--;
+// 	else if (mlx->map->map_enemy[old_y][old_x] == 'B' &&)
+// }
 
 char	**create_enemy_map(t_minilx *mlx, char **map)
 {

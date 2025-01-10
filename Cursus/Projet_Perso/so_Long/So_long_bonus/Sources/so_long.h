@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 17:20:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:18:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ typedef struct s_map
 	char	**map_tab;
 	char	**map_enemy;
 	char	**map_enemy_copy;
+	char	**map_floor;
+	int		max_map_frames;
 	int		height;
 	int		width;
 	int		exit_nb;
@@ -153,6 +155,9 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	create_floor_map(t_minilx *mlx);
+void	load_grass_image(t_minilx *mlx);
+void	ft_put_floor(t_minilx *mlx, int x, int y);
 void	player_death(t_minilx *mlx);
 void	next_enemy_frame(t_minilx *mlx, int x, int y);
 void	find_enemy(t_minilx *mlx, int param);

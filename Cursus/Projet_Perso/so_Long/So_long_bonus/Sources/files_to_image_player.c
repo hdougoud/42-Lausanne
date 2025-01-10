@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_to_image.c                                  :+:      :+:    :+:   */
+/*   files_to_image_player.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:54:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 11:49:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:05:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ static void	load_death_player_image2(t_minilx *mlx)
 			"Sprites/Player/Death/Death_5.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[4])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[5] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_6.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[5])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[6] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_7.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[6])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[7] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_8.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[7])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
 static void	load_death_player_image(t_minilx *mlx)
@@ -42,22 +42,22 @@ static void	load_death_player_image(t_minilx *mlx)
 			"Sprites/Player/Death/Death_1.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[0])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[1] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_2.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[1])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[2] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_3.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[2])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->player->dth_frames[3] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Death/Death_4.xpm",
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[3])
-		show_error(mlx, MALLOC_ERROR);
+		show_error(mlx, CANNOT_OPEN_FILE);
 	load_death_player_image2(mlx);
 }
 

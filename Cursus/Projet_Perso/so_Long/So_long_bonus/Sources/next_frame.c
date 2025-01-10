@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 14:57:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:46:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	chest_animation(t_minilx *mlx)
 
 	chest_x = mlx->sprites->chest->posx;
 	chest_y = mlx->sprites->chest->posy;
-	ft_put_image(mlx, mlx->sprites->empty->name, chest_x, chest_y);
+		ft_put_floor(mlx, chest_x, chest_y);
 	ft_put_image(mlx, mlx->sprites->chest->frames
 	[mlx->sprites->chest->current_frame], chest_x, chest_y);
 	if (mlx->sprites->chest->current_frame >= 3)
@@ -58,7 +58,7 @@ void	next_enemy_frame(t_minilx *mlx, int x, int y)
 
 void	put_previous_layer(t_minilx *mlx, int x, int y)
 {
-	ft_put_image(mlx, mlx->sprites->empty->name, x, y);
+	ft_put_floor(mlx, x, y);
 	if (mlx->map->map_tab[y][x] == 'C')
 		ft_put_image(mlx, mlx->sprites->chest->frames[0], x, y);
 	if (mlx->sprites->chest->is_animating == 0)

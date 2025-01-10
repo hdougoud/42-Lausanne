@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 14:06:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:21:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void xpm_to_map(t_minilx *mlx, int width, int height)
 {
-		ft_put_image(mlx, mlx->sprites->empty->name, width, height);
+		ft_put_floor(mlx, width, height);
 	if (mlx->map->map_tab[height][width] == '1')
 		ft_put_image(mlx, mlx->sprites->wall->name, width, height);
 	else if (mlx->map->map_tab[height][width] == 'P')
@@ -43,7 +43,8 @@ static void	show_map(t_minilx *mlx)
 			(mlx->map->height * TEXTURE_SIZE), "so_long");
 	if (!mlx->win)
 		show_error(mlx, WINDOW_ERROR);
-	file_to_image(mlx);
+	create_floor_map(mlx);
+	ft_printf("%s\n", "floor_map_created");
 	while (mlx->map->map_tab[height])
 	{
 		width = 0;
