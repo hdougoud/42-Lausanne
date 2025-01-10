@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 14:19:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:57:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	player_idle(t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->player->frames
 	[mlx->sprites->player->current_frame],
 		mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->delayed_frame >= 3)
+	if (mlx->delayed_frame >= 1)
 	{
 		if (mlx->sprites->player->current_frame >= 7)
 			mlx->sprites->player->current_frame = 0;
