@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 21:19:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:35:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,15 @@ static int check_movement(int keycode, t_minilx *mlx)
 
 void move_player(int keycode, t_minilx *mlx)
 {
+	int old_x;
+	int	old_y;
+
 	if (check_movement(keycode, mlx) == 1)
 		return ;
+	old_x = mlx->player_pos_x;
+	old_y = mlx->player_pos_y;
 	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
+	find_enemy(mlx, 1);
 	if (keycode == W)
 		mlx->player_pos_y -= 1;
 	else if (keycode == S)
@@ -108,9 +114,11 @@ void move_player(int keycode, t_minilx *mlx)
 		mlx->player_pos_x += 1;
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
-	find_enemy(mlx, 1);
 	count_player_movement(mlx);
-	
+	if ( mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B' 
+			|| (mlx->map->map_enemy[old_y][old_x] == 'B' 
+			&& mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B'))
+		mlx->sprites->player->life--;
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)
@@ -119,7 +127,9 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 	int chesty;
 	
 	if (keycode == ESC)
-		quit_properly(mlx, EXIT_SUCCESS); 
+		quit_properly(mlx, EXIT_SUCCESS);
+	else if (mlx->sprites->player->life == 0)
+		return (0);
 	else if (keycode == W || keycode == A || keycode == S || keycode == D)
 		move_player(keycode, mlx);
 	else if (keycode == E)

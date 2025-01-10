@@ -6,11 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 21:52:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:19:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	player_idle(t_minilx *mlx)
+{
+	ft_put_image(mlx, mlx->sprites->player->frames
+	[mlx->sprites->player->current_frame],
+		mlx->player_pos_x, mlx->player_pos_y);
+	if (mlx->delayed_frame >= 3)
+	{
+		if (mlx->sprites->player->current_frame >= 7)
+			mlx->sprites->player->current_frame = 0;
+		mlx->sprites->player->current_frame++;
+		mlx->delayed_frame = 0;
+	}
+}
 
 static void	chest_animation(t_minilx *mlx)
 {
@@ -63,28 +77,23 @@ void	put_previous_layer(t_minilx *mlx, int x, int y)
 }
 
 int	next_frame(t_minilx *mlx)
-{
+{	
+	int death_frame;
+
 	mlx->frame_count++;
 	if (mlx->frame_count >= mlx->frames_rates)
 	{
 		check_player_life(mlx);
-		if (mlx->sprites->player->life == 0)
-		{
-			mlx->frames_rates = 7500;
-			player_death(mlx);
-			return (0);
-		}
 		put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
 		if (mlx->sprites->chest->is_animating == 1)
 			chest_animation(mlx);
-		ft_put_image(mlx, mlx->sprites->player->frames
-		[mlx->sprites->player->current_frame],
-			mlx->player_pos_x, mlx->player_pos_y);
-		if (mlx->sprites->player->current_frame >= 7)
-			mlx->sprites->player->current_frame = 0;
-		mlx->sprites->player->current_frame++;
-		mlx->frame_count = 0;
 		find_enemy(mlx, 2);
+		if (mlx->sprites->player->life > 0)
+			player_idle(mlx);
+		else
+			player_death(mlx);
+		mlx->frame_count = 0;
+		mlx->delayed_frame++;
 	}
 	return (0);
 }

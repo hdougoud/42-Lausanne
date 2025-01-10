@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 22:02:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:03:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void init_values(t_minilx *mlx)
 	mlx->map->player_nb = 0;
 	mlx->movement = 0;
 	mlx->frame_count = 0;
-	mlx->frames_rates = 1500;
+	mlx->frames_rates = 1000;
+	mlx->delayed_frame = 0;
 	mlx->sprites->enemy->current_frame = 0;
 	mlx->sprites->chest->is_animating = 0;
 	mlx->sprites->chest->current_frame = 0;

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 21:57:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:04:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,11 @@ static int	check_enemy_next_move(t_minilx *mlx, int *x, int *y, int random)
 static void move_enemy(t_minilx *mlx, int x, int y)
 {
 	int random;
-	
-	if (mlx->player_pos_y == y && mlx->player_pos_x == x)
-		mlx->sprites->player->life--;
+	int	old_x;
+	int	old_y;
+
+	old_x = mlx->player_pos_x;
+	old_y = mlx->player_pos_y;
 	random = rand() % (MAX_RAND + 1);
 	if (check_enemy_next_move(mlx, &x, &y, random))
 		return;

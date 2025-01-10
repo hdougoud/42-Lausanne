@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 21:18:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:59:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_minilx
 	int			movement;
 	int			frame_count;
 	int			frames_rates;
+	int			delayed_frame;
 }				t_minilx;
 
 /*----------------------------------Functions--------------------------------*/
