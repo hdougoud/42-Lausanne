@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 12:35:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:53:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,7 @@ void move_player(int keycode, t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
 	count_player_movement(mlx);
-	if ( mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B' 
-			|| (mlx->map->map_enemy[old_y][old_x] == 'B' 
-			&& mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B'))
-		mlx->sprites->player->life--;
+	check_enemy_hits(mlx, old_x, old_y);
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)
@@ -138,7 +135,7 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		{
 			if (mlx->map->collectable_nb == 0)
 				quit_properly(mlx, EXIT_SUCCESS);
-			else (ft_printf("you need to collect all the collectibles before you can go out.\n")); //TODO : CHANGE COLLECTIBLE FOR SPRITE NAME
+			else (ft_printf("you need to collect all chest before you can go out.\n")); //TODO : CHANGE COLLECTIBLE FOR SPRITE NAME
 		}
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C' 
 				|| mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')

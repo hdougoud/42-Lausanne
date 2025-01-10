@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 13:59:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:20:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,14 @@ typedef struct s_heart
 	int		y;
 }			t_heart;
 
+typedef struct s_grass
+{
+	void	*frames[10];
+	int		current_frame;
+	int		x;
+	int		y;
+}			t_grass;
+
 typedef struct s_sprite
 {
 	t_img		*exit;
@@ -108,6 +116,7 @@ typedef struct s_sprite
 	t_enemy		*enemy;
 	t_heart		*heart;
 	t_player	*player;
+	t_grass		*grass;
 }				t_sprite;
 
 typedef struct s_map

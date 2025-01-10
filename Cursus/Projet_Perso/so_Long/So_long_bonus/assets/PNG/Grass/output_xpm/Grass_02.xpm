@@ -1,0 +1,23 @@
+/* XPM */
+static char *Grass_02[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 1 1 ",
+"  c #63C74D",
+/* pixels */
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                "
+};
