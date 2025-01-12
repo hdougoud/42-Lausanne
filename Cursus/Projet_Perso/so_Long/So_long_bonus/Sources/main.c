@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:34:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 15:16:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:27:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	player_death(t_minilx *mlx)
 		return ;
 	}
 	ft_put_image(mlx, mlx->sprites->player->dth_frames[mlx->sprites->player->dth_current_frame], x, y);
-	if (mlx->delayed_frame >= 2)
+	if (mlx->delayed_frame >= 4)
 	{
 		mlx->delayed_frame = 0;
 		mlx->sprites->player->dth_current_frame++;

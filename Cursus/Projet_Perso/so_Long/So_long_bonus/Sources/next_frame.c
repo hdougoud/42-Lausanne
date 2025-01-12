@@ -6,18 +6,45 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 18:46:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:33:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void player_dash(t_minilx *mlx)
+{
+	int	img_x;
+	
+	if (mlx->sprites->player->dsh_current_frame >= 7)
+	{
+		mlx->player_pos_x += 1;
+		mlx->sprites->player->dash = 0;
+		mlx->sprites->player->dsh_current_frame = 0;
+	}
+	img_x = mlx->sprites->player->dsh_current_frame + 1;
+	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x + 1] == '1')
+	{
+		mlx->sprites->player->dash = 0;
+		return ;
+	}
+	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x + 1] == 'B')
+		mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x + 1] = '0';
+	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
+	put_previous_layer(mlx, mlx->player_pos_x + 1, mlx->player_pos_y);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, 
+		mlx->sprites->player->dsh_frames[img_x - 1],
+		(mlx->player_pos_x * TEXTURE_SIZE) + (img_x * 8),
+		mlx->player_pos_y * TEXTURE_SIZE);
+	mlx->sprites->player->dsh_current_frame++;
+}
 
 static void	player_idle(t_minilx *mlx)
 {
 	ft_put_image(mlx, mlx->sprites->player->frames
 	[mlx->sprites->player->current_frame],
 		mlx->player_pos_x, mlx->player_pos_y);
-	if (mlx->delayed_frame >= 1)
+	if (mlx->delayed_frame >= 2)
 	{
 		if (mlx->sprites->player->current_frame >= 7)
 			mlx->sprites->player->current_frame = 0;
@@ -77,9 +104,7 @@ void	put_previous_layer(t_minilx *mlx, int x, int y)
 }
 
 int	next_frame(t_minilx *mlx)
-{	
-	int death_frame;
-
+{
 	mlx->frame_count++;
 	if (mlx->frame_count >= mlx->frames_rates)
 	{
@@ -88,12 +113,14 @@ int	next_frame(t_minilx *mlx)
 		if (mlx->sprites->chest->is_animating == 1)
 			chest_animation(mlx);
 		find_enemy(mlx, 2);
-		if (mlx->sprites->player->life > 0)
-			player_idle(mlx);
-		else
+		if (mlx->sprites->player->life == 0)
 			player_death(mlx);
-		mlx->frame_count = 0;
+		else if (mlx->sprites->player->dash == 1)
+			player_dash(mlx);
+		else
+			player_idle(mlx);
 		mlx->delayed_frame++;
+		mlx->frame_count = 0;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 18:18:00 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:31:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define MIN_COLLECTABLE	1
 # define SCREEN_SIZE_X		5120
 # define SCREEN_SIZE_Y		2880
-# define MAX_RAND				3
+# define MAX_MOVE			3
+# define MAX_LEVEL			1
 /*----------------------------------Keycode----------------------------------*/
 
 # define ESC				53
@@ -33,6 +34,11 @@
 # define A					0
 # define S					1
 # define D					2
+# define UP					126
+# define LEFT				123
+# define DOWN				125
+# define RIGHT				124
+# define SPACE				49
 
 /*-----------------------------------Error-----------------------------------*/
 
@@ -76,9 +82,12 @@ typedef struct s_player
 {
 	void	*frames[8];
 	void	*dth_frames[8];
+	void	*dsh_frames[8];
 	int		current_frame;
 	int		dth_current_frame;
+	int		dsh_current_frame;
 	int		life;
+	int		dash;
 	int		x;
 	int		y;
 }			t_player;
@@ -131,6 +140,7 @@ typedef struct s_map
 	int		exit_nb;
 	int		player_nb;
 	int		collectable_nb;
+	int		level;
 }			t_map;
 
 typedef struct s_minilx
@@ -155,8 +165,9 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	load_level2_images(t_minilx *mlx);
 void	create_floor_map(t_minilx *mlx);
-void	load_grass_image(t_minilx *mlx);
+void	load_level1_images(t_minilx *mlx);
 void	ft_put_floor(t_minilx *mlx, int x, int y);
 void	player_death(t_minilx *mlx);
 void	next_enemy_frame(t_minilx *mlx, int x, int y);

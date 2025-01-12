@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 18:45:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:58:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,22 @@ static void count_player_movement(t_minilx *mlx)
 
 static int check_movement(int keycode, t_minilx *mlx)
 {
-	if (keycode == W)
+	if (keycode == W || keycode == UP)
 	{
 		if (mlx->map->map_tab[mlx->player_pos_y - 1][mlx->player_pos_x] == '1')
 			return (1);
 	}
-	if (keycode == S)
+	if (keycode == S || keycode == DOWN)
 	{
 		if (mlx->map->map_tab[mlx->player_pos_y + 1][mlx->player_pos_x] == '1')
 			return (1);
 	}
-	if (keycode == A)
+	if (keycode == A || keycode == LEFT)
 	{
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == '1')
 			return (1);
 	}
-	if (keycode == D)
+	if (keycode == D || keycode == RIGHT)
 	{
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x + 1] == '1')
 			return (1);
@@ -104,13 +104,13 @@ void move_player(int keycode, t_minilx *mlx)
 	old_y = mlx->player_pos_y;
 	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
 	find_enemy(mlx, 1);
-	if (keycode == W)
+	if (keycode == W || keycode == UP)
 		mlx->player_pos_y -= 1;
-	else if (keycode == S)
+	else if (keycode == S || keycode == DOWN)
 		mlx->player_pos_y += 1;
-	else if (keycode == A)
+	else if (keycode == A || keycode == LEFT)
 		mlx->player_pos_x -= 1;
-	else if (keycode == D)
+	else if (keycode == D || keycode == RIGHT)
 		mlx->player_pos_x += 1;
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
@@ -125,9 +125,10 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 	
 	if (keycode == ESC)
 		quit_properly(mlx, EXIT_SUCCESS);
-	else if (mlx->sprites->player->life == 0)
+	else if (mlx->sprites->player->life == 0 || mlx->sprites->player->dash == 1)
 		return (0);
-	else if (keycode == W || keycode == A || keycode == S || keycode == D)
+	else if ((keycode == W || keycode == A || keycode == S || keycode == D)
+			|| (keycode <= UP  && keycode >= LEFT))
 		move_player(keycode, mlx);
 	else if (keycode == E)
 	{
@@ -140,6 +141,11 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C' 
 				|| mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')
 			open_chest(mlx);
+	}
+	else if (keycode == SPACE && mlx->sprites->player->dash == 0)
+	{
+		mlx->sprites->player->dash = 1;
+		printf("%s\n", "dash");
 	}
 	return (0);
 }

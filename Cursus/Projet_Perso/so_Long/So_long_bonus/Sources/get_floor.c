@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:22:18 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 18:31:39 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:18:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	create_floor_map(t_minilx *mlx)
 {
-	ft_printf("%s\n", "create_floor_map");
-	ft_printf("%d\n", mlx->map->width);
-	ft_printf("%d\n", mlx->map->height);
-
-
 	int	y;
 	int	x;
 	int random;
 
 	y = 0;
+	srand(time(NULL));
 	mlx->map->map_floor = malloc(sizeof(char *) * (mlx->map->height + 1));
 	if (mlx->map->map_floor)
 	while(y < mlx->map->height)
@@ -45,13 +41,10 @@ void	create_floor_map(t_minilx *mlx)
 		y++;
 	}
 	mlx->map->map_floor[y] = NULL;
-
-	ft_printf("%s\n", "map created");
 }
 
 void ft_put_floor(t_minilx *mlx, int x, int y)
 {
-	ft_printf("%s\n", "ft_put_floor");
 	if (mlx->map->map_floor[y][x] == 'A')
 		ft_put_image(mlx, mlx->sprites->grass->frames[0], x, y);
 	if (mlx->map->map_floor[y][x] == 'B')

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 18:42:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:47:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ static void init_values(t_minilx *mlx)
 	mlx->sprites->chest->current_frame = 0;
 	mlx->sprites->player->current_frame = 0;
 	mlx->sprites->player->dth_current_frame = 0;
+	mlx->sprites->player->dsh_current_frame = 0;
 	mlx->sprites->player->life = 3;
-	mlx->map->max_map_frames = 9; //TODO : AUTOMATISER map_frame
+	mlx->sprites->player->dash = 0;
 	mlx->screen_size_x = SCREEN_SIZE_X;
 	mlx->screen_size_y = SCREEN_SIZE_Y;
 }
@@ -118,5 +119,4 @@ void	init_minilx(t_minilx *mlx)
 		show_error(mlx, SERVER_X);
 	init_values(mlx);
 	file_to_image(mlx);
-	load_grass_image(mlx); //TODO : LOAD IMAGES HERE
 }

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/10 17:37:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:12:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void move_enemy(t_minilx *mlx, int x, int y)
 
 	old_x = mlx->player_pos_x;
 	old_y = mlx->player_pos_y;
-	random = rand() % (MAX_RAND + 1);
+	random = rand() % (MAX_MOVE + 1);
 	if (check_enemy_next_move(mlx, &x, &y, random))
 		return;
 	mlx->map->map_enemy_copy[y][x] = 'B';

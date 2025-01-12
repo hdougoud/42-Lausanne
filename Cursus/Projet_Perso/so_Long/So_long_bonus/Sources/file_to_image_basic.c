@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_to_image.c                                    :+:      :+:    :+:   */
+/*   file_to_image_basic.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 14:56:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:49:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,33 @@ static void	load_collectable_image(t_minilx *mlx)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
-void	file_to_image(t_minilx *mlx)
+static void	file_to_image_basic(t_minilx *mlx)
 {
-	mlx->sprites->empty->name = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/wood.xpm",
-			&mlx->sprites->empty->x, &mlx->sprites->empty->y);
-	if (!mlx->sprites->empty->name)
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->wall->name = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Tree.xpm",
-			&mlx->sprites->wall->x, &mlx->sprites->wall->y);
-	if (!mlx->sprites->wall->name)
-		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->sprites->exit->name = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/exit.xpm",
 			&mlx->sprites->exit->x, &mlx->sprites->exit->y);
 	if (!mlx->sprites->exit->name)
 		show_error(mlx, CANNOT_OPEN_FILE);
+}
+void file_to_image(t_minilx *mlx)
+{
+	int random;
+
+	srand(time(NULL));
+	random = rand() % (MAX_LEVEL + 1);
+	if (random == 0)
+	{
+		printf("%s\n", "Level 1");
+		load_level1_images(mlx);
+	}	
+	else if (random == 1)
+	{
+		printf("%s\n", "Level 2");
+		load_level2_images(mlx);
+	}
 	load_player_image(mlx);
 	load_collectable_image(mlx);
 	load_enemy_image(mlx);
 	load_heart_image(mlx);
+	file_to_image_basic(mlx);
 }
