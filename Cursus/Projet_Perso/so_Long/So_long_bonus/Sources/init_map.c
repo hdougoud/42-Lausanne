@@ -6,29 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/11 22:34:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:00:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void xpm_to_map(t_minilx *mlx, int width, int height)
-{
-		ft_put_floor(mlx, width, height);
-	if (mlx->map->map_tab[height][width] == '1')
-		ft_put_image(mlx, mlx->sprites->wall->name, width, height);
-	else if (mlx->map->map_tab[height][width] == 'P')
-		ft_put_image(mlx, mlx->sprites->player->frames[0], width, height);
-	else if (mlx->map->map_tab[height][width] == 'E')
-		ft_put_image(mlx, mlx->sprites->exit->name, width, height);
-	else if (mlx->map->map_tab[height][width] == 'C')
-		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
-	else if (mlx->map->map_tab[height][width] == 'B')
-		ft_put_image(mlx, mlx->sprites->enemy->frames[0], width, height);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -2, 0);
-}
 
 static void	show_map(t_minilx *mlx)
 {
@@ -37,7 +19,7 @@ static void	show_map(t_minilx *mlx)
 
 	height = 0;
 	if (mlx->map->width * TEXTURE_SIZE > mlx->screen_size_x
-			|| mlx->map->height * TEXTURE_SIZE > mlx->screen_size_y)
+		|| mlx->map->height * TEXTURE_SIZE > mlx->screen_size_y)
 		show_error(mlx, WINDOWS_TOO_BIG);
 	mlx->win = mlx_new_window(mlx->mlx, (mlx->map->width * TEXTURE_SIZE),
 			(mlx->map->height * TEXTURE_SIZE), "so_long");
@@ -57,10 +39,10 @@ static void	show_map(t_minilx *mlx)
 	}
 }
 
-static void validate_map_char(t_minilx *mlx, int height)
+static void	validate_map_char(t_minilx *mlx, int height)
 {
 	int	width;
-	
+
 	width = 0;
 	while (mlx->map->map_tab[height][width])
 	{
@@ -143,7 +125,7 @@ void	init_map(t_minilx *mlx, char *map_name)
 	int		map_height;
 
 	map_height = 1;
-	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name)); //TODO VERIFIER LES FICHIER INEXISTANT, SANS DROIT, SANS EXTESION, OU MAUVAISE EXTENTION
+	ext = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
 	if (ext == NULL)
 		show_error(mlx, WRONG_EXT);
 	if (ft_strncmp(ext, ".ber", 5) != 0)

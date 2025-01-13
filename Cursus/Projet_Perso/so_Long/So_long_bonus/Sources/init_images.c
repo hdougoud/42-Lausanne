@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:35:08 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 13:55:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:04:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	secure_enemy_img(t_minilx *mlx)
 }
 
 static void	secure_player_img(t_minilx *mlx)
-{	
+{
 	mlx->sprites->player->frames[0] = NULL;
 	mlx->sprites->player->frames[1] = NULL;
 	mlx->sprites->player->frames[2] = NULL;
@@ -66,7 +66,7 @@ static void	secure_player_img(t_minilx *mlx)
 	mlx->sprites->player->dth_frames[4] = NULL;
 	mlx->sprites->player->dth_frames[5] = NULL;
 	mlx->sprites->player->dth_frames[6] = NULL;
-	mlx->sprites->player->dth_frames[7] = NULL;	
+	mlx->sprites->player->dth_frames[7] = NULL;
 }
 
 void	secure_all_img(t_minilx *mlx)

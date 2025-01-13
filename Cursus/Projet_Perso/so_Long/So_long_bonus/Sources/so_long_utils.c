@@ -6,13 +6,31 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 19:21:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:00:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void open_chest(t_minilx *mlx)
+void	xpm_to_map(t_minilx *mlx, int width, int height)
+{
+	ft_put_floor(mlx, width, height);
+	if (mlx->map->map_tab[height][width] == '1')
+		ft_put_image(mlx, mlx->sprites->wall->name, width, height);
+	else if (mlx->map->map_tab[height][width] == 'P')
+		ft_put_image(mlx, mlx->sprites->player->frames[0], width, height);
+	else if (mlx->map->map_tab[height][width] == 'E')
+		ft_put_image(mlx, mlx->sprites->exit->name, width, height);
+	else if (mlx->map->map_tab[height][width] == 'C')
+		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
+	else if (mlx->map->map_tab[height][width] == 'B')
+		ft_put_image(mlx, mlx->sprites->enemy->frames[0], width, height);
+	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
+	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
+	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -2, 0);
+}
+
+void	open_chest(t_minilx *mlx)
 {
 	if (mlx->sprites->chest->is_animating == 1)
 		return ;
@@ -42,8 +60,8 @@ int	windows_closed(t_minilx *mlx)
 
 void	ft_put_image(t_minilx *mlx, t_img *img, int x, int y)
 {
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img	,
-	x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img,
+		x * TEXTURE_SIZE, y * TEXTURE_SIZE);
 }
 
 char	*strdup_map_line(t_minilx *mlx, char *str)

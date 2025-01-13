@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:20:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 17:57:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:35:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void secure_all_struct(t_minilx *mlx)
+static void	secure_all_struct(t_minilx *mlx)
 {
 	mlx->sprites->player = NULL;
 	mlx->sprites->chest = NULL;
@@ -23,12 +23,8 @@ static void secure_all_struct(t_minilx *mlx)
 	mlx->sprites->wall = NULL;
 }
 
-void	allocate_struct(t_minilx *mlx)
+static void	allocate_img_struct(t_minilx *mlx)
 {
-	mlx->sprites = malloc(sizeof(t_sprite));
-	if (!mlx->sprites)
-		show_error(mlx, MALLOC_ERROR);
-	secure_all_struct(mlx);
 	mlx->sprites->player = malloc(sizeof(t_player));
 	if (!mlx->sprites->player)
 		show_error(mlx, MALLOC_ERROR);
@@ -50,6 +46,15 @@ void	allocate_struct(t_minilx *mlx)
 	mlx->sprites->grass = malloc(sizeof(t_grass));
 	if (!mlx->sprites->grass)
 		show_error(mlx, MALLOC_ERROR);
+}
+
+void	allocate_struct(t_minilx *mlx)
+{
+	mlx->sprites = malloc(sizeof(t_sprite));
+	if (!mlx->sprites)
+		show_error(mlx, MALLOC_ERROR);
+	secure_all_struct(mlx);
+	allocate_img_struct(mlx);
 	secure_all_img(mlx);
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)

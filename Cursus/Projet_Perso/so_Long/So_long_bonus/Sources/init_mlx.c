@@ -6,20 +6,20 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:29:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 01:10:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:02:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void init_values(t_minilx *mlx)
+static void	init_values(t_minilx *mlx)
 {
 	mlx->movement = 0;
 	mlx->frame_count = 0;
 	mlx->map->exit_nb = 0;
 	mlx->delayed_frame = 0;
 	mlx->map->player_nb = 0;
-	mlx->frames_rates = 1300;
+	mlx->frames_rates = 1500;
 	mlx->map->collectable_nb = 0;
 	mlx->sprites->player->life = 3;
 	mlx->sprites->player->dash = 0;

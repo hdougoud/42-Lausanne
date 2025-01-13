@@ -26,26 +26,29 @@ endif
 
 SRC_DIR = Sources/
 SRCS	=	main.c \
-			file_to_image_basic.c \
-			init_map.c	\
-			show_error.c \
-		  	so_long_utils.c \
-			gameplay.c \
-			clean_exit.c init_mlx.c \
-		  	parsing_map.c \
 			enemy.c \
-			file_to_image_player.c \
-		 	next_frame.c \
-			file_to_image_level_1.c \
-			get_floor.c \
-		  	file_to_image_level_2.c \
-			file_to_image_enemy.c \
-			init_struct.c \
 			heart.c \
-			init_images.c \
+			gameplay.c \
+			init_mlx.c \
+			init_map.c \
+			get_floor.c \
+			next_frame.c \
+			clean_exit.c \
+			show_error.c \
 			clean_enemy.c \
+			clean_floor.c \
+			init_struct.c \
+			init_images.c \
+			parsing_map.c \
 			clean_player.c \
-			clean_floor.c
+			so_long_utils.c \
+			player_animation.c \
+			file_to_image_basic.c \
+			file_to_image_enemy.c \
+			file_to_image_player.c \
+			file_to_image_level_1.c \
+			file_to_image_level_2.c \
+			file_to_image_player_dash.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 

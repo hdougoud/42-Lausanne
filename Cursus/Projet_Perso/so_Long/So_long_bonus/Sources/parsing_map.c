@@ -6,18 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:13:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/08 16:58:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:07:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct s_parsing
-{
-	char	**map;
-	int		collectable;
-	int		exit;
-}			t_parsing;
 
 void	clear_map(char **map, int j)
 {
@@ -88,7 +81,7 @@ static void	check_map_border(t_minilx *mlx)
 void	path_is_valide(t_minilx *mlx, t_parsing *parsing, int x, int y)
 {
 	if (x < 0 || y < 0 || y >= mlx->map->height || x >= mlx->map->width)
-		return;
+		return ;
 	if (parsing->map[y][x] == '1' || parsing->map[y][x] == 'V')
 		return ;
 	if (parsing->map[y][x] == 'C')

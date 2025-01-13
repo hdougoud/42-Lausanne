@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 13:50:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:19:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ typedef struct s_img
 	int		y;
 }			t_img;
 
+typedef struct s_parsing
+{
+	char	**map;
+	int		collectable;
+	int		exit;
+}			t_parsing;
+
 typedef struct s_chest
 {
 	void	*frames[4];
@@ -98,7 +105,7 @@ typedef struct s_enemy
 	void	*dth_frames[6];
 	int		current_frame;
 	int		dth_current_frame;
-	int 	delayed_frame;
+	int		delayed_frame;
 	int		x;
 	int		y;
 }			t_enemy;
@@ -167,6 +174,14 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	load_dash_player(t_minilx *mlx);
+
+void	xpm_to_map(t_minilx *mlx, int width, int height);
+
+void	player_idle(t_minilx *mlx);
+void	player_dash(t_minilx *mlx);
+void	player_death(t_minilx *mlx);
+
 void	clean_player_img(t_minilx *mlx);
 void	clean_enemy_img(t_minilx *mlx);
 void	clean_floor(t_minilx *mlx);
@@ -183,7 +198,7 @@ void	ft_put_floor(t_minilx *mlx, int x, int y);
 void	player_death(t_minilx *mlx);
 void	next_enemy_frame(t_minilx *mlx, int x, int y);
 void	find_enemy(t_minilx *mlx, int param);
-void 	open_chest(t_minilx *mlx);
+void	open_chest(t_minilx *mlx);
 void	init_minilx(t_minilx *mlx);
 void	clear_map(char **map, int j);
 void	file_to_image(t_minilx *mlx);
