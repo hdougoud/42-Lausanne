@@ -8,6 +8,8 @@ LIBFT		= libft/libft.a
 LINUX_LIB	= $(LINUX_DIR)/libmlx.a
 MACOS_LIB	= $(MACOS_DIR)/libmlx.a
 
+MAPS 		= maps/map1.ber maps/map2.ber maps/map3.ber maps/map4.ber maps/map5.ber
+
 RED			= \033[1;31m
 GREEN		= \033[1;32m
 RESET		= \033[0m
@@ -23,11 +25,24 @@ else ifeq ($(OS), Darwin)
 endif
 
 SRC_DIR = Sources/
-SRCS	= main.c			file_to_image_basic.c 	init_map.c	show_error.c \
-		  so_long_utils.c 	gameplay.c				clean_exit.c init_mlx.c \
-		  parsing_map.c		enemy.c					files_to_image_player.c \
-		  next_frame.c		file_to_image_level_1.c	get_floor.c \
-		  file_to_images_level_2.c
+SRCS	=	main.c \
+			file_to_image_basic.c \
+			init_map.c	\
+			show_error.c \
+		  	so_long_utils.c \
+			gameplay.c \
+			clean_exit.c init_mlx.c \
+		  	parsing_map.c \
+			enemy.c \
+			file_to_image_player.c \
+		 	next_frame.c \
+			file_to_image_level_1.c \
+			get_floor.c \
+		  	file_to_image_level_2.c \
+			file_to_image_enemy.c \
+			init_struct.c \
+			heart.c \
+			init_images.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 
@@ -64,6 +79,12 @@ fclean: clean
 	rm -f $(MINILIBX)
 
 re: fclean all
+
+run_maps: $(NAME)
+	@for level in $(MAPS); do \
+		echo "Running $$level"; \
+		./$(NAME) $$level; \
+	done
 
 .SILENT:
 .PHONY: all clean fclean re

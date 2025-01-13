@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 14:31:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 01:09:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,14 @@ typedef struct s_player
 
 typedef struct s_enemy
 {
-	void			*frames[5];
-	int				current_frame;
-	int				x;
-	int				y;
-}					t_enemy;
+	void	*frames[5];
+	void	*dth_frames[6];
+	int		current_frame;
+	int		dth_current_frame;
+	int 	delayed_frame;
+	int		x;
+	int		y;
+}			t_enemy;
 
 typedef struct s_heart
 {
@@ -120,7 +123,6 @@ typedef struct s_sprite
 {
 	t_img		*exit;
 	t_img		*wall;
-	t_img		*empty;
 	t_chest		*chest;
 	t_enemy		*enemy;
 	t_heart		*heart;
@@ -165,6 +167,11 @@ int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
 
+void	check_enemy_hits(t_minilx *mlx);
+void	secure_all_img(t_minilx *mlx);
+void	check_player_life(t_minilx *mlx);
+void	allocate_struct(t_minilx *mlx);
+void	load_enemy_image(t_minilx *mlx);
 void	load_level2_images(t_minilx *mlx);
 void	create_floor_map(t_minilx *mlx);
 void	load_level1_images(t_minilx *mlx);

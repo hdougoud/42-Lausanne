@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/07 15:30:08 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:15:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static void destroy_image(t_minilx *mlx)
 {
 	if (mlx->sprites->chest->frames[0])
 		mlx_destroy_image(mlx->mlx, mlx->sprites->chest->frames[0]);
-	if (mlx->sprites->empty->name)
-		mlx_destroy_image(mlx->mlx, mlx->sprites->empty->name);
 	if (mlx->sprites->exit->name)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->exit->name);
 	if (mlx->sprites->player->frames[0])
@@ -32,8 +30,6 @@ static void free_struct(t_minilx *mlx)
 	{
 		if (mlx->sprites->chest)
 			free(mlx->sprites->chest);
-		if(mlx->sprites->empty)
-			free(mlx->sprites->empty);
 		if(mlx->sprites->exit)
 			free(mlx->sprites->exit);
 		if(mlx->sprites->player)

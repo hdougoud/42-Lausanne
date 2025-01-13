@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 14:49:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:26:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void load_heart_image(t_minilx *mlx)
+static void	load_heart_image(t_minilx *mlx)
 {
 	mlx->sprites->heart->frames[0] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Heart/Heart_1.xpm",
@@ -29,38 +29,7 @@ static void load_heart_image(t_minilx *mlx)
 			&mlx->sprites->heart->x, &mlx->sprites->heart->y);
 	if (!mlx->sprites->heart->frames[2])
 		show_error(mlx, CANNOT_OPEN_FILE);
-
 }
-
-static void	load_enemy_image(t_minilx *mlx)
-{
-	mlx->sprites->enemy->frames[0] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Slime/Slime_1.xpm",
-			&mlx->sprites->enemy->x, &mlx->sprites->enemy->y);
-	if (!mlx->sprites->enemy->frames[0])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->enemy->frames[1] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Slime/Slime_2.xpm",
-			&mlx->sprites->enemy->x, &mlx->sprites->enemy->y);
-	if (!mlx->sprites->enemy->frames[1])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->enemy->frames[2] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Slime/Slime_3.xpm",
-			&mlx->sprites->enemy->x, &mlx->sprites->enemy->y);
-	if (!mlx->sprites->enemy->frames[2])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->enemy->frames[3] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Slime/Slime_4.xpm",
-			&mlx->sprites->enemy->x, &mlx->sprites->enemy->y);
-	if (!mlx->sprites->enemy->frames[3])
-		show_error(mlx, CANNOT_OPEN_FILE);
-	mlx->sprites->enemy->frames[4] = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/Slime/Slime_5.xpm",
-			&mlx->sprites->enemy->x, &mlx->sprites->enemy->y);
-	if (!mlx->sprites->enemy->frames[4])
-		show_error(mlx, CANNOT_OPEN_FILE);
-}
-
 
 static void	load_collectable_image(t_minilx *mlx)
 {
@@ -94,9 +63,10 @@ static void	file_to_image_basic(t_minilx *mlx)
 	if (!mlx->sprites->exit->name)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
-void file_to_image(t_minilx *mlx)
+
+void	file_to_image(t_minilx *mlx)
 {
-	int random;
+	int	random;
 
 	srand(time(NULL));
 	random = rand() % (MAX_LEVEL + 1);
@@ -104,7 +74,7 @@ void file_to_image(t_minilx *mlx)
 	{
 		printf("%s\n", "Level 1");
 		load_level1_images(mlx);
-	}	
+	}
 	else if (random == 1)
 	{
 		printf("%s\n", "Level 2");

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files_to_image_player.c                            :+:      :+:    :+:   */
+/*   file_to_image_player.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:54:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 13:18:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:27:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void load_dash_player_2(t_minilx *mlx)
+static void	load_dash_player_2(t_minilx *mlx)
 {
 	mlx->sprites->player->dsh_frames[4] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Dash/Dash_5.xpm",
@@ -36,7 +36,7 @@ static void load_dash_player_2(t_minilx *mlx)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
-static void load_dash_player(t_minilx *mlx)
+static void	load_dash_player(t_minilx *mlx)
 {
 	mlx->sprites->player->dsh_frames[0] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Player/Dash/Dash_1.xpm",
@@ -83,7 +83,7 @@ static void	load_death_player_image2(t_minilx *mlx)
 			&mlx->sprites->player->x, &mlx->sprites->player->y);
 	if (!mlx->sprites->player->dth_frames[7])
 		show_error(mlx, CANNOT_OPEN_FILE);
-		load_dash_player(mlx);
+	load_dash_player(mlx);
 }
 
 static void	load_death_player_image(t_minilx *mlx)

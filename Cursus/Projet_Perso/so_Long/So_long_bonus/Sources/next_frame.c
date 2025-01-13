@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 13:33:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 01:31:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 static void player_dash(t_minilx *mlx)
 {
 	int	img_x;
-	
+
+	img_x = mlx->sprites->player->dsh_current_frame + 1;
 	if (mlx->sprites->player->dsh_current_frame >= 7)
 	{
 		mlx->player_pos_x += 1;
 		mlx->sprites->player->dash = 0;
 		mlx->sprites->player->dsh_current_frame = 0;
+		return ;
 	}
-	img_x = mlx->sprites->player->dsh_current_frame + 1;
 	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x + 1] == '1')
 	{
 		mlx->sprites->player->dash = 0;
@@ -32,6 +33,7 @@ static void player_dash(t_minilx *mlx)
 		mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x + 1] = '0';
 	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
 	put_previous_layer(mlx, mlx->player_pos_x + 1, mlx->player_pos_y);
+	find_enemy(mlx, 2);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, 
 		mlx->sprites->player->dsh_frames[img_x - 1],
 		(mlx->player_pos_x * TEXTURE_SIZE) + (img_x * 8),
@@ -101,6 +103,8 @@ void	put_previous_layer(t_minilx *mlx, int x, int y)
 	}
 	if (mlx->map->map_tab[y][x] == 'E')
 		ft_put_image(mlx, mlx->sprites->exit->name, x, y);
+	if (mlx->map->map_enemy[y][x] == 'D')
+		ft_put_image(mlx, mlx->sprites->enemy->dth_frames[5], x, y);
 }
 
 int	next_frame(t_minilx *mlx)
@@ -110,15 +114,23 @@ int	next_frame(t_minilx *mlx)
 	{
 		check_player_life(mlx);
 		put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
+		find_enemy(mlx, 2);
+		if (mlx->sprites->enemy->delayed_frame >= 12 && mlx->sprites->player->dash == 0)
+		{		
+			find_enemy(mlx, 1);
+			if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B')
+				mlx->sprites->player->life -= 1;
+			mlx->sprites->enemy->delayed_frame = 0;
+		}
 		if (mlx->sprites->chest->is_animating == 1)
 			chest_animation(mlx);
-		find_enemy(mlx, 2);
-		if (mlx->sprites->player->life == 0)
+		if (mlx->sprites->player->life <= 0)
 			player_death(mlx);
 		else if (mlx->sprites->player->dash == 1)
 			player_dash(mlx);
 		else
 			player_idle(mlx);
+		mlx->sprites->enemy->delayed_frame++;
 		mlx->delayed_frame++;
 		mlx->frame_count = 0;
 	}

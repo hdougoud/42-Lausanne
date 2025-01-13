@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_to_images_level_2.c                           :+:      :+:    :+:   */
+/*   file_to_image_level_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:28:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 14:52:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:25:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void load_floor_2(t_minilx *mlx)
+static void	load_floor_2(t_minilx *mlx)
 {
 	mlx->sprites->grass->frames[4] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Rock/Rock_5.xpm",
@@ -36,7 +36,7 @@ static void load_floor_2(t_minilx *mlx)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
-static void load_floor_1(t_minilx *mlx)
+static void	load_floor_1(t_minilx *mlx)
 {
 	mlx->sprites->grass->frames[0] = mlx_xpm_file_to_image(mlx->mlx,
 			"Sprites/Rock/Rock_1.xpm",
@@ -65,8 +65,8 @@ void	load_level2_images(t_minilx *mlx)
 	load_floor_1(mlx);
 	load_floor_2(mlx);
 	mlx->sprites->wall->name = mlx_xpm_file_to_image(mlx->mlx,
-		"Sprites/Brick.xpm",
-		&mlx->sprites->wall->x, &mlx->sprites->wall->y);
+			"Sprites/Brick.xpm",
+			&mlx->sprites->wall->x, &mlx->sprites->wall->y);
 	if (!mlx->sprites->wall->name)
 		show_error(mlx, CANNOT_OPEN_FILE);
 	mlx->map->max_map_frames = 7;

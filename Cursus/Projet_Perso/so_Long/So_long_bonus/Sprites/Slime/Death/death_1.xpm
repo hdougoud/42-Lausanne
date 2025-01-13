@@ -5,9 +5,9 @@ static char *death_1[] = {
 "  c None",
 ". c #3F275E",
 "X c #1E5451",
-"o c #3B804D",
-"O c #5AA653",
-"+ c #86CF74",
+"o c #974682",
+"O c #AB63B1",
+"+ c #C483D4",
 /* pixels */
 "                                                                ",
 "                                                                ",

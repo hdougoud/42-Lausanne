@@ -6,46 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 14:58:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 01:16:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	check_player_life(t_minilx *mlx)
-{
-	ft_put_floor(mlx, mlx->map->width -4, 0);
-	ft_put_floor(mlx, mlx->map->width -3, 0);
-	ft_put_floor(mlx, mlx->map->width -2, 0); //TODO : Protect small map
-	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -4, 0);
-	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -3, 0);
-	ft_put_image(mlx, mlx->sprites->wall->name, mlx->map->width -2, 0);
-	if (mlx->sprites->player->life == 3)
-	{
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -2, 0);
-	}
-	if (mlx->sprites->player->life == 2)
-	{
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
-	}
-	if (mlx->sprites->player->life == 1)
-	{
-		ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -3, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
-	}
-	if (mlx->sprites->player->life == 0)
-	{
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -4, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -3, 0);
-		ft_put_image(mlx, mlx->sprites->heart->frames[2], mlx->map->width -2, 0);
-		ft_put_image(mlx, mlx->sprites->player->frames[7], mlx->player_pos_x, mlx->player_pos_y);
-	}
-}
 
 static void count_player_movement(t_minilx *mlx)
 {
@@ -95,15 +60,9 @@ static int check_movement(int keycode, t_minilx *mlx)
 
 void move_player(int keycode, t_minilx *mlx)
 {
-	int old_x;
-	int	old_y;
-
 	if (check_movement(keycode, mlx) == 1)
 		return ;
-	old_x = mlx->player_pos_x;
-	old_y = mlx->player_pos_y;
 	put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
-	find_enemy(mlx, 1);
 	if (keycode == W || keycode == UP)
 		mlx->player_pos_y -= 1;
 	else if (keycode == S || keycode == DOWN)
@@ -115,7 +74,8 @@ void move_player(int keycode, t_minilx *mlx)
 	ft_put_image(mlx, mlx->sprites->player->frames[0],
 	mlx->player_pos_x, mlx->player_pos_y);
 	count_player_movement(mlx);
-	//check_enemy_hits(mlx, old_x, old_y);
+	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] == 'B')
+		mlx->sprites->player->life -= 1;
 }
 
 int	hook_keyboard(int keycode, t_minilx *mlx)
@@ -136,7 +96,6 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		{
 			if (mlx->map->collectable_nb == 0)
 				quit_properly(mlx, EXIT_SUCCESS);
-			else (ft_printf("you need to collect all chest before you can go out.\n")); //TODO : CHANGE COLLECTIBLE FOR SPRITE NAME
 		}
 		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C' 
 				|| mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')
@@ -145,7 +104,7 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 	else if (keycode == SPACE && mlx->sprites->player->dash == 0)
 	{
 		mlx->sprites->player->dash = 1;
-		printf("%s\n", "dash");
+		count_player_movement(mlx);
 	}
 	return (0);
 }

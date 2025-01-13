@@ -1,12 +1,12 @@
 /* XPM */
-static char *Death_5[] = {
+static char *death_5[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 5 1 ",
 "  c None",
-". c #1E5451",
-"X c #3B804D",
-"o c #5AA653",
-"O c #86CF74",
+". c #1E5452",
+"X c #964580",
+"o c #AB62B1",
+"O c #C582D4",
 /* pixels */
 "                                                                ",
 "                                                                ",

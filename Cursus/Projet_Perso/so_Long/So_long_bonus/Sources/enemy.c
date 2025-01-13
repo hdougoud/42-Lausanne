@@ -6,18 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 14:12:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 01:23:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// void	check_enemy_hits(t_minilx *mlx, int old_x, int old_y)
-// {
-// 	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x] = 'B')
-// 		mlx->sprites->player->life--;
-// 	else if (mlx->map->map_enemy[old_y][old_x] == 'B' &&)
-// }
 
 char	**create_enemy_map(t_minilx *mlx, char **map)
 {
@@ -75,7 +68,7 @@ static int	check_enemy_next_move(t_minilx *mlx, int *x, int *y, int random)
 			enemy_y -= 1;
 	else 
 		return (1);
-	mlx->map->map_enemy_copy[*y][*x] = '0';
+	mlx->map->map_enemy_copy[*y][*x] = '0'; //TODO : BOUGER l'ennemi avec la map_enemy_copy et pas la map_enemy
 	put_previous_layer(mlx, *x, *y);
 	*x = enemy_x;
 	*y = enemy_y;
@@ -85,11 +78,7 @@ static int	check_enemy_next_move(t_minilx *mlx, int *x, int *y, int random)
 static void move_enemy(t_minilx *mlx, int x, int y)
 {
 	int random;
-	int	old_x;
-	int	old_y;
 
-	old_x = mlx->player_pos_x;
-	old_y = mlx->player_pos_y;
 	random = rand() % (MAX_MOVE + 1);
 	if (check_enemy_next_move(mlx, &x, &y, random))
 		return;
