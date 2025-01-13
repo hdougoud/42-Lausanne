@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:29:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:43:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	put_previous_layer(t_minilx *mlx, int x, int y)
 		[mlx->sprites->chest->current_frame],
 			mlx->sprites->chest->posx, mlx->sprites->chest->posy);
 	}
+	if (mlx->map->map_tab[y][x] == 'E')
+		ft_put_image(mlx, mlx->sprites->portal->frames
+		[mlx->sprites->portal->current_frame], x, y);
 	if (mlx->map->map_enemy[y][x] == 'D')
 		ft_put_image(mlx, mlx->sprites->enemy->dth_frames[5], x, y);
 }
@@ -74,9 +77,9 @@ int	next_frame(t_minilx *mlx)
 	{
 		check_player_life(mlx);
 		put_previous_layer(mlx, mlx->player_pos_x, mlx->player_pos_y);
-		find_enemy(mlx, 2);
 		if (mlx->map->collectable_nb == 0)
 			open_portal(mlx);
+		find_enemy(mlx, 2);
 		if (mlx->sprites->enemy->delayed_frame >= 12
 			&& mlx->sprites->player->dash == 0)
 			delayed_enemy_move(mlx);
