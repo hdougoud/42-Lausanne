@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 16:19:41 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:28:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,15 +126,28 @@ typedef struct s_grass
 	int		y;
 }			t_grass;
 
+typedef struct s_portal
+{
+	void	*frames[7];
+	void	*opn_frames[5];
+	int		current_frame;
+	int		opn_current_frame;
+	int		is_open;
+	int		pos_x;
+	int		pos_y;
+	int		x;
+	int		y;
+}			t_portal;
+
 typedef struct s_sprite
 {
-	t_img		*exit;
 	t_img		*wall;
 	t_chest		*chest;
 	t_enemy		*enemy;
 	t_heart		*heart;
 	t_player	*player;
 	t_grass		*grass;
+	t_portal	*portal;
 }				t_sprite;
 
 typedef struct s_map
@@ -173,6 +186,9 @@ typedef struct s_minilx
 int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
+
+void	load_portal_img(t_minilx *mlx);
+void	open_portal(t_minilx *mlx);
 
 void	load_dash_player(t_minilx *mlx);
 

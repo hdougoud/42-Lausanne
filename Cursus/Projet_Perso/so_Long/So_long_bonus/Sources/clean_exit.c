@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 15:58:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:29:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static void	destroy_image(t_minilx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->heart->frames[1]);
 	if (mlx->sprites->heart->frames[2])
 		mlx_destroy_image(mlx->mlx, mlx->sprites->heart->frames[2]);
-	if (mlx->sprites->exit->name)
-		mlx_destroy_image(mlx->mlx, mlx->sprites->exit->name);
 	if (mlx->sprites->wall->name)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->wall->name);
 	clean_enemy_img(mlx);
@@ -43,8 +41,6 @@ static void	free_struct(t_minilx *mlx)
 	{
 		if (mlx->sprites->chest)
 			free(mlx->sprites->chest);
-		if (mlx->sprites->exit)
-			free(mlx->sprites->exit);
 		if (mlx->sprites->player)
 			free(mlx->sprites->player);
 		if (mlx->sprites->wall)

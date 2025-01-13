@@ -28,6 +28,7 @@ SRC_DIR = Sources/
 SRCS	=	main.c \
 			enemy.c \
 			heart.c \
+			portal.c \
 			gameplay.c \
 			init_mlx.c \
 			init_map.c \
@@ -42,13 +43,14 @@ SRCS	=	main.c \
 			parsing_map.c \
 			clean_player.c \
 			so_long_utils.c \
+			file_to_image.c \
 			player_animation.c \
-			file_to_image_basic.c \
 			file_to_image_enemy.c \
 			file_to_image_player.c \
 			file_to_image_level_1.c \
 			file_to_image_level_2.c \
-			file_to_image_player_dash.c
+			file_to_image_player_dash.c \
+			file_to_image_portal.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 

@@ -6,11 +6,27 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:35:08 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 14:04:43 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:28:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void secure_portal_img(t_minilx *mlx)
+{
+	mlx->sprites->portal->frames[0] = NULL;
+	mlx->sprites->portal->frames[1] = NULL;
+	mlx->sprites->portal->frames[2] = NULL;
+	mlx->sprites->portal->frames[3] = NULL;
+	mlx->sprites->portal->frames[4] = NULL;
+	mlx->sprites->portal->frames[5] = NULL;
+	mlx->sprites->portal->frames[6] = NULL;
+	mlx->sprites->portal->opn_frames[0] = NULL;
+	mlx->sprites->portal->opn_frames[1] = NULL;
+	mlx->sprites->portal->opn_frames[2] = NULL;
+	mlx->sprites->portal->opn_frames[3] = NULL;
+	mlx->sprites->portal->opn_frames[4] = NULL;
+}
 
 static void	secure_floor_img(t_minilx *mlx)
 {
@@ -78,9 +94,9 @@ void	secure_all_img(t_minilx *mlx)
 	mlx->sprites->heart->frames[0] = NULL;
 	mlx->sprites->heart->frames[1] = NULL;
 	mlx->sprites->heart->frames[2] = NULL;
-	mlx->sprites->exit->name = NULL;
 	mlx->sprites->wall->name = NULL;
 	secure_floor_img(mlx);
 	secure_enemy_img(mlx);
 	secure_player_img(mlx);
+	secure_portal_img(mlx);
 }

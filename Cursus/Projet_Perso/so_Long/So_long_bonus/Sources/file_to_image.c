@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 17:26:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:30:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,6 @@ static void	load_collectable_image(t_minilx *mlx)
 		show_error(mlx, CANNOT_OPEN_FILE);
 }
 
-static void	file_to_image_basic(t_minilx *mlx)
-{
-	mlx->sprites->exit->name = mlx_xpm_file_to_image(mlx->mlx,
-			"Sprites/exit.xpm",
-			&mlx->sprites->exit->x, &mlx->sprites->exit->y);
-	if (!mlx->sprites->exit->name)
-		show_error(mlx, CANNOT_OPEN_FILE);
-}
-
 void	file_to_image(t_minilx *mlx)
 {
 	int	random;
@@ -84,5 +75,5 @@ void	file_to_image(t_minilx *mlx)
 	load_collectable_image(mlx);
 	load_enemy_image(mlx);
 	load_heart_image(mlx);
-	file_to_image_basic(mlx);
+	load_portal_img(mlx);
 }

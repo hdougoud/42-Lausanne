@@ -6,11 +6,24 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 16:32:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:08:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void utility_button(t_minilx *mlx)
+{
+	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
+	{
+		if (mlx->sprites->portal->is_open == 1)
+			quit_properly(mlx, EXIT_SUCCESS);
+	}
+	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C'
+		|| mlx->map->map_tab
+		[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')
+		open_chest(mlx);
+}
 
 static void	count_player_movement(t_minilx *mlx)
 {
@@ -89,15 +102,7 @@ int	hook_keyboard(int keycode, t_minilx *mlx)
 		move_player(keycode, mlx);
 	else if (keycode == E)
 	{
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
-		{
-			if (mlx->map->collectable_nb == 0)
-				quit_properly(mlx, EXIT_SUCCESS);
-		}
-		if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'C'
-			|| mlx->map->map_tab
-			[mlx->player_pos_y][mlx->player_pos_x - 1] == 'C')
-			open_chest(mlx);
+		utility_button(mlx);
 	}
 	else if (keycode == SPACE && mlx->sprites->player->dash == 0)
 	{

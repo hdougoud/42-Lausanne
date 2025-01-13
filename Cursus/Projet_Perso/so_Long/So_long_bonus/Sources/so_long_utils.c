@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 16:00:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:31:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	xpm_to_map(t_minilx *mlx, int width, int height)
 	else if (mlx->map->map_tab[height][width] == 'P')
 		ft_put_image(mlx, mlx->sprites->player->frames[0], width, height);
 	else if (mlx->map->map_tab[height][width] == 'E')
-		ft_put_image(mlx, mlx->sprites->exit->name, width, height);
+	{
+		mlx->sprites->portal->pos_x = width;
+		mlx->sprites->portal->pos_y = height;
+	}
 	else if (mlx->map->map_tab[height][width] == 'C')
 		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
 	else if (mlx->map->map_tab[height][width] == 'B')
