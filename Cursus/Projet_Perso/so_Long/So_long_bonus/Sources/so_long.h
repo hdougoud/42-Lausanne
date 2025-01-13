@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 01:09:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:50:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,10 @@ typedef struct s_minilx
 int		next_frame(t_minilx *mlx);
 int		windows_closed(t_minilx *mlx);
 int		hook_keyboard(int keycode, t_minilx *mlx);
+
+void	clean_player_img(t_minilx *mlx);
+void	clean_enemy_img(t_minilx *mlx);
+void	clean_floor(t_minilx *mlx);
 
 void	check_enemy_hits(t_minilx *mlx);
 void	secure_all_img(t_minilx *mlx);

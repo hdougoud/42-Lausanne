@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/09 23:13:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:53:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	show_small_error(t_minilx *mlx, int error_nb)
+void	show_small_error(int error_nb)
 {
 	if (error_nb == WRONG_ARGUMENTS)
 		ft_putendl_fd(COLOR_YELLOW "wrong number of agrument, please selecte one map", 2);
@@ -50,7 +50,7 @@ void	show_error(t_minilx *mlx, int error_nb)
 	else if (error_nb == WINDOW_ERROR)
 		perror(COLOR_RED "can't create windows");
 	else
-		show_small_error(mlx, error_nb);
+		show_small_error(error_nb);
 	ft_printf(COLOR_RESET);
 	quit_properly(mlx, EXIT_FAILURE);
 	//CHECKER TOUTE LES PHRASES

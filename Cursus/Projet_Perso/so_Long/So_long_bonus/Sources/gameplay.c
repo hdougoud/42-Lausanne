@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 01:16:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:54:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,6 @@ void move_player(int keycode, t_minilx *mlx)
 
 int	hook_keyboard(int keycode, t_minilx *mlx)
 {
-	int chestx;
-	int chesty;
-	
 	if (keycode == ESC)
 		quit_properly(mlx, EXIT_SUCCESS);
 	else if (mlx->sprites->player->life == 0 || mlx->sprites->player->dash == 1)

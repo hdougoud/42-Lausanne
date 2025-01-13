@@ -1,7 +1,7 @@
 NAME		= so_long
 OS			= $(shell uname -s)
 CC			= gcc
-CFLAGS		= -g -O0 #-Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra
 MACOS_DIR	= mlx/minilibx-macos
 LINUX_DIR	= mlx/minilibx-linux
 LIBFT		= libft/libft.a
@@ -42,7 +42,10 @@ SRCS	=	main.c \
 			file_to_image_enemy.c \
 			init_struct.c \
 			heart.c \
-			init_images.c
+			init_images.c \
+			clean_enemy.c \
+			clean_player.c \
+			clean_floor.c
 
 SOURCES = $(addprefix $(SRC_DIR), $(SRCS))
 

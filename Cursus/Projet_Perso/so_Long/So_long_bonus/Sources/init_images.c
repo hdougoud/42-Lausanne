@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:35:08 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/12 18:15:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:55:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,7 @@ void	secure_all_img(t_minilx *mlx)
 	mlx->sprites->heart->frames[2] = NULL;
 	mlx->sprites->exit->name = NULL;
 	mlx->sprites->wall->name = NULL;
+	secure_floor_img(mlx);
+	secure_enemy_img(mlx);
+	secure_player_img(mlx);
 }
