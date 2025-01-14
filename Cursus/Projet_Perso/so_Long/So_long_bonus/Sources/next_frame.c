@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 19:59:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:15:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,16 @@ static void	chest_animation(t_minilx *mlx)
 	ft_put_floor(mlx, chest_x, chest_y);
 	ft_put_image(mlx, mlx->sprites->chest->frames
 	[mlx->sprites->chest->current_frame], chest_x, chest_y);
+	if (mlx->map->map_enemy[chest_y][chest_x] == 'B')
+		ft_put_image(mlx, mlx->sprites->enemy->frames
+		[mlx->sprites->enemy->current_frame], chest_x, chest_y);
+	if (mlx->map->map_enemy[chest_y][chest_x] == 'D')
+		ft_put_image(mlx, mlx->sprites->enemy->dth_frames[5], chest_x, chest_y);
 	if (mlx->sprites->chest->current_frame >= 3)
 	{
 		mlx->sprites->chest->current_frame = 0;
 		mlx->sprites->chest->is_animating = 0;
+		put_previous_layer(mlx, chest_x, chest_y);
 	}
 	mlx->sprites->chest->current_frame++;
 }
@@ -83,7 +89,7 @@ int	next_frame(t_minilx *mlx)
 		if (mlx->map->collectable_nb == 0)
 			open_portal(mlx);
 		find_enemy(mlx, 2);
-		if (mlx->sprites->enemy->delayed_frame >= 12
+		if (mlx->sprites->enemy->delayed_frame >= 8
 			&& mlx->sprites->player->dash == 0)
 			delayed_enemy_move(mlx);
 		if (mlx->sprites->chest->is_animating == 1)

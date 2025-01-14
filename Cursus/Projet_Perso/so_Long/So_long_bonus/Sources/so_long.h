@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:28:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:04:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ int		hook_keyboard(int keycode, t_minilx *mlx);
 
 void	load_portal_img(t_minilx *mlx);
 void	open_portal(t_minilx *mlx);
+void 	clean_portal_img(t_minilx *mlx);
 
 void	load_dash_player(t_minilx *mlx);
 

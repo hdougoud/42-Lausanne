@@ -8,7 +8,12 @@ LIBFT		= libft/libft.a
 LINUX_LIB	= $(LINUX_DIR)/libmlx.a
 MACOS_LIB	= $(MACOS_DIR)/libmlx.a
 
-MAPS 		= maps/map1.ber maps/map2.ber maps/map3.ber maps/map4.ber maps/map5.ber
+MAPS 		= maps/map1.ber maps/map2.ber maps/map3.ber maps/map4.ber maps/map5.ber4
+TEST_DIR	= maps/test_maps/
+TEST		= extention no_collectable.ber no_exit.ber no_player.ber path_collectable.ber \
+			  path_exit.ber permission.ber square.ber surrounded.ber surrounded_2.ber \
+			  surrounded_3.ber surrounded_4.ber not_exist.ber
+TEST_MAPS	= $(addprefix $(TEST_DIR), $(TEST))
 
 RED			= \033[1;31m
 GREEN		= \033[1;32m
@@ -41,6 +46,7 @@ SRCS	=	main.c \
 			init_struct.c \
 			init_images.c \
 			parsing_map.c \
+			clean_portal.c \
 			clean_player.c \
 			so_long_utils.c \
 			file_to_image.c \
@@ -91,6 +97,12 @@ re: fclean all
 run_maps: $(NAME)
 	@for level in $(MAPS); do \
 		echo "Running $$level"; \
+		./$(NAME) $$level; \
+	done
+
+test_maps: $(NAME)
+	@for level in $(TEST_MAPS); do \
+		echo "Running test $$level"; \
 		./$(NAME) $$level; \
 	done
 

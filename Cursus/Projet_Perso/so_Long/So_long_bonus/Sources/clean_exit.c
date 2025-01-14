@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:29:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:04:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	destroy_image(t_minilx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->wall->name);
 	clean_enemy_img(mlx);
 	clean_player_img(mlx);
+	clean_portal_img(mlx);
 	clean_floor(mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:01:26 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:32:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:54:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	show_map(t_minilx *mlx)
 	if (!mlx->win)
 		show_error(mlx, WINDOW_ERROR);
 	create_floor_map(mlx);
-	ft_printf("%s\n", "floor_map_created");
 	while (mlx->map->map_tab[height])
 	{
 		width = 0;
