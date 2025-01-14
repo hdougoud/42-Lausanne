@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:56:02 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:31:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:47:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	xpm_to_map(t_minilx *mlx, int width, int height)
 		ft_put_image(mlx, mlx->sprites->chest->frames[0], width, height);
 	else if (mlx->map->map_tab[height][width] == 'B')
 		ft_put_image(mlx, mlx->sprites->enemy->frames[0], width, height);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -4, 0);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -3, 0);
-	ft_put_image(mlx, mlx->sprites->heart->frames[0], mlx->map->width -2, 0);
 }
 
 void	open_chest(t_minilx *mlx)

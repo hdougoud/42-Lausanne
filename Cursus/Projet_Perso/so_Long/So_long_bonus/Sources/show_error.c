@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:33:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 16:03:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:54:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	show_warning(int error_nb)
 			"wrong number of agrument, please selecte one map", 2);
 	else if (error_nb == WRONG_EXT)
 		ft_putendl_fd(COLOR_YELLOW
-			"wrong extension, this program can only read .ber files", 2);
+			"wrong extension : this program can only read .ber files", 2);
 	else if (error_nb == WRONG_MAP_SIZE)
 		ft_putendl_fd(COLOR_YELLOW
 			"wrong map size : map need to be a rectangle", 2);
@@ -51,7 +51,7 @@ static void	show_warning(int error_nb)
 	else if (error_nb == UNDER_COLLECIBLE)
 		ft_putendl_fd(COLOR_YELLOW
 			"Not enough collectives, there must be at least one on the map", 2);
-	else 
+	else
 		show_warning_2(error_nb);
 }
 
@@ -70,5 +70,4 @@ void	show_error(t_minilx *mlx, int error_nb)
 		show_warning(error_nb);
 	ft_printf(COLOR_RESET);
 	quit_properly(mlx, EXIT_FAILURE);
-	//CHECKER TOUTE LES PHRASES
 }

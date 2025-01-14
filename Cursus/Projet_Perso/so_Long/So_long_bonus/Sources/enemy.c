@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:35:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 17:27:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:50:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,20 +100,18 @@ void	find_enemy(t_minilx *mlx, int param)
 	int	height;
 	int	width;
 
-	height = 0;
+	height = -1;
 	mlx->map->map_enemy_copy = create_enemy_map(mlx, mlx->map->map_enemy);
-	while (mlx->map->map_enemy[height])
+	while (mlx->map->map_enemy[++height])
 	{
-		width = 0;
-		while (mlx->map->map_enemy[height][width])
+		width = -1;
+		while (mlx->map->map_enemy[height][++width])
 		{
 			if (mlx->map->map_enemy[height][width] == 'B' && param == 1)
 				move_enemy(mlx, width, height);
 			else if (mlx->map->map_enemy[height][width] == 'B' && param == 2)
 				next_enemy_frame(mlx, width, height);
-			width++;
 		}
-		height++;
 	}
 	if (param == 2)
 	{

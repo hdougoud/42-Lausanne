@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:03 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 17:27:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:49:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	player_dash(t_minilx *mlx)
 	}
 	if (mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x + 1] == 'B'
 		|| mlx->map->map_enemy[mlx->player_pos_y][mlx->player_pos_x + 1] == 'I')
-		play_enemy_death_aniamtion(mlx, mlx->player_pos_x + 1, mlx->player_pos_y);
+		play_enemy_death_aniamtion(mlx,
+			mlx->player_pos_x + 1, mlx->player_pos_y);
 	mlx_put_image_to_window(mlx->mlx, mlx->win,
 		mlx->sprites->player->dsh_frames[img_x - 1],
 		(mlx->player_pos_x * TEXTURE_SIZE) + (img_x * 8),

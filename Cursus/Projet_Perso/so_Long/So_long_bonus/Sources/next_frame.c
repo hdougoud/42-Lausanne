@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:06:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:43:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:59:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ void	put_previous_layer(t_minilx *mlx, int x, int y)
 			mlx->sprites->chest->posx, mlx->sprites->chest->posy);
 	}
 	if (mlx->map->map_tab[y][x] == 'E')
-		ft_put_image(mlx, mlx->sprites->portal->frames
-		[mlx->sprites->portal->current_frame], x, y);
+	{
+		if (mlx->sprites->portal->is_open == 1)
+			ft_put_image(mlx, mlx->sprites->portal->frames
+			[mlx->sprites->portal->current_frame], x, y);
+	}
 	if (mlx->map->map_enemy[y][x] == 'D')
 		ft_put_image(mlx, mlx->sprites->enemy->dth_frames[5], x, y);
 }

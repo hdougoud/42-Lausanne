@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:35:08 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:28:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:50:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void secure_portal_img(t_minilx *mlx)
+static void	secure_portal_img(t_minilx *mlx)
 {
 	mlx->sprites->portal->frames[0] = NULL;
 	mlx->sprites->portal->frames[1] = NULL;

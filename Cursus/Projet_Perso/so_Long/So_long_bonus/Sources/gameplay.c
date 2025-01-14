@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:21:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:08:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:03:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void utility_button(t_minilx *mlx)
+static void	utility_button(t_minilx *mlx)
 {
 	if (mlx->map->map_tab[mlx->player_pos_y][mlx->player_pos_x] == 'E')
 	{
@@ -36,11 +36,12 @@ static void	count_player_movement(t_minilx *mlx)
 	string = ft_strjoin(mouv, " moves");
 	if (!string)
 		show_error(mlx, MALLOC_ERROR);
-	ft_put_floor(mlx, 0, 0);
-	ft_put_floor(mlx, 1, 0);
-	ft_put_image(mlx, mlx->sprites->wall->name, 0, 0);
-	ft_put_image(mlx, mlx->sprites->wall->name, 1, 0);
-	mlx_string_put(mlx->mlx, mlx->win, 16, 16, 0xFFFFFF, string);
+	ft_put_floor(mlx, 0, mlx->map->height - 1);
+	ft_put_floor(mlx, 1, mlx->map->height - 1);
+	ft_put_image(mlx, mlx->sprites->wall->name, 0, mlx->map->height - 1);
+	ft_put_image(mlx, mlx->sprites->wall->name, 1, mlx->map->height - 1);
+	mlx_string_put(mlx->mlx, mlx->win, 16,
+		(mlx->map->height * TEXTURE_SIZE - 40), 0xFFFFFF, string);
 	ft_printf("%d movements\n", mlx->movement);
 	free(mouv);
 	free(string);
