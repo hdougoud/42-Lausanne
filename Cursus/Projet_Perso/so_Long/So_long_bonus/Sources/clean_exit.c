@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:45:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/14 11:04:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:23:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	free_struct(t_minilx *mlx)
 			free(mlx->sprites->heart);
 		if (mlx->sprites->grass)
 			free(mlx->sprites->grass);
+		if (mlx->sprites->portal)
+			free(mlx->sprites->portal);
 		free(mlx->sprites);
 	}
 	if (mlx->map)
