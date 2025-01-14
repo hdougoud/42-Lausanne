@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:56:15 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/14 11:06:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:30:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	clean_portal_open(t_minilx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->sprites->portal->opn_frames[4]);
 }
 
-void 	clean_portal_img(t_minilx *mlx)
+void	clean_portal_img(t_minilx *mlx)
 {
 	if (mlx->sprites->portal->frames[0])
 		mlx_destroy_image(mlx->mlx, mlx->sprites->portal->frames[0]);

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:40:14 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/14 11:04:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:39:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SCREEN_SIZE_Y		2880
 # define MAX_MOVE			3
 # define MAX_LEVEL			1
+
 /*----------------------------------Keycode----------------------------------*/
 
 # define ESC				53
@@ -183,49 +184,54 @@ typedef struct s_minilx
 
 /*----------------------------------Functions--------------------------------*/
 
-int		next_frame(t_minilx *mlx);
-int		windows_closed(t_minilx *mlx);
-int		hook_keyboard(int keycode, t_minilx *mlx);
+/*-------------INIT-STRUCT-------------*/
 
+void	init_minilx(t_minilx *mlx);
+void	file_to_image(t_minilx *mlx);
+void	secure_all_img(t_minilx *mlx);
+void	allocate_struct(t_minilx *mlx);
+void	create_floor_map(t_minilx *mlx);
+void	load_enemy_image(t_minilx *mlx);
 void	load_portal_img(t_minilx *mlx);
-void	open_portal(t_minilx *mlx);
-void 	clean_portal_img(t_minilx *mlx);
-
 void	load_dash_player(t_minilx *mlx);
+void	load_player_image(t_minilx *mlx);
+void	load_level1_images(t_minilx *mlx);
+void	load_level2_images(t_minilx *mlx);
+void	init_map(t_minilx *mlx, char *map_name);
+void	ft_put_floor(t_minilx *mlx, int x, int y);
 
-void	xpm_to_map(t_minilx *mlx, int width, int height);
+/*--------------GAMEPLAY---------------*/
 
+void	open_chest(t_minilx *mlx);
+void	open_portal(t_minilx *mlx);
 void	player_idle(t_minilx *mlx);
 void	player_dash(t_minilx *mlx);
 void	player_death(t_minilx *mlx);
+void	check_enemy_hits(t_minilx *mlx);
+void	check_player_life(t_minilx *mlx);
+void	check_player_life(t_minilx *mlx);
+void	find_enemy(t_minilx *mlx, int param);
+
+/*-------------CLEAR-STRUCT------------*/
 
 void	clean_player_img(t_minilx *mlx);
 void	clean_enemy_img(t_minilx *mlx);
 void	clean_floor(t_minilx *mlx);
-
-void	check_enemy_hits(t_minilx *mlx);
-void	secure_all_img(t_minilx *mlx);
-void	check_player_life(t_minilx *mlx);
-void	allocate_struct(t_minilx *mlx);
-void	load_enemy_image(t_minilx *mlx);
-void	load_level2_images(t_minilx *mlx);
-void	create_floor_map(t_minilx *mlx);
-void	load_level1_images(t_minilx *mlx);
-void	ft_put_floor(t_minilx *mlx, int x, int y);
-void	player_death(t_minilx *mlx);
-void	next_enemy_frame(t_minilx *mlx, int x, int y);
-void	find_enemy(t_minilx *mlx, int param);
-void	open_chest(t_minilx *mlx);
-void	init_minilx(t_minilx *mlx);
+void	clean_portal_img(t_minilx *mlx);
 void	clear_map(char **map, int j);
-void	file_to_image(t_minilx *mlx);
-void	check_path_map(t_minilx *mlx);
-void	load_player_image(t_minilx *mlx);
-void	check_player_life(t_minilx *mlx);
-void	init_map(t_minilx *mlx, char *map_name);
-void	show_error(t_minilx *mlx, int error_nb);
 void	quit_properly(t_minilx *mlx, int exit_status);
+
+/*----------------UTILS----------------*/
+
+int		next_frame(t_minilx *mlx);
+int		windows_closed(t_minilx *mlx);
+int		hook_keyboard(int keycode, t_minilx *mlx);
+
+void	check_path_map(t_minilx *mlx);
+void	show_error(t_minilx *mlx, int error_nb);
+void	next_enemy_frame(t_minilx *mlx, int x, int y);
 void	put_previous_layer(t_minilx *mlx, int x, int y);
+void	xpm_to_map(t_minilx *mlx, int width, int height);
 void	ft_put_image(t_minilx *mlx, t_img *img, int width, int height);
 
 char	*strdup_map_line(t_minilx *mlx, char *str);

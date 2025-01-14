@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_to_image_basic.c                              :+:      :+:    :+:   */
+/*   file_to_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:15:22 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/13 18:30:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:30:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,10 @@ void	file_to_image(t_minilx *mlx)
 	random = rand() % (MAX_LEVEL + 1);
 	if (random == 0)
 	{
-		printf("%s\n", "Level 1");
 		load_level1_images(mlx);
 	}
 	else if (random == 1)
 	{
-		printf("%s\n", "Level 2");
 		load_level2_images(mlx);
 	}
 	load_player_image(mlx);
